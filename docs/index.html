@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orzecznictwo TK — Wybierz tryb pracy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/dashboard.css">
+  <link rel="stylesheet" href="assets/landing.css">
+</head>
+<body class="landing-page">
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">§</span>
+        <span class="brand-text">Orzecznictwo TK</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link active" href="index.html">Start</a>
+        <a class="nav-link" href="dashboard-expert.html">Wyszukiwanie</a>
+        <a class="nav-link" href="analytics.html">Statystyki</a>
+      </div>
+      <div class="mode-switch mode-switch-landing" aria-label="Wybór trybu dashboardu">
+        <a id="landingSwitchStudent" class="mode-switch-link" href="dashboard-student.html" data-mode="student">Student</a>
+        <a id="landingSwitchExpert" class="mode-switch-link" href="dashboard-expert.html" data-mode="expert">Ekspert</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero landing-hero">
+    <div class="hero-inner landing-inner">
+      <p class="landing-kicker">Orzecznictwo Trybunału Konstytucyjnego</p>
+      <h1 class="hero-title">Jedna wyszukiwarka, dwa interfejsy</h1>
+      <p class="hero-subtitle">
+        Wybierz ścieżkę pracy: prosty dashboard do nauki albo pełne narzędzie do analizy i argumentacji.
+        Oba tryby startują na tym samym korpusie online pełnych składów i tym samym silniku wyszukiwania.
+      </p>
+
+      <div class="landing-cta-row">
+        <a class="btn btn-primary landing-cta" href="dashboard-student.html" data-mode="student">Przejdź do trybu Student</a>
+        <a class="btn btn-soft landing-cta" href="dashboard-expert.html" data-mode="expert">Przejdź do trybu Ekspert</a>
+      </div>
+
+      <section class="landing-metrics" aria-label="Skala zbioru" id="landingMetrics">
+        <article class="landing-metric">
+          <p class="landing-metric-value" id="metricCases">-</p>
+          <p class="landing-metric-label">Sprawy</p>
+        </article>
+        <article class="landing-metric">
+          <p class="landing-metric-value" id="metricParagraphs">-</p>
+          <p class="landing-metric-label">Akapity</p>
+        </article>
+        <article class="landing-metric">
+          <p class="landing-metric-value" id="metricYears">-</p>
+          <p class="landing-metric-label">Zakres lat</p>
+        </article>
+        <article class="landing-metric">
+          <p class="landing-metric-value" id="metricUpdated">-</p>
+          <p class="landing-metric-label">Aktualizacja</p>
+        </article>
+      </section>
+    </div>
+  </header>
+
+  <main class="main landing-main">
+    <section class="landing-paths" aria-label="Ścieżki użytkownika">
+      <article class="panel mode-card mode-card-student">
+        <p class="mode-chip">Ścieżka student</p>
+        <h2>Uczysz się prawa konstytucyjnego</h2>
+        <p>Minimum szumu, maksimum orientacji: szybkie wyszukiwanie, podstawowe filtry IPO i czytelny podgląd pełnego wyroku.</p>
+        <ul class="mode-list">
+          <li>prosty układ, mniej elementów naraz</li>
+          <li>domyślnie zwinięte filtry zaawansowane</li>
+          <li>automatyczny korpus online: pełne składy (332 sprawy)</li>
+        </ul>
+        <a class="btn btn-primary mode-cta" href="dashboard-student.html" data-mode="student">Otwórz dashboard student</a>
+      </article>
+
+      <article class="panel mode-card mode-card-expert">
+        <p class="mode-chip">Ścieżka ekspert</p>
+        <h2>Budujesz argumentację procesową</h2>
+        <p>Pełen workflow prawniczy: selekcja akapitów, case folder, eksporty, porównania i szczegółowa analityka.</p>
+        <ul class="mode-list">
+          <li>rozbudowane filtry i parser zapytań</li>
+          <li>podgląd pełnego wyroku z TOC</li>
+          <li>eksport cytowań, CSV i dossier</li>
+        </ul>
+        <a class="btn btn-primary mode-cta" href="dashboard-expert.html" data-mode="expert">Otwórz dashboard ekspert</a>
+      </article>
+    </section>
+
+    <section class="landing-steps" aria-labelledby="stepsHeading">
+      <div class="section-head">
+        <p class="section-kicker">Jak zacząć</p>
+        <h2 id="stepsHeading">Trzy kroki do pracy z orzeczeniami TK</h2>
+      </div>
+      <div class="steps-grid">
+        <article class="panel step-card">
+          <p class="step-index">01</p>
+          <h3>Wybierz tryb</h3>
+          <p>Student lub Ekspert. Tryb możesz przełączać później jednym kliknięciem w górnym pasku.</p>
+        </article>
+        <article class="panel step-card">
+          <p class="step-index">02</p>
+          <h3>Załaduj zbiór</h3>
+          <p>Student: korpus pełnych składów ładowany automatycznie. Ekspert: próbka, pełny dataset lub własny plik JSONL/JSON.</p>
+        </article>
+        <article class="panel step-card">
+          <p class="step-index">03</p>
+          <h3>Szukaj i analizuj</h3>
+          <p>Filtruj po IPO, przeglądaj pełne wyroki i buduj własny zestaw cytatów.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="landing-features" aria-labelledby="featuresHeading">
+      <div class="section-head">
+        <p class="section-kicker">Co dostajesz</p>
+        <h2 id="featuresHeading">Najważniejsze funkcje platformy</h2>
+      </div>
+      <div class="features-grid">
+        <article class="panel feature-card">
+          <h3>Filtry IPO 1:1</h3>
+          <p>Dokładnie te same kategorie typu orzeczenia i liczebności składu co na stronie IPO TK.</p>
+        </article>
+        <article class="panel feature-card">
+          <h3>Globalny tryb akapitów</h3>
+          <p>Jednym przełącznikiem ustawiasz: <strong>Zwięźle</strong> lub <strong>Pełne</strong> w wynikach i podglądzie wyroku.</p>
+        </article>
+        <article class="panel feature-card">
+          <h3>Spis treści wyroku</h3>
+          <p>Komparycja, tenor, postanowienia i zdania odrębne (w tym osobno per sędzia) z szybkim skokiem.</p>
+        </article>
+        <article class="panel feature-card">
+          <h3>Cytowanie i eksport</h3>
+          <p>Eksport CSV, pakiet cytatów i dossier z metadanymi przydatnymi do pracy procesowej.</p>
+        </article>
+        <article class="panel feature-card">
+          <h3>Wyszukiwanie prawnicze</h3>
+          <p>Operatory pól, logika boolowska, frazy oraz podświetlanie trafień w akapitach.</p>
+        </article>
+        <article class="panel feature-card">
+          <h3>Analityka korpusu</h3>
+          <p>KPI, bigramy i heatmapa współorzekania do szybkiego przeglądu trendów orzeczniczych.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-note">Orzecznictwo TK • Konstytucyjny dashboard orzeczeń TK</span>
+      <a class="footer-link" href="https://github.com/lszoszk/trybunalkonstytucyjny" target="_blank" rel="noopener noreferrer">Repozytorium GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const STORAGE_KEY = "tk_ui_prefs";
+      const modeLinks = document.querySelectorAll("[data-mode]");
+      const switchStudent = document.getElementById("landingSwitchStudent");
+      const switchExpert = document.getElementById("landingSwitchExpert");
+      const metricCases = document.getElementById("metricCases");
+      const metricParagraphs = document.getElementById("metricParagraphs");
+      const metricYears = document.getElementById("metricYears");
+      const metricUpdated = document.getElementById("metricUpdated");
+
+      const fmtInt = (value) => new Intl.NumberFormat("pl-PL").format(Number(value || 0));
+
+      function loadPrefs() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        } catch {
+          return {};
+        }
+      }
+
+      function saveMode(mode) {
+        const prefs = loadPrefs();
+        prefs.viewMode = mode === "student" ? "student" : "expert";
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+      }
+
+      function syncSwitch() {
+        const prefs = loadPrefs();
+        const mode = prefs.viewMode === "student" ? "student" : "expert";
+        switchStudent?.classList.toggle("active", mode === "student");
+        switchExpert?.classList.toggle("active", mode === "expert");
+      }
+
+      async function loadMetrics() {
+        try {
+          const response = await fetch("data/stats.json", { cache: "no-store" });
+          if (!response.ok) throw new Error("stats-unavailable");
+          const payload = await response.json();
+          const summary = payload.summary || {};
+          const years = summary.date_range
+            ? `${summary.date_range.from}–${summary.date_range.to}`
+            : "-";
+          const generated = payload.generated_at
+            ? new Date(payload.generated_at).toLocaleDateString("pl-PL")
+            : "-";
+
+          metricCases.textContent = fmtInt(summary.total_cases || 0);
+          metricParagraphs.textContent = fmtInt(summary.total_paragraphs || 0);
+          metricYears.textContent = years;
+          metricUpdated.textContent = generated;
+        } catch {
+          metricCases.textContent = "-";
+          metricParagraphs.textContent = "-";
+          metricYears.textContent = "-";
+          metricUpdated.textContent = "-";
+        }
+      }
+
+      for (const link of modeLinks) {
+        link.addEventListener("click", () => {
+          saveMode(link.dataset.mode || "expert");
+        });
+      }
+
+      syncSwitch();
+      loadMetrics();
+    })();
+  </script>
+</body>
+</html>

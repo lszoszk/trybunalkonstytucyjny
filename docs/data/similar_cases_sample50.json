@@ -1,0 +1,4880 @@
+{
+  "schema_version": "tk-similarity-v1",
+  "similarity_version": "tk-sim-hybrid-v2-dotyczy",
+  "generated_at": "2026-02-20T10:37:31.227Z",
+  "dataset_hash": "dd8c258da67f48dfe6382ce784bf9b628be03d3b067b35980a2018b4f4e2d350",
+  "dataset_generated_at": "2026-02-20T10:31:36.567Z",
+  "source_name": "tk_cases_sample50.jsonl",
+  "scope": "sample50",
+  "config": {
+    "top_k": 5,
+    "threshold": 0.12,
+    "section_weights": {
+      "tenor": 1.35,
+      "orzeka": 1.3,
+      "postanawia": 1.3,
+      "uzasadnienie_prawne": 1.25,
+      "uzasadnienie_postepowanie": 0.95,
+      "uzasadnienie_historyczne": 0.9,
+      "uzasadnienie_ogolne": 0.85,
+      "zdanie_odrebne": 0.8,
+      "komparycja": 0.6,
+      "sentencja_inna": 0.6,
+      "inne": 0.6
+    },
+    "section_caps": {
+      "sentencja": 1200,
+      "uzasadnienie_prawne": 5000,
+      "uzasadnienie_pozostale": 3000,
+      "zdanie_odrebne": 1500,
+      "inne": 1600
+    },
+    "metadata_weights": {
+      "sameRepertory": 0.4,
+      "sameBenchIpo": 0.2,
+      "yearProximity": 0.2,
+      "judgeOverlap": 0.2
+    },
+    "final_weights": {
+      "lexical": 0.52,
+      "citations": 0.2,
+      "metadata": 0.08,
+      "dotyczyBigrams": 0.2
+    },
+    "topic_bigram": {
+      "source_field": "topic",
+      "ngram_n": 2,
+      "max_terms": 160
+    },
+    "tokenization": {
+      "min_token_length": 3,
+      "stopwords": "built-in polish legal stopwords",
+      "min_df": 2,
+      "max_df_ratio": 0.12,
+      "max_df_applied": 394
+    }
+  },
+  "metrics": {
+    "source_cases": 50,
+    "coverage_top5": 1,
+    "avg_similarity_score_top5": 0.307875,
+    "share_with_common_citation": 1,
+    "share_with_common_dotyczy_bigram": 0.28
+  },
+  "by_document_id": {
+    "25067": [
+      {
+        "document_id": "25181",
+        "case_signature": "U 4/25",
+        "decision_date_iso": "2025-11-12",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.082918,
+        "components": {
+          "lexical": 0.008508,
+          "citations": 0.032468,
+          "metadata": 0.9,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, § 3, art. 92 ust. 1",
+          "Wspólne frazy w tekście: nieletnich, delegacji, osrodku",
+          "To samo repertorium: U"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25181&sprawa=28948"
+      },
+      {
+        "document_id": "25164",
+        "case_signature": "U 6/24",
+        "decision_date_iso": "2025-11-27",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.077633,
+        "components": {
+          "lexical": 0.000833,
+          "citations": 0.05,
+          "metadata": 0.84,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 59 ust. 1 pkt 4",
+          "Wspólne frazy w tekście: generalna, precyzyjne",
+          "To samo repertorium: U"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25164&sprawa=27927"
+      },
+      {
+        "document_id": "25173",
+        "case_signature": "SK 50/22",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.06818,
+        "components": {
+          "lexical": 0.076166,
+          "citations": 0.01487,
+          "metadata": 0.32,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1, art. 59 ust. 1 pkt 4",
+          "Wspólne frazy w tekście: wychowawczego, opieki, edukacji"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25173&sprawa=25902"
+      },
+      {
+        "document_id": "25235",
+        "case_signature": "SK 48/24",
+        "decision_date_iso": "2026-01-15",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.065863,
+        "components": {
+          "lexical": 0.003101,
+          "citations": 0.149254,
+          "metadata": 0.43,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 32 ust. 1, art. 92 ust. 1",
+          "Wspólne frazy w tekście: zastapione, rozporzadzeniem, obowiazywac"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25235&sprawa=27911"
+      },
+      {
+        "document_id": "25136",
+        "case_signature": "K 22/19",
+        "decision_date_iso": "2025-10-30",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.063988,
+        "components": {
+          "lexical": 0.046501,
+          "citations": 0.071038,
+          "metadata": 0.32,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 12, art. 2, art. 167 ust. 1",
+          "Wspólne frazy w tekście: powiatu, powiat, dochodach"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25136&sprawa=22292"
+      }
+    ],
+    "25068": [
+      {
+        "document_id": "25178",
+        "case_signature": "SK 11/20",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.093972,
+        "components": {
+          "lexical": 0.005729,
+          "citations": 0.081633,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 79 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: sprawowanego, ujemna, zajecia",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
+      },
+      {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.091869,
+        "components": {
+          "lexical": 0.009462,
+          "citations": 0.08046,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 53 ust. 1 pkt 2, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: ujemna, wstepnej, przedstawila",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      },
+      {
+        "document_id": "25140",
+        "case_signature": "SK 70/25",
+        "decision_date_iso": "2025-10-29",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.089459,
+        "components": {
+          "lexical": 0.009216,
+          "citations": 0.083333,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 77 ust. 2, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: prowadzonym, odrzuceniu, merito",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25140&sprawa=28824"
+      },
+      {
+        "document_id": "25165",
+        "case_signature": "SK 58/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.08469,
+        "components": {
+          "lexical": 0.003007,
+          "citations": 0.07563,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 79 ust. 1, art. 53 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: notarialne, wladczego, rozpoznajacego",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+      },
+      {
+        "document_id": "25169",
+        "case_signature": "SK 67/25",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.084684,
+        "components": {
+          "lexical": 0.001781,
+          "citations": 0.045455,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 79 ust. 1, art. 45",
+          "Wspólne frazy w tekście: naruszen, wstepnej, kasacyjnej",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+      }
+    ],
+    "25081": [
+      {
+        "document_id": "25174",
+        "case_signature": "SK 22/24",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.943906,
+        "components": {
+          "lexical": 0.992246,
+          "citations": 0.766355,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25174&sprawa=27639"
+      },
+      {
+        "document_id": "25134",
+        "case_signature": "SK 73/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.924583,
+        "components": {
+          "lexical": 0.990281,
+          "citations": 0.719298,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25134&sprawa=27156"
+      },
+      {
+        "document_id": "25135",
+        "case_signature": "SK 80/24",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.673988,
+        "components": {
+          "lexical": 0.555004,
+          "citations": 0.598039,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, zakaznych, ochronnych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+      },
+      {
+        "document_id": "25161",
+        "case_signature": "SK 41/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.669854,
+        "components": {
+          "lexical": 0.547055,
+          "citations": 0.598039,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, zakaznych, ochronnych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+      },
+      {
+        "document_id": "25179",
+        "case_signature": "SK 108/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.661592,
+        "components": {
+          "lexical": 0.512533,
+          "citations": 0.602041,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, zakaznych, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+      }
+    ],
+    "25082": [
+      {
+        "document_id": "25227",
+        "case_signature": "SK 76/21",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.687132,
+        "components": {
+          "lexical": 0.691764,
+          "citations": 0.301075,
+          "metadata": 0.84,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, § 4",
+          "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
+          "Wspólne frazy w tekście: adwokata, nieoplaconej, udzielonej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25227&sprawa=24952"
+      },
+      {
+        "document_id": "25163",
+        "case_signature": "SK 93/22",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.613533,
+        "components": {
+          "lexical": 0.554049,
+          "citations": 0.291139,
+          "metadata": 0.84,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 64 ust. 2, art. 31 ust. 3, art. 32 ust. 1",
+          "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
+          "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25163&sprawa=26541"
+      },
+      {
+        "document_id": "25235",
+        "case_signature": "SK 48/24",
+        "decision_date_iso": "2026-01-15",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.53383,
+        "components": {
+          "lexical": 0.582969,
+          "citations": 0.321429,
+          "metadata": 0.83,
+          "dotyczy_bigrams": 0.5
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 64 ust. 2, art. 2, art. 31 ust. 3",
+          "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
+          "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25235&sprawa=27911"
+      },
+      {
+        "document_id": "25168",
+        "case_signature": "SK 89/23",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.160819,
+        "components": {
+          "lexical": 0.189553,
+          "citations": 0.023256,
+          "metadata": 0.72,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1",
+          "Wspólne frazy w tekście: obroncy, obroncow, adwokata",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+      },
+      {
+        "document_id": "25176",
+        "case_signature": "SK 45/25",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.099876,
+        "components": {
+          "lexical": 0.062156,
+          "citations": 0.049774,
+          "metadata": 0.72,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1, art. 53, art. 64 ust. 2",
+          "Wspólne frazy w tekście: obwinionego, obroncy, adwokata",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25176&sprawa=28654"
+      }
+    ],
+    "25083": [
+      {
+        "document_id": "25264",
+        "case_signature": "SK 16/18",
+        "decision_date_iso": "2025-11-19",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.130592,
+        "components": {
+          "lexical": 0.083088,
+          "citations": 0.160569,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 21 ust. 1, art. 64 ust. 1",
+          "Wspólne frazy w tekście: skarzace, dziedziczenia, wierzytelnosci",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+      },
+      {
+        "document_id": "25169",
+        "case_signature": "SK 67/25",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.122163,
+        "components": {
+          "lexical": 0.02541,
+          "citations": 0.204748,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 45 ust. 1",
+          "Wspólne frazy w tekście: podkr, orzeczono, wezwania",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+      },
+      {
+        "document_id": "25138",
+        "case_signature": "SK 101/22",
+        "decision_date_iso": "2025-11-18",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.114637,
+        "components": {
+          "lexical": 0.007871,
+          "citations": 0.198433,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 2, art. 64 ust. 1",
+          "Wspólne frazy w tekście: zastepcy, zastepcow, zwiazkowo",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25138&sprawa=26598"
+      },
+      {
+        "document_id": "25168",
+        "case_signature": "SK 89/23",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.107146,
+        "components": {
+          "lexical": 0.029511,
+          "citations": 0.130112,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 32 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: radca, adwokat, profesjonalnego",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+      },
+      {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.102594,
+        "components": {
+          "lexical": 0.028065,
+          "citations": 0.111111,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 45 ust. 1",
+          "Wspólne frazy w tekście: profesjonalnego, skarzacych, starannosci",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      }
+    ],
+    "25084": [
+      {
+        "document_id": "25170",
+        "case_signature": "SK 47/25",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.609084,
+        "components": {
+          "lexical": 0.841287,
+          "citations": 0.518072,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 17 ust. 1a pkt 2, art. 71 ust. 1, art. 17 ust. 1 pkt 4",
+          "Wspólne frazy w tekście: opieki, niepelnosprawnosci, pielegnacyjnego",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25170&sprawa=28659"
+      },
+      {
+        "document_id": "25173",
+        "case_signature": "SK 50/22",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.33851,
+        "components": {
+          "lexical": 0.462332,
+          "citations": 0.136201,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 71 ust. 1, art. 32 ust. 1, art. 18",
+          "Wspólne frazy w tekście: pielegnacyjnego, opieki, niepelnosprawnosci",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25173&sprawa=25902"
+      },
+      {
+        "document_id": "25141",
+        "case_signature": "P 2/25",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.11836,
+        "components": {
+          "lexical": 0.143841,
+          "citations": 0.023529,
+          "metadata": 0.485714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 69, art. 2",
+          "Wspólne frazy w tekście: niepelnosprawnosci, niepelnosprawnoscia, egzystencji"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25141&sprawa=28436"
+      },
+      {
+        "document_id": "25161",
+        "case_signature": "SK 41/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.097298,
+        "components": {
+          "lexical": 0.016436,
+          "citations": 0.070423,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 59 ust. 1 pkt 3, art. 79 ust. 1",
+          "Wspólne frazy w tekście: dziecka, corki, opiekuna",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+      },
+      {
+        "document_id": "25162",
+        "case_signature": "SK 85/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.096837,
+        "components": {
+          "lexical": 0.01555,
+          "citations": 0.070423,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 59 ust. 1 pkt 3, art. 79 ust. 1",
+          "Wspólne frazy w tekście: dziecka, corki, opiekuna",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25162&sprawa=28321"
+      }
+    ],
+    "25108": [
+      {
+        "document_id": "25179",
+        "case_signature": "SK 108/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.976342,
+        "components": {
+          "lexical": 0.998415,
+          "citations": 0.9125,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+      },
+      {
+        "document_id": "25228",
+        "case_signature": "SK 80/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.968874,
+        "components": {
+          "lexical": 0.992066,
+          "citations": 0.925,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+      },
+      {
+        "document_id": "25226",
+        "case_signature": "SK 48/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.964798,
+        "components": {
+          "lexical": 0.993842,
+          "citations": 0.9,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+      },
+      {
+        "document_id": "25133",
+        "case_signature": "SK 53/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.896379,
+        "components": {
+          "lexical": 0.907931,
+          "citations": 0.76699,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+      },
+      {
+        "document_id": "25161",
+        "case_signature": "SK 41/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.889677,
+        "components": {
+          "lexical": 0.864964,
+          "citations": 0.870588,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+      }
+    ],
+    "25133": [
+      {
+        "document_id": "25135",
+        "case_signature": "SK 80/24",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.9176,
+        "components": {
+          "lexical": 0.945847,
+          "citations": 0.77451,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+      },
+      {
+        "document_id": "25161",
+        "case_signature": "SK 41/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.91405,
+        "components": {
+          "lexical": 0.944515,
+          "citations": 0.77451,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+      },
+      {
+        "document_id": "25108",
+        "case_signature": "SK 58/23",
+        "decision_date_iso": "2025-10-22",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.896379,
+        "components": {
+          "lexical": 0.907931,
+          "citations": 0.76699,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+      },
+      {
+        "document_id": "25228",
+        "case_signature": "SK 80/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.884458,
+        "components": {
+          "lexical": 0.90741,
+          "citations": 0.708738,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+      },
+      {
+        "document_id": "25226",
+        "case_signature": "SK 48/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.881472,
+        "components": {
+          "lexical": 0.909136,
+          "citations": 0.68932,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+      }
+    ],
+    "25134": [
+      {
+        "document_id": "25174",
+        "case_signature": "SK 22/24",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.974884,
+        "components": {
+          "lexical": 0.998816,
+          "citations": 0.9375,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: sanitarnej, szczepien, ochronnych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25174&sprawa=27639"
+      },
+      {
+        "document_id": "25081",
+        "case_signature": "SK 6/25",
+        "decision_date_iso": "2025-10-14",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.924583,
+        "components": {
+          "lexical": 0.990281,
+          "citations": 0.719298,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25081&sprawa=28403"
+      },
+      {
+        "document_id": "25133",
+        "case_signature": "SK 53/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.667051,
+        "components": {
+          "lexical": 0.498786,
+          "citations": 0.698413,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, zakaznych, ochronnych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+      },
+      {
+        "document_id": "25135",
+        "case_signature": "SK 80/24",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.660008,
+        "components": {
+          "lexical": 0.513476,
+          "citations": 0.591667,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, ochronnych, zakaznych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+      },
+      {
+        "document_id": "25161",
+        "case_signature": "SK 41/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.652107,
+        "components": {
+          "lexical": 0.505609,
+          "citations": 0.591667,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, ochronnych, zakaznych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+      }
+    ],
+    "25135": [
+      {
+        "document_id": "25161",
+        "case_signature": "SK 41/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.950364,
+        "components": {
+          "lexical": 0.922128,
+          "citations": 1,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+      },
+      {
+        "document_id": "25133",
+        "case_signature": "SK 53/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.9176,
+        "components": {
+          "lexical": 0.945847,
+          "citations": 0.77451,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+      },
+      {
+        "document_id": "25108",
+        "case_signature": "SK 58/23",
+        "decision_date_iso": "2025-10-22",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.88874,
+        "components": {
+          "lexical": 0.85889,
+          "citations": 0.870588,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+      },
+      {
+        "document_id": "25226",
+        "case_signature": "SK 48/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.885451,
+        "components": {
+          "lexical": 0.857553,
+          "citations": 0.797619,
+          "metadata": 1,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+      },
+      {
+        "document_id": "25228",
+        "case_signature": "SK 80/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.884105,
+        "components": {
+          "lexical": 0.856063,
+          "citations": 0.821429,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+      }
+    ],
+    "25136": [
+      {
+        "document_id": "25230",
+        "case_signature": "K 14/23",
+        "decision_date_iso": "2025-12-03",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.084775,
+        "components": {
+          "lexical": 0.007835,
+          "citations": 0.049217,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 7, art. 11",
+          "Wspólne frazy w tekście: powstale, kompetencyjnej, legalizmu",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25230&sprawa=27301"
+      },
+      {
+        "document_id": "25139",
+        "case_signature": "K 24/20",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.083524,
+        "components": {
+          "lexical": 0.005787,
+          "citations": 0.02924,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 1, art. 59 ust. 1 pkt 2, art. 10",
+          "Wspólne frazy w tekście: csk, powoda, urzad",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+      },
+      {
+        "document_id": "25180",
+        "case_signature": "K 5/25",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.079026,
+        "components": {
+          "lexical": 0.00408,
+          "citations": 0.030238,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 188 pkt 1, art. 7",
+          "Wspólne frazy w tekście: przechodza, przechodzi, przejsc",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+      },
+      {
+        "document_id": "25166",
+        "case_signature": "K 2/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.076953,
+        "components": {
+          "lexical": 0.00685,
+          "citations": 0.026954,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 7, art. 2, art. 10",
+          "Wspólne frazy w tekście: ruchomosci, odebrania, koresponduje",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+      },
+      {
+        "document_id": "25177",
+        "case_signature": "K 13/22",
+        "decision_date_iso": "2025-12-10",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.073579,
+        "components": {
+          "lexical": 0.004318,
+          "citations": 0.016667,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 1",
+          "Wspólne frazy w tekście: likwidacji, przejecia, finansowania",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25177&sprawa=26324"
+      }
+    ],
+    "25138": [
+      {
+        "document_id": "25166",
+        "case_signature": "K 2/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.155332,
+        "components": {
+          "lexical": 0.151759,
+          "citations": 0.081481,
+          "metadata": 0.6,
+          "dotyczy_bigrams": 0.060606
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: malzenska wspolnoscia, wspolnoscia majatkowa",
+          "Wspólne frazy w tekście: malzenska, wspolnoscia, majatkowa"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+      },
+      {
+        "document_id": "25169",
+        "case_signature": "SK 67/25",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.1225,
+        "components": {
+          "lexical": 0.009169,
+          "citations": 0.234375,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 32",
+          "Wspólne frazy w tekście: powiazala, samodzielny, finansowego",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+      },
+      {
+        "document_id": "25083",
+        "case_signature": "SK 51/20",
+        "decision_date_iso": "2025-10-08",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.114637,
+        "components": {
+          "lexical": 0.007871,
+          "citations": 0.198433,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 2, art. 64 ust. 1",
+          "Wspólne frazy w tekście: zastepcy, zastepcow, zwiazkowo",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+      },
+      {
+        "document_id": "25133",
+        "case_signature": "SK 53/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.111244,
+        "components": {
+          "lexical": 0.007155,
+          "citations": 0.164286,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: demonstratio, falsa, nocet",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+      },
+      {
+        "document_id": "25108",
+        "case_signature": "SK 58/23",
+        "decision_date_iso": "2025-10-22",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.103523,
+        "components": {
+          "lexical": 0.002194,
+          "citations": 0.138577,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 5 ust. 2",
+          "Wspólne frazy w tekście: powiazala, samodzielnym, rekonstrukcji",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+      }
+    ],
+    "25139": [
+      {
+        "document_id": "25230",
+        "case_signature": "K 14/23",
+        "decision_date_iso": "2025-12-03",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.193266,
+        "components": {
+          "lexical": 0.228978,
+          "citations": 0.016701,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 59 ust. 1 pkt 2, art. 178 ust. 1",
+          "Wspólne frazy w tekście: krs, niezawislosci, najwyzszym",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25230&sprawa=27301"
+      },
+      {
+        "document_id": "25206",
+        "case_signature": "Kp 2/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.173941,
+        "components": {
+          "lexical": 0.261928,
+          "citations": 0.072327,
+          "metadata": 0.290909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 179, art. 1, art. 10",
+          "Wspólne frazy w tekście: krs, mandatu, prezydent"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
+      },
+      {
+        "document_id": "25180",
+        "case_signature": "K 5/25",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.144656,
+        "components": {
+          "lexical": 0.138674,
+          "citations": 0.022727,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 1, art. 10, art. 144 ust. 3 pkt 17",
+          "Wspólne frazy w tekście: spoczynku, najwyzszym, sedziowie",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+      },
+      {
+        "document_id": "25181",
+        "case_signature": "U 4/25",
+        "decision_date_iso": "2025-11-12",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.130248,
+        "components": {
+          "lexical": 0.192109,
+          "citations": 0.023758,
+          "metadata": 0.32,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 10, art. 45 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: krs, prezydent, sluzbowego"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25181&sprawa=28948"
+      },
+      {
+        "document_id": "25166",
+        "case_signature": "K 2/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.095621,
+        "components": {
+          "lexical": 0.047246,
+          "citations": 0.015267,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 10, art. 178 ust. 1, art. 191 ust. 1 pkt 1",
+          "Wspólne frazy w tekście: tsue, sedziowie, instytucjonalnej",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+      }
+    ],
+    "25140": [
+      {
+        "document_id": "25234",
+        "case_signature": "SK 90/24",
+        "decision_date_iso": "2025-12-09",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.143155,
+        "components": {
+          "lexical": 0.114165,
+          "citations": 0.078947,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 176 ust. 1, art. 78, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: skargowej, niezaskarzalne, skargowa",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25234&sprawa=28341"
+      },
+      {
+        "document_id": "25205",
+        "case_signature": "SK 63/19",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.124337,
+        "components": {
+          "lexical": 0.108943,
+          "citations": 0.062069,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 176 ust. 1, art. 78",
+          "Wspólne frazy w tekście: skargowej, skargowa, niezaskarzalne",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25205&sprawa=21995"
+      },
+      {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.1015,
+        "components": {
+          "lexical": 0.006777,
+          "citations": 0.135593,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 78, art. 31 ust. 3",
+          "Wspólne frazy w tekście: skutkujaca, nalezytej, odrzucil",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      },
+      {
+        "document_id": "25178",
+        "case_signature": "SK 11/20",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.097663,
+        "components": {
+          "lexical": 0.008213,
+          "citations": 0.112676,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 78, art. 31 ust. 3",
+          "Wspólne frazy w tekście: zwloki, nieuzasadnionej, domagal",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
+      },
+      {
+        "document_id": "25228",
+        "case_signature": "SK 80/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.091713,
+        "components": {
+          "lexical": 0.008711,
+          "citations": 0.081633,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 5 ust. 2, art. 77 ust. 1, art. 31 ust. 3",
+          "Wspólne frazy w tekście: inicjowanych, wywiedziona, rozpoznajacego",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+      }
+    ],
+    "25141": [
+      {
+        "document_id": "25084",
+        "case_signature": "SK 73/24",
+        "decision_date_iso": "2025-10-15",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.11836,
+        "components": {
+          "lexical": 0.143841,
+          "citations": 0.023529,
+          "metadata": 0.485714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 69, art. 2",
+          "Wspólne frazy w tekście: niepelnosprawnosci, niepelnosprawnoscia, egzystencji"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25084&sprawa=28162"
+      },
+      {
+        "document_id": "25170",
+        "case_signature": "SK 47/25",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.108247,
+        "components": {
+          "lexical": 0.136372,
+          "citations": 0.026667,
+          "metadata": 0.4,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 69, art. 2",
+          "Wspólne frazy w tekście: niepelnosprawnosci, egzystencji, opieki"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25170&sprawa=28659"
+      },
+      {
+        "document_id": "25202",
+        "case_signature": "P 3/24",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.080669,
+        "components": {
+          "lexical": 0.008365,
+          "citations": 0.008264,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 193",
+          "Wspólne frazy w tekście: medycznych, zadane, opieki",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25202&sprawa=27638"
+      },
+      {
+        "document_id": "25173",
+        "case_signature": "SK 50/22",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.072083,
+        "components": {
+          "lexical": 0.060522,
+          "citations": 0.008772,
+          "metadata": 0.485714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 30, art. 68 ust. 3, art. 71",
+          "Wspólne frazy w tekście: niepelnosprawnym, niepelnosprawnosci, egzystencji"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25173&sprawa=25902"
+      },
+      {
+        "document_id": "25204",
+        "case_signature": "P 13/24",
+        "decision_date_iso": "2025-12-10",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.070514,
+        "components": {
+          "lexical": 0.004145,
+          "citations": 0.012903,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 193, art. 2",
+          "Wspólne frazy w tekście: komunikacji, zamieszkania, legalis",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25204&sprawa=28304"
+      }
+    ],
+    "25161": [
+      {
+        "document_id": "25135",
+        "case_signature": "SK 80/24",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.950364,
+        "components": {
+          "lexical": 0.922128,
+          "citations": 1,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+      },
+      {
+        "document_id": "25133",
+        "case_signature": "SK 53/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.91405,
+        "components": {
+          "lexical": 0.944515,
+          "citations": 0.77451,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+      },
+      {
+        "document_id": "25108",
+        "case_signature": "SK 58/23",
+        "decision_date_iso": "2025-10-22",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.889677,
+        "components": {
+          "lexical": 0.864964,
+          "citations": 0.870588,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+      },
+      {
+        "document_id": "25179",
+        "case_signature": "SK 108/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.881709,
+        "components": {
+          "lexical": 0.864742,
+          "citations": 0.831325,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+      },
+      {
+        "document_id": "25228",
+        "case_signature": "SK 80/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.880348,
+        "components": {
+          "lexical": 0.861658,
+          "citations": 0.821429,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+      }
+    ],
+    "25162": [
+      {
+        "document_id": "25161",
+        "case_signature": "SK 41/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.793386,
+        "components": {
+          "lexical": 0.997538,
+          "citations": 1,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+      },
+      {
+        "document_id": "25135",
+        "case_signature": "SK 80/24",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.764985,
+        "components": {
+          "lexical": 0.942919,
+          "citations": 1,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+      },
+      {
+        "document_id": "25133",
+        "case_signature": "SK 53/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.722376,
+        "components": {
+          "lexical": 0.955033,
+          "citations": 0.77451,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+      },
+      {
+        "document_id": "25108",
+        "case_signature": "SK 58/23",
+        "decision_date_iso": "2025-10-22",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.695564,
+        "components": {
+          "lexical": 0.872013,
+          "citations": 0.870588,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+      },
+      {
+        "document_id": "25228",
+        "case_signature": "SK 80/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.686967,
+        "components": {
+          "lexical": 0.868893,
+          "citations": 0.821429,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+      }
+    ],
+    "25163": [
+      {
+        "document_id": "25227",
+        "case_signature": "SK 76/21",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.663584,
+        "components": {
+          "lexical": 0.581624,
+          "citations": 0.469697,
+          "metadata": 0.84,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 92 ust. 1",
+          "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
+          "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25227&sprawa=24952"
+      },
+      {
+        "document_id": "25082",
+        "case_signature": "SK 78/23",
+        "decision_date_iso": "2025-10-14",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.613533,
+        "components": {
+          "lexical": 0.554049,
+          "citations": 0.291139,
+          "metadata": 0.84,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 64 ust. 2, art. 31 ust. 3, art. 32 ust. 1",
+          "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
+          "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+      },
+      {
+        "document_id": "25235",
+        "case_signature": "SK 48/24",
+        "decision_date_iso": "2026-01-15",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.51574,
+        "components": {
+          "lexical": 0.504884,
+          "citations": 0.45,
+          "metadata": 0.79,
+          "dotyczy_bigrams": 0.5
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 64 ust. 2",
+          "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
+          "Wspólne frazy w tekście: nieoplaconej, udzielonej, adwokata"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25235&sprawa=27911"
+      },
+      {
+        "document_id": "25168",
+        "case_signature": "SK 89/23",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.115482,
+        "components": {
+          "lexical": 0.088748,
+          "citations": 0.08,
+          "metadata": 0.666667,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: obroncow, obroncy, adwokata",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+      },
+      {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.093004,
+        "components": {
+          "lexical": 0.029669,
+          "citations": 0.121212,
+          "metadata": 0.666667,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 59 ust. 1 pkt 2, art. 79 ust. 1",
+          "Wspólne frazy w tekście: wstepnej, obligatoryjnym, profesjonalnego",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      }
+    ],
+    "25164": [
+      {
+        "document_id": "25181",
+        "case_signature": "U 4/25",
+        "decision_date_iso": "2025-11-12",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.08379,
+        "components": {
+          "lexical": 0.014579,
+          "citations": 0.061047,
+          "metadata": 0.8,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 10, art. 7",
+          "Wspólne frazy w tekście: regulaminu, skladow, regulamin",
+          "To samo repertorium: U"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25181&sprawa=28948"
+      },
+      {
+        "document_id": "25067",
+        "case_signature": "U 2/23",
+        "decision_date_iso": "2025-10-08",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.077633,
+        "components": {
+          "lexical": 0.000833,
+          "citations": 0.05,
+          "metadata": 0.84,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 59 ust. 1 pkt 4",
+          "Wspólne frazy w tekście: generalna, precyzyjne",
+          "To samo repertorium: U"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25067&sprawa=27442"
+      },
+      {
+        "document_id": "25082",
+        "case_signature": "SK 78/23",
+        "decision_date_iso": "2025-10-14",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.058453,
+        "components": {
+          "lexical": 0.00084,
+          "citations": 0.130081,
+          "metadata": 0.4,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 7, art. 59 ust. 1 pkt 4",
+          "Wspólne frazy w tekście: wymienia, zainicjowanym"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+      },
+      {
+        "document_id": "25135",
+        "case_signature": "SK 80/24",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.051493,
+        "components": {
+          "lexical": 0.002415,
+          "citations": 0.123188,
+          "metadata": 0.32,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2",
+          "Wspólne frazy w tekście: redakcyjnymi, przedstawila, badac"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+      },
+      {
+        "document_id": "25169",
+        "case_signature": "SK 67/25",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.048853,
+        "components": {
+          "lexical": 0.021786,
+          "citations": 0.107623,
+          "metadata": 0.2,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 7",
+          "Wspólne frazy w tekście: komisje, komisja, rozpoczyna"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+      }
+    ],
+    "25165": [
+      {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.124316,
+        "components": {
+          "lexical": 0.005111,
+          "citations": 0.268293,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 45 ust. 1, art. 64 ust. 1",
+          "Wspólne frazy w tekście: wstepnej, wadliwe, doreczenie",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      },
+      {
+        "document_id": "25175",
+        "case_signature": "SK 33/24",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.103387,
+        "components": {
+          "lexical": 0.022804,
+          "citations": 0.117647,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 64 ust. 1, art. 53, art. 53 ust. 1 pkt 3",
+          "Wspólne frazy w tekście: obiektu, spelnila, zakwestionowac",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25175&sprawa=27720"
+      },
+      {
+        "document_id": "25178",
+        "case_signature": "SK 11/20",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.101926,
+        "components": {
+          "lexical": 0.002627,
+          "citations": 0.148515,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 79 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: odwolawczej, przedstawiono, skutkuja",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
+      },
+      {
+        "document_id": "25229",
+        "case_signature": "SK 106/22",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.098866,
+        "components": {
+          "lexical": 0.00272,
+          "citations": 0.113924,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 32 ust. 1, art. 53",
+          "Wspólne frazy w tekście: przedsiebiorstwa, zakwestionowac, dookreslone",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25229&sprawa=26603"
+      },
+      {
+        "document_id": "25083",
+        "case_signature": "SK 51/20",
+        "decision_date_iso": "2025-10-08",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.097977,
+        "components": {
+          "lexical": 0.010042,
+          "citations": 0.109489,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 45 ust. 1, art. 64 ust. 1",
+          "Wspólne frazy w tekście: wierzyciela, ugruntowanym, funkcjonalnie",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+      }
+    ],
+    "25166": [
+      {
+        "document_id": "25138",
+        "case_signature": "SK 101/22",
+        "decision_date_iso": "2025-11-18",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.155332,
+        "components": {
+          "lexical": 0.151759,
+          "citations": 0.081481,
+          "metadata": 0.6,
+          "dotyczy_bigrams": 0.060606
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: malzenska wspolnoscia, wspolnoscia majatkowa",
+          "Wspólne frazy w tekście: malzenska, wspolnoscia, majatkowa"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25138&sprawa=26598"
+      },
+      {
+        "document_id": "25180",
+        "case_signature": "K 5/25",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.098295,
+        "components": {
+          "lexical": 0.040652,
+          "citations": 0.031496,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: § 1, art. 2, art. 30",
+          "Wspólne frazy w tekście: oswiadczenie, sedziowie, najwyzszym",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+      },
+      {
+        "document_id": "25139",
+        "case_signature": "K 24/20",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.095621,
+        "components": {
+          "lexical": 0.047246,
+          "citations": 0.015267,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 10, art. 178 ust. 1, art. 191 ust. 1 pkt 1",
+          "Wspólne frazy w tekście: tsue, sedziowie, instytucjonalnej",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+      },
+      {
+        "document_id": "25174",
+        "case_signature": "SK 22/24",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.094945,
+        "components": {
+          "lexical": 0.044694,
+          "citations": 0.164234,
+          "metadata": 0.485714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 87",
+          "Wspólne frazy w tekście: prywatnosci, ochronnych, autonomii"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25174&sprawa=27639"
+      },
+      {
+        "document_id": "25134",
+        "case_signature": "SK 73/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.093473,
+        "components": {
+          "lexical": 0.044116,
+          "citations": 0.172662,
+          "metadata": 0.45,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 87",
+          "Wspólne frazy w tekście: prywatnosci, ochronnych, autonomii"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25134&sprawa=27156"
+      }
+    ],
+    "25167": [
+      {
+        "document_id": "25178",
+        "case_signature": "SK 11/20",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.148389,
+        "components": {
+          "lexical": 0.0386,
+          "citations": 0.301587,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 45 ust. 1, art. 78",
+          "Wspólne frazy w tekście: gwarantowanymi, niedozwolona, wstepnej",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
+      },
+      {
+        "document_id": "25165",
+        "case_signature": "SK 58/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.124316,
+        "components": {
+          "lexical": 0.005111,
+          "citations": 0.268293,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 45 ust. 1, art. 64 ust. 1",
+          "Wspólne frazy w tekście: wstepnej, wadliwe, doreczenie",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+      },
+      {
+        "document_id": "25227",
+        "case_signature": "SK 76/21",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.110854,
+        "components": {
+          "lexical": 0.005242,
+          "citations": 0.273973,
+          "metadata": 0.666667,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 45 ust. 1",
+          "Wspólne frazy w tekście: ujemna, etapu, uchybien",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25227&sprawa=24952"
+      },
+      {
+        "document_id": "25081",
+        "case_signature": "SK 6/25",
+        "decision_date_iso": "2025-10-14",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.106599,
+        "components": {
+          "lexical": 0.010126,
+          "citations": 0.133333,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: zakwestionowala, wykazujace, wyjasnila",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25081&sprawa=28403"
+      },
+      {
+        "document_id": "25179",
+        "case_signature": "SK 108/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.105738,
+        "components": {
+          "lexical": 0.007122,
+          "citations": 0.136842,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: uczynienie, zakwestionowala",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+      }
+    ],
+    "25168": [
+      {
+        "document_id": "25082",
+        "case_signature": "SK 78/23",
+        "decision_date_iso": "2025-10-14",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.160819,
+        "components": {
+          "lexical": 0.189553,
+          "citations": 0.023256,
+          "metadata": 0.72,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1",
+          "Wspólne frazy w tekście: obroncy, obroncow, adwokata",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+      },
+      {
+        "document_id": "25227",
+        "case_signature": "SK 76/21",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.138755,
+        "components": {
+          "lexical": 0.115934,
+          "citations": 0.104348,
+          "metadata": 0.72,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1, art. 45 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: obroncy, obroncow, adwokata",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25227&sprawa=24952"
+      },
+      {
+        "document_id": "25176",
+        "case_signature": "SK 45/25",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.135441,
+        "components": {
+          "lexical": 0.054959,
+          "citations": 0.160976,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 32 ust. 1, art. 42 ust. 2",
+          "Wspólne frazy w tekście: obroncy, radca, oskarzony",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25176&sprawa=28654"
+      },
+      {
+        "document_id": "25163",
+        "case_signature": "SK 93/22",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.115482,
+        "components": {
+          "lexical": 0.088748,
+          "citations": 0.08,
+          "metadata": 0.666667,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: obroncow, obroncy, adwokata",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25163&sprawa=26541"
+      },
+      {
+        "document_id": "25083",
+        "case_signature": "SK 51/20",
+        "decision_date_iso": "2025-10-08",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.107146,
+        "components": {
+          "lexical": 0.029511,
+          "citations": 0.130112,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 32 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: radca, adwokat, profesjonalnego",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+      }
+    ],
+    "25169": [
+      {
+        "document_id": "25179",
+        "case_signature": "SK 108/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.158928,
+        "components": {
+          "lexical": 0.101888,
+          "citations": 0.156398,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: zakaznych, chorob, zwalczaniu",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+      },
+      {
+        "document_id": "25133",
+        "case_signature": "SK 53/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.156688,
+        "components": {
+          "lexical": 0.093153,
+          "citations": 0.186957,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: zakaznych, chorob, zwalczaniu",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+      },
+      {
+        "document_id": "25108",
+        "case_signature": "SK 58/23",
+        "decision_date_iso": "2025-10-22",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.156222,
+        "components": {
+          "lexical": 0.101841,
+          "citations": 0.162037,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: zakaznych, chorob, zwalczaniu",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+      },
+      {
+        "document_id": "25228",
+        "case_signature": "SK 80/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.150176,
+        "components": {
+          "lexical": 0.098161,
+          "citations": 0.15566,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: zakaznych, chorob, zwalczaniu",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+      },
+      {
+        "document_id": "25226",
+        "case_signature": "SK 48/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.146215,
+        "components": {
+          "lexical": 0.098446,
+          "citations": 0.146226,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: zakaznych, chorob, zwalczaniu",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+      }
+    ],
+    "25170": [
+      {
+        "document_id": "25084",
+        "case_signature": "SK 73/24",
+        "decision_date_iso": "2025-10-15",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.609084,
+        "components": {
+          "lexical": 0.841287,
+          "citations": 0.518072,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 17 ust. 1a pkt 2, art. 71 ust. 1, art. 17 ust. 1 pkt 4",
+          "Wspólne frazy w tekście: opieki, niepelnosprawnosci, pielegnacyjnego",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25084&sprawa=28162"
+      },
+      {
+        "document_id": "25173",
+        "case_signature": "SK 50/22",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.347992,
+        "components": {
+          "lexical": 0.448064,
+          "citations": 0.083942,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0.162162
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 71 ust. 1, art. 32 ust. 1, art. 18",
+          "Wspólne frazy w tytule: innej pracy, pielegnacyjnego tytulu, pracy zarobkowej",
+          "Wspólne frazy w tekście: pielegnacyjnego, opieki, pielegnacyjne"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25173&sprawa=25902"
+      },
+      {
+        "document_id": "25141",
+        "case_signature": "P 2/25",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.108247,
+        "components": {
+          "lexical": 0.136372,
+          "citations": 0.026667,
+          "metadata": 0.4,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 69, art. 2",
+          "Wspólne frazy w tekście: niepelnosprawnosci, egzystencji, opieki"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25141&sprawa=28436"
+      },
+      {
+        "document_id": "25081",
+        "case_signature": "SK 6/25",
+        "decision_date_iso": "2025-10-14",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.089642,
+        "components": {
+          "lexical": 0.021555,
+          "citations": 0.037879,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 17 ust. 1, art. 59 ust. 3",
+          "Wspólne frazy w tekście: dziecka, opiekunow, swiadczeniach",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25081&sprawa=28403"
+      },
+      {
+        "document_id": "25134",
+        "case_signature": "SK 73/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.086066,
+        "components": {
+          "lexical": 0.020228,
+          "citations": 0.037736,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 59 ust. 1 pkt 3, art. 17 ust. 1",
+          "Wspólne frazy w tekście: dziecka, opiekunow, swiadczeniach",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25134&sprawa=27156"
+      }
+    ],
+    "25172": [
+      {
+        "document_id": "25205",
+        "case_signature": "SK 63/19",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.062826,
+        "components": {
+          "lexical": 0.024285,
+          "citations": 0.010989,
+          "metadata": 0.6,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 1, art. 20, art. 36",
+          "Wspólne frazy w tekście: partii, metod, partie"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25205&sprawa=21995"
+      },
+      {
+        "document_id": "25136",
+        "case_signature": "K 22/19",
+        "decision_date_iso": "2025-10-30",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.059302,
+        "components": {
+          "lexical": 0.004952,
+          "citations": 0.167273,
+          "metadata": 0.290909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 13, art. 11, art. 1",
+          "Wspólne frazy w tekście: ruchu, powiatu, artykuly"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25136&sprawa=22292"
+      },
+      {
+        "document_id": "25206",
+        "case_signature": "Kp 2/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.057743,
+        "components": {
+          "lexical": 0.014555,
+          "citations": 0.01087,
+          "metadata": 0.6,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 1, art. 188 pkt 4, art. 191 ust. 1 pkt 1",
+          "Wspólne frazy w tekście: partii, posla, https"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
+      },
+      {
+        "document_id": "25264",
+        "case_signature": "SK 16/18",
+        "decision_date_iso": "2025-11-19",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.053347,
+        "components": {
+          "lexical": 0.007118,
+          "citations": 0.00823,
+          "metadata": 0.6,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 1, art. 20",
+          "Wspólne frazy w tekście: smierci, dziedziczenia, polskich"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+      },
+      {
+        "document_id": "25233",
+        "case_signature": "SK 17/18",
+        "decision_date_iso": "2025-12-03",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.052072,
+        "components": {
+          "lexical": 0.006025,
+          "citations": 0.004695,
+          "metadata": 0.6,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 1, art. 188",
+          "Wspólne frazy w tekście: akta, egzekucji, polskich"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25233&sprawa=20713"
+      }
+    ],
+    "25173": [
+      {
+        "document_id": "25170",
+        "case_signature": "SK 47/25",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.347992,
+        "components": {
+          "lexical": 0.448064,
+          "citations": 0.083942,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0.162162
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 71 ust. 1, art. 32 ust. 1, art. 18",
+          "Wspólne frazy w tytule: innej pracy, pielegnacyjnego tytulu, pracy zarobkowej",
+          "Wspólne frazy w tekście: pielegnacyjnego, opieki, pielegnacyjne"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25170&sprawa=28659"
+      },
+      {
+        "document_id": "25084",
+        "case_signature": "SK 73/24",
+        "decision_date_iso": "2025-10-15",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.33851,
+        "components": {
+          "lexical": 0.462332,
+          "citations": 0.136201,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 71 ust. 1, art. 32 ust. 1, art. 18",
+          "Wspólne frazy w tekście: pielegnacyjnego, opieki, niepelnosprawnosci",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25084&sprawa=28162"
+      },
+      {
+        "document_id": "25134",
+        "case_signature": "SK 73/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.119219,
+        "components": {
+          "lexical": 0.049813,
+          "citations": 0.126582,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 17 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: dziecka, dzieckiem, swiadczeniach",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25134&sprawa=27156"
+      },
+      {
+        "document_id": "25174",
+        "case_signature": "SK 22/24",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.115668,
+        "components": {
+          "lexical": 0.050332,
+          "citations": 0.11859,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 17 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: dziecka, dzieckiem, swiadczeniach",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25174&sprawa=27639"
+      },
+      {
+        "document_id": "25081",
+        "case_signature": "SK 6/25",
+        "decision_date_iso": "2025-10-14",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.112872,
+        "components": {
+          "lexical": 0.051846,
+          "citations": 0.100671,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 17 ust. 1, art. 53 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: dziecka, dzieckiem, swiadczeniach",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25081&sprawa=28403"
+      }
+    ],
+    "25174": [
+      {
+        "document_id": "25134",
+        "case_signature": "SK 73/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.974884,
+        "components": {
+          "lexical": 0.998816,
+          "citations": 0.9375,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: sanitarnej, szczepien, ochronnych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25134&sprawa=27156"
+      },
+      {
+        "document_id": "25081",
+        "case_signature": "SK 6/25",
+        "decision_date_iso": "2025-10-14",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.943906,
+        "components": {
+          "lexical": 0.992246,
+          "citations": 0.766355,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25081&sprawa=28403"
+      },
+      {
+        "document_id": "25133",
+        "case_signature": "SK 53/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.675496,
+        "components": {
+          "lexical": 0.502857,
+          "citations": 0.696721,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, zakaznych, ochronnych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+      },
+      {
+        "document_id": "25135",
+        "case_signature": "SK 80/24",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.659994,
+        "components": {
+          "lexical": 0.517668,
+          "citations": 0.614035,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, ochronnych, zakaznych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+      },
+      {
+        "document_id": "25161",
+        "case_signature": "SK 41/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.653631,
+        "components": {
+          "lexical": 0.509705,
+          "citations": 0.614035,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 47, art. 31 ust. 3",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: szczepien, ochronnych, zakaznych"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+      }
+    ],
+    "25175": [
+      {
+        "document_id": "25165",
+        "case_signature": "SK 58/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.103387,
+        "components": {
+          "lexical": 0.022804,
+          "citations": 0.117647,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 64 ust. 1, art. 53, art. 53 ust. 1 pkt 3",
+          "Wspólne frazy w tekście: obiektu, spelnila, zakwestionowac",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+      },
+      {
+        "document_id": "25176",
+        "case_signature": "SK 45/25",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.096931,
+        "components": {
+          "lexical": 0.021974,
+          "citations": 0.054187,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 53 ust. 1 pkt 2, art. 53, art. 53 ust. 1 pkt 3",
+          "Wspólne frazy w tekście: obowiazani, zakwestionowac, spelnila",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25176&sprawa=28654"
+      },
+      {
+        "document_id": "25229",
+        "case_signature": "SK 106/22",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.091663,
+        "components": {
+          "lexical": 0.009534,
+          "citations": 0.093525,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 21 ust. 1, art. 53, art. 79 ust. 1",
+          "Wspólne frazy w tekście: dzialce, zakwestionowac, dzialki",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25229&sprawa=26603"
+      },
+      {
+        "document_id": "25264",
+        "case_signature": "SK 16/18",
+        "decision_date_iso": "2025-11-19",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.087579,
+        "components": {
+          "lexical": 0.037417,
+          "citations": 0.064246,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 21 ust. 1, art. 64, art. 53 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: dziedziczenia, czwartej, przedmiotowi",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+      },
+      {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.087178,
+        "components": {
+          "lexical": 0,
+          "citations": 0.09589,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 64 ust. 1, art. 53 ust. 1 pkt 1, art. 53 ust. 1 pkt 2",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      }
+    ],
+    "25176": [
+      {
+        "document_id": "25168",
+        "case_signature": "SK 89/23",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.135441,
+        "components": {
+          "lexical": 0.054959,
+          "citations": 0.160976,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 32 ust. 1, art. 42 ust. 2",
+          "Wspólne frazy w tekście: obroncy, radca, oskarzony",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+      },
+      {
+        "document_id": "25083",
+        "case_signature": "SK 51/20",
+        "decision_date_iso": "2025-10-08",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.101841,
+        "components": {
+          "lexical": 0.020455,
+          "citations": 0.116022,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 32 ust. 1, art. 53 ust. 1 pkt 1",
+          "Wspólne frazy w tekście: wezwanie, radca, profesjonalnego",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+      },
+      {
+        "document_id": "25082",
+        "case_signature": "SK 78/23",
+        "decision_date_iso": "2025-10-14",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.099876,
+        "components": {
+          "lexical": 0.062156,
+          "citations": 0.049774,
+          "metadata": 0.72,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1, art. 53, art. 64 ust. 2",
+          "Wspólne frazy w tekście: obwinionego, obroncy, adwokata",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+      },
+      {
+        "document_id": "25165",
+        "case_signature": "SK 58/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.0977,
+        "components": {
+          "lexical": 0.019894,
+          "citations": 0.096774,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 79 ust. 1, art. 32 ust. 1",
+          "Wspólne frazy w tekście: prawodawcze, prawodawczego, zaniechaniem",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+      },
+      {
+        "document_id": "25175",
+        "case_signature": "SK 33/24",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.096931,
+        "components": {
+          "lexical": 0.021974,
+          "citations": 0.054187,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 53 ust. 1 pkt 2, art. 53, art. 53 ust. 1 pkt 3",
+          "Wspólne frazy w tekście: obowiazani, zakwestionowac, spelnila",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25175&sprawa=27720"
+      }
+    ],
+    "25177": [
+      {
+        "document_id": "25138",
+        "case_signature": "SK 101/22",
+        "decision_date_iso": "2025-11-18",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.091606,
+        "components": {
+          "lexical": 0.102066,
+          "citations": 0.012658,
+          "metadata": 0.45,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 1",
+          "Wspólne frazy w tekście: udzialow, kapitalu, udzialy"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25138&sprawa=26598"
+      },
+      {
+        "document_id": "25166",
+        "case_signature": "K 2/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.075463,
+        "components": {
+          "lexical": 0.010978,
+          "citations": 0.008772,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2",
+          "Wspólne frazy w tekście: posiadanych, udzialow, realnej",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+      },
+      {
+        "document_id": "25136",
+        "case_signature": "K 22/19",
+        "decision_date_iso": "2025-10-30",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.073579,
+        "components": {
+          "lexical": 0.004318,
+          "citations": 0.016667,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 1",
+          "Wspólne frazy w tekście: likwidacji, przejecia, finansowania",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25136&sprawa=22292"
+      },
+      {
+        "document_id": "25180",
+        "case_signature": "K 5/25",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.070547,
+        "components": {
+          "lexical": 0.001325,
+          "citations": 0.009288,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 1",
+          "Wspólne frazy w tekście: utrzymywania, powodowac, zbedny",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+      },
+      {
+        "document_id": "25139",
+        "case_signature": "K 24/20",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.070251,
+        "components": {
+          "lexical": 0.00668,
+          "citations": 0.005,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 1",
+          "Wspólne frazy w tekście: grozaca, gwarancyjny, glownym",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+      }
+    ],
+    "25178": [
+      {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.148389,
+        "components": {
+          "lexical": 0.0386,
+          "citations": 0.301587,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 45 ust. 1, art. 78",
+          "Wspólne frazy w tekście: gwarantowanymi, niedozwolona, wstepnej",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      },
+      {
+        "document_id": "25165",
+        "case_signature": "SK 58/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.101926,
+        "components": {
+          "lexical": 0.002627,
+          "citations": 0.148515,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 79 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: odwolawczej, przedstawiono, skutkuja",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+      },
+      {
+        "document_id": "25234",
+        "case_signature": "SK 90/24",
+        "decision_date_iso": "2025-12-09",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.101297,
+        "components": {
+          "lexical": 0.009734,
+          "citations": 0.141176,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 78, art. 79 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: zajecia, reprezentujacy, pozostawieniu",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25234&sprawa=28341"
+      },
+      {
+        "document_id": "25140",
+        "case_signature": "SK 70/25",
+        "decision_date_iso": "2025-10-29",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.097663,
+        "components": {
+          "lexical": 0.008213,
+          "citations": 0.112676,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 78, art. 31 ust. 3",
+          "Wspólne frazy w tekście: zwloki, nieuzasadnionej, domagal",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25140&sprawa=28824"
+      },
+      {
+        "document_id": "25169",
+        "case_signature": "SK 67/25",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.097415,
+        "components": {
+          "lexical": 0.022653,
+          "citations": 0.073892,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 45 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: sprzeciwu, sprzeciw, wolnoscia",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+      }
+    ],
+    "25179": [
+      {
+        "document_id": "25228",
+        "case_signature": "SK 80/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.980866,
+        "components": {
+          "lexical": 0.991478,
+          "citations": 0.986486,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+      },
+      {
+        "document_id": "25108",
+        "case_signature": "SK 58/23",
+        "decision_date_iso": "2025-10-22",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.976342,
+        "components": {
+          "lexical": 0.998415,
+          "citations": 0.9125,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+      },
+      {
+        "document_id": "25226",
+        "case_signature": "SK 48/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.971133,
+        "components": {
+          "lexical": 0.993205,
+          "citations": 0.933333,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+      },
+      {
+        "document_id": "25161",
+        "case_signature": "SK 41/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.881709,
+        "components": {
+          "lexical": 0.864742,
+          "citations": 0.831325,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+      },
+      {
+        "document_id": "25135",
+        "case_signature": "SK 80/24",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.880876,
+        "components": {
+          "lexical": 0.858867,
+          "citations": 0.831325,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+      }
+    ],
+    "25180": [
+      {
+        "document_id": "25139",
+        "case_signature": "K 24/20",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.144656,
+        "components": {
+          "lexical": 0.138674,
+          "citations": 0.022727,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 1, art. 10, art. 144 ust. 3 pkt 17",
+          "Wspólne frazy w tekście: spoczynku, najwyzszym, sedziowie",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+      },
+      {
+        "document_id": "25230",
+        "case_signature": "K 14/23",
+        "decision_date_iso": "2025-12-03",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.132727,
+        "components": {
+          "lexical": 0.081328,
+          "citations": 0.053356,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0.058824
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 67 ust. 1, art. 106 ust. 3",
+          "Wspólne frazy w tytule: sadu najwyzszego",
+          "Wspólne frazy w tekście: najwyzszym, krs, sedziowie"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25230&sprawa=27301"
+      },
+      {
+        "document_id": "25166",
+        "case_signature": "K 2/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.098295,
+        "components": {
+          "lexical": 0.040652,
+          "citations": 0.031496,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: § 1, art. 2, art. 30",
+          "Wspólne frazy w tekście: oswiadczenie, sedziowie, najwyzszym",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+      },
+      {
+        "document_id": "25136",
+        "case_signature": "K 22/19",
+        "decision_date_iso": "2025-10-30",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.079026,
+        "components": {
+          "lexical": 0.00408,
+          "citations": 0.030238,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 188 pkt 1, art. 7",
+          "Wspólne frazy w tekście: przechodza, przechodzi, przejsc",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25136&sprawa=22292"
+      },
+      {
+        "document_id": "25177",
+        "case_signature": "K 13/22",
+        "decision_date_iso": "2025-12-10",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.070547,
+        "components": {
+          "lexical": 0.001325,
+          "citations": 0.009288,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 1",
+          "Wspólne frazy w tekście: utrzymywania, powodowac, zbedny",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25177&sprawa=26324"
+      }
+    ],
+    "25181": [
+      {
+        "document_id": "25230",
+        "case_signature": "K 14/23",
+        "decision_date_iso": "2025-12-03",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.201924,
+        "components": {
+          "lexical": 0.289673,
+          "citations": 0.149805,
+          "metadata": 0.266667,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 7, art. 178 ust. 1, art. 45 ust. 1",
+          "Wspólne frazy w tekście: krs, skladow, niezawislosci"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25230&sprawa=27301"
+      },
+      {
+        "document_id": "25206",
+        "case_signature": "Kp 2/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.194425,
+        "components": {
+          "lexical": 0.294163,
+          "citations": 0.105485,
+          "metadata": 0.254545,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 7, art. 2, art. 45 ust. 1",
+          "Wspólne frazy w tekście: krs, prezydent, legalizmu"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
+      },
+      {
+        "document_id": "25139",
+        "case_signature": "K 24/20",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.130248,
+        "components": {
+          "lexical": 0.192109,
+          "citations": 0.023758,
+          "metadata": 0.32,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 10, art. 45 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: krs, prezydent, sluzbowego"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+      },
+      {
+        "document_id": "25164",
+        "case_signature": "U 6/24",
+        "decision_date_iso": "2025-11-27",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.08379,
+        "components": {
+          "lexical": 0.014579,
+          "citations": 0.061047,
+          "metadata": 0.8,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 10, art. 7",
+          "Wspólne frazy w tekście: regulaminu, skladow, regulamin",
+          "To samo repertorium: U"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25164&sprawa=27927"
+      },
+      {
+        "document_id": "25067",
+        "case_signature": "U 2/23",
+        "decision_date_iso": "2025-10-08",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.082918,
+        "components": {
+          "lexical": 0.008508,
+          "citations": 0.032468,
+          "metadata": 0.9,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, § 3, art. 92 ust. 1",
+          "Wspólne frazy w tekście: nieletnich, delegacji, osrodku",
+          "To samo repertorium: U"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25067&sprawa=27442"
+      }
+    ],
+    "25202": [
+      {
+        "document_id": "25141",
+        "case_signature": "P 2/25",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.080669,
+        "components": {
+          "lexical": 0.008365,
+          "citations": 0.008264,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 193",
+          "Wspólne frazy w tekście: medycznych, zadane, opieki",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25141&sprawa=28436"
+      },
+      {
+        "document_id": "25204",
+        "case_signature": "P 13/24",
+        "decision_date_iso": "2025-12-10",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.076759,
+        "components": {
+          "lexical": 0.001252,
+          "citations": 0.040541,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 193, art. 52 ust. 2 pkt 5, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: postanowiono, wystepujacy, nikt",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25204&sprawa=28304"
+      },
+      {
+        "document_id": "25284",
+        "case_signature": "P 1/21",
+        "decision_date_iso": "2026-02-04",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.069836,
+        "components": {
+          "lexical": 0.003775,
+          "citations": 0.023364,
+          "metadata": 0.79,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1, art. 193, art. 175",
+          "Wspólne frazy w tekście: rozpoznawana, zaleznosc, kanwa",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25284&sprawa=23805"
+      },
+      {
+        "document_id": "25084",
+        "case_signature": "SK 73/24",
+        "decision_date_iso": "2025-10-15",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.066209,
+        "components": {
+          "lexical": 0.023666,
+          "citations": 0.05618,
+          "metadata": 0.533333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1, art. 79 ust. 1",
+          "Wspólne frazy w tekście: opieki, swiadczeniach, legitymuje"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25084&sprawa=28162"
+      },
+      {
+        "document_id": "25203",
+        "case_signature": "P 10/16",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.059036,
+        "components": {
+          "lexical": 0.001211,
+          "citations": 0.015666,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 193, art. 175, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: odpowiedzia, legitymuje, zadane",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25203&sprawa=17237"
+      }
+    ],
+    "25203": [
+      {
+        "document_id": "25229",
+        "case_signature": "SK 106/22",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.587548,
+        "components": {
+          "lexical": 0.933779,
+          "citations": 0.211735,
+          "metadata": 0.290909,
+          "dotyczy_bigrams": 0.181818
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 292, art. 285 § 1, art. 3051",
+          "Wspólne frazy w tytule: drodze zasiedzenia, gruntowej odpowiadajacej, sluzebnosci gruntowej",
+          "Wspólne frazy w tekście: sluzebnosci, przesylu, zasiedzenia"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25229&sprawa=26603"
+      },
+      {
+        "document_id": "25264",
+        "case_signature": "SK 16/18",
+        "decision_date_iso": "2025-11-19",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.073158,
+        "components": {
+          "lexical": 0.007926,
+          "citations": 0.105181,
+          "metadata": 0.6,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 21 ust. 1, art. 64 ust. 2",
+          "Wspólne frazy w tekście: dziedziczenia, czp, wlasciciela"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+      },
+      {
+        "document_id": "25284",
+        "case_signature": "P 1/21",
+        "decision_date_iso": "2026-02-04",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.064778,
+        "components": {
+          "lexical": 0.001869,
+          "citations": 0.046667,
+          "metadata": 0.680909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 2, art. 193",
+          "Wspólne frazy w tekście: umieszczeniu, rzeczowych, umieszczenie",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25284&sprawa=23805"
+      },
+      {
+        "document_id": "25204",
+        "case_signature": "P 13/24",
+        "decision_date_iso": "2025-12-10",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.061456,
+        "components": {
+          "lexical": 0.00355,
+          "citations": 0.021687,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 87, art. 193",
+          "Wspólne frazy w tekście: wplywem, analogii, niekorzysc",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25204&sprawa=28304"
+      },
+      {
+        "document_id": "25202",
+        "case_signature": "P 3/24",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.059036,
+        "components": {
+          "lexical": 0.001211,
+          "citations": 0.015666,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 193, art. 175, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: odpowiedzia, legitymuje, zadane",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25202&sprawa=27638"
+      }
+    ],
+    "25204": [
+      {
+        "document_id": "25284",
+        "case_signature": "P 1/21",
+        "decision_date_iso": "2026-02-04",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.09411,
+        "components": {
+          "lexical": 0.039638,
+          "citations": 0.017204,
+          "metadata": 0.875714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 193, art. 42 ust. 1",
+          "Wspólne frazy w tekście: sprawcy, zabronionego, dzialajacego",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25284&sprawa=23805"
+      },
+      {
+        "document_id": "25202",
+        "case_signature": "P 3/24",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.076759,
+        "components": {
+          "lexical": 0.001252,
+          "citations": 0.040541,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 193, art. 52 ust. 2 pkt 5, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: postanowiono, wystepujacy, nikt",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25202&sprawa=27638"
+      },
+      {
+        "document_id": "25141",
+        "case_signature": "P 2/25",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.070514,
+        "components": {
+          "lexical": 0.004145,
+          "citations": 0.012903,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 193, art. 2",
+          "Wspólne frazy w tekście: komunikacji, zamieszkania, legalis",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25141&sprawa=28436"
+      },
+      {
+        "document_id": "25136",
+        "case_signature": "K 22/19",
+        "decision_date_iso": "2025-10-30",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.06215,
+        "components": {
+          "lexical": 0.039654,
+          "citations": 0.02765,
+          "metadata": 0.45,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: pojazdow, pojazdu, ruchu"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25136&sprawa=22292"
+      },
+      {
+        "document_id": "25203",
+        "case_signature": "P 10/16",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.061456,
+        "components": {
+          "lexical": 0.00355,
+          "citations": 0.021687,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 87, art. 193",
+          "Wspólne frazy w tekście: wplywem, analogii, niekorzysc",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25203&sprawa=17237"
+      }
+    ],
+    "25205": [
+      {
+        "document_id": "25234",
+        "case_signature": "SK 90/24",
+        "decision_date_iso": "2025-12-09",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.202335,
+        "components": {
+          "lexical": 0.223443,
+          "citations": 0.154362,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 78, art. 79 ust. 1, art. 176 ust. 1",
+          "Wspólne frazy w tekście: skargowej, skargowa, zaskarzalnosci",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25234&sprawa=28341"
+      },
+      {
+        "document_id": "25140",
+        "case_signature": "SK 70/25",
+        "decision_date_iso": "2025-10-29",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.124337,
+        "components": {
+          "lexical": 0.108943,
+          "citations": 0.062069,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 176 ust. 1, art. 78",
+          "Wspólne frazy w tekście: skargowej, skargowa, niezaskarzalne",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25140&sprawa=28824"
+      },
+      {
+        "document_id": "25233",
+        "case_signature": "SK 17/18",
+        "decision_date_iso": "2025-12-03",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.102083,
+        "components": {
+          "lexical": 0.029412,
+          "citations": 0.033943,
+          "metadata": 1,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 59 ust. 1 pkt 2, art. 79 ust. 1",
+          "Wspólne frazy w tekście: prawodawczego, nadaniu, zastepstwa",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25233&sprawa=20713"
+      },
+      {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.095614,
+        "components": {
+          "lexical": 0.039924,
+          "citations": 0.097902,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 78, art. 45 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: zakwestionowala, wstepnej, wnoszenia",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      },
+      {
+        "document_id": "25264",
+        "case_signature": "SK 16/18",
+        "decision_date_iso": "2025-11-19",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.093173,
+        "components": {
+          "lexical": 0.009598,
+          "citations": 0.040909,
+          "metadata": 1,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 79 ust. 1, art. 59 ust. 1 pkt 2, art. 106 ust. 3",
+          "Wspólne frazy w tekście: fizycznej, zastepstwa, uwazam",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+      }
+    ],
+    "25206": [
+      {
+        "document_id": "25230",
+        "case_signature": "K 14/23",
+        "decision_date_iso": "2025-12-03",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.206105,
+        "components": {
+          "lexical": 0.31351,
+          "citations": 0.099037,
+          "metadata": 0.290909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 7, art. 45 ust. 1",
+          "Wspólne frazy w tekście: krs, niezawislosci, sedziowskiej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25230&sprawa=27301"
+      },
+      {
+        "document_id": "25181",
+        "case_signature": "U 4/25",
+        "decision_date_iso": "2025-11-12",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.194425,
+        "components": {
+          "lexical": 0.294163,
+          "citations": 0.105485,
+          "metadata": 0.254545,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 7, art. 2, art. 45 ust. 1",
+          "Wspólne frazy w tekście: krs, prezydent, legalizmu"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25181&sprawa=28948"
+      },
+      {
+        "document_id": "25139",
+        "case_signature": "K 24/20",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.173941,
+        "components": {
+          "lexical": 0.261928,
+          "citations": 0.072327,
+          "metadata": 0.290909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 179, art. 1, art. 10",
+          "Wspólne frazy w tekście: krs, mandatu, prezydent"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+      },
+      {
+        "document_id": "25233",
+        "case_signature": "SK 17/18",
+        "decision_date_iso": "2025-12-03",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.067789,
+        "components": {
+          "lexical": 0.023561,
+          "citations": 0.037685,
+          "metadata": 0.6,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 31 ust. 3, art. 32 ust. 1",
+          "Wspólne frazy w tekście: kontrolowanej, niezawislosci, sedziowskiej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25233&sprawa=20713"
+      },
+      {
+        "document_id": "25180",
+        "case_signature": "K 5/25",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.06422,
+        "components": {
+          "lexical": 0.055495,
+          "citations": 0.060447,
+          "metadata": 0.290909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 9a, art. 10 ust. 1",
+          "Wspólne frazy w tekście: krs, objeli, sedziowie"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+      }
+    ],
+    "25226": [
+      {
+        "document_id": "25228",
+        "case_signature": "SK 80/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.982955,
+        "components": {
+          "lexical": 0.997991,
+          "citations": 0.946667,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+      },
+      {
+        "document_id": "25179",
+        "case_signature": "SK 108/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.971133,
+        "components": {
+          "lexical": 0.993205,
+          "citations": 0.933333,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+      },
+      {
+        "document_id": "25108",
+        "case_signature": "SK 58/23",
+        "decision_date_iso": "2025-10-22",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.964798,
+        "components": {
+          "lexical": 0.993842,
+          "citations": 0.9,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+      },
+      {
+        "document_id": "25135",
+        "case_signature": "SK 80/24",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.885451,
+        "components": {
+          "lexical": 0.857553,
+          "citations": 0.797619,
+          "metadata": 1,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+      },
+      {
+        "document_id": "25133",
+        "case_signature": "SK 53/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.881472,
+        "components": {
+          "lexical": 0.909136,
+          "citations": 0.68932,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+      }
+    ],
+    "25227": [
+      {
+        "document_id": "25082",
+        "case_signature": "SK 78/23",
+        "decision_date_iso": "2025-10-14",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.687132,
+        "components": {
+          "lexical": 0.691764,
+          "citations": 0.301075,
+          "metadata": 0.84,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, § 4",
+          "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
+          "Wspólne frazy w tekście: adwokata, nieoplaconej, udzielonej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+      },
+      {
+        "document_id": "25163",
+        "case_signature": "SK 93/22",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.663584,
+        "components": {
+          "lexical": 0.581624,
+          "citations": 0.469697,
+          "metadata": 0.84,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 92 ust. 1",
+          "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
+          "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25163&sprawa=26541"
+      },
+      {
+        "document_id": "25235",
+        "case_signature": "SK 48/24",
+        "decision_date_iso": "2026-01-15",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.62436,
+        "components": {
+          "lexical": 0.699069,
+          "citations": 0.472222,
+          "metadata": 0.83,
+          "dotyczy_bigrams": 0.5
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 92 ust. 1",
+          "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
+          "Wspólne frazy w tekście: adwokata, adwokatow, nieoplaconej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25235&sprawa=27911"
+      },
+      {
+        "document_id": "25168",
+        "case_signature": "SK 89/23",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.138755,
+        "components": {
+          "lexical": 0.115934,
+          "citations": 0.104348,
+          "metadata": 0.72,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1, art. 45 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: obroncy, obroncow, adwokata",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+      },
+      {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.110854,
+        "components": {
+          "lexical": 0.005242,
+          "citations": 0.273973,
+          "metadata": 0.666667,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 45 ust. 1",
+          "Wspólne frazy w tekście: ujemna, etapu, uchybien",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      }
+    ],
+    "25228": [
+      {
+        "document_id": "25226",
+        "case_signature": "SK 48/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.982955,
+        "components": {
+          "lexical": 0.997991,
+          "citations": 0.946667,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+      },
+      {
+        "document_id": "25179",
+        "case_signature": "SK 108/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.980866,
+        "components": {
+          "lexical": 0.991478,
+          "citations": 0.986486,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+      },
+      {
+        "document_id": "25108",
+        "case_signature": "SK 58/23",
+        "decision_date_iso": "2025-10-22",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.968874,
+        "components": {
+          "lexical": 0.992066,
+          "citations": 0.925,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+      },
+      {
+        "document_id": "25133",
+        "case_signature": "SK 53/23",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.884458,
+        "components": {
+          "lexical": 0.90741,
+          "citations": 0.708738,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+      },
+      {
+        "document_id": "25135",
+        "case_signature": "SK 80/24",
+        "decision_date_iso": "2025-10-28",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.884105,
+        "components": {
+          "lexical": 0.856063,
+          "citations": 0.821429,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 1
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 47",
+          "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
+          "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+      }
+    ],
+    "25229": [
+      {
+        "document_id": "25203",
+        "case_signature": "P 10/16",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.587548,
+        "components": {
+          "lexical": 0.933779,
+          "citations": 0.211735,
+          "metadata": 0.290909,
+          "dotyczy_bigrams": 0.181818
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 292, art. 285 § 1, art. 3051",
+          "Wspólne frazy w tytule: drodze zasiedzenia, gruntowej odpowiadajacej, sluzebnosci gruntowej",
+          "Wspólne frazy w tekście: sluzebnosci, przesylu, zasiedzenia"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25203&sprawa=17237"
+      },
+      {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.099712,
+        "components": {
+          "lexical": 0.010064,
+          "citations": 0.11811,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: skarzacych, ustanowieniem, ujemna",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      },
+      {
+        "document_id": "25108",
+        "case_signature": "SK 58/23",
+        "decision_date_iso": "2025-10-22",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.098973,
+        "components": {
+          "lexical": 0.000681,
+          "citations": 0.11976,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 2, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: wywiedziona, tytul",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+      },
+      {
+        "document_id": "25165",
+        "case_signature": "SK 58/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.098866,
+        "components": {
+          "lexical": 0.00272,
+          "citations": 0.113924,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 32 ust. 1, art. 53",
+          "Wspólne frazy w tekście: przedsiebiorstwa, zakwestionowac, dookreslone",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+      },
+      {
+        "document_id": "25226",
+        "case_signature": "SK 48/23",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.09643,
+        "components": {
+          "lexical": 0.0008,
+          "citations": 0.125786,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 2, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: wywiedziona, tytul, poddal",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+      }
+    ],
+    "25230": [
+      {
+        "document_id": "25206",
+        "case_signature": "Kp 2/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.206105,
+        "components": {
+          "lexical": 0.31351,
+          "citations": 0.099037,
+          "metadata": 0.290909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 7, art. 45 ust. 1",
+          "Wspólne frazy w tekście: krs, niezawislosci, sedziowskiej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
+      },
+      {
+        "document_id": "25181",
+        "case_signature": "U 4/25",
+        "decision_date_iso": "2025-11-12",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.201924,
+        "components": {
+          "lexical": 0.289673,
+          "citations": 0.149805,
+          "metadata": 0.266667,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 7, art. 178 ust. 1, art. 45 ust. 1",
+          "Wspólne frazy w tekście: krs, skladow, niezawislosci"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25181&sprawa=28948"
+      },
+      {
+        "document_id": "25139",
+        "case_signature": "K 24/20",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.193266,
+        "components": {
+          "lexical": 0.228978,
+          "citations": 0.016701,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 59 ust. 1 pkt 2, art. 178 ust. 1",
+          "Wspólne frazy w tekście: krs, niezawislosci, najwyzszym",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+      },
+      {
+        "document_id": "25180",
+        "case_signature": "K 5/25",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.132727,
+        "components": {
+          "lexical": 0.081328,
+          "citations": 0.053356,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0.058824
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 67 ust. 1, art. 106 ust. 3",
+          "Wspólne frazy w tytule: sadu najwyzszego",
+          "Wspólne frazy w tekście: najwyzszym, krs, sedziowie"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+      },
+      {
+        "document_id": "25166",
+        "case_signature": "K 2/23",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.091186,
+        "components": {
+          "lexical": 0.031734,
+          "citations": 0.044534,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 87 § 1, art. 7, art. 59 ust. 1 pkt 3",
+          "Wspólne frazy w tekście: najwyzszym, wojskowych, polaczonych",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+      }
+    ],
+    "25233": [
+      {
+        "document_id": "25205",
+        "case_signature": "SK 63/19",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.102083,
+        "components": {
+          "lexical": 0.029412,
+          "citations": 0.033943,
+          "metadata": 1,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 59 ust. 1 pkt 2, art. 79 ust. 1",
+          "Wspólne frazy w tekście: prawodawczego, nadaniu, zastepstwa",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25205&sprawa=21995"
+      },
+      {
+        "document_id": "25083",
+        "case_signature": "SK 51/20",
+        "decision_date_iso": "2025-10-08",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.096908,
+        "components": {
+          "lexical": 0.019754,
+          "citations": 0.156818,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 77 ust. 2, art. 31 ust. 3",
+          "Wspólne frazy w tekście: wierzyciela, orzeczono, stwierdzajace",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+      },
+      {
+        "document_id": "25264",
+        "case_signature": "SK 16/18",
+        "decision_date_iso": "2025-11-19",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.096559,
+        "components": {
+          "lexical": 0.007721,
+          "citations": 0.062718,
+          "metadata": 1,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: nadaniu, uniemozliwienie, csk",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+      },
+      {
+        "document_id": "25165",
+        "case_signature": "SK 58/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.094011,
+        "components": {
+          "lexical": 0.056907,
+          "citations": 0.045732,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 32 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: wykonalnosci, prawodawcze, referendarzy",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+      },
+      {
+        "document_id": "25169",
+        "case_signature": "SK 67/25",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.09047,
+        "components": {
+          "lexical": 0.022268,
+          "citations": 0.11809,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 31 ust. 3, art. 32 ust. 1",
+          "Wspólne frazy w tekście: klauzuli, orzeczono, biegnie",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+      }
+    ],
+    "25234": [
+      {
+        "document_id": "25205",
+        "case_signature": "SK 63/19",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.202335,
+        "components": {
+          "lexical": 0.223443,
+          "citations": 0.154362,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 78, art. 79 ust. 1, art. 176 ust. 1",
+          "Wspólne frazy w tekście: skargowej, skargowa, zaskarzalnosci",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25205&sprawa=21995"
+      },
+      {
+        "document_id": "25140",
+        "case_signature": "SK 70/25",
+        "decision_date_iso": "2025-10-29",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.143155,
+        "components": {
+          "lexical": 0.114165,
+          "citations": 0.078947,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 176 ust. 1, art. 78, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: skargowej, niezaskarzalne, skargowa",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25140&sprawa=28824"
+      },
+      {
+        "document_id": "25178",
+        "case_signature": "SK 11/20",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.101297,
+        "components": {
+          "lexical": 0.009734,
+          "citations": 0.141176,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 78, art. 79 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: zajecia, reprezentujacy, pozostawieniu",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
+      },
+      {
+        "document_id": "25165",
+        "case_signature": "SK 58/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.09724,
+        "components": {
+          "lexical": 0.007601,
+          "citations": 0.11215,
+          "metadata": 0.885714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 79 ust. 1, art. 176 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: niezaskarzalnosci, rozroznia, czyje",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+      },
+      {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.088561,
+        "components": {
+          "lexical": 0.003854,
+          "citations": 0.103896,
+          "metadata": 0.822222,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 78, art. 59 ust. 1 pkt 2, art. 79 ust. 1",
+          "Wspólne frazy w tekście: zazaleniem, wniesione",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      }
+    ],
+    "25235": [
+      {
+        "document_id": "25227",
+        "case_signature": "SK 76/21",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.62436,
+        "components": {
+          "lexical": 0.699069,
+          "citations": 0.472222,
+          "metadata": 0.83,
+          "dotyczy_bigrams": 0.5
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 92 ust. 1",
+          "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
+          "Wspólne frazy w tekście: adwokata, adwokatow, nieoplaconej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25227&sprawa=24952"
+      },
+      {
+        "document_id": "25082",
+        "case_signature": "SK 78/23",
+        "decision_date_iso": "2025-10-14",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.53383,
+        "components": {
+          "lexical": 0.582969,
+          "citations": 0.321429,
+          "metadata": 0.83,
+          "dotyczy_bigrams": 0.5
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 64 ust. 2, art. 2, art. 31 ust. 3",
+          "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
+          "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+      },
+      {
+        "document_id": "25163",
+        "case_signature": "SK 93/22",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.51574,
+        "components": {
+          "lexical": 0.504884,
+          "citations": 0.45,
+          "metadata": 0.79,
+          "dotyczy_bigrams": 0.5
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 64 ust. 2",
+          "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
+          "Wspólne frazy w tekście: nieoplaconej, udzielonej, adwokata"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25163&sprawa=26541"
+      },
+      {
+        "document_id": "25229",
+        "case_signature": "SK 106/22",
+        "decision_date_iso": "2025-12-16",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.084645,
+        "components": {
+          "lexical": 0.001478,
+          "citations": 0.156716,
+          "metadata": 0.656667,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 64 ust. 2",
+          "Wspólne frazy w tekście: tozsama, ujemna, wznowienia",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25229&sprawa=26603"
+      },
+      {
+        "document_id": "25168",
+        "case_signature": "SK 89/23",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.082765,
+        "components": {
+          "lexical": 0.046828,
+          "citations": 0.044643,
+          "metadata": 0.618571,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1",
+          "Wspólne frazy w tekście: obroncy, obroncow, adwokata",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+      }
+    ],
+    "25264": [
+      {
+        "document_id": "25083",
+        "case_signature": "SK 51/20",
+        "decision_date_iso": "2025-10-08",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.130592,
+        "components": {
+          "lexical": 0.083088,
+          "citations": 0.160569,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 21 ust. 1, art. 64 ust. 1",
+          "Wspólne frazy w tekście: skarzace, dziedziczenia, wierzytelnosci",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+      },
+      {
+        "document_id": "25233",
+        "case_signature": "SK 17/18",
+        "decision_date_iso": "2025-12-03",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.096559,
+        "components": {
+          "lexical": 0.007721,
+          "citations": 0.062718,
+          "metadata": 1,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 59 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: nadaniu, uniemozliwienie, csk",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25233&sprawa=20713"
+      },
+      {
+        "document_id": "25205",
+        "case_signature": "SK 63/19",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.093173,
+        "components": {
+          "lexical": 0.009598,
+          "citations": 0.040909,
+          "metadata": 1,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 79 ust. 1, art. 59 ust. 1 pkt 2, art. 106 ust. 3",
+          "Wspólne frazy w tekście: fizycznej, zastepstwa, uwazam",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25205&sprawa=21995"
+      },
+      {
+        "document_id": "25138",
+        "case_signature": "SK 101/22",
+        "decision_date_iso": "2025-11-18",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.091841,
+        "components": {
+          "lexical": 0.01176,
+          "citations": 0.152263,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 64 ust. 1, art. 32 ust. 1",
+          "Wspólne frazy w tekście: dziedziczenia, udzialow, majatkowej",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25138&sprawa=26598"
+      },
+      {
+        "document_id": "25175",
+        "case_signature": "SK 33/24",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.087579,
+        "components": {
+          "lexical": 0.037417,
+          "citations": 0.064246,
+          "metadata": 0.690909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 21 ust. 1, art. 64, art. 53 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: dziedziczenia, czwartej, przedmiotowi",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25175&sprawa=27720"
+      }
+    ],
+    "25284": [
+      {
+        "document_id": "25204",
+        "case_signature": "P 13/24",
+        "decision_date_iso": "2025-12-10",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.09411,
+        "components": {
+          "lexical": 0.039638,
+          "citations": 0.017204,
+          "metadata": 0.875714,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 193, art. 42 ust. 1",
+          "Wspólne frazy w tekście: sprawcy, zabronionego, dzialajacego",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25204&sprawa=28304"
+      },
+      {
+        "document_id": "25202",
+        "case_signature": "P 3/24",
+        "decision_date_iso": "2025-12-04",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.069836,
+        "components": {
+          "lexical": 0.003775,
+          "citations": 0.023364,
+          "metadata": 0.79,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 32 ust. 1, art. 193, art. 175",
+          "Wspólne frazy w tekście: rozpoznawana, zaleznosc, kanwa",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25202&sprawa=27638"
+      },
+      {
+        "document_id": "25141",
+        "case_signature": "P 2/25",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.067568,
+        "components": {
+          "lexical": 0.005407,
+          "citations": 0.007782,
+          "metadata": 0.79,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 193, art. 2, art. 30",
+          "Wspólne frazy w tekście: zabezpieczajacych, pobyt, palka",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25141&sprawa=28436"
+      },
+      {
+        "document_id": "25083",
+        "case_signature": "SK 51/20",
+        "decision_date_iso": "2025-10-08",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.065672,
+        "components": {
+          "lexical": 0.005363,
+          "citations": 0.105085,
+          "metadata": 0.523333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 45 ust. 1",
+          "Wspólne frazy w tekście: sprawiedliwej, orzeczono, mialyby"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+      },
+      {
+        "document_id": "25203",
+        "case_signature": "P 10/16",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.064778,
+        "components": {
+          "lexical": 0.001869,
+          "citations": 0.046667,
+          "metadata": 0.680909,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 31 ust. 3, art. 2, art. 193",
+          "Wspólne frazy w tekście: umieszczeniu, rzeczowych, umieszczenie",
+          "To samo repertorium: P"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25203&sprawa=17237"
+      }
+    ]
+  }
+}

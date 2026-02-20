@@ -1,0 +1,17 @@
+{
+  "name": "trybunalkonstytucyjny",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "scrape:ipo": "node scripts/scrape_ipo_decisions.mjs",
+    "fetch:ipo-bench-map": "node scripts/fetch_ipo_bench_map.mjs",
+    "enrich:proceeding-intro": "node scripts/enrich_proceeding_intro.mjs",
+    "build:dashboard": "node scripts/build_tk_dashboard_data.mjs --input output/playwright/tk-all.decisions.json --force_no_inne true",
+    "build:similarity": "node scripts/build_case_similarity.mjs --input docs/data/tk_cases.jsonl --outdir docs/data --sample50 docs/data/tk_cases_sample50.jsonl --sample200 docs/data/tk_cases_sample200.jsonl",
+    "build:all": "npm run build:dashboard && npm run build:similarity",
+    "preview:docs": "python3 -m http.server 4173 --directory docs"
+  },
+  "dependencies": {
+    "playwright": "^1.54.2"
+  }
+}

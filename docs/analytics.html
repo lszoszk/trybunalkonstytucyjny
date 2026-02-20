@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orzecznictwo TK — Statystyki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/dashboard.css">
+  <link rel="stylesheet" href="assets/analytics-page.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">§</span>
+        <span class="brand-text">Orzecznictwo TK</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Start</a>
+        <a class="nav-link" href="dashboard-expert.html">Wyszukiwanie</a>
+        <a class="nav-link active" href="analytics.html">Statystyki</a>
+      </div>
+      <div class="mode-switch" aria-label="Przejście do dashboardu">
+        <a id="analyticsSwitchStudent" class="mode-switch-link" href="dashboard-student.html" data-mode="student">Student</a>
+        <a id="analyticsSwitchExpert" class="mode-switch-link" href="dashboard-expert.html" data-mode="expert">Ekspert</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero analytics-hero">
+    <div class="hero-inner">
+      <p class="analytics-kicker">Story-first analytics</p>
+      <h1 class="hero-title">Statystyki korpusu dostępnego online</h1>
+      <p class="hero-subtitle">
+        Przegląd jakości i struktury korpusu online
+        <strong>(ograniczonego do pełnych składów)</strong>:
+        od KPI i przekrojów rocznych, przez sekcje argumentacyjne, aż po sieć współorzekania sędziów.
+      </p>
+      <p id="metaLine" class="meta-line">Ładowanie statystyk...</p>
+    </div>
+  </header>
+
+  <main class="main analytics-main">
+    <section id="kpiGrid" class="kpi-grid"></section>
+
+    <section class="analysis-block" aria-labelledby="overviewHeading">
+      <header class="analysis-head">
+        <p class="analysis-kicker">Przekrój korpusu online</p>
+        <h2 id="overviewHeading">Ile spraw, jakie typy, jakie składy</h2>
+      </header>
+      <div class="chart-grid chart-grid-overview">
+        <article class="panel chart-card chart-card-wide">
+          <h3>Sprawy według roku</h3>
+          <p class="chart-subline">Trend liczby spraw w czasie.</p>
+          <canvas id="casesYearChart"></canvas>
+        </article>
+
+        <article class="panel chart-card">
+          <h3>Typ orzeczenia (IPO)</h3>
+          <p class="chart-subline">Cztery kategorie zgodne z IPO.</p>
+          <canvas id="decisionTypeChart"></canvas>
+        </article>
+
+        <article class="panel chart-card">
+          <h3>Liczebność składu (IPO)</h3>
+          <p class="chart-subline">Pełny skład, pięcioosobowa, trójosobowa.</p>
+          <canvas id="benchIpoChart"></canvas>
+        </article>
+      </div>
+    </section>
+
+    <section class="analysis-block" aria-labelledby="contentHeading">
+      <header class="analysis-head">
+        <p class="analysis-kicker">Treść i argumentacja</p>
+        <h2 id="contentHeading">Sekcje, sędziowie i bigramy</h2>
+      </header>
+      <div class="chart-grid chart-grid-content">
+        <article class="panel chart-card">
+          <h3>Sekcje akapitów</h3>
+          <p class="chart-subline">Rozkład tekstu między sekcjami wyroku.</p>
+          <canvas id="sectionsChart"></canvas>
+        </article>
+
+        <article class="panel chart-card">
+          <h3>Najczęściej występujący sędziowie</h3>
+          <p class="chart-subline">Sędziowie z najwyższą frekwencją.</p>
+          <canvas id="judgesChart"></canvas>
+        </article>
+
+        <article class="panel chart-card chart-card-wide">
+          <h3>Najczęstsze bigramy</h3>
+          <p class="chart-subline">Dwuwyrazowe połączenia po odfiltrowaniu szumu językowego.</p>
+          <canvas id="bigramsChart"></canvas>
+          <p id="bigramsDisclaimer" class="chart-note bigrams-disclaimer"></p>
+          <details class="removed-bigrams-details">
+            <summary>Usunięte bigramy (szum językowy)</summary>
+            <div class="removed-bigrams-box">
+              <ul id="removedBigramsList" class="removed-bigrams-list"></ul>
+            </div>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section class="analysis-block" aria-labelledby="networkHeading">
+      <header class="analysis-head">
+        <p class="analysis-kicker">Sieć współorzekania</p>
+        <h2 id="networkHeading">Sędziowie najczęściej orzekający razem</h2>
+      </header>
+      <article class="panel chart-card chart-card-wide">
+        <div id="judgeHeatmap" class="judge-heatmap"></div>
+        <p class="chart-note">Przekątna: liczba spraw z udziałem sędziego. Poza przekątną: liczba wspólnych składów.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-note">Analytics TK • generowane z <code>scripts/build_tk_dashboard_data.mjs</code></span>
+      <a class="footer-link" href="https://github.com/lszoszk/trybunalkonstytucyjny" target="_blank" rel="noopener noreferrer">Repozytorium GitHub</a>
+    </div>
+  </footer>
+
+  <script src="assets/pages-dashboard.js"></script>
+</body>
+</html>

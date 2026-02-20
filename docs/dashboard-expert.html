@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orzecznictwo TK — Dashboard Ekspert</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/dashboard.css">
+  <link rel="stylesheet" href="assets/search-app.css">
+</head>
+<body data-dashboard-mode="expert">
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">§</span>
+        <span class="brand-text">Orzecznictwo TK</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Start</a>
+        <a class="nav-link active" href="dashboard-expert.html">Wyszukiwanie</a>
+        <a class="nav-link" href="dashboard-student.html">Student</a>
+        <a class="nav-link" href="analytics.html">Statystyki</a>
+      </div>
+      <div class="mode-switch" aria-label="Przełącznik trybu">
+        <a id="modeSwitchStudent" class="mode-switch-link" href="dashboard-student.html">Student</a>
+        <a id="modeSwitchExpert" class="mode-switch-link active" href="dashboard-expert.html">Ekspert</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">Trybunał Konstytucyjny — dashboard ekspercki</h1>
+      <p class="hero-subtitle">
+        Model oparty na strukturze orzeczeń TK (tenor, orzeka/postanawia, części uzasadnienia, zdania odrębne)
+        z filtrowaniem po sekcjach i metadanych prawniczych.
+      </p>
+
+      <section class="data-source panel" aria-labelledby="sourceHeading">
+        <h2 id="sourceHeading" class="source-heading">Źródło danych</h2>
+        <p class="source-note">Załaduj próbkę lub własny plik <code>.jsonl</code> (znormalizowany) albo surowy <code>.decisions.json</code>.</p>
+        <div class="source-actions">
+          <button id="loadSampleBtn" type="button" class="btn btn-primary">Wczytaj próbkę (200)</button>
+          <button id="loadFullBenchDatasetBtn" type="button" class="btn btn-soft">Wczytaj pełny skład</button>
+          <label for="fileInput" class="btn btn-soft">Wybierz plik</label>
+          <button id="cancelLoadBtn" type="button" class="btn btn-soft" hidden>Anuluj wczytywanie</button>
+          <input id="fileInput" type="file" accept=".jsonl,.json,application/json,text/plain" hidden>
+        </div>
+        <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="Upuść plik danych">
+          Przeciągnij i upuść plik tutaj
+        </div>
+        <p id="datasetStatus" class="dataset-status">Brak załadowanego zbioru.</p>
+        <div id="provenanceBanner" class="provenance-banner" hidden></div>
+      </section>
+
+      <form id="searchForm" class="search-form disabled" autocomplete="off">
+        <div class="search-row">
+          <input id="searchInput" class="search-input" type="text" placeholder='Np. (art. 32 AND "zasada proporcjonalności") OR sygn:"K 1/23"' disabled>
+          <button id="searchBtn" type="submit" class="btn btn-primary" disabled>Szukaj</button>
+        </div>
+        <p id="queryError" class="query-error" hidden></p>
+        <div class="search-tips">
+          <span><code>sygn:</code> <code>sedzia:</code> <code>typ:</code> <code>sekcja:</code> <code>rok:</code> <code>teza:</code></span>
+          <span>•</span>
+          <span><code>AND</code> <code>OR</code> <code>NOT</code> + nawiasy</span>
+          <span>•</span>
+          <span><code>"fraza"</code> = dokładne dopasowanie</span>
+        </div>
+
+        <div id="quickPresets" class="quick-presets">
+          <button class="preset-chip" type="button" data-preset="holding">Tylko sentencja</button>
+          <button class="preset-chip" type="button" data-preset="dissent">Tylko zdania odrębne</button>
+          <button class="preset-chip" type="button" data-preset="tenor">Tenor</button>
+          <button class="preset-chip" type="button" data-preset="uzasadnienie_prawne">Uzasadnienie prawne</button>
+          <button class="preset-chip" type="button" data-preset="postanowienie">Postanowienie</button>
+        </div>
+
+        <button id="filtersToggle" type="button" class="btn btn-filter" aria-expanded="false" disabled>
+          Filtry zaawansowane
+        </button>
+
+        <section id="filtersPanel" class="filters-panel" hidden>
+          <div class="filters-grid">
+            <div>
+              <h3 class="filter-title">Sekcje</h3>
+              <div id="sectionFilters" class="checkbox-list"></div>
+            </div>
+            <div>
+              <h3 class="filter-title">Rodzaj orzeczenia</h3>
+              <div id="typeFilters" class="checkbox-list"></div>
+            </div>
+            <div>
+              <h3 class="filter-title">Rok</h3>
+              <div class="range-row">
+                <input id="yearFrom" type="number" class="input-small" placeholder="od" disabled>
+                <span>—</span>
+                <input id="yearTo" type="number" class="input-small" placeholder="do" disabled>
+              </div>
+
+              <h3 class="filter-title space-top">Sędzia (fragment)</h3>
+              <input id="judgeFilter" class="input-wide" type="text" placeholder="np. Pawłowicz" disabled>
+
+              <h3 class="filter-title space-top">Sygnatura (fragment)</h3>
+              <input id="signatureFilter" class="input-wide" type="text" placeholder="np. SK 48/24" disabled>
+
+              <h3 class="filter-title space-top">Liczebność składu orzekającego</h3>
+              <div id="benchSizeFilters" class="checkbox-list"></div>
+            </div>
+          </div>
+        </section>
+      </form>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="stats-row" id="statsRow">
+      <article class="stat-card">
+        <p class="stat-value" id="statCases">-</p>
+        <p class="stat-label">Sprawy</p>
+        <p class="stat-subline" id="statCasesSub">-</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-value" id="statParagraphs">-</p>
+        <p class="stat-label">Akapity</p>
+        <p class="stat-subline" id="statParagraphsSub">-</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-value" id="statTypes">-</p>
+        <p class="stat-label">Typy orzeczeń</p>
+        <p class="stat-subline" id="statTypesSub">-</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-value" id="statYears">-</p>
+        <p class="stat-label">Zakres lat</p>
+        <p class="stat-subline" id="statYearsSub">-</p>
+      </article>
+    </section>
+
+    <section class="page-layout">
+      <div class="results-col">
+        <section class="panel results-header" id="resultsHeader" hidden>
+          <div class="results-topline">
+            <p id="resultsSummary">0 trafień</p>
+            <div class="results-actions">
+              <button id="exportBtn" type="button" class="btn btn-soft" disabled>Eksport CSV</button>
+              <button id="quoteExportBtn" type="button" class="btn btn-soft" disabled>Pakiet cytatów</button>
+              <button id="clearBtn" type="button" class="btn btn-soft" disabled>Wyczyść</button>
+            </div>
+          </div>
+          <section id="paragraphDisplayControl" class="paragraph-display-control paragraph-display-control-results" aria-label="Tryb wyświetlania akapitów">
+            <p class="paragraph-display-label">Akapity</p>
+            <div class="paragraph-display-toggle" role="group" aria-label="Tryb wyświetlania akapitów">
+              <button id="paragraphModeCollapsedBtn" type="button" class="paragraph-mode-btn active" data-paragraph-mode="collapsed" aria-pressed="true" disabled>Zwięźle</button>
+              <button id="paragraphModeExpandedBtn" type="button" class="paragraph-mode-btn" data-paragraph-mode="expanded" aria-pressed="false" disabled>Pełne</button>
+            </div>
+          </section>
+          <p id="similarityStatus" class="similarity-status" hidden></p>
+          <div id="activeFilters" class="active-filters"></div>
+          <section id="selectedCitationsPanel" class="selected-citations-panel" hidden>
+            <div class="selected-citations-head">
+              <h3>Zaznaczone cytaty</h3>
+              <div class="selected-citations-head-actions">
+                <p id="selectedCitationsCount" class="selected-citations-count">0</p>
+                <button id="selectedCitationsClearBtn" type="button" class="mini-btn">Wyczyść</button>
+              </div>
+            </div>
+            <div id="selectedCitationsList" class="selected-citations-list"></div>
+          </section>
+        </section>
+
+        <section id="emptyState" class="panel empty-state">
+          <h2>Załaduj dane i rozpocznij wyszukiwanie</h2>
+          <p>Domyślna jednostka wynikowa: akapit przypisany do sekcji orzeczenia, z grupowaniem w obrębie sprawy.</p>
+        </section>
+
+        <section id="resultsList" class="results-list"></section>
+        <nav id="pagination" class="pagination" hidden></nav>
+      </div>
+
+      <aside class="panel sidebar" id="sidebar" hidden>
+        <h2 class="sidebar-title">Rozkład wyników</h2>
+
+        <div class="sidebar-block">
+          <h3>Sekcje</h3>
+          <div id="analyticsSections" class="bar-list"></div>
+        </div>
+
+        <div class="sidebar-block">
+          <h3>Typ orzeczenia</h3>
+          <div id="analyticsTypes" class="bar-list"></div>
+        </div>
+
+        <div class="sidebar-block">
+          <h3>Lata</h3>
+          <div id="analyticsYears" class="bar-list"></div>
+        </div>
+
+        <div class="sidebar-block">
+          <h3>Najczęstsze terminy</h3>
+          <div id="analyticsTerms" class="term-cloud"></div>
+        </div>
+
+        <div class="sidebar-block">
+          <h3>Case folder</h3>
+          <p id="folderSummary" class="folder-summary">Brak przypiętych elementów.</p>
+          <div id="folderCasesList" class="folder-list"></div>
+          <div id="folderParagraphsList" class="folder-list"></div>
+        </div>
+
+        <div class="sidebar-block">
+          <h3>Notatki robocze</h3>
+          <textarea id="folderNotes" class="folder-notes" placeholder="Notatki do argumentacji, teza, kontrargumenty..."></textarea>
+        </div>
+
+        <div class="sidebar-block">
+          <h3>Chronologia spraw</h3>
+          <div id="timelineList" class="timeline-list"></div>
+          <button id="compareBtn" type="button" class="btn btn-soft compare-btn" disabled>Porównaj przypięte sprawy</button>
+        </div>
+      </aside>
+    </section>
+
+    <section id="compareView" class="panel compare-view" hidden>
+      <h2>Porównanie spraw</h2>
+      <div id="compareSlots" class="compare-slots"></div>
+    </section>
+
+    <section id="judgmentViewer" class="panel judgment-viewer" hidden>
+      <header class="judgment-viewer-head">
+        <div>
+          <h2 id="judgmentViewerTitle">Podgląd pełnego wyroku</h2>
+          <p id="judgmentViewerMeta" class="judgment-viewer-meta"></p>
+        </div>
+        <div class="judgment-viewer-head-actions">
+          <a id="judgmentViewerSourceLink" href="#" data-action="open-ipo-source" target="_blank" rel="noopener noreferrer" hidden>Otwórz źródło</a>
+          <button id="judgmentViewerCloseBtn" type="button" class="btn btn-soft">Zamknij podgląd</button>
+        </div>
+      </header>
+      <form id="viewerKeywordForm" class="viewer-keyword-form">
+        <label class="viewer-keyword-label" for="viewerKeywordInput">Filtr akapitów (słowa kluczowe)</label>
+        <div class="viewer-keyword-row">
+          <input id="viewerKeywordInput" class="viewer-keyword-input" type="text" placeholder='np. "wolność słowa" AND proporcjonalność'>
+          <button id="viewerKeywordApplyBtn" type="submit" class="btn btn-soft">Filtruj</button>
+          <button id="viewerKeywordClearBtn" type="button" class="btn btn-soft">Wyczyść</button>
+        </div>
+        <section class="viewer-display-control" aria-label="Tryb wyświetlania akapitów w podglądzie wyroku">
+          <p class="viewer-display-label">Tryb akapitów</p>
+          <div class="paragraph-display-toggle" role="group" aria-label="Tryb wyświetlania akapitów">
+            <button id="viewerParagraphModeCollapsedBtn" type="button" class="paragraph-mode-btn active" data-paragraph-mode="collapsed" aria-pressed="true" disabled>Zwięźle</button>
+            <button id="viewerParagraphModeExpandedBtn" type="button" class="paragraph-mode-btn" data-paragraph-mode="expanded" aria-pressed="false" disabled>Pełne</button>
+          </div>
+        </section>
+        <p id="viewerKeywordSummary" class="viewer-keyword-summary">Wyświetlono wszystkie akapity.</p>
+        <p id="viewerKeywordError" class="viewer-keyword-error" hidden></p>
+      </form>
+      <div class="judgment-viewer-layout">
+        <aside class="judgment-viewer-toc">
+          <h3>Spis treści</h3>
+          <nav id="judgmentViewerToc"></nav>
+        </aside>
+        <section id="judgmentViewerContent" class="judgment-viewer-content"></section>
+      </div>
+    </section>
+  </main>
+
+  <div id="judgmentViewerBackdrop" class="judgment-viewer-backdrop" hidden></div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-note">Dashboard konstytucyjny TK • tryb ekspert</span>
+      <a class="footer-link" href="https://github.com/lszoszk/trybunalkonstytucyjny" target="_blank" rel="noopener noreferrer">Repozytorium GitHub</a>
+    </div>
+  </footer>
+
+  <script src="assets/search-app.js"></script>
+</body>
+</html>

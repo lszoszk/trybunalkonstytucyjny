@@ -1,0 +1,1439 @@
+{
+  "generated_at": "2026-02-20T10:32:18.161Z",
+  "source_file": "/Users/lszoszk/constcourt/output/playwright/tk-all.decisions.json",
+  "schema_version": "tk-dashboard-v2",
+  "summary": {
+    "total_cases": 3288,
+    "dated_cases": 3288,
+    "undated_cases": 0,
+    "total_paragraphs": 265870,
+    "avg_paragraphs_per_case": 80.86,
+    "unique_decision_types": 13,
+    "unique_decision_types_ipo": 4,
+    "unique_judges": 60,
+    "date_range": {
+      "from": 1997,
+      "to": 2026
+    }
+  },
+  "series": {
+    "cases_by_year": [
+      [
+        1997,
+        26
+      ],
+      [
+        1998,
+        55
+      ],
+      [
+        1999,
+        66
+      ],
+      [
+        2000,
+        86
+      ],
+      [
+        2001,
+        96
+      ],
+      [
+        2002,
+        96
+      ],
+      [
+        2003,
+        101
+      ],
+      [
+        2004,
+        123
+      ],
+      [
+        2005,
+        145
+      ],
+      [
+        2006,
+        174
+      ],
+      [
+        2007,
+        163
+      ],
+      [
+        2008,
+        188
+      ],
+      [
+        2009,
+        171
+      ],
+      [
+        2010,
+        131
+      ],
+      [
+        2011,
+        128
+      ],
+      [
+        2012,
+        142
+      ],
+      [
+        2013,
+        142
+      ],
+      [
+        2014,
+        125
+      ],
+      [
+        2015,
+        188
+      ],
+      [
+        2016,
+        105
+      ],
+      [
+        2017,
+        94
+      ],
+      [
+        2018,
+        72
+      ],
+      [
+        2019,
+        70
+      ],
+      [
+        2020,
+        71
+      ],
+      [
+        2021,
+        79
+      ],
+      [
+        2022,
+        91
+      ],
+      [
+        2023,
+        103
+      ],
+      [
+        2024,
+        118
+      ],
+      [
+        2025,
+        137
+      ],
+      [
+        2026,
+        2
+      ]
+    ]
+  },
+  "rankings": {
+    "decision_types": [
+      [
+        "Wyrok",
+        1548
+      ],
+      [
+        "Postanowienie - umorzenie",
+        1519
+      ],
+      [
+        "Postanowienie dot. kosztów",
+        100
+      ],
+      [
+        "Postanowienie inne",
+        33
+      ],
+      [
+        "Postanowienie po wydaniu orzeczenia",
+        28
+      ],
+      [
+        "Postanowienie - sprostowanie",
+        17
+      ],
+      [
+        "Postanowienie dot. wyłączenia sędziego",
+        17
+      ],
+      [
+        "Postanowienie tymczasowe",
+        7
+      ],
+      [
+        "Postanowienie na zażalenie",
+        6
+      ],
+      [
+        "Postanowienie",
+        5
+      ],
+      [
+        "Postanowienie w sporze kompetencyjnym",
+        3
+      ],
+      [
+        "Rozstrzygnięcie",
+        3
+      ],
+      [
+        "Postanowienie dot. zawieszenia",
+        2
+      ]
+    ],
+    "decision_types_ipo": [
+      [
+        "Postanowienie",
+        1730
+      ],
+      [
+        "Postanowienie Tymczasowe",
+        7
+      ],
+      [
+        "Rozstrzygnięcie",
+        3
+      ],
+      [
+        "Wyrok",
+        1548
+      ]
+    ],
+    "bench_sizes_ipo": [
+      [
+        "Pełny skład",
+        331
+      ],
+      [
+        "Pięcioosobowa",
+        2630
+      ],
+      [
+        "Trójosobowa",
+        325
+      ]
+    ],
+    "sections": [
+      [
+        "Uzasadnienie prawne",
+        143489
+      ],
+      [
+        "Uzasadnienie: część historyczna",
+        82938
+      ],
+      [
+        "Zdanie odrębne",
+        20468
+      ],
+      [
+        "Tenor",
+        10164
+      ],
+      [
+        "Uzasadnienie: część postępowania",
+        5647
+      ],
+      [
+        "Postanawia",
+        2306
+      ],
+      [
+        "Orzeka",
+        840
+      ],
+      [
+        "Komparycja / Skład",
+        9
+      ],
+      [
+        "Sentencja (inne)",
+        9
+      ]
+    ],
+    "topics": [
+      [
+        "Obowiązkowe szczepienia ochronne",
+        42
+      ],
+      [
+        "Ustawa o grach hazardowych; proces ustawodawczy; obowiązek notyfikacji przepisów technicznych przez Komisję Europejską",
+        24
+      ],
+      [
+        "Złożenie ponaglenia w toku postępowania jako warunek stwierdzenia przewlekłości postępowania administracyjnego",
+        22
+      ],
+      [
+        "Koszty nieopłaconej pomocy prawnej udzielonej przez adwokata z urzędu",
+        13
+      ],
+      [
+        "Wynagrodzenie sędziów sądów powszechnych",
+        13
+      ],
+      [
+        "Wynagrodzenie sędziów",
+        12
+      ],
+      [
+        "Brak pisemnego uzasadnienia postanowienia o odmowie przyjęcia skargi kasacyjnej",
+        11
+      ],
+      [
+        "Wejście w życie przepisów z mocą wsteczną (elektrownie wiatrowe)",
+        9
+      ],
+      [
+        "Odrzucenie środka odwoławczego z powodu nieuiszczenia opłaty",
+        8
+      ],
+      [
+        "Lustracja",
+        7
+      ],
+      [
+        "prawo do sądu",
+        7
+      ],
+      [
+        "Prawo do sądu",
+        7
+      ],
+      [
+        "Brak pisemnego uzasadnienia odmowy przyjęcia skargi kasacyjnej",
+        6
+      ],
+      [
+        "Dochody jednostek samorządu terytorialnego",
+        6
+      ],
+      [
+        "Ustawa o Trybunale Konstytucyjnym",
+        5
+      ],
+      [
+        "Brak instytucjonalizacji związków osób tej samej płci",
+        4
+      ],
+      [
+        "Brak udokumentowania umocowania do reprezentowania spółki poprzez nieprzedłożenie odpisu z KRS – pomimo powszechności danych zawartych w rejestrze – jako brak formalny skargi uniemożliwiający nadanie jej biegu",
+        4
+      ],
+      [
+        "Tryb uchwalenia ustawy",
+        4
+      ],
+      [
+        "Uzależnienie możliwości wydania wyroku łącznego od tego, czy sprawca popełnił dwa lub więcej przestępstw zanim zapadł pierwszy wyrok",
+        4
+      ],
+      [
+        "Brak jasnej definicji „działalność gospodarcza” i „pozarolnicza działalność gospodarcza” na gruncie ustawy o podatku od osób fizycznych",
+        3
+      ]
+    ],
+    "judges": [
+      [
+        "Zbigniew Cieślak",
+        573
+      ],
+      [
+        "Ewa Łętowska",
+        555
+      ],
+      [
+        "Wojciech Hermeliński",
+        553
+      ],
+      [
+        "Marek Kotlinowski",
+        550
+      ],
+      [
+        "Marek Mazurkiewicz",
+        544
+      ],
+      [
+        "Teresa Liszcz",
+        544
+      ],
+      [
+        "Janusz Niemcewicz",
+        539
+      ],
+      [
+        "Marian Grzybowski",
+        537
+      ],
+      [
+        "Mirosław Wyrzykowski",
+        535
+      ],
+      [
+        "Adam Jamróz",
+        533
+      ],
+      [
+        "Maria Gintowt-Jankowicz",
+        524
+      ],
+      [
+        "Mirosław Granat",
+        500
+      ],
+      [
+        "Andrzej Rzepliński",
+        457
+      ],
+      [
+        "Stanisław Biernat",
+        452
+      ],
+      [
+        "Stanisław Rymar",
+        448
+      ],
+      [
+        "Sławomira Wronkowska-Jaśkiewicz",
+        447
+      ],
+      [
+        "Bohdan Zdziennicki",
+        435
+      ],
+      [
+        "Jerzy Ciemniewski",
+        427
+      ],
+      [
+        "Piotr Tuleja",
+        422
+      ],
+      [
+        "Jerzy Stępień",
+        420
+      ],
+      [
+        "Małgorzata Pyziak-Szafnicka",
+        403
+      ],
+      [
+        "Wiesław Johann",
+        402
+      ],
+      [
+        "Marian Zdyb",
+        399
+      ],
+      [
+        "Biruta Lewaszkiewicz-Petrykowska",
+        391
+      ],
+      [
+        "Leon Kieres",
+        389
+      ]
+    ],
+    "bigrams": [
+      [
+        "prokurator generalny",
+        23410
+      ],
+      [
+        "pytanie prawne",
+        17081
+      ],
+      [
+        "marszałek sejmu",
+        13487
+      ],
+      [
+        "skargi konstytucyjnej",
+        10815
+      ],
+      [
+        "praw obywatelskich",
+        7271
+      ],
+      [
+        "rada ministrów",
+        7068
+      ],
+      [
+        "samorządu terytorialnego",
+        6841
+      ],
+      [
+        "sądu najwyższego",
+        6657
+      ],
+      [
+        "wolności praw",
+        5892
+      ],
+      [
+        "wejścia życie",
+        5759
+      ],
+      [
+        "władzy publicznej",
+        5218
+      ],
+      [
+        "skarga konstytucyjna",
+        5074
+      ],
+      [
+        "prawa sądu",
+        5043
+      ],
+      [
+        "przed sądem",
+        4880
+      ],
+      [
+        "praw wolności",
+        4867
+      ],
+      [
+        "wydania wyroku",
+        4808
+      ],
+      [
+        "związku związku",
+        4788
+      ],
+      [
+        "aktu normatywnego",
+        4692
+      ],
+      [
+        "państwa prawnego",
+        4620
+      ],
+      [
+        "działalności gospodarczej",
+        4609
+      ],
+      [
+        "sąd najwyższy",
+        4511
+      ],
+      [
+        "skardze konstytucyjnej",
+        4474
+      ],
+      [
+        "zaskarżonego przepisu",
+        4362
+      ],
+      [
+        "skarbu państwa",
+        4300
+      ],
+      [
+        "zasady równości",
+        4286
+      ],
+      [
+        "pierwszej instancji",
+        4150
+      ],
+      [
+        "prawa własności",
+        4067
+      ],
+      [
+        "praw człowieka",
+        4059
+      ],
+      [
+        "ubezpieczeń społecznych",
+        4047
+      ],
+      [
+        "praw majątkowych",
+        3993
+      ],
+      [
+        "zaskarżony przepis",
+        3906
+      ],
+      [
+        "ochrony praw",
+        3896
+      ],
+      [
+        "demokratycznego państwa",
+        3861
+      ],
+      [
+        "zdanie drugie",
+        3837
+      ],
+      [
+        "sytuacji gdy",
+        3715
+      ],
+      [
+        "zdaniem prokuratora",
+        3686
+      ],
+      [
+        "zdanie pierwsze",
+        3684
+      ],
+      [
+        "mocy obowiązującej",
+        3667
+      ],
+      [
+        "sądu administracyjnego",
+        3607
+      ],
+      [
+        "sprawiedliwości społecznej",
+        3604
+      ],
+      [
+        "rzecznik praw",
+        3600
+      ],
+      [
+        "niedopuszczalność wydania",
+        3431
+      ],
+      [
+        "zgodności konstytucją",
+        3401
+      ],
+      [
+        "administracji publicznej",
+        3381
+      ],
+      [
+        "kontroli konstytucyjności",
+        3356
+      ],
+      [
+        "przepisów prawa",
+        3349
+      ],
+      [
+        "ministra sprawiedliwości",
+        3346
+      ],
+      [
+        "sądów powszechnych",
+        3263
+      ],
+      [
+        "zaskarżonych przepisów",
+        3213
+      ],
+      [
+        "względu niedopuszczalność",
+        3130
+      ],
+      [
+        "zgodnie którym",
+        3129
+      ],
+      [
+        "zważył następuje",
+        3107
+      ],
+      [
+        "zdaniem trybunału",
+        3093
+      ],
+      [
+        "wyroku trybunału",
+        3090
+      ],
+      [
+        "unii europejskiej",
+        3071
+      ],
+      [
+        "drugiej instancji",
+        3063
+      ],
+      [
+        "wymiaru sprawiedliwości",
+        3033
+      ],
+      [
+        "zwrócił uwagę",
+        3022
+      ],
+      [
+        "rzecznika praw",
+        2999
+      ],
+      [
+        "towarów usług",
+        2934
+      ],
+      [
+        "rozporządzenia ministra",
+        2879
+      ],
+      [
+        "jednostek samorządu",
+        2868
+      ],
+      [
+        "stosowania prawa",
+        2863
+      ],
+      [
+        "innych ustaw",
+        2843
+      ],
+      [
+        "państwa stanowionego",
+        2838
+      ],
+      [
+        "zarzut naruszenia",
+        2829
+      ],
+      [
+        "przy czym",
+        2828
+      ],
+      [
+        "powołanej punkcie",
+        2812
+      ],
+      [
+        "jak sentencji",
+        2792
+      ],
+      [
+        "niezgodny związku",
+        2768
+      ],
+      [
+        "stanowionego prawa",
+        2754
+      ],
+      [
+        "której mowa",
+        2749
+      ],
+      [
+        "orzecznictwie trybunału",
+        2720
+      ],
+      [
+        "sądu okręgowego",
+        2713
+      ],
+      [
+        "postępowaniu przed",
+        2707
+      ],
+      [
+        "pozbawienia wolności",
+        2703
+      ],
+      [
+        "kwestionowanego przepisu",
+        2699
+      ],
+      [
+        "sytuacji prawnej",
+        2685
+      ],
+      [
+        "ocenie trybunału",
+        2680
+      ],
+      [
+        "należy uznać",
+        2676
+      ]
+    ],
+    "bigrams_removed": [
+      [
+        "trybunału konstytucyjnego",
+        27631
+      ],
+      [
+        "może być",
+        15548
+      ],
+      [
+        "zakresie jakim",
+        14392
+      ],
+      [
+        "niniejszej sprawie",
+        12055
+      ],
+      [
+        "rzeczypospolitej polskiej",
+        11401
+      ],
+      [
+        "tym samym",
+        9884
+      ],
+      [
+        "tym zakresie",
+        8371
+      ],
+      [
+        "punktu widzenia",
+        8225
+      ],
+      [
+        "przede wszystkim",
+        7961
+      ],
+      [
+        "przed trybunałem",
+        6986
+      ],
+      [
+        "trybunale konstytucyjnym",
+        6669
+      ],
+      [
+        "mogą być",
+        6245
+      ],
+      [
+        "tego przepisu",
+        6096
+      ],
+      [
+        "przy tym",
+        6048
+      ],
+      [
+        "których mowa",
+        5296
+      ],
+      [
+        "sąd pytający",
+        5112
+      ],
+      [
+        "zob wyrok",
+        5067
+      ],
+      [
+        "pod uwagę",
+        4815
+      ],
+      [
+        "trybunałem konstytucyjnym",
+        4751
+      ],
+      [
+        "którym mowa",
+        3939
+      ],
+      [
+        "związku tym",
+        3845
+      ],
+      [
+        "sierpnia trybunale",
+        3418
+      ],
+      [
+        "musi być",
+        3378
+      ],
+      [
+        "por wyrok",
+        3191
+      ],
+      [
+        "pytający sąd",
+        3179
+      ],
+      [
+        "tego rodzaju",
+        3154
+      ]
+    ],
+    "bigrams_filtering": {
+      "disclaimer": "Ranking bigramów wyklucza frazy boilerplate, zwroty techniczne i nazwy instytucjonalne o niskiej wartości argumentacyjnej dla analizy prawniczej.",
+      "removed_total_count": 196657,
+      "removed_unique_count": 26,
+      "removed_phrase_catalog": [
+        "trybunału konstytucyjnego",
+        "trybunale konstytucyjnym",
+        "trybunałem konstytucyjnym",
+        "rzeczypospolitej polskiej",
+        "niniejszej sprawie",
+        "tym samym",
+        "tym zakresie",
+        "punktu widzenia",
+        "przede wszystkim",
+        "przy tym",
+        "pod uwagę",
+        "tego rodzaju",
+        "tego przepisu",
+        "których mowa",
+        "którym mowa",
+        "w związku",
+        "związku tym",
+        "może być",
+        "mogą być",
+        "musi być",
+        "zob wyrok",
+        "por wyrok",
+        "sierpnia trybunale",
+        "sąd pytający",
+        "pytający sąd",
+        "zakresie jakim",
+        "przed trybunałem"
+      ]
+    },
+    "judge_pairs": [
+      [
+        "Marek Kotlinowski × Teresa Liszcz",
+        315
+      ],
+      [
+        "Maria Gintowt-Jankowicz × Zbigniew Cieślak",
+        290
+      ],
+      [
+        "Maria Gintowt-Jankowicz × Mirosław Granat",
+        272
+      ],
+      [
+        "Ewa Łętowska × Marek Mazurkiewicz",
+        271
+      ],
+      [
+        "Mirosław Granat × Wojciech Hermeliński",
+        266
+      ],
+      [
+        "Janusz Niemcewicz × Marek Mazurkiewicz",
+        263
+      ],
+      [
+        "Ewa Łętowska × Janusz Niemcewicz",
+        257
+      ],
+      [
+        "Marek Kotlinowski × Wojciech Hermeliński",
+        257
+      ],
+      [
+        "Marek Mazurkiewicz × Mirosław Wyrzykowski",
+        255
+      ],
+      [
+        "Ewa Łętowska × Marian Grzybowski",
+        253
+      ],
+      [
+        "Piotr Tuleja × Sławomira Wronkowska-Jaśkiewicz",
+        253
+      ],
+      [
+        "Ewa Łętowska × Mirosław Wyrzykowski",
+        252
+      ],
+      [
+        "Maria Gintowt-Jankowicz × Wojciech Hermeliński",
+        246
+      ],
+      [
+        "Teresa Liszcz × Wojciech Hermeliński",
+        243
+      ],
+      [
+        "Marek Mazurkiewicz × Marian Grzybowski",
+        239
+      ],
+      [
+        "Teresa Liszcz × Zbigniew Cieślak",
+        239
+      ],
+      [
+        "Mirosław Granat × Zbigniew Cieślak",
+        238
+      ],
+      [
+        "Małgorzata Pyziak-Szafnicka × Stanisław Rymar",
+        237
+      ],
+      [
+        "Janusz Niemcewicz × Mirosław Wyrzykowski",
+        236
+      ],
+      [
+        "Piotr Tuleja × Stanisław Rymar",
+        234
+      ],
+      [
+        "Wojciech Hermeliński × Zbigniew Cieślak",
+        233
+      ],
+      [
+        "Stanisław Biernat × Zbigniew Cieślak",
+        231
+      ],
+      [
+        "Bohdan Zdziennicki × Marian Grzybowski",
+        230
+      ],
+      [
+        "Bohdan Zdziennicki × Mirosław Wyrzykowski",
+        228
+      ],
+      [
+        "Adam Jamróz × Ewa Łętowska",
+        223
+      ],
+      [
+        "Marek Kotlinowski × Mirosław Granat",
+        220
+      ],
+      [
+        "Adam Jamróz × Marian Grzybowski",
+        219
+      ],
+      [
+        "Bohdan Zdziennicki × Ewa Łętowska",
+        217
+      ],
+      [
+        "Bohdan Zdziennicki × Marek Mazurkiewicz",
+        217
+      ],
+      [
+        "Adam Jamróz × Marek Kotlinowski",
+        215
+      ],
+      [
+        "Marian Grzybowski × Mirosław Wyrzykowski",
+        213
+      ],
+      [
+        "Marek Kotlinowski × Zbigniew Cieślak",
+        211
+      ],
+      [
+        "Biruta Lewaszkiewicz-Petrykowska × Wiesław Johann",
+        209
+      ],
+      [
+        "Małgorzata Pyziak-Szafnicka × Piotr Tuleja",
+        209
+      ],
+      [
+        "Janusz Niemcewicz × Marian Grzybowski",
+        207
+      ],
+      [
+        "Jerzy Stępień × Marian Zdyb",
+        203
+      ],
+      [
+        "Mirosław Granat × Teresa Liszcz",
+        203
+      ],
+      [
+        "Adam Jamróz × Wojciech Hermeliński",
+        202
+      ],
+      [
+        "Andrzej Rzepliński × Stanisław Biernat",
+        201
+      ],
+      [
+        "Andrzej Rzepliński × Teresa Liszcz",
+        201
+      ],
+      [
+        "Sławomira Wronkowska-Jaśkiewicz × Stanisław Rymar",
+        201
+      ],
+      [
+        "Marek Zubik × Sławomira Wronkowska-Jaśkiewicz",
+        200
+      ],
+      [
+        "Marek Kotlinowski × Maria Gintowt-Jankowicz",
+        197
+      ],
+      [
+        "Mirosław Granat × Stanisław Biernat",
+        197
+      ],
+      [
+        "Maria Gintowt-Jankowicz × Teresa Liszcz",
+        193
+      ],
+      [
+        "Marek Zubik × Stanisław Biernat",
+        190
+      ],
+      [
+        "Andrzej Rzepliński × Marek Kotlinowski",
+        189
+      ],
+      [
+        "Maria Gintowt-Jankowicz × Stanisław Biernat",
+        188
+      ],
+      [
+        "Jerzy Ciemniewski × Marian Zdyb",
+        186
+      ],
+      [
+        "Adam Jamróz × Mirosław Wyrzykowski",
+        185
+      ]
+    ]
+  },
+  "cooccurrence": {
+    "judges": [
+      "Zbigniew Cieślak",
+      "Ewa Łętowska",
+      "Wojciech Hermeliński",
+      "Marek Kotlinowski",
+      "Marek Mazurkiewicz",
+      "Teresa Liszcz",
+      "Janusz Niemcewicz",
+      "Marian Grzybowski",
+      "Mirosław Wyrzykowski",
+      "Adam Jamróz",
+      "Maria Gintowt-Jankowicz",
+      "Mirosław Granat",
+      "Andrzej Rzepliński",
+      "Stanisław Biernat"
+    ],
+    "matrix": [
+      [
+        573,
+        138,
+        233,
+        211,
+        126,
+        239,
+        103,
+        130,
+        118,
+        150,
+        290,
+        238,
+        179,
+        231
+      ],
+      [
+        138,
+        555,
+        135,
+        132,
+        271,
+        150,
+        257,
+        253,
+        252,
+        223,
+        110,
+        92,
+        86,
+        61
+      ],
+      [
+        233,
+        135,
+        553,
+        257,
+        127,
+        243,
+        109,
+        134,
+        117,
+        202,
+        246,
+        266,
+        173,
+        163
+      ],
+      [
+        211,
+        132,
+        257,
+        550,
+        118,
+        315,
+        86,
+        111,
+        103,
+        215,
+        197,
+        220,
+        189,
+        160
+      ],
+      [
+        126,
+        271,
+        127,
+        118,
+        544,
+        128,
+        263,
+        239,
+        255,
+        179,
+        109,
+        91,
+        92,
+        66
+      ],
+      [
+        239,
+        150,
+        243,
+        315,
+        128,
+        544,
+        93,
+        102,
+        115,
+        185,
+        193,
+        203,
+        201,
+        169
+      ],
+      [
+        103,
+        257,
+        109,
+        86,
+        263,
+        93,
+        539,
+        207,
+        236,
+        163,
+        86,
+        64,
+        64,
+        52
+      ],
+      [
+        130,
+        253,
+        134,
+        111,
+        239,
+        102,
+        207,
+        537,
+        213,
+        219,
+        111,
+        105,
+        65,
+        49
+      ],
+      [
+        118,
+        252,
+        117,
+        103,
+        255,
+        115,
+        236,
+        213,
+        535,
+        185,
+        111,
+        99,
+        105,
+        71
+      ],
+      [
+        150,
+        223,
+        202,
+        215,
+        179,
+        185,
+        163,
+        219,
+        185,
+        533,
+        142,
+        134,
+        106,
+        91
+      ],
+      [
+        290,
+        110,
+        246,
+        197,
+        109,
+        193,
+        86,
+        111,
+        111,
+        142,
+        524,
+        272,
+        182,
+        188
+      ],
+      [
+        238,
+        92,
+        266,
+        220,
+        91,
+        203,
+        64,
+        105,
+        99,
+        134,
+        272,
+        500,
+        167,
+        197
+      ],
+      [
+        179,
+        86,
+        173,
+        189,
+        92,
+        201,
+        64,
+        65,
+        105,
+        106,
+        182,
+        167,
+        457,
+        201
+      ],
+      [
+        231,
+        61,
+        163,
+        160,
+        66,
+        169,
+        52,
+        49,
+        71,
+        91,
+        188,
+        197,
+        201,
+        452
+      ]
+    ],
+    "diagonal_label": "liczba spraw z udziałem sędziego",
+    "off_diagonal_label": "liczba spraw, w których para sędziów orzekała razem"
+  },
+  "quality": {
+    "schema_version": "tk-dashboard-v2",
+    "section_unknown_share": 0,
+    "validation_errors_count": 0,
+    "dropped_invalid_cases_count": 0,
+    "section_reclassified_from_inne_count": 4233,
+    "section_reclassified_from_inne_by_section": {
+      "tenor": 3815,
+      "postanawia": 40,
+      "uzasadnienie_historyczne": 253,
+      "uzasadnienie_postepowanie": 31,
+      "uzasadnienie_prawne": 94
+    },
+    "section_reclassified_by_llm_count": 0,
+    "section_reclassified_by_llm_by_section": {},
+    "section_reclassified_by_forced_count": 842,
+    "section_reclassified_by_forced_by_section": {
+      "tenor": 780,
+      "postanawia": 5,
+      "uzasadnienie_prawne": 15,
+      "uzasadnienie_historyczne": 42
+    },
+    "llm_review_model": null,
+    "llm_review_attempted": false,
+    "force_no_inne_applied": true,
+    "bench_outside_ipo_count": 2
+  },
+  "section_meta": {
+    "komparycja": {
+      "label": "Komparycja / Skład",
+      "color": "#6b7280"
+    },
+    "tenor": {
+      "label": "Tenor",
+      "color": "#be123c"
+    },
+    "orzeka": {
+      "label": "Orzeka",
+      "color": "#dc2626"
+    },
+    "postanawia": {
+      "label": "Postanawia",
+      "color": "#f97316"
+    },
+    "uzasadnienie_historyczne": {
+      "label": "Uzasadnienie: część historyczna",
+      "color": "#2563eb"
+    },
+    "uzasadnienie_postepowanie": {
+      "label": "Uzasadnienie: część postępowania",
+      "color": "#0ea5e9"
+    },
+    "uzasadnienie_prawne": {
+      "label": "Uzasadnienie prawne",
+      "color": "#16a34a"
+    },
+    "uzasadnienie_ogolne": {
+      "label": "Uzasadnienie (ogólne)",
+      "color": "#65a30d"
+    },
+    "zdanie_odrebne": {
+      "label": "Zdanie odrębne",
+      "color": "#7c3aed"
+    },
+    "sentencja_inna": {
+      "label": "Sentencja (inne)",
+      "color": "#f59e0b"
+    },
+    "inne": {
+      "label": "Inne",
+      "color": "#94a3b8"
+    }
+  },
+  "dataset_hash": "dd8c258da67f48dfe6382ce784bf9b628be03d3b067b35980a2018b4f4e2d350",
+  "dataset_generated_at": "2026-02-20T10:31:36.567Z",
+  "normalization_version": "tk-norm-v2"
+}

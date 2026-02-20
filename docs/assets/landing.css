@@ -1,0 +1,334 @@
+.landing-page {
+  background:
+    radial-gradient(circle at 14% -6%, rgba(191, 13, 46, 0.26), transparent 34%),
+    radial-gradient(circle at 92% 12%, rgba(245, 185, 58, 0.24), transparent 38%),
+    linear-gradient(180deg, #f6f2ee 0%, #efebe7 100%);
+}
+
+.landing-hero {
+  padding-bottom: 58px;
+  overflow: hidden;
+}
+
+.landing-hero::before,
+.landing-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.landing-hero::before {
+  width: 440px;
+  height: 440px;
+  right: -150px;
+  top: -180px;
+  background: radial-gradient(circle, rgba(245, 185, 58, 0.28) 0%, rgba(245, 185, 58, 0) 72%);
+}
+
+.landing-hero::after {
+  width: 380px;
+  height: 380px;
+  left: -160px;
+  bottom: -220px;
+  background: radial-gradient(circle, rgba(191, 13, 46, 0.25) 0%, rgba(191, 13, 46, 0) 72%);
+}
+
+.landing-inner {
+  max-width: 1180px;
+  position: relative;
+  z-index: 1;
+  animation: landingFade 500ms ease-out;
+}
+
+@keyframes landingFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.landing-kicker {
+  margin: 0 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(248, 250, 252, 0.95);
+  font-weight: 700;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.65px;
+  background: rgba(15, 23, 42, 0.2);
+}
+
+.landing-cta-row {
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.landing-cta {
+  min-width: 210px;
+  justify-content: center;
+}
+
+.landing-metrics {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.landing-metric {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  padding: 10px 11px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
+  backdrop-filter: blur(2px);
+}
+
+.landing-metric-value {
+  margin: 0;
+  font-size: 1.24rem;
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.landing-metric-label {
+  margin: 3px 0 0;
+  color: rgba(241, 245, 249, 0.84);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+}
+
+.mode-switch-landing {
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.24);
+}
+
+.landing-main {
+  max-width: 1240px;
+  display: grid;
+  gap: 16px;
+  padding-top: 14px;
+}
+
+.landing-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mode-card {
+  border-radius: 16px;
+  padding: 18px 18px 17px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mode-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+}
+
+.mode-card h2 {
+  margin: 9px 0;
+  font-size: 1.24rem;
+  font-family: var(--font-text);
+}
+
+.mode-card p {
+  margin: 0;
+  color: var(--ink-700);
+}
+
+.mode-card-student {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.97), rgba(226, 242, 255, 0.87));
+}
+
+.mode-card-student::before {
+  background: linear-gradient(90deg, #1d4ed8, #0ea5e9);
+}
+
+.mode-card-expert {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.97), rgba(255, 229, 229, 0.88));
+}
+
+.mode-card-expert::before {
+  background: linear-gradient(90deg, #be123c, #f97316);
+}
+
+.mode-chip {
+  margin: 0;
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  font-weight: 800;
+}
+
+.mode-list {
+  margin: 12px 0 16px;
+  padding-left: 18px;
+  color: var(--ink-700);
+  display: grid;
+  gap: 4px;
+}
+
+.mode-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-head {
+  margin-bottom: 10px;
+}
+
+.section-kicker {
+  margin: 0;
+  font-size: 0.74rem;
+  color: var(--ink-500);
+  font-weight: 800;
+  letter-spacing: 0.58px;
+  text-transform: uppercase;
+}
+
+.section-head h2 {
+  margin: 5px 0 0;
+  font-size: clamp(1.28rem, 2.2vw, 1.72rem);
+  font-family: var(--font-text);
+  color: var(--ink-900);
+}
+
+.landing-steps,
+.landing-features {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.92), rgba(250, 247, 243, 0.96));
+  box-shadow: var(--shadow-sm);
+  padding: 16px;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.step-card {
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #faf6f0 100%);
+}
+
+.step-index {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: var(--pl-red);
+}
+
+.step-card h3 {
+  margin: 7px 0 5px;
+  font-size: 1rem;
+  color: var(--ink-900);
+}
+
+.step-card p {
+  margin: 0;
+  color: var(--ink-700);
+  font-size: 0.84rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.feature-card {
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(175deg, #ffffff 0%, #fbf8f3 100%);
+}
+
+.feature-card h3 {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--ink-900);
+}
+
+.feature-card p {
+  margin: 6px 0 0;
+  font-size: 0.83rem;
+  color: var(--ink-700);
+  line-height: 1.45;
+}
+
+.feature-card strong {
+  color: var(--pl-red-deep);
+}
+
+@media (max-width: 1100px) {
+  .landing-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .steps-grid,
+  .features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .landing-paths {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .landing-hero {
+    padding-bottom: 36px;
+  }
+
+  .landing-cta-row {
+    gap: 8px;
+  }
+
+  .landing-cta {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .landing-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-steps,
+  .landing-features {
+    padding: 12px;
+  }
+
+  .steps-grid,
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-switch-landing {
+    display: none;
+  }
+}

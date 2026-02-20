@@ -1,0 +1,19 @@
+# OS / editor
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Local tooling/runtime
+.playwright-cli/
+
+# Generated outputs
+output/
+
+# Full corpus artifacts too large for regular GitHub push
+docs/data/tk_cases.jsonl
+docs/data/similar_cases.json
+
+# Optional local previews
+*.log
