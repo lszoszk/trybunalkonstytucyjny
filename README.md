@@ -19,6 +19,7 @@ Repo URL: `https://github.com/lszoszk/trybunalkonstytucyjny`
 - Case Folder workflow (pin case/paragraph, notes, compare view, chronology, dossier + argument matrix export)
 - URL state persistence (`?q=&sections=&types=&year_from=&year_to=&judge=&signature=`)
 - Worker-based indexing, load guardrails (size limit, progress, cancel), schema checks, friendly upload errors
+- Large local upload support up to 320 MB with streaming parsing for files over 80 MB (JSONL and JSON arrays)
 - Keyboard shortcuts (`/`, `f`, `e`) and print stylesheet
 
 ## 1) Install

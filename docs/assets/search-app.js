@@ -8,7 +8,11 @@ const SIMILARITY_SCHEMA_VERSION = "tk-similarity-v1";
 const PAGE_SIZE = 10;
 const TOOL_VERSION = "tk-dashboard-v2";
 const NORMALIZATION_VERSION = "tk-norm-v2";
-const MAX_FILE_BYTES = 80 * 1024 * 1024;
+const MAX_FILE_BYTES = 320 * 1024 * 1024;
+const LARGE_FILE_STREAMING_THRESHOLD_BYTES = 80 * 1024 * 1024;
+const LARGE_FILE_WORKER_THRESHOLD_BYTES = 120 * 1024 * 1024;
+const TEXT_INDEX_PRECOMPUTE_THRESHOLD_BYTES = 150 * 1024 * 1024;
+const INDEX_YIELD_EVERY_CASES = 25;
 
 const STORAGE_KEYS = {
   savedQueries: "tk_saved_queries",
@@ -686,6 +690,16 @@ async function sha256Hex(text) {
   }
 }
 
+function createAbortError() {
+  return new DOMException("Aborted", "AbortError");
+}
+
+function yieldToMainThread() {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
+}
+
 function normalizeRawSection(text) {
   const norm = normalizeSearchText(text);
   if (!norm) return "inne";
@@ -1006,27 +1020,44 @@ function sanitizeCase(caseItem, index = 0) {
   };
 }
 
+function normalizeAndValidateRow(row, index = 0) {
+  if (!row || typeof row !== "object") {
+    return {
+      normalized: null,
+      errors: 1
+    };
+  }
+
+  const looksNormalized = Array.isArray(row.paragraphs)
+    && (!row.paragraphs.length || Object.prototype.hasOwnProperty.call(row.paragraphs[0], "section_key"));
+
+  const normalized = looksNormalized ? sanitizeCase(row, index) : sanitizeCase(normalizeRawDecision(row), index);
+  let errors = validateCaseShape(normalized);
+
+  if (!normalized.paragraphs.length) {
+    errors += 1;
+    return {
+      normalized: null,
+      errors
+    };
+  }
+
+  return {
+    normalized,
+    errors
+  };
+}
+
 function normalizeAndValidateRows(rows) {
   const sanitized = [];
   let validationErrors = 0;
 
   for (const [index, row] of (rows || []).entries()) {
-    if (!row || typeof row !== "object") {
-      validationErrors += 1;
-      continue;
+    const normalized = normalizeAndValidateRow(row, index);
+    validationErrors += normalized.errors;
+    if (normalized.normalized) {
+      sanitized.push(normalized.normalized);
     }
-
-    const looksNormalized = Array.isArray(row.paragraphs)
-      && (!row.paragraphs.length || Object.prototype.hasOwnProperty.call(row.paragraphs[0], "section_key"));
-
-    const normalized = looksNormalized ? sanitizeCase(row, index) : sanitizeCase(normalizeRawDecision(row), index);
-    validationErrors += validateCaseShape(normalized);
-
-    if (!normalized.paragraphs.length) {
-      validationErrors += 1;
-      continue;
-    }
-    sanitized.push(normalized);
   }
 
   return {
@@ -1203,7 +1234,8 @@ function renderProvenanceBanner() {
   `;
 }
 
-function buildParagraphIndexSync(cases) {
+async function buildParagraphIndexInMainThread(cases, options = {}) {
+  const precomputeTextIndex = options.precomputeTextIndex !== false;
   const sectionSet = new Set();
   const typeSet = new Set();
   const yearSet = new Set();
@@ -1227,11 +1259,12 @@ function buildParagraphIndexSync(cases) {
     const signatureNorm = normalizeSearchText(caseItem.case_signature || "");
     const typeNorm = normalizeSearchText(`${decisionTypeIpo.label || ""} ${caseItem.decision_type || ""}`);
     const topicNorm = normalizeSearchText(caseItem.topic || "");
-    const judgeNorm = (caseItem.judge_names || []).map((name) => normalizeSearchText(name));
+    const judgeNorm = (caseItem.judge_names || []).map((name) => normalizeSearchText(name)).filter(Boolean);
 
     for (const paragraph of caseItem.paragraphs || []) {
       const sectionKey = paragraph.section_key || "inne";
       sectionSet.add(sectionKey);
+      const paragraphText = paragraph.text || "";
       paragraphIndex.push({
         caseIndex,
         caseSignatureNorm: signatureNorm,
@@ -1242,9 +1275,18 @@ function buildParagraphIndexSync(cases) {
         sectionKey,
         sectionLabel: paragraph.section_label,
         paragraph,
-        textNorm: normalizeSearchText(paragraph.text),
-        textLegal: normalizeLegalCitationText(paragraph.text)
+        textLegal: precomputeTextIndex ? normalizeLegalCitationText(paragraphText) : null
       });
+    }
+
+    if ((caseIndex + 1) % 10 === 0) {
+      setDatasetStatus(
+        `Indeksowanie danych: ${fmtNumber(caseIndex + 1)} / ${fmtNumber(cases.length)} spraw...`,
+        "info"
+      );
+    }
+    if ((caseIndex + 1) % INDEX_YIELD_EVERY_CASES === 0) {
+      await yieldToMainThread();
     }
   }
 
@@ -1263,9 +1305,16 @@ function buildParagraphIndexSync(cases) {
   };
 }
 
-function indexDatasetCases(cases) {
-  if (typeof Worker === "undefined") {
-    return Promise.resolve(buildParagraphIndexSync(cases));
+function indexDatasetCases(cases, options = {}) {
+  const sourceBytes = Number(options.sourceBytes);
+  const precomputeTextIndex = options.precomputeTextIndex !== false;
+  const forceMainThread = options.forceMainThread === true;
+  const shouldUseWorker = !forceMainThread
+    && typeof Worker !== "undefined"
+    && (!Number.isFinite(sourceBytes) || sourceBytes <= LARGE_FILE_WORKER_THRESHOLD_BYTES);
+
+  if (!shouldUseWorker) {
+    return buildParagraphIndexInMainThread(cases, { precomputeTextIndex });
   }
 
   return new Promise((resolve) => {
@@ -1300,10 +1349,10 @@ function indexDatasetCases(cases) {
       if (resolved) return;
       resolved = true;
       worker.terminate();
-      resolve(buildParagraphIndexSync(cases));
+      resolve(buildParagraphIndexInMainThread(cases, { precomputeTextIndex }));
     };
 
-    worker.postMessage({ type: "index", cases });
+    worker.postMessage({ type: "index", cases, precomputeTextIndex });
   });
 }
 
@@ -1934,20 +1983,27 @@ function evaluateFieldOperand(operand, entry) {
   }
 }
 
-function evaluateOperand(operand, entry) {
+function getEntryTextLegal(entry) {
+  if (typeof entry?.textLegal === "string") {
+    return entry.textLegal;
+  }
+  return normalizeLegalCitationText(entry?.paragraph?.text || "");
+}
+
+function evaluateOperand(operand, entry, entryTextLegal = getEntryTextLegal(entry)) {
   if (operand.kind === "text") {
-    return entry.textNorm.includes(operand.norm) || entry.textLegal.includes(operand.legal);
+    return entryTextLegal.includes(operand.norm) || entryTextLegal.includes(operand.legal);
   }
   return evaluateFieldOperand(operand, entry);
 }
 
-function evaluateQuery(entry, parsedQuery) {
+function evaluateQuery(entry, parsedQuery, entryTextLegal) {
   if (!parsedQuery?.hasQuery) return true;
   const stack = [];
 
   for (const token of parsedQuery.rpn) {
     if (token.type === "OPERAND") {
-      stack.push(evaluateOperand(token.operand, entry));
+      stack.push(evaluateOperand(token.operand, entry, entryTextLegal));
       continue;
     }
 
@@ -1980,7 +2036,7 @@ function countOccurrences(text, term) {
   return count;
 }
 
-function computeScore(entry, parsedQuery) {
+function computeScore(entry, parsedQuery, entryTextLegal = getEntryTextLegal(entry)) {
   if (!parsedQuery?.textOperands?.length) {
     const sectionWeight = SECTION_SCORE_WEIGHT[entry.sectionKey] || 1;
     return {
@@ -1994,7 +2050,7 @@ function computeScore(entry, parsedQuery) {
 
   for (const operand of parsedQuery.textOperands) {
     const term = operand.legal || operand.norm;
-    const occurrences = countOccurrences(entry.textLegal, term);
+    const occurrences = countOccurrences(entryTextLegal, term);
     tf += occurrences;
     if (operand.quoted && occurrences > 0) {
       phraseBonus += 1.4;
@@ -2251,7 +2307,6 @@ function buildQueryEvaluationEntry(caseItem, paragraph) {
     judgeNorm: (caseItem.judge_names || []).map((name) => normalizeSearchText(name)),
     year: caseItem.year || null,
     sectionKey: paragraph.section_key || "inne",
-    textNorm: normalizeSearchText(paragraph.text || ""),
     textLegal: normalizeLegalCitationText(paragraph.text || "")
   };
 }
@@ -2309,14 +2364,16 @@ function runSearch(options = {}) {
   } else {
     const grouped = new Map();
     let totalHits = 0;
+    const queryNeedsTextLegal = Boolean(parsedQuery?.textOperands?.length);
 
     for (const entry of state.paragraphIndex) {
       const caseItem = state.cases[entry.caseIndex];
       if (!casePassesFilters(caseItem, filters)) continue;
       if (filters.sections.length && !filters.sections.includes(entry.sectionKey)) continue;
-      if (!evaluateQuery(entry, parsedQuery)) continue;
+      const entryTextLegal = queryNeedsTextLegal ? getEntryTextLegal(entry) : "";
+      if (!evaluateQuery(entry, parsedQuery, entryTextLegal)) continue;
 
-      const scoring = computeScore(entry, parsedQuery);
+      const scoring = computeScore(entry, parsedQuery, entryTextLegal);
       const snippetTerms = (parsedQuery?.textOperands || [])
         .map((operand) => operand.legal || operand.norm)
         .filter(Boolean);
@@ -4204,8 +4261,307 @@ function readFileWithProgress(file) {
   });
 }
 
+async function readFirstNonWhitespaceChar(file, sampleBytes = 64 * 1024) {
+  const head = await file.slice(0, sampleBytes).text();
+  const match = String(head || "").match(/\S/u);
+  return match ? match[0] : "";
+}
+
+async function parseDatasetJsonlStream(file) {
+  if (typeof file?.stream !== "function") {
+    throw new Error("Przeglądarka nie obsługuje strumieniowego odczytu plików.");
+  }
+
+  const reader = file.stream().getReader();
+  const decoder = new TextDecoder("utf-8");
+  const streamController = {
+    aborted: false,
+    abort() {
+      this.aborted = true;
+      void reader.cancel().catch(() => {});
+    }
+  };
+  state.currentFileReader = streamController;
+
+  const cases = [];
+  let validationErrors = 0;
+  let rowIndex = 0;
+  let lineNumber = 0;
+  let seenFirstPayloadLine = false;
+  let loaded = 0;
+  let lastPercent = -1;
+  let chunkCount = 0;
+  let remainder = "";
+
+  const processLine = (rawLine) => {
+    lineNumber += 1;
+    let line = rawLine.endsWith("\r") ? rawLine.slice(0, -1) : rawLine;
+    if (!seenFirstPayloadLine) {
+      line = line.replace(/^\uFEFF/, "");
+    }
+    if (!line.trim()) return;
+    seenFirstPayloadLine = true;
+
+    let parsed;
+    try {
+      parsed = JSON.parse(line);
+    } catch {
+      throw new Error(`Błąd formatu JSONL w wierszu ${lineNumber}.`);
+    }
+
+    const records = Array.isArray(parsed) ? parsed : [parsed];
+    for (const record of records) {
+      const normalized = normalizeAndValidateRow(record, rowIndex);
+      validationErrors += normalized.errors;
+      if (normalized.normalized) {
+        cases.push(normalized.normalized);
+      }
+      rowIndex += 1;
+    }
+  };
+
+  try {
+    while (true) {
+      if (streamController.aborted) {
+        throw createAbortError();
+      }
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (streamController.aborted) {
+        throw createAbortError();
+      }
+
+      loaded += value.byteLength;
+      remainder += decoder.decode(value, { stream: true });
+
+      let newlineIndex = remainder.indexOf("\n");
+      while (newlineIndex >= 0) {
+        const line = remainder.slice(0, newlineIndex);
+        remainder = remainder.slice(newlineIndex + 1);
+        processLine(line);
+        newlineIndex = remainder.indexOf("\n");
+      }
+
+      if (file.size > 0) {
+        const percent = Math.round((loaded / file.size) * 100);
+        if (percent !== lastPercent) {
+          lastPercent = percent;
+          setDatasetStatus(`Wczytywanie pliku: ${percent}% • sprawy: ${fmtNumber(cases.length)}`, "info");
+        }
+      }
+
+      chunkCount += 1;
+      if (chunkCount % 8 === 0) {
+        await yieldToMainThread();
+      }
+    }
+    remainder += decoder.decode();
+    if (remainder.length) {
+      processLine(remainder);
+    }
+  } catch (error) {
+    if (streamController.aborted) {
+      throw createAbortError();
+    }
+    throw error;
+  } finally {
+    try {
+      reader.releaseLock();
+    } catch {
+      // no-op
+    }
+  }
+
+  return {
+    cases,
+    validationErrors
+  };
+}
+
+async function parseDatasetJsonArrayStream(file) {
+  if (typeof file?.stream !== "function") {
+    throw new Error("Przeglądarka nie obsługuje strumieniowego odczytu plików.");
+  }
+
+  const reader = file.stream().getReader();
+  const decoder = new TextDecoder("utf-8");
+  const streamController = {
+    aborted: false,
+    abort() {
+      this.aborted = true;
+      void reader.cancel().catch(() => {});
+    }
+  };
+  state.currentFileReader = streamController;
+
+  const cases = [];
+  let validationErrors = 0;
+  let rowIndex = 0;
+  let loaded = 0;
+  let lastPercent = -1;
+  let chunkCount = 0;
+
+  let started = false;
+  let finished = false;
+  let inString = false;
+  let escapeNext = false;
+  let depth = 0;
+  let currentRecord = "";
+
+  const processRecord = (rawRecord) => {
+    let parsed;
+    try {
+      parsed = JSON.parse(rawRecord);
+    } catch {
+      throw new Error(`Błąd formatu JSON w rekordzie ${rowIndex + 1}.`);
+    }
+
+    const normalized = normalizeAndValidateRow(parsed, rowIndex);
+    validationErrors += normalized.errors;
+    if (normalized.normalized) {
+      cases.push(normalized.normalized);
+    }
+    rowIndex += 1;
+  };
+
+  const processChunk = (chunk) => {
+    for (let i = 0; i < chunk.length; i += 1) {
+      const char = chunk[i];
+
+      if (!started) {
+        if (char === "\uFEFF") continue;
+        if (/\s/u.test(char)) continue;
+        if (char !== "[") {
+          throw new Error("Duży plik JSON musi zaczynać się od tablicy rekordów.");
+        }
+        started = true;
+        continue;
+      }
+
+      if (finished) {
+        if (!/\s/u.test(char)) {
+          throw new Error("Nieprawidłowy format JSON po zakończeniu tablicy.");
+        }
+        continue;
+      }
+
+      if (depth === 0) {
+        if (/\s/u.test(char) || char === ",") continue;
+        if (char === "]") {
+          finished = true;
+          continue;
+        }
+        if (char !== "{") {
+          throw new Error("Duży plik JSON musi zawierać tablicę obiektów.");
+        }
+        currentRecord = "{";
+        depth = 1;
+        inString = false;
+        escapeNext = false;
+        continue;
+      }
+
+      currentRecord += char;
+
+      if (inString) {
+        if (escapeNext) {
+          escapeNext = false;
+          continue;
+        }
+        if (char === "\\") {
+          escapeNext = true;
+          continue;
+        }
+        if (char === "\"") {
+          inString = false;
+        }
+        continue;
+      }
+
+      if (char === "\"") {
+        inString = true;
+        continue;
+      }
+      if (char === "{" || char === "[") {
+        depth += 1;
+        continue;
+      }
+      if (char === "}" || char === "]") {
+        depth -= 1;
+        if (depth < 0) {
+          throw new Error("Nieprawidłowe domknięcie nawiasów w JSON.");
+        }
+        if (depth === 0) {
+          processRecord(currentRecord);
+          currentRecord = "";
+        }
+      }
+    }
+  };
+
+  try {
+    while (true) {
+      if (streamController.aborted) {
+        throw createAbortError();
+      }
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (streamController.aborted) {
+        throw createAbortError();
+      }
+
+      loaded += value.byteLength;
+      processChunk(decoder.decode(value, { stream: true }));
+
+      if (file.size > 0) {
+        const percent = Math.round((loaded / file.size) * 100);
+        if (percent !== lastPercent) {
+          lastPercent = percent;
+          setDatasetStatus(`Wczytywanie pliku: ${percent}% • sprawy: ${fmtNumber(cases.length)}`, "info");
+        }
+      }
+
+      chunkCount += 1;
+      if (chunkCount % 8 === 0) {
+        await yieldToMainThread();
+      }
+    }
+    processChunk(decoder.decode());
+  } catch (error) {
+    if (streamController.aborted) {
+      throw createAbortError();
+    }
+    throw error;
+  } finally {
+    try {
+      reader.releaseLock();
+    } catch {
+      // no-op
+    }
+  }
+
+  if (!started) {
+    return {
+      cases: [],
+      validationErrors
+    };
+  }
+  if (!finished || depth !== 0 || currentRecord.trim()) {
+    throw new Error("Nieprawidłowy lub niekompletny format dużego pliku JSON.");
+  }
+
+  return {
+    cases,
+    validationErrors
+  };
+}
+
 async function hydrateDataset(rows, options = {}) {
-  const { cases, validationErrors } = normalizeAndValidateRows(rows);
+  const prepared = options.rowsAreNormalized
+    ? rows
+    : normalizeAndValidateRows(rows);
+  const cases = Array.isArray(prepared?.cases) ? prepared.cases : [];
+  const validationErrors = Number.isFinite(prepared?.validationErrors) ? prepared.validationErrors : 0;
   if (!cases.length) {
     throw new Error("Nie znaleziono poprawnych orzeczeń w przesłanym pliku.");
   }
@@ -4239,7 +4595,11 @@ async function hydrateDataset(rows, options = {}) {
 
   setSearchEnabled(false);
   setDatasetStatus("Indeksowanie zbioru...", "info");
-  const indexed = await indexDatasetCases(cases);
+  const indexed = await indexDatasetCases(cases, {
+    sourceBytes: options.sourceBytes,
+    precomputeTextIndex: options.precomputeTextIndex,
+    forceMainThread: options.forceMainThread
+  });
 
   state.paragraphIndex = indexed.paragraphIndex;
   state.sections = indexed.sections;
@@ -4326,12 +4686,31 @@ async function handleFile(file) {
 
   setLoadingControls(true);
   try {
+    if (file.size > LARGE_FILE_STREAMING_THRESHOLD_BYTES) {
+      const firstNonWhitespace = await readFirstNonWhitespaceChar(file);
+      const precomputeTextIndex = file.size <= TEXT_INDEX_PRECOMPUTE_THRESHOLD_BYTES;
+      const parsedLarge = firstNonWhitespace === "["
+        ? await parseDatasetJsonArrayStream(file)
+        : await parseDatasetJsonlStream(file);
+      await hydrateDataset(parsedLarge, {
+        rowsAreNormalized: true,
+        sourceName: file.name,
+        sourceHash: "",
+        sourceBytes: file.size,
+        precomputeTextIndex,
+        forceMainThread: true
+      });
+      return;
+    }
+
     const text = await readFileWithProgress(file);
     const parsed = parseDatasetText(text);
     const hash = await sha256Hex(text);
     await hydrateDataset(parsed, {
       sourceName: file.name,
-      sourceHash: hash
+      sourceHash: hash,
+      sourceBytes: file.size,
+      precomputeTextIndex: true
     });
   } finally {
     setLoadingControls(false);

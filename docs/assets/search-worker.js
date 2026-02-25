@@ -57,6 +57,7 @@ self.onmessage = (event) => {
   if (payload.type !== "index") return;
 
   const cases = Array.isArray(payload.cases) ? payload.cases : [];
+  const precomputeTextIndex = payload.precomputeTextIndex !== false;
   const paragraphIndex = [];
   const sectionSet = new Set();
   const typeSet = new Set();
@@ -86,6 +87,7 @@ self.onmessage = (event) => {
     for (const paragraph of caseItem.paragraphs || []) {
       const sectionKey = paragraph.section_key || "inne";
       sectionSet.add(sectionKey);
+      const paragraphText = paragraph.text || "";
 
       paragraphIndex.push({
         caseIndex,
@@ -103,10 +105,9 @@ self.onmessage = (event) => {
           section_key: sectionKey,
           section_label: paragraph.section_label,
           section_confidence: paragraph.section_confidence,
-          text: paragraph.text
+          text: paragraphText
         },
-        textNorm: normalizeSearchText(paragraph.text || ""),
-        textLegal: normalizeLegalCitationText(paragraph.text || "")
+        textLegal: precomputeTextIndex ? normalizeLegalCitationText(paragraphText) : null
       });
     }
 
