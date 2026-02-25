@@ -166,6 +166,23 @@
   font-size: 0.8rem;
 }
 
+.dataset-download-hint {
+  margin: 7px 0 0;
+  color: rgba(241, 245, 249, 0.92);
+  font-size: 0.79rem;
+}
+
+.dataset-download-hint a {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.62);
+  text-underline-offset: 2px;
+  font-weight: 700;
+}
+
+.dataset-download-hint a:hover {
+  text-decoration-color: rgba(255, 255, 255, 0.9);
+}
+
 .quick-presets {
   margin-top: 8px;
   display: flex;

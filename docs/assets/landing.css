@@ -80,6 +80,28 @@
   justify-content: center;
 }
 
+.landing-dataset-hint {
+  margin: 11px 0 0;
+  display: inline-block;
+  padding: 7px 11px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  background: rgba(15, 23, 42, 0.2);
+  color: rgba(241, 245, 249, 0.95);
+  font-size: 0.8rem;
+}
+
+.landing-dataset-hint a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration-color: rgba(255, 255, 255, 0.62);
+  text-underline-offset: 2px;
+}
+
+.landing-dataset-hint a:hover {
+  text-decoration-color: rgba(255, 255, 255, 0.9);
+}
+
 .landing-metrics {
   margin-top: 22px;
   display: grid;

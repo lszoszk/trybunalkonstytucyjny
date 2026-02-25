@@ -98,6 +98,21 @@ a {
   letter-spacing: 0.22px;
 }
 
+.brand-beta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(15, 23, 42, 0.26);
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.55px;
+  line-height: 1.1;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -358,7 +373,7 @@ a {
 }
 
 .footer {
-  margin-top: 24px;
+  margin-top: 18px;
   border-top: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.82);
 }
@@ -366,13 +381,13 @@ a {
 .footer-inner {
   max-width: 1360px;
   margin: 0 auto;
-  padding: 14px 18px;
+  padding: 8px 14px;
   color: var(--ink-500);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
   text-align: center;
 }
@@ -384,7 +399,7 @@ a {
 .footer-link {
   color: var(--ink-700);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 650;
   border-bottom: 1px solid rgba(51, 65, 85, 0.35);
   transition: 0.14s ease;
 }

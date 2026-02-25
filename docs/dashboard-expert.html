@@ -16,6 +16,7 @@
       <a href="index.html" class="brand">
         <span class="brand-icon">§</span>
         <span class="brand-text">Orzecznictwo TK</span>
+        <span class="brand-beta" aria-label="Wersja beta">BETA</span>
       </a>
       <div class="nav-links">
         <a class="nav-link" href="index.html">Start</a>
@@ -61,6 +62,10 @@
           <button id="searchBtn" type="submit" class="btn btn-primary" disabled>Szukaj</button>
         </div>
         <p id="queryError" class="query-error" hidden></p>
+        <p class="dataset-download-hint">
+          Pełny zbiór danych możesz pobrać z
+          <a href="https://huggingface.co/datasets/lszoszk/constcourt-full" target="_blank" rel="noopener noreferrer">Hugging Face</a>.
+        </p>
         <div class="search-tips">
           <span><code>sygn:</code> <code>sedzia:</code> <code>typ:</code> <code>sekcja:</code> <code>rok:</code> <code>teza:</code></span>
           <span>•</span>
@@ -178,6 +183,7 @@
         <section id="emptyState" class="panel empty-state">
           <h2>Załaduj dane i rozpocznij wyszukiwanie</h2>
           <p>Domyślna jednostka wynikowa: akapit przypisany do sekcji orzeczenia, z grupowaniem w obrębie sprawy.</p>
+          <p>Pełny zbiór danych pobierzesz z <a href="https://huggingface.co/datasets/lszoszk/constcourt-full" target="_blank" rel="noopener noreferrer">Hugging Face</a>.</p>
         </section>
 
         <section id="resultsList" class="results-list"></section>
@@ -274,8 +280,9 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <span class="footer-note">Dashboard konstytucyjny TK • tryb ekspert</span>
+      <span class="footer-note">Autor: Łukasz Szoszkiewicz</span>
       <a class="footer-link" href="https://github.com/lszoszk/trybunalkonstytucyjny" target="_blank" rel="noopener noreferrer">Repozytorium GitHub</a>
+      <a class="footer-link" href="https://huggingface.co/datasets/lszoszk/constcourt-full" target="_blank" rel="noopener noreferrer">Pełny zbiór danych (Hugging Face)</a>
     </div>
   </footer>
 

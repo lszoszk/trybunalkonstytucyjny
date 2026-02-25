@@ -16,7 +16,8 @@
     "build:lemma-shards:sample200": "python3 scripts/build_lemma_shards.py --input docs/data/tk_cases_sample200.jsonl --outdir docs/data/lemma_shards --dataset-key sample200",
     "build:lemma-shards:all": "npm run build:lemma-shards:full && npm run build:lemma-shards:full-bench && npm run build:lemma-shards:sample200",
     "build:all": "npm run build:dashboard && npm run build:similarity",
-    "preview:docs": "python3 -m http.server 4173 --directory docs"
+    "preview:docs": "python3 -m http.server 4173 --directory docs",
+    "publish:hf:dataset": "python3 scripts/publish_hf_dataset.py"
   },
   "dependencies": {
     "playwright": "^1.54.2"

@@ -124,6 +124,45 @@ Open:
 - Dashboard Student: `http://localhost:4173/dashboard-student.html`
 - Analytics: `http://localhost:4173/analytics.html`
 
+## 5) Publish full dataset to Hugging Face (first time)
+
+Install/upload prerequisites:
+
+```bash
+pip install huggingface_hub
+huggingface-cli login
+```
+
+Dry-run (verifies file selection and total payload size only):
+
+```bash
+npm run publish:hf:dataset -- --repo-id <your-hf-user>/<dataset-repo> --dry-run
+```
+
+Upload full dataset snapshot (`tk_cases`, `full_bench`, `similar_cases`, `lemma_shards/full*`):
+
+```bash
+npm run publish:hf:dataset -- --repo-id <your-hf-user>/<dataset-repo>
+```
+
+Optional: include sample datasets too:
+
+```bash
+npm run publish:hf:dataset -- --repo-id <your-hf-user>/<dataset-repo> --include-samples
+```
+
+Keep only core files (`tk_cases.jsonl` + `tk_cases_full_bench.jsonl`) and prune the rest on HF:
+
+```bash
+npm run publish:hf:dataset -- --repo-id <your-hf-user>/<dataset-repo> --profile core --prune-remote
+```
+
+Update only dataset card/description on HF (no data re-upload):
+
+```bash
+npm run publish:hf:dataset -- --repo-id <your-hf-user>/<dataset-repo> --readme-only
+```
+
 ## Structure and legal IA
 
 See:
