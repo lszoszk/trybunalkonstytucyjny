@@ -1,9 +1,9 @@
 {
   "schema_version": "tk-similarity-v1",
   "similarity_version": "tk-sim-hybrid-v2-dotyczy",
-  "generated_at": "2026-02-25T12:02:18.470Z",
-  "dataset_hash": "9bbb1a3e7c2ec1fe8d6b420b7eb5fac9b463cba7242648c3f19472974ee35c9c",
-  "dataset_generated_at": "2026-02-25T12:00:47.131Z",
+  "generated_at": "2026-02-25T14:13:58.920Z",
+  "dataset_hash": "413c82b97a083afc98198d5997f4296529d22d21c9aab572fe6abadab8b1963f",
+  "dataset_generated_at": "2026-02-25T14:07:05.345Z",
   "source_name": "tk_cases_sample50.jsonl",
   "scope": "sample50",
   "config": {
@@ -80,7 +80,7 @@
           "Wspólne frazy w tekście: nieletnich, delegacji, osrodku",
           "To samo repertorium: U"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25181&sprawa=28948"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25181&sprawa=28948"
       },
       {
         "document_id": "25164",
@@ -99,7 +99,7 @@
           "Wspólne frazy w tekście: generalna, precyzyjne",
           "To samo repertorium: U"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25164&sprawa=27927"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25164&sprawa=27927"
       },
       {
         "document_id": "25173",
@@ -117,7 +117,7 @@
           "Wspólne przepisy: art. 32 ust. 1, art. 59 ust. 1 pkt 4",
           "Wspólne frazy w tekście: wychowawczego, opieki, edukacji"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25173&sprawa=25902"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25173&sprawa=25902"
       },
       {
         "document_id": "25235",
@@ -135,7 +135,7 @@
           "Wspólne przepisy: art. 2, art. 32 ust. 1, art. 92 ust. 1",
           "Wspólne frazy w tekście: zastapione, obowiazywac, aktualny"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25235&sprawa=27911"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25235&sprawa=27911"
       },
       {
         "document_id": "25136",
@@ -153,7 +153,7 @@
           "Wspólne przepisy: art. 12, art. 2, art. 167 ust. 1",
           "Wspólne frazy w tekście: powiatu, powiat, dochodach"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25136&sprawa=22292"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25136&sprawa=22292"
       }
     ],
     "25068": [
@@ -174,7 +174,7 @@
           "Wspólne frazy w tekście: ujemna, sprawowanego, zajecia",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25178&sprawa=22576"
       },
       {
         "document_id": "25167",
@@ -193,7 +193,7 @@
           "Wspólne frazy w tekście: ujemna, wstepnej, przedstawila",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       },
       {
         "document_id": "25140",
@@ -212,7 +212,7 @@
           "Wspólne frazy w tekście: prowadzonym, odrzuceniu, merito",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25140&sprawa=28824"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25140&sprawa=28824"
       },
       {
         "document_id": "25169",
@@ -231,7 +231,7 @@
           "Wspólne frazy w tekście: kasacyjnej, naruszen, wstepnej",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25169&sprawa=28821"
       },
       {
         "document_id": "25165",
@@ -250,7 +250,7 @@
           "Wspólne frazy w tekście: notarialne, wladczego, rozpoznajacego",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25165&sprawa=28022"
       }
     ],
     "25081": [
@@ -271,7 +271,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25174&sprawa=27639"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25174&sprawa=27639"
       },
       {
         "document_id": "25134",
@@ -290,7 +290,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25134&sprawa=27156"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25134&sprawa=27156"
       },
       {
         "document_id": "25135",
@@ -309,7 +309,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, zakaznych, ochronnych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25135&sprawa=28306"
       },
       {
         "document_id": "25161",
@@ -328,7 +328,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, zakaznych, ochronnych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25161&sprawa=27807"
       },
       {
         "document_id": "25179",
@@ -347,7 +347,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, zakaznych, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25179&sprawa=27482"
       }
     ],
     "25082": [
@@ -368,7 +368,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
           "Wspólne frazy w tekście: adwokata, nieoplaconej, udzielonej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25227&sprawa=24952"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25227&sprawa=24952"
       },
       {
         "document_id": "25163",
@@ -387,7 +387,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
           "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25163&sprawa=26541"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25163&sprawa=26541"
       },
       {
         "document_id": "25235",
@@ -406,7 +406,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
           "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25235&sprawa=27911"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25235&sprawa=27911"
       },
       {
         "document_id": "25168",
@@ -425,7 +425,7 @@
           "Wspólne frazy w tekście: obroncy, obroncow, adwokata",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25168&sprawa=27357"
       },
       {
         "document_id": "25176",
@@ -444,7 +444,7 @@
           "Wspólne frazy w tekście: obwinionego, obroncy, adwokata",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25176&sprawa=28654"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25176&sprawa=28654"
       }
     ],
     "25083": [
@@ -465,7 +465,7 @@
           "Wspólne frazy w tekście: skarzace, dziedziczenia, wierzytelnosci",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25264&sprawa=20712"
       },
       {
         "document_id": "25169",
@@ -484,7 +484,7 @@
           "Wspólne frazy w tekście: podkr, orzeczono, wezwania",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25169&sprawa=28821"
       },
       {
         "document_id": "25138",
@@ -503,7 +503,7 @@
           "Wspólne frazy w tekście: zastepcy, zastepcow, przyzwoitej",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25138&sprawa=26598"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25138&sprawa=26598"
       },
       {
         "document_id": "25168",
@@ -522,7 +522,7 @@
           "Wspólne frazy w tekście: radca, adwokat, profesjonalnego",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25168&sprawa=27357"
       },
       {
         "document_id": "25167",
@@ -541,7 +541,7 @@
           "Wspólne frazy w tekście: profesjonalnego, skarzacych, starannosci",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       }
     ],
     "25084": [
@@ -562,7 +562,7 @@
           "Wspólne frazy w tekście: opieki, niepelnosprawnosci, pielegnacyjnego",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25170&sprawa=28659"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25170&sprawa=28659"
       },
       {
         "document_id": "25173",
@@ -581,7 +581,7 @@
           "Wspólne frazy w tekście: pielegnacyjnego, opieki, niepelnosprawnosci",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25173&sprawa=25902"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25173&sprawa=25902"
       },
       {
         "document_id": "25141",
@@ -599,7 +599,7 @@
           "Wspólne przepisy: art. 69, art. 2",
           "Wspólne frazy w tekście: niepelnosprawnosci, niepelnosprawnoscia, egzystencji"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25141&sprawa=28436"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25141&sprawa=28436"
       },
       {
         "document_id": "25161",
@@ -618,7 +618,7 @@
           "Wspólne frazy w tekście: dziecka, corki, opiekuna",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25161&sprawa=27807"
       },
       {
         "document_id": "25162",
@@ -637,7 +637,7 @@
           "Wspólne frazy w tekście: dziecka, corki, opiekuna",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25162&sprawa=28321"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25162&sprawa=28321"
       }
     ],
     "25108": [
@@ -658,7 +658,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25179&sprawa=27482"
       },
       {
         "document_id": "25228",
@@ -677,7 +677,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25228&sprawa=27305"
       },
       {
         "document_id": "25226",
@@ -696,7 +696,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25226&sprawa=26970"
       },
       {
         "document_id": "25133",
@@ -715,7 +715,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25133&sprawa=26975"
       },
       {
         "document_id": "25161",
@@ -734,7 +734,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25161&sprawa=27807"
       }
     ],
     "25133": [
@@ -755,7 +755,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25135&sprawa=28306"
       },
       {
         "document_id": "25161",
@@ -774,7 +774,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25161&sprawa=27807"
       },
       {
         "document_id": "25108",
@@ -793,7 +793,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25108&sprawa=27006"
       },
       {
         "document_id": "25228",
@@ -812,7 +812,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25228&sprawa=27305"
       },
       {
         "document_id": "25226",
@@ -831,7 +831,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25226&sprawa=26970"
       }
     ],
     "25134": [
@@ -852,7 +852,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25174&sprawa=27639"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25174&sprawa=27639"
       },
       {
         "document_id": "25081",
@@ -871,7 +871,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25081&sprawa=28403"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25081&sprawa=28403"
       },
       {
         "document_id": "25133",
@@ -890,7 +890,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, zakaznych, ochronnych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25133&sprawa=26975"
       },
       {
         "document_id": "25135",
@@ -909,7 +909,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, ochronnych, zakaznych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25135&sprawa=28306"
       },
       {
         "document_id": "25161",
@@ -928,7 +928,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, ochronnych, zakaznych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25161&sprawa=27807"
       }
     ],
     "25135": [
@@ -949,7 +949,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25161&sprawa=27807"
       },
       {
         "document_id": "25133",
@@ -968,7 +968,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25133&sprawa=26975"
       },
       {
         "document_id": "25108",
@@ -987,7 +987,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25108&sprawa=27006"
       },
       {
         "document_id": "25226",
@@ -1006,7 +1006,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25226&sprawa=26970"
       },
       {
         "document_id": "25228",
@@ -1025,7 +1025,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25228&sprawa=27305"
       }
     ],
     "25136": [
@@ -1046,7 +1046,7 @@
           "Wspólne frazy w tekście: powstale, kompetencyjnej, legalizmu",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25230&sprawa=27301"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25230&sprawa=27301"
       },
       {
         "document_id": "25139",
@@ -1065,7 +1065,7 @@
           "Wspólne frazy w tekście: csk, powodztwa, zobowiazuje",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25139&sprawa=23692"
       },
       {
         "document_id": "25180",
@@ -1084,7 +1084,7 @@
           "Wspólne frazy w tekście: przechodza, przechodzi, przejsc",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25180&sprawa=28825"
       },
       {
         "document_id": "25166",
@@ -1103,7 +1103,7 @@
           "Wspólne frazy w tekście: ruchomosci, odebrania, koresponduje",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25166&sprawa=26723"
       },
       {
         "document_id": "25177",
@@ -1122,7 +1122,7 @@
           "Wspólne frazy w tekście: likwidacji, przejecia, zobowiazuje",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25177&sprawa=26324"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25177&sprawa=26324"
       }
     ],
     "25138": [
@@ -1143,7 +1143,7 @@
           "Wspólne frazy w tytule: malzenska wspolnoscia, wspolnoscia majatkowa",
           "Wspólne frazy w tekście: malzenska, wspolnoscia, majatkowa"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25166&sprawa=26723"
       },
       {
         "document_id": "25169",
@@ -1162,7 +1162,7 @@
           "Wspólne frazy w tekście: powiazala, przyzwoitej, wsa",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25169&sprawa=28821"
       },
       {
         "document_id": "25083",
@@ -1181,7 +1181,7 @@
           "Wspólne frazy w tekście: zastepcy, zastepcow, przyzwoitej",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25083&sprawa=22860"
       },
       {
         "document_id": "25133",
@@ -1200,7 +1200,7 @@
           "Wspólne frazy w tekście: demonstratio, falsa, nocet",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25133&sprawa=26975"
       },
       {
         "document_id": "25108",
@@ -1219,7 +1219,7 @@
           "Wspólne frazy w tekście: powiazala, wsa, samodzielnym",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25108&sprawa=27006"
       }
     ],
     "25139": [
@@ -1240,7 +1240,7 @@
           "Wspólne frazy w tekście: krs, niezawislosci, najwyzszym",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25230&sprawa=27301"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25230&sprawa=27301"
       },
       {
         "document_id": "25206",
@@ -1258,7 +1258,7 @@
           "Wspólne przepisy: art. 179, art. 1, art. 10",
           "Wspólne frazy w tekście: krs, mandatu, prezydent"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25206&sprawa=28102"
       },
       {
         "document_id": "25180",
@@ -1277,7 +1277,7 @@
           "Wspólne frazy w tekście: spoczynku, najwyzszym, sedziowie",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25180&sprawa=28825"
       },
       {
         "document_id": "25181",
@@ -1295,7 +1295,7 @@
           "Wspólne przepisy: art. 10, art. 45 ust. 1, art. 59 ust. 1 pkt 2",
           "Wspólne frazy w tekście: krs, prezydent, sluzbowego"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25181&sprawa=28948"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25181&sprawa=28948"
       },
       {
         "document_id": "25166",
@@ -1314,7 +1314,7 @@
           "Wspólne frazy w tekście: tsue, sedziowie, instytucjonalnej",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25166&sprawa=26723"
       }
     ],
     "25140": [
@@ -1335,7 +1335,7 @@
           "Wspólne frazy w tekście: skargowej, niezaskarzalne, skargowa",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25234&sprawa=28341"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25234&sprawa=28341"
       },
       {
         "document_id": "25205",
@@ -1354,7 +1354,7 @@
           "Wspólne frazy w tekście: skargowej, skargowa, niezaskarzalne",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25205&sprawa=21995"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25205&sprawa=21995"
       },
       {
         "document_id": "25167",
@@ -1373,7 +1373,7 @@
           "Wspólne frazy w tekście: skutkujaca, nalezytej, wniesionej",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       },
       {
         "document_id": "25178",
@@ -1392,7 +1392,7 @@
           "Wspólne frazy w tekście: zwloki, nieuzasadnionej, domagal",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25178&sprawa=22576"
       },
       {
         "document_id": "25228",
@@ -1411,7 +1411,7 @@
           "Wspólne frazy w tekście: inicjowanych, wywiedziona, rozpoznajacego",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25228&sprawa=27305"
       }
     ],
     "25141": [
@@ -1431,7 +1431,7 @@
           "Wspólne przepisy: art. 69, art. 2",
           "Wspólne frazy w tekście: niepelnosprawnosci, niepelnosprawnoscia, egzystencji"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25084&sprawa=28162"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25084&sprawa=28162"
       },
       {
         "document_id": "25170",
@@ -1449,7 +1449,7 @@
           "Wspólne przepisy: art. 69, art. 2",
           "Wspólne frazy w tekście: niepelnosprawnosci, egzystencji, opieki"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25170&sprawa=28659"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25170&sprawa=28659"
       },
       {
         "document_id": "25202",
@@ -1468,7 +1468,7 @@
           "Wspólne frazy w tekście: medycznych, zadane, opieki",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25202&sprawa=27638"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25202&sprawa=27638"
       },
       {
         "document_id": "25173",
@@ -1486,7 +1486,7 @@
           "Wspólne przepisy: art. 30, art. 68 ust. 3, art. 71",
           "Wspólne frazy w tekście: niepelnosprawnym, niepelnosprawnosci, egzystencji"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25173&sprawa=25902"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25173&sprawa=25902"
       },
       {
         "document_id": "25204",
@@ -1505,7 +1505,7 @@
           "Wspólne frazy w tekście: komunikacji, zamieszkania, legalis",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25204&sprawa=28304"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25204&sprawa=28304"
       }
     ],
     "25161": [
@@ -1526,7 +1526,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25135&sprawa=28306"
       },
       {
         "document_id": "25133",
@@ -1545,7 +1545,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25133&sprawa=26975"
       },
       {
         "document_id": "25108",
@@ -1564,7 +1564,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25108&sprawa=27006"
       },
       {
         "document_id": "25179",
@@ -1583,7 +1583,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25179&sprawa=27482"
       },
       {
         "document_id": "25228",
@@ -1602,7 +1602,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25228&sprawa=27305"
       }
     ],
     "25162": [
@@ -1623,7 +1623,7 @@
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25161&sprawa=27807"
       },
       {
         "document_id": "25135",
@@ -1642,7 +1642,7 @@
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25135&sprawa=28306"
       },
       {
         "document_id": "25133",
@@ -1661,7 +1661,7 @@
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25133&sprawa=26975"
       },
       {
         "document_id": "25108",
@@ -1680,7 +1680,7 @@
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25108&sprawa=27006"
       },
       {
         "document_id": "25228",
@@ -1699,7 +1699,7 @@
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25228&sprawa=27305"
       }
     ],
     "25163": [
@@ -1720,7 +1720,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
           "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25227&sprawa=24952"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25227&sprawa=24952"
       },
       {
         "document_id": "25082",
@@ -1739,7 +1739,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
           "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25082&sprawa=27303"
       },
       {
         "document_id": "25235",
@@ -1758,7 +1758,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
           "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25235&sprawa=27911"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25235&sprawa=27911"
       },
       {
         "document_id": "25168",
@@ -1777,7 +1777,7 @@
           "Wspólne frazy w tekście: obroncow, obroncy, adwokata",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25168&sprawa=27357"
       },
       {
         "document_id": "25167",
@@ -1796,7 +1796,7 @@
           "Wspólne frazy w tekście: wstepnej, obligatoryjnym, profesjonalnego",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       }
     ],
     "25164": [
@@ -1817,7 +1817,7 @@
           "Wspólne frazy w tekście: regulaminu, skladow, regulamin",
           "To samo repertorium: U"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25181&sprawa=28948"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25181&sprawa=28948"
       },
       {
         "document_id": "25067",
@@ -1836,7 +1836,7 @@
           "Wspólne frazy w tekście: generalna, precyzyjne",
           "To samo repertorium: U"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25067&sprawa=27442"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25067&sprawa=27442"
       },
       {
         "document_id": "25082",
@@ -1854,7 +1854,7 @@
           "Wspólne przepisy: art. 2, art. 7, art. 59 ust. 1 pkt 4",
           "Wspólne frazy w tekście: wymienia, zainicjowanym"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25082&sprawa=27303"
       },
       {
         "document_id": "25135",
@@ -1872,7 +1872,7 @@
           "Wspólne przepisy: art. 2",
           "Wspólne frazy w tekście: redakcyjnymi, przedstawila, badac"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25135&sprawa=28306"
       },
       {
         "document_id": "25169",
@@ -1890,7 +1890,7 @@
           "Wspólne przepisy: art. 2, art. 7",
           "Wspólne frazy w tekście: komisje, komisja, rozpoczyna"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25169&sprawa=28821"
       }
     ],
     "25165": [
@@ -1911,7 +1911,7 @@
           "Wspólne frazy w tekście: wstepnej, wadliwe, doreczenie",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       },
       {
         "document_id": "25175",
@@ -1930,7 +1930,7 @@
           "Wspólne frazy w tekście: obiektu, spelnila, zakwestionowac",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25175&sprawa=27720"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25175&sprawa=27720"
       },
       {
         "document_id": "25178",
@@ -1949,7 +1949,7 @@
           "Wspólne frazy w tekście: odwolawczej, przedstawiono, skutkuja",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25178&sprawa=22576"
       },
       {
         "document_id": "25229",
@@ -1968,7 +1968,7 @@
           "Wspólne frazy w tekście: przedsiebiorstwa, zakwestionowac, kognicja",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25229&sprawa=26603"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25229&sprawa=26603"
       },
       {
         "document_id": "25083",
@@ -1987,7 +1987,7 @@
           "Wspólne frazy w tekście: wierzyciela, ugruntowanym, funkcjonalnie",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25083&sprawa=22860"
       }
     ],
     "25166": [
@@ -2008,7 +2008,7 @@
           "Wspólne frazy w tytule: malzenska wspolnoscia, wspolnoscia majatkowa",
           "Wspólne frazy w tekście: malzenska, wspolnoscia, majatkowa"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25138&sprawa=26598"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25138&sprawa=26598"
       },
       {
         "document_id": "25180",
@@ -2027,7 +2027,7 @@
           "Wspólne frazy w tekście: oswiadczenie, sedziowie, najwyzszym",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25180&sprawa=28825"
       },
       {
         "document_id": "25139",
@@ -2046,7 +2046,7 @@
           "Wspólne frazy w tekście: tsue, sedziowie, instytucjonalnej",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25139&sprawa=23692"
       },
       {
         "document_id": "25174",
@@ -2064,7 +2064,7 @@
           "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 87",
           "Wspólne frazy w tekście: prywatnosci, ochronnych, autonomii"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25174&sprawa=27639"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25174&sprawa=27639"
       },
       {
         "document_id": "25134",
@@ -2082,7 +2082,7 @@
           "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 87",
           "Wspólne frazy w tekście: prywatnosci, ochronnych, autonomii"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25134&sprawa=27156"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25134&sprawa=27156"
       }
     ],
     "25167": [
@@ -2103,7 +2103,7 @@
           "Wspólne frazy w tekście: gwarantowanymi, wstepnej, niedozwolona",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25178&sprawa=22576"
       },
       {
         "document_id": "25165",
@@ -2122,7 +2122,7 @@
           "Wspólne frazy w tekście: wstepnej, wadliwe, doreczenie",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25165&sprawa=28022"
       },
       {
         "document_id": "25227",
@@ -2141,7 +2141,7 @@
           "Wspólne frazy w tekście: ujemna, etapu, uchybien",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25227&sprawa=24952"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25227&sprawa=24952"
       },
       {
         "document_id": "25081",
@@ -2160,7 +2160,7 @@
           "Wspólne frazy w tekście: zakwestionowala, wykazujace, wyjasnila",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25081&sprawa=28403"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25081&sprawa=28403"
       },
       {
         "document_id": "25179",
@@ -2179,7 +2179,7 @@
           "Wspólne frazy w tekście: uczynienie, zakwestionowala",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25179&sprawa=27482"
       }
     ],
     "25168": [
@@ -2200,7 +2200,7 @@
           "Wspólne frazy w tekście: obroncy, obroncow, adwokata",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25082&sprawa=27303"
       },
       {
         "document_id": "25227",
@@ -2219,7 +2219,7 @@
           "Wspólne frazy w tekście: obroncy, obroncow, adwokata",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25227&sprawa=24952"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25227&sprawa=24952"
       },
       {
         "document_id": "25176",
@@ -2238,7 +2238,7 @@
           "Wspólne frazy w tekście: obroncy, radca, oskarzony",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25176&sprawa=28654"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25176&sprawa=28654"
       },
       {
         "document_id": "25163",
@@ -2257,7 +2257,7 @@
           "Wspólne frazy w tekście: obroncow, obroncy, adwokata",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25163&sprawa=26541"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25163&sprawa=26541"
       },
       {
         "document_id": "25083",
@@ -2276,7 +2276,7 @@
           "Wspólne frazy w tekście: radca, adwokat, profesjonalnego",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25083&sprawa=22860"
       }
     ],
     "25169": [
@@ -2297,7 +2297,7 @@
           "Wspólne frazy w tekście: zakaznych, chorob, zwalczaniu",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25179&sprawa=27482"
       },
       {
         "document_id": "25133",
@@ -2316,7 +2316,7 @@
           "Wspólne frazy w tekście: zakaznych, chorob, zwalczaniu",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25133&sprawa=26975"
       },
       {
         "document_id": "25108",
@@ -2335,7 +2335,7 @@
           "Wspólne frazy w tekście: zakaznych, chorob, zwalczaniu",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25108&sprawa=27006"
       },
       {
         "document_id": "25228",
@@ -2354,7 +2354,7 @@
           "Wspólne frazy w tekście: zakaznych, chorob, zwalczaniu",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25228&sprawa=27305"
       },
       {
         "document_id": "25226",
@@ -2373,7 +2373,7 @@
           "Wspólne frazy w tekście: zakaznych, chorob, zwalczaniu",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25226&sprawa=26970"
       }
     ],
     "25170": [
@@ -2394,7 +2394,7 @@
           "Wspólne frazy w tekście: opieki, niepelnosprawnosci, pielegnacyjnego",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25084&sprawa=28162"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25084&sprawa=28162"
       },
       {
         "document_id": "25173",
@@ -2413,7 +2413,7 @@
           "Wspólne frazy w tytule: innej pracy, pielegnacyjnego tytulu, pracy zarobkowej",
           "Wspólne frazy w tekście: pielegnacyjnego, opieki, niepelnosprawnym"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25173&sprawa=25902"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25173&sprawa=25902"
       },
       {
         "document_id": "25141",
@@ -2431,7 +2431,7 @@
           "Wspólne przepisy: art. 69, art. 2",
           "Wspólne frazy w tekście: niepelnosprawnosci, egzystencji, opieki"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25141&sprawa=28436"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25141&sprawa=28436"
       },
       {
         "document_id": "25081",
@@ -2450,7 +2450,7 @@
           "Wspólne frazy w tekście: dziecka, opiekunow, swiadczeniach",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25081&sprawa=28403"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25081&sprawa=28403"
       },
       {
         "document_id": "25134",
@@ -2469,7 +2469,7 @@
           "Wspólne frazy w tekście: dziecka, opiekunow, swiadczeniach",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25134&sprawa=27156"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25134&sprawa=27156"
       }
     ],
     "25172": [
@@ -2489,7 +2489,7 @@
           "Wspólne przepisy: art. 1, art. 20, art. 36",
           "Wspólne frazy w tekście: partii, metod, partie"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25205&sprawa=21995"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25205&sprawa=21995"
       },
       {
         "document_id": "25136",
@@ -2507,7 +2507,7 @@
           "Wspólne przepisy: art. 13, art. 11, art. 1",
           "Wspólne frazy w tekście: ruchu, powiatu, artykuly"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25136&sprawa=22292"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25136&sprawa=22292"
       },
       {
         "document_id": "25206",
@@ -2525,7 +2525,7 @@
           "Wspólne przepisy: art. 1, art. 188 pkt 4, art. 191 ust. 1 pkt 1",
           "Wspólne frazy w tekście: partii, https, posla"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25206&sprawa=28102"
       },
       {
         "document_id": "25264",
@@ -2543,7 +2543,7 @@
           "Wspólne przepisy: art. 1, art. 20",
           "Wspólne frazy w tekście: smierci, dziedziczenia, polskich"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25264&sprawa=20712"
       },
       {
         "document_id": "25233",
@@ -2561,7 +2561,7 @@
           "Wspólne przepisy: art. 1, art. 188",
           "Wspólne frazy w tekście: akta, egzekucji, polskich"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25233&sprawa=20713"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25233&sprawa=20713"
       }
     ],
     "25173": [
@@ -2582,7 +2582,7 @@
           "Wspólne frazy w tytule: innej pracy, pielegnacyjnego tytulu, pracy zarobkowej",
           "Wspólne frazy w tekście: pielegnacyjnego, opieki, niepelnosprawnym"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25170&sprawa=28659"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25170&sprawa=28659"
       },
       {
         "document_id": "25084",
@@ -2601,7 +2601,7 @@
           "Wspólne frazy w tekście: pielegnacyjnego, opieki, niepelnosprawnosci",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25084&sprawa=28162"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25084&sprawa=28162"
       },
       {
         "document_id": "25134",
@@ -2620,7 +2620,7 @@
           "Wspólne frazy w tekście: dziecka, dzieckiem, swiadczeniach",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25134&sprawa=27156"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25134&sprawa=27156"
       },
       {
         "document_id": "25174",
@@ -2639,7 +2639,7 @@
           "Wspólne frazy w tekście: dziecka, dzieckiem, swiadczeniach",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25174&sprawa=27639"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25174&sprawa=27639"
       },
       {
         "document_id": "25081",
@@ -2658,7 +2658,7 @@
           "Wspólne frazy w tekście: dziecka, dzieckiem, swiadczeniach",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25081&sprawa=28403"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25081&sprawa=28403"
       }
     ],
     "25174": [
@@ -2679,7 +2679,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25134&sprawa=27156"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25134&sprawa=27156"
       },
       {
         "document_id": "25081",
@@ -2698,7 +2698,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25081&sprawa=28403"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25081&sprawa=28403"
       },
       {
         "document_id": "25133",
@@ -2717,7 +2717,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, zakaznych, ochronnych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25133&sprawa=26975"
       },
       {
         "document_id": "25135",
@@ -2736,7 +2736,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, ochronnych, zakaznych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25135&sprawa=28306"
       },
       {
         "document_id": "25161",
@@ -2755,7 +2755,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: szczepien, ochronnych, zakaznych"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25161&sprawa=27807"
       }
     ],
     "25175": [
@@ -2776,7 +2776,7 @@
           "Wspólne frazy w tekście: obiektu, spelnila, zakwestionowac",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25165&sprawa=28022"
       },
       {
         "document_id": "25176",
@@ -2795,7 +2795,7 @@
           "Wspólne frazy w tekście: obowiazani, zakwestionowac, spelnila",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25176&sprawa=28654"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25176&sprawa=28654"
       },
       {
         "document_id": "25229",
@@ -2814,7 +2814,7 @@
           "Wspólne frazy w tekście: dzialce, zakwestionowac, dzialki",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25229&sprawa=26603"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25229&sprawa=26603"
       },
       {
         "document_id": "25167",
@@ -2833,7 +2833,7 @@
           "Wspólne frazy w tekście: prawami",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       },
       {
         "document_id": "25264",
@@ -2852,7 +2852,7 @@
           "Wspólne frazy w tekście: dziedziczenia, czwartej, przedmiotowi",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25264&sprawa=20712"
       }
     ],
     "25176": [
@@ -2873,7 +2873,7 @@
           "Wspólne frazy w tekście: obroncy, radca, oskarzony",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25168&sprawa=27357"
       },
       {
         "document_id": "25083",
@@ -2892,7 +2892,7 @@
           "Wspólne frazy w tekście: wezwanie, radca, profesjonalnego",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25083&sprawa=22860"
       },
       {
         "document_id": "25082",
@@ -2911,7 +2911,7 @@
           "Wspólne frazy w tekście: obwinionego, obroncy, adwokata",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25082&sprawa=27303"
       },
       {
         "document_id": "25165",
@@ -2930,7 +2930,7 @@
           "Wspólne frazy w tekście: prawodawcze, prawodawczego, zaniechaniem",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25165&sprawa=28022"
       },
       {
         "document_id": "25175",
@@ -2949,7 +2949,7 @@
           "Wspólne frazy w tekście: obowiazani, zakwestionowac, spelnila",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25175&sprawa=27720"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25175&sprawa=27720"
       }
     ],
     "25177": [
@@ -2969,7 +2969,7 @@
           "Wspólne przepisy: art. 2, art. 1",
           "Wspólne frazy w tekście: udzialow, kapitalu, udzialy"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25138&sprawa=26598"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25138&sprawa=26598"
       },
       {
         "document_id": "25166",
@@ -2988,7 +2988,7 @@
           "Wspólne frazy w tekście: posiadanych, udzialow, realnej",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25166&sprawa=26723"
       },
       {
         "document_id": "25136",
@@ -3007,7 +3007,7 @@
           "Wspólne frazy w tekście: likwidacji, przejecia, zobowiazuje",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25136&sprawa=22292"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25136&sprawa=22292"
       },
       {
         "document_id": "25139",
@@ -3026,7 +3026,7 @@
           "Wspólne frazy w tekście: zobowiazuje, grozaca, gwarancyjny",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25139&sprawa=23692"
       },
       {
         "document_id": "25180",
@@ -3045,7 +3045,7 @@
           "Wspólne frazy w tekście: utrzymywania, powodowac, zobowiazuje",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25180&sprawa=28825"
       }
     ],
     "25178": [
@@ -3066,7 +3066,7 @@
           "Wspólne frazy w tekście: gwarantowanymi, wstepnej, niedozwolona",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       },
       {
         "document_id": "25165",
@@ -3085,7 +3085,7 @@
           "Wspólne frazy w tekście: odwolawczej, przedstawiono, skutkuja",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25165&sprawa=28022"
       },
       {
         "document_id": "25234",
@@ -3104,7 +3104,7 @@
           "Wspólne frazy w tekście: zajecia, reprezentujacy, pozostawieniu",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25234&sprawa=28341"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25234&sprawa=28341"
       },
       {
         "document_id": "25140",
@@ -3123,7 +3123,7 @@
           "Wspólne frazy w tekście: zwloki, nieuzasadnionej, domagal",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25140&sprawa=28824"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25140&sprawa=28824"
       },
       {
         "document_id": "25169",
@@ -3142,7 +3142,7 @@
           "Wspólne frazy w tekście: sprzeciwu, sprzeciw, wolnoscia",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25169&sprawa=28821"
       }
     ],
     "25179": [
@@ -3163,7 +3163,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25228&sprawa=27305"
       },
       {
         "document_id": "25108",
@@ -3182,7 +3182,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25108&sprawa=27006"
       },
       {
         "document_id": "25226",
@@ -3201,7 +3201,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25226&sprawa=26970"
       },
       {
         "document_id": "25161",
@@ -3220,7 +3220,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25161&sprawa=27807"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25161&sprawa=27807"
       },
       {
         "document_id": "25135",
@@ -3239,7 +3239,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25135&sprawa=28306"
       }
     ],
     "25180": [
@@ -3260,7 +3260,7 @@
           "Wspólne frazy w tekście: spoczynku, najwyzszym, sedziowie",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25139&sprawa=23692"
       },
       {
         "document_id": "25230",
@@ -3279,7 +3279,7 @@
           "Wspólne frazy w tytule: sadu najwyzszego",
           "Wspólne frazy w tekście: najwyzszym, krs, sedziowie"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25230&sprawa=27301"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25230&sprawa=27301"
       },
       {
         "document_id": "25166",
@@ -3298,7 +3298,7 @@
           "Wspólne frazy w tekście: oswiadczenie, sedziowie, najwyzszym",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25166&sprawa=26723"
       },
       {
         "document_id": "25136",
@@ -3317,7 +3317,7 @@
           "Wspólne frazy w tekście: przechodza, przechodzi, przejsc",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25136&sprawa=22292"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25136&sprawa=22292"
       },
       {
         "document_id": "25177",
@@ -3336,7 +3336,7 @@
           "Wspólne frazy w tekście: utrzymywania, powodowac, zobowiazuje",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25177&sprawa=26324"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25177&sprawa=26324"
       }
     ],
     "25181": [
@@ -3356,7 +3356,7 @@
           "Wspólne przepisy: art. 7, art. 178 ust. 1, art. 45 ust. 1",
           "Wspólne frazy w tekście: krs, skladow, niezawislosci"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25230&sprawa=27301"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25230&sprawa=27301"
       },
       {
         "document_id": "25206",
@@ -3374,7 +3374,7 @@
           "Wspólne przepisy: art. 7, art. 2, art. 45 ust. 1",
           "Wspólne frazy w tekście: krs, prezydent, sadownictwa"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25206&sprawa=28102"
       },
       {
         "document_id": "25139",
@@ -3392,7 +3392,7 @@
           "Wspólne przepisy: art. 10, art. 45 ust. 1, art. 59 ust. 1 pkt 2",
           "Wspólne frazy w tekście: krs, prezydent, sluzbowego"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25139&sprawa=23692"
       },
       {
         "document_id": "25164",
@@ -3411,7 +3411,7 @@
           "Wspólne frazy w tekście: regulaminu, skladow, regulamin",
           "To samo repertorium: U"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25164&sprawa=27927"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25164&sprawa=27927"
       },
       {
         "document_id": "25067",
@@ -3430,7 +3430,7 @@
           "Wspólne frazy w tekście: nieletnich, delegacji, osrodku",
           "To samo repertorium: U"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25067&sprawa=27442"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25067&sprawa=27442"
       }
     ],
     "25202": [
@@ -3451,7 +3451,7 @@
           "Wspólne frazy w tekście: medycznych, zadane, opieki",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25141&sprawa=28436"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25141&sprawa=28436"
       },
       {
         "document_id": "25204",
@@ -3470,7 +3470,7 @@
           "Wspólne frazy w tekście: postanowiono, wystepujacy, nikt",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25204&sprawa=28304"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25204&sprawa=28304"
       },
       {
         "document_id": "25284",
@@ -3489,7 +3489,7 @@
           "Wspólne frazy w tekście: rozpoznawana, zaleznosc, kanwa",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25284&sprawa=23805"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25284&sprawa=23805"
       },
       {
         "document_id": "25084",
@@ -3507,7 +3507,7 @@
           "Wspólne przepisy: art. 32 ust. 1, art. 79 ust. 1",
           "Wspólne frazy w tekście: opieki, swiadczeniach, legitymuje"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25084&sprawa=28162"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25084&sprawa=28162"
       },
       {
         "document_id": "25203",
@@ -3526,7 +3526,7 @@
           "Wspólne frazy w tekście: odpowiedzia, legitymuje, zadane",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25203&sprawa=17237"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25203&sprawa=17237"
       }
     ],
     "25203": [
@@ -3547,7 +3547,7 @@
           "Wspólne frazy w tytule: drodze zasiedzenia, gruntowej odpowiadajacej, sluzebnosci gruntowej",
           "Wspólne frazy w tekście: sluzebnosci, przesylu, zasiedzenia"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25229&sprawa=26603"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25229&sprawa=26603"
       },
       {
         "document_id": "25264",
@@ -3565,7 +3565,7 @@
           "Wspólne przepisy: art. 31 ust. 3, art. 21 ust. 1, art. 64 ust. 2",
           "Wspólne frazy w tekście: dziedziczenia, czp, wlasciciela"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25264&sprawa=20712"
       },
       {
         "document_id": "25284",
@@ -3584,7 +3584,7 @@
           "Wspólne frazy w tekście: umieszczeniu, rzeczowych, umieszczenie",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25284&sprawa=23805"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25284&sprawa=23805"
       },
       {
         "document_id": "25204",
@@ -3603,7 +3603,7 @@
           "Wspólne frazy w tekście: wplywem, analogii, niekorzysc",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25204&sprawa=28304"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25204&sprawa=28304"
       },
       {
         "document_id": "25206",
@@ -3621,7 +3621,7 @@
           "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 1",
           "Wspólne frazy w tekście: sadownictwa, legalizmu, wydano"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25206&sprawa=28102"
       }
     ],
     "25204": [
@@ -3642,7 +3642,7 @@
           "Wspólne frazy w tekście: sprawcy, zabronionego, dzialajacego",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25284&sprawa=23805"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25284&sprawa=23805"
       },
       {
         "document_id": "25202",
@@ -3661,7 +3661,7 @@
           "Wspólne frazy w tekście: postanowiono, wystepujacy, nikt",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25202&sprawa=27638"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25202&sprawa=27638"
       },
       {
         "document_id": "25141",
@@ -3680,7 +3680,7 @@
           "Wspólne frazy w tekście: komunikacji, zamieszkania, legalis",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25141&sprawa=28436"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25141&sprawa=28436"
       },
       {
         "document_id": "25136",
@@ -3698,7 +3698,7 @@
           "Wspólne przepisy: art. 2, art. 59 ust. 1 pkt 2",
           "Wspólne frazy w tekście: pojazdow, pojazdu, ruchu"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25136&sprawa=22292"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25136&sprawa=22292"
       },
       {
         "document_id": "25203",
@@ -3717,7 +3717,7 @@
           "Wspólne frazy w tekście: wplywem, analogii, niekorzysc",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25203&sprawa=17237"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25203&sprawa=17237"
       }
     ],
     "25205": [
@@ -3738,7 +3738,7 @@
           "Wspólne frazy w tekście: skargowej, skargowa, zaskarzalnosci",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25234&sprawa=28341"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25234&sprawa=28341"
       },
       {
         "document_id": "25140",
@@ -3757,7 +3757,7 @@
           "Wspólne frazy w tekście: skargowej, skargowa, niezaskarzalne",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25140&sprawa=28824"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25140&sprawa=28824"
       },
       {
         "document_id": "25233",
@@ -3776,7 +3776,7 @@
           "Wspólne frazy w tekście: prawodawczego, nadaniu, zastepstwa",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25233&sprawa=20713"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25233&sprawa=20713"
       },
       {
         "document_id": "25167",
@@ -3795,7 +3795,7 @@
           "Wspólne frazy w tekście: zakwestionowala, wstepnej, wnoszenia",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       },
       {
         "document_id": "25264",
@@ -3814,7 +3814,7 @@
           "Wspólne frazy w tekście: fizycznej, zastepstwa, uwazam",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25264&sprawa=20712"
       }
     ],
     "25206": [
@@ -3834,7 +3834,7 @@
           "Wspólne przepisy: art. 2, art. 7, art. 45 ust. 1",
           "Wspólne frazy w tekście: krs, niezawislosci, sadownictwa"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25230&sprawa=27301"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25230&sprawa=27301"
       },
       {
         "document_id": "25181",
@@ -3852,7 +3852,7 @@
           "Wspólne przepisy: art. 7, art. 2, art. 45 ust. 1",
           "Wspólne frazy w tekście: krs, prezydent, sadownictwa"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25181&sprawa=28948"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25181&sprawa=28948"
       },
       {
         "document_id": "25139",
@@ -3870,7 +3870,7 @@
           "Wspólne przepisy: art. 179, art. 1, art. 10",
           "Wspólne frazy w tekście: krs, mandatu, prezydent"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25139&sprawa=23692"
       },
       {
         "document_id": "25233",
@@ -3888,7 +3888,7 @@
           "Wspólne przepisy: art. 45 ust. 1, art. 31 ust. 3, art. 32 ust. 1",
           "Wspólne frazy w tekście: kontrolowanej, niezawislosci, sadownictwa"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25233&sprawa=20713"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25233&sprawa=20713"
       },
       {
         "document_id": "25180",
@@ -3906,7 +3906,7 @@
           "Wspólne przepisy: art. 2, art. 9a, art. 10 ust. 1",
           "Wspólne frazy w tekście: krs, objeli, sadownictwa"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25180&sprawa=28825"
       }
     ],
     "25226": [
@@ -3927,7 +3927,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25228&sprawa=27305"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25228&sprawa=27305"
       },
       {
         "document_id": "25179",
@@ -3946,7 +3946,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25179&sprawa=27482"
       },
       {
         "document_id": "25108",
@@ -3965,7 +3965,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25108&sprawa=27006"
       },
       {
         "document_id": "25135",
@@ -3984,7 +3984,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25135&sprawa=28306"
       },
       {
         "document_id": "25133",
@@ -4003,7 +4003,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25133&sprawa=26975"
       }
     ],
     "25227": [
@@ -4024,7 +4024,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
           "Wspólne frazy w tekście: adwokata, nieoplaconej, udzielonej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25082&sprawa=27303"
       },
       {
         "document_id": "25163",
@@ -4043,7 +4043,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, koszty nieoplaconej, nieoplaconej pomocy",
           "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25163&sprawa=26541"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25163&sprawa=26541"
       },
       {
         "document_id": "25235",
@@ -4062,7 +4062,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
           "Wspólne frazy w tekście: adwokata, adwokatow, nieoplaconej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25235&sprawa=27911"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25235&sprawa=27911"
       },
       {
         "document_id": "25168",
@@ -4081,7 +4081,7 @@
           "Wspólne frazy w tekście: obroncy, obroncow, adwokata",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25168&sprawa=27357"
       },
       {
         "document_id": "25167",
@@ -4100,7 +4100,7 @@
           "Wspólne frazy w tekście: ujemna, etapu, uchybien",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       }
     ],
     "25228": [
@@ -4121,7 +4121,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25226&sprawa=26970"
       },
       {
         "document_id": "25179",
@@ -4140,7 +4140,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25179&sprawa=27482"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25179&sprawa=27482"
       },
       {
         "document_id": "25108",
@@ -4159,7 +4159,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25108&sprawa=27006"
       },
       {
         "document_id": "25133",
@@ -4178,7 +4178,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25133&sprawa=26975"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25133&sprawa=26975"
       },
       {
         "document_id": "25135",
@@ -4197,7 +4197,7 @@
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
           "Wspólne frazy w tekście: zakaznych, zwalczaniu, chorob"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25135&sprawa=28306"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25135&sprawa=28306"
       }
     ],
     "25229": [
@@ -4218,7 +4218,7 @@
           "Wspólne frazy w tytule: drodze zasiedzenia, gruntowej odpowiadajacej, sluzebnosci gruntowej",
           "Wspólne frazy w tekście: sluzebnosci, przesylu, zasiedzenia"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25203&sprawa=17237"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25203&sprawa=17237"
       },
       {
         "document_id": "25167",
@@ -4237,7 +4237,7 @@
           "Wspólne frazy w tekście: skarzacych, ustanowieniem, ujemna",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       },
       {
         "document_id": "25165",
@@ -4256,7 +4256,7 @@
           "Wspólne frazy w tekście: przedsiebiorstwa, zakwestionowac, kognicja",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25165&sprawa=28022"
       },
       {
         "document_id": "25108",
@@ -4275,7 +4275,7 @@
           "Wspólne frazy w tekście: wywiedziona, tytul",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25108&sprawa=27006"
       },
       {
         "document_id": "25226",
@@ -4294,7 +4294,7 @@
           "Wspólne frazy w tekście: wywiedziona, tytul, poddal",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25226&sprawa=26970"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25226&sprawa=26970"
       }
     ],
     "25230": [
@@ -4314,7 +4314,7 @@
           "Wspólne przepisy: art. 2, art. 7, art. 45 ust. 1",
           "Wspólne frazy w tekście: krs, niezawislosci, sadownictwa"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25206&sprawa=28102"
       },
       {
         "document_id": "25181",
@@ -4332,7 +4332,7 @@
           "Wspólne przepisy: art. 7, art. 178 ust. 1, art. 45 ust. 1",
           "Wspólne frazy w tekście: krs, skladow, niezawislosci"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25181&sprawa=28948"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25181&sprawa=28948"
       },
       {
         "document_id": "25139",
@@ -4351,7 +4351,7 @@
           "Wspólne frazy w tekście: krs, niezawislosci, najwyzszym",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25139&sprawa=23692"
       },
       {
         "document_id": "25180",
@@ -4370,7 +4370,7 @@
           "Wspólne frazy w tytule: sadu najwyzszego",
           "Wspólne frazy w tekście: najwyzszym, krs, sedziowie"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25180&sprawa=28825"
       },
       {
         "document_id": "25166",
@@ -4389,7 +4389,7 @@
           "Wspólne frazy w tekście: najwyzszym, wojskowych, polaczonych",
           "To samo repertorium: K"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25166&sprawa=26723"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25166&sprawa=26723"
       }
     ],
     "25233": [
@@ -4410,7 +4410,7 @@
           "Wspólne frazy w tekście: prawodawczego, nadaniu, zastepstwa",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25205&sprawa=21995"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25205&sprawa=21995"
       },
       {
         "document_id": "25083",
@@ -4429,7 +4429,7 @@
           "Wspólne frazy w tekście: wierzyciela, orzeczono, stwierdzajace",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25083&sprawa=22860"
       },
       {
         "document_id": "25264",
@@ -4448,7 +4448,7 @@
           "Wspólne frazy w tekście: nadaniu, powodztwa, uniemozliwienie",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25264&sprawa=20712"
       },
       {
         "document_id": "25165",
@@ -4467,7 +4467,7 @@
           "Wspólne frazy w tekście: wykonalnosci, prawodawcze, referendarzy",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25165&sprawa=28022"
       },
       {
         "document_id": "25169",
@@ -4486,7 +4486,7 @@
           "Wspólne frazy w tekście: klauzuli, orzeczono, biegnie",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25169&sprawa=28821"
       }
     ],
     "25234": [
@@ -4507,7 +4507,7 @@
           "Wspólne frazy w tekście: skargowej, skargowa, zaskarzalnosci",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25205&sprawa=21995"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25205&sprawa=21995"
       },
       {
         "document_id": "25140",
@@ -4526,7 +4526,7 @@
           "Wspólne frazy w tekście: skargowej, niezaskarzalne, skargowa",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25140&sprawa=28824"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25140&sprawa=28824"
       },
       {
         "document_id": "25178",
@@ -4545,7 +4545,7 @@
           "Wspólne frazy w tekście: zajecia, reprezentujacy, pozostawieniu",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25178&sprawa=22576"
       },
       {
         "document_id": "25165",
@@ -4564,7 +4564,7 @@
           "Wspólne frazy w tekście: niezaskarzalnosci, rozroznia, czyje",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25165&sprawa=28022"
       },
       {
         "document_id": "25167",
@@ -4583,7 +4583,7 @@
           "Wspólne frazy w tekście: zazaleniem, wniesione",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       }
     ],
     "25235": [
@@ -4604,7 +4604,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
           "Wspólne frazy w tekście: adwokata, adwokatow, nieoplaconej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25227&sprawa=24952"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25227&sprawa=24952"
       },
       {
         "document_id": "25082",
@@ -4623,7 +4623,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
           "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25082&sprawa=27303"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25082&sprawa=27303"
       },
       {
         "document_id": "25163",
@@ -4642,7 +4642,7 @@
           "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
           "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25163&sprawa=26541"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25163&sprawa=26541"
       },
       {
         "document_id": "25229",
@@ -4661,7 +4661,7 @@
           "Wspólne frazy w tekście: tozsama, ujemna, wznowienia",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25229&sprawa=26603"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25229&sprawa=26603"
       },
       {
         "document_id": "25167",
@@ -4680,7 +4680,7 @@
           "Wspólne frazy w tekście: wstepnej, ujemna, kosztach",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25167&sprawa=21647"
       }
     ],
     "25264": [
@@ -4701,7 +4701,7 @@
           "Wspólne frazy w tekście: skarzace, dziedziczenia, wierzytelnosci",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25083&sprawa=22860"
       },
       {
         "document_id": "25233",
@@ -4720,7 +4720,7 @@
           "Wspólne frazy w tekście: nadaniu, powodztwa, uniemozliwienie",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25233&sprawa=20713"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25233&sprawa=20713"
       },
       {
         "document_id": "25205",
@@ -4739,7 +4739,7 @@
           "Wspólne frazy w tekście: fizycznej, zastepstwa, uwazam",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25205&sprawa=21995"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25205&sprawa=21995"
       },
       {
         "document_id": "25138",
@@ -4758,7 +4758,7 @@
           "Wspólne frazy w tekście: dziedziczenia, udzialow, majatkowej",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25138&sprawa=26598"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25138&sprawa=26598"
       },
       {
         "document_id": "25175",
@@ -4777,7 +4777,7 @@
           "Wspólne frazy w tekście: dziedziczenia, czwartej, przedmiotowi",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25175&sprawa=27720"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25175&sprawa=27720"
       }
     ],
     "25284": [
@@ -4798,7 +4798,7 @@
           "Wspólne frazy w tekście: sprawcy, zabronionego, dzialajacego",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25204&sprawa=28304"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25204&sprawa=28304"
       },
       {
         "document_id": "25202",
@@ -4817,7 +4817,7 @@
           "Wspólne frazy w tekście: rozpoznawana, zaleznosc, kanwa",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25202&sprawa=27638"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25202&sprawa=27638"
       },
       {
         "document_id": "25141",
@@ -4836,7 +4836,7 @@
           "Wspólne frazy w tekście: zabezpieczajacych, pobyt, palka",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25141&sprawa=28436"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25141&sprawa=28436"
       },
       {
         "document_id": "25083",
@@ -4854,7 +4854,7 @@
           "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 45 ust. 1",
           "Wspólne frazy w tekście: sprawiedliwej, orzeczono, mialyby"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25083&sprawa=22860"
       },
       {
         "document_id": "25203",
@@ -4873,7 +4873,7 @@
           "Wspólne frazy w tekście: umieszczeniu, rzeczowych, umieszczenie",
           "To samo repertorium: P"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25203&sprawa=17237"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=25203&sprawa=17237"
       }
     ]
   }

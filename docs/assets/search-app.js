@@ -413,21 +413,28 @@ function parseSimilarityIndex(payload) {
     index.set(
       normalizeSpace(documentId),
       list
-        .map((entry) => ({
-          document_id: normalizeSpace(entry.document_id),
-          case_signature: normalizeSpace(entry.case_signature),
-          decision_date_iso: normalizeSpace(entry.decision_date_iso) || "",
-          decision_type_ipo_label: normalizeSpace(entry.decision_type_ipo_label) || "",
-          score: Number(entry.score) || 0,
-          components: {
-            lexical: Number(entry.components?.lexical) || 0,
-            citations: Number(entry.components?.citations) || 0,
-            metadata: Number(entry.components?.metadata) || 0,
-            dotyczy_bigrams: Number(entry.components?.dotyczy_bigrams) || 0
-          },
-          reasons: Array.isArray(entry.reasons) ? entry.reasons.map((item) => normalizeSpace(item)).filter(Boolean) : [],
-          source_url: normalizeSpace(entry.source_url) || ""
-        }))
+        .map((entry) => {
+          const similarityDocumentId = normalizeSpace(entry.document_id);
+          return {
+            document_id: similarityDocumentId,
+            case_signature: normalizeSpace(entry.case_signature),
+            decision_date_iso: normalizeSpace(entry.decision_date_iso) || "",
+            decision_type_ipo_label: normalizeSpace(entry.decision_type_ipo_label) || "",
+            score: Number(entry.score) || 0,
+            components: {
+              lexical: Number(entry.components?.lexical) || 0,
+              citations: Number(entry.components?.citations) || 0,
+              metadata: Number(entry.components?.metadata) || 0,
+              dotyczy_bigrams: Number(entry.components?.dotyczy_bigrams) || 0
+            },
+            reasons: Array.isArray(entry.reasons) ? entry.reasons.map((item) => normalizeSpace(item)).filter(Boolean) : [],
+            source_url: canonicalIpoCaseUrl(
+              entry.source_url,
+              normalizeSpace(entry.case_id),
+              similarityDocumentId
+            ) || ""
+          };
+        })
         .filter((entry) => entry.document_id && entry.case_signature)
     );
   }
@@ -1056,6 +1063,10 @@ function canonicalIpoDownloadUrl(downloadUrl, documentId) {
   return normalizeSpace(downloadUrl) || null;
 }
 
+function canonicalCaseSourceUrl(caseItem) {
+  return canonicalIpoCaseUrl(caseItem?.source_url, caseItem?.case_id, caseItem?.document_id) || "";
+}
+
 function isIpoSourceUrl(targetUrl) {
   return normalizeSpace(targetUrl?.hostname).toLowerCase() === IPO_HOSTNAME;
 }
@@ -1114,7 +1125,7 @@ function handleOpenSourceLinkClick(event) {
   if (!link) return false;
 
   const href = link.dataset.sourceUrl || link.getAttribute("href");
-  if (!href) return false;
+  if (!href) return true;
 
   const targetUrl = resolveSourceUrl(href, {
     caseId: link.dataset.caseId,
@@ -1129,7 +1140,7 @@ function handleOpenSourceLinkClick(event) {
   }
 
   // Let native anchor navigation run to mimic manual open behavior in Safari.
-  return false;
+  return true;
 }
 
 function makeHitId(caseItem, hit) {
@@ -3360,6 +3371,12 @@ function renderSimilarCasesList(caseItem, similarEntries, options = {}) {
     .map((entry) => {
       const targetCase = findCaseByDocumentId(entry.document_id);
       const reasonItems = (entry.reasons || []).slice(0, getPageDashboardMode() === "student" ? 2 : 3);
+      const entrySourceUrl = canonicalIpoCaseUrl(entry.source_url, normalizeSpace(entry.case_id), entry.document_id) || "";
+      const actionControl = targetCase
+        ? `<button type="button" class="mini-btn" data-action="viewer-open-similar-case" data-target-document-id="${escapeHtml(entry.document_id)}">Otwórz podgląd</button>`
+        : entrySourceUrl
+          ? `<a class="mini-btn" href="${escapeHtml(entrySourceUrl)}" data-action="open-ipo-source" data-source-url="${escapeHtml(entrySourceUrl)}" data-document-id="${escapeHtml(entry.document_id || "")}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Otwórz w IPO</a>`
+          : `<button type="button" class="mini-btn" disabled>Brak źródła IPO</button>`;
       return `
         <article class="similar-case-item">
           <div class="similar-case-head">
@@ -3369,7 +3386,7 @@ function renderSimilarCasesList(caseItem, similarEntries, options = {}) {
           <p class="similar-case-meta">${escapeHtml(entry.decision_type_ipo_label || "—")} • ${escapeHtml(formatDate(entry.decision_date_iso || ""))}</p>
           ${reasonItems.length ? `<ul class="similar-case-reasons">${reasonItems.map((reason) => `<li>${escapeHtml(reason)}</li>`).join("")}</ul>` : ""}
           <div class="similar-case-actions">
-            <button type="button" class="mini-btn" data-action="viewer-open-similar-case" data-target-document-id="${escapeHtml(entry.document_id)}" data-source-url="${escapeHtml(entry.source_url || "")}">${targetCase ? "Otwórz podgląd" : "Otwórz w IPO"}</button>
+            ${actionControl}
           </div>
         </article>
       `;
@@ -3484,6 +3501,7 @@ function renderResults(parsedQuery) {
     const isFullBench = typeof caseItem.is_full_bench === "boolean" ? caseItem.is_full_bench : benchInfo.isFullBench;
     const isBenchLabelFullBench = /pełny\s+skład/i.test(benchLabel || "");
     const showBenchLabelPill = !(isFullBench && isBenchLabelFullBench);
+    const caseSourceUrl = canonicalCaseSourceUrl(caseItem);
 
     const card = document.createElement("article");
     card.className = `case-card${isFullBench ? " case-card-full-bench" : ""}`;
@@ -3511,7 +3529,7 @@ function renderResults(parsedQuery) {
           <button type="button" class="mini-btn" data-action="pin-case" data-case-index="${group.caseIndex}">${isCasePinned(caseItem) ? "Odepnij sprawę" : "Przypnij sprawę"}</button>
         </div>
         <div>
-          ${caseItem.source_url ? `<a href="${escapeHtml(caseItem.source_url)}" data-action="open-ipo-source" data-source-url="${escapeHtml(caseItem.source_url)}" data-case-id="${escapeHtml(caseItem.case_id || "")}" data-document-id="${escapeHtml(caseItem.document_id || "")}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Otwórz w IPO</a>` : ""}
+          ${caseSourceUrl ? `<a href="${escapeHtml(caseSourceUrl)}" data-action="open-ipo-source" data-source-url="${escapeHtml(caseSourceUrl)}" data-case-id="${escapeHtml(caseItem.case_id || "")}" data-document-id="${escapeHtml(caseItem.document_id || "")}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Otwórz w IPO</a>` : ""}
         </div>
       </footer>
     `;
@@ -3748,6 +3766,7 @@ function saveQueryHistory(query) {
 function togglePinCase(caseItem) {
   const key = caseKey(caseItem);
   if (!key) return;
+  const sourceUrl = canonicalCaseSourceUrl(caseItem);
 
   if (state.caseFolder.cases[key]) {
     delete state.caseFolder.cases[key];
@@ -3760,7 +3779,7 @@ function togglePinCase(caseItem) {
       decision_date_raw: caseItem.decision_date_raw,
       decision_type: caseItem.decision_type,
       topic: caseItem.topic,
-      source_url: caseItem.source_url,
+      source_url: sourceUrl,
       paragraph_count: caseItem.paragraph_count
     };
   }
@@ -3772,6 +3791,7 @@ function togglePinCase(caseItem) {
 
 function togglePinParagraph(caseItem, hit) {
   const hitId = makeHitId(caseItem, hit);
+  const sourceUrl = canonicalCaseSourceUrl(caseItem);
   if (state.caseFolder.paragraphs[hitId]) {
     delete state.caseFolder.paragraphs[hitId];
   } else {
@@ -3787,7 +3807,7 @@ function togglePinParagraph(caseItem, hit) {
       paragraph_number: hit.paragraph_number,
       section_key: hit.section_key,
       section_label: hit.section_label,
-      source_url: caseItem.source_url,
+      source_url: sourceUrl,
       text: hit.text
     };
   }
@@ -4360,6 +4380,8 @@ function findViewerParagraph(caseKeyValue, paragraphId) {
 }
 
 async function handleViewerContentAction(event) {
+  if (handleOpenSourceLinkClick(event)) return;
+
   const button = event.target.closest("button[data-action]");
   if (!button) return;
 
@@ -4539,6 +4561,7 @@ function exportCsv() {
 
   if (state.currentMode === "search") {
     for (const group of state.currentResults) {
+      const sourceUrl = canonicalCaseSourceUrl(group.caseItem);
       for (const hit of group.hits) {
         rows.push(toCsvRow([
           meta.dataset_hash,
@@ -4555,7 +4578,7 @@ function exportCsv() {
           hit.section_label,
           group.caseItem.decision_date_iso || group.caseItem.decision_date_raw || "",
           group.caseItem.decision_type,
-          group.caseItem.source_url || "",
+          sourceUrl,
           hit.score,
           hit.score_explain,
           hit.text
@@ -4564,6 +4587,7 @@ function exportCsv() {
     }
   } else {
     for (const group of state.currentResults) {
+      const sourceUrl = canonicalCaseSourceUrl(group.caseItem);
       rows.push(toCsvRow([
         meta.dataset_hash,
         meta.dataset_generated_at,
@@ -4579,7 +4603,7 @@ function exportCsv() {
         "",
         group.caseItem.decision_date_iso || group.caseItem.decision_date_raw || "",
         group.caseItem.decision_type,
-        group.caseItem.source_url || "",
+        sourceUrl,
         "",
         "",
         group.caseItem.topic || ""
@@ -4712,6 +4736,7 @@ function exportQuotePackage() {
 
   for (const entry of selected) {
     const context = findParagraphContext(entry.caseItem, entry.hit);
+    const sourceUrl = canonicalCaseSourceUrl(entry.caseItem);
     rows.push(toCsvRow([
       meta.dataset_hash,
       meta.dataset_generated_at,
@@ -4724,7 +4749,7 @@ function exportQuotePackage() {
       entry.hit.paragraph_index,
       entry.hit.paragraph_number || "",
       entry.hit.section_key,
-      entry.caseItem.source_url || "",
+      sourceUrl,
       buildParagraphCitation(entry.caseItem, entry.hit),
       context.context_window,
       context.prev_id,
@@ -5069,7 +5094,7 @@ async function handleResultAction(event) {
   }
 
   if (action === "copy-url") {
-    await copyToClipboard(payload.caseItem.source_url || "", "Skopiowano URL źródła.");
+    await copyToClipboard(canonicalCaseSourceUrl(payload.caseItem), "Skopiowano URL źródła.");
     return;
   }
 
@@ -5859,9 +5884,33 @@ function loadPersistedState() {
   state.savedQueries = safeJsonParse(localStorage.getItem(STORAGE_KEYS.savedQueries) || "[]", []);
 
   const folder = safeJsonParse(localStorage.getItem(STORAGE_KEYS.caseFolder) || "{}", {});
+  const normalizedFolderCases = {};
+  for (const [folderCaseKey, folderCaseEntry] of Object.entries(folder.cases || {})) {
+    if (!folderCaseEntry || typeof folderCaseEntry !== "object") continue;
+    normalizedFolderCases[folderCaseKey] = {
+      ...folderCaseEntry,
+      source_url: canonicalIpoCaseUrl(
+        folderCaseEntry.source_url,
+        folderCaseEntry.case_id,
+        folderCaseEntry.document_id
+      ) || ""
+    };
+  }
+  const normalizedFolderParagraphs = {};
+  for (const [hitId, paragraphEntry] of Object.entries(folder.paragraphs || {})) {
+    if (!paragraphEntry || typeof paragraphEntry !== "object") continue;
+    normalizedFolderParagraphs[hitId] = {
+      ...paragraphEntry,
+      source_url: canonicalIpoCaseUrl(
+        paragraphEntry.source_url,
+        paragraphEntry.case_id,
+        paragraphEntry.document_id
+      ) || ""
+    };
+  }
   state.caseFolder = {
-    cases: folder.cases || {},
-    paragraphs: folder.paragraphs || {},
+    cases: normalizedFolderCases,
+    paragraphs: normalizedFolderParagraphs,
     notes: folder.notes || ""
   };
 

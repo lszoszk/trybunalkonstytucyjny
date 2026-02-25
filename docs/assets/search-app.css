@@ -812,6 +812,11 @@
   cursor: pointer;
 }
 
+a.mini-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
 .mini-btn:hover {
   background: #efeae3;
 }
