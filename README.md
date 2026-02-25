@@ -97,11 +97,13 @@ Generated structure:
 - `docs/data/lemma_shards/full_bench/manifest.json`
 - `docs/data/lemma_shards/full_bench/forms-*.json`
 - `docs/data/lemma_shards/full_bench/lemmas-*.json`
+- `docs/data/lemma_shards/full_bench/lemma-pos-*.json`
 - `docs/data/lemma_shards/sample200/...`
 
 Runtime behavior:
 
 - Expert dashboard has an optional `Lematyzacja` checkbox.
+- In lemmatization mode, quoted phrases use lemma-aware positional matching (order-preserving), e.g. `"nadużycia prawa"` can match `"nadużycie prawa"`.
 - When shards are unavailable (including local uploads without shards, hash mismatch, or shard fetch errors), search automatically falls back to classic mode without blocking the UI.
 
 ## 4) Run the dashboard locally

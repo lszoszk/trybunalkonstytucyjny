@@ -5,7 +5,8 @@ const SIMILARITY_SAMPLE200_URL = "data/similar_cases_sample200.json";
 const SIMILARITY_SAMPLE50_URL = "data/similar_cases_sample50.json";
 const SIMILARITY_FULL_BENCH_URL = "data/similar_cases_full_bench.json";
 const SIMILARITY_SCHEMA_VERSION = "tk-similarity-v1";
-const LEMMA_SHARDS_SCHEMA_VERSION = "tk-lemma-shards-v1";
+const LEMMA_SHARDS_SCHEMA_VERSION_CURRENT = "tk-lemma-shards-v2";
+const LEMMA_SHARDS_SCHEMA_VERSIONS = new Set(["tk-lemma-shards-v1", LEMMA_SHARDS_SCHEMA_VERSION_CURRENT]);
 const LEMMA_SHARDS_BASE_DIR = "data/lemma_shards";
 const LEMMA_MANIFEST_FULL_URL = `${LEMMA_SHARDS_BASE_DIR}/full/manifest.json`;
 const LEMMA_MANIFEST_FULL_BENCH_URL = `${LEMMA_SHARDS_BASE_DIR}/full_bench/manifest.json`;
@@ -245,6 +246,7 @@ const state = {
   lemmaRequestSeq: 0,
   formsCache: new Map(),
   lemmasCache: new Map(),
+  lemmaPositionsCache: new Map(),
   searchRequestSeq: 0,
   validationErrorsCount: 0,
   datasetMeta: {
@@ -349,6 +351,7 @@ function resetLemmaShardsState(options = {}) {
   if (!keepCache) {
     state.formsCache = new Map();
     state.lemmasCache = new Map();
+    state.lemmaPositionsCache = new Map();
   }
   state.lemmaShardsMeta = {
     loaded: false,
@@ -430,8 +433,10 @@ function parseSimilarityIndex(payload) {
 
 function isValidLemmaManifest(payload) {
   if (!payload || typeof payload !== "object") return false;
-  if (normalizeSpace(payload.schema_version) !== LEMMA_SHARDS_SCHEMA_VERSION) return false;
+  const schemaVersion = normalizeSpace(payload.schema_version);
+  if (!LEMMA_SHARDS_SCHEMA_VERSIONS.has(schemaVersion)) return false;
   if (!Array.isArray(payload.forms_shards) || !Array.isArray(payload.lemmas_shards)) return false;
+  if (schemaVersion === LEMMA_SHARDS_SCHEMA_VERSION_CURRENT && !Array.isArray(payload.lemma_positions_shards)) return false;
   return true;
 }
 
@@ -550,6 +555,52 @@ async function lookupPostingsForLemma(lemma, manifest) {
   return [];
 }
 
+function parseLemmaPositionsPayload(rawValue) {
+  if (!Array.isArray(rawValue) || !rawValue.length) return new Map();
+  const out = new Map();
+  for (const row of rawValue) {
+    if (!Array.isArray(row) || row.length < 2) continue;
+    const pid = Number(row[0]);
+    if (!Number.isInteger(pid) || pid < 0) continue;
+    const positions = (Array.isArray(row[1]) ? row[1] : [])
+      .map((entry) => Number(entry))
+      .filter((entry) => Number.isInteger(entry) && entry >= 0);
+    if (!positions.length) continue;
+    const unique = [...new Set(positions)].sort((a, b) => a - b);
+    if (!unique.length) continue;
+    out.set(pid, unique);
+  }
+  return out;
+}
+
+async function lookupLemmaPositionsForLemma(lemma, manifest) {
+  const normalizedLemma = normalizeLegalCitationText(lemma || "");
+  if (!normalizedLemma) return new Map();
+  const positionShards = manifest?.lemma_positions_shards || [];
+  if (!Array.isArray(positionShards) || !positionShards.length) {
+    throw new Error("LEMMA_PHRASE_SHARDS_MISSING");
+  }
+
+  const candidates = findShardCandidatesForTerm(normalizedLemma, positionShards);
+  let hadFetchError = false;
+  for (const shard of candidates) {
+    try {
+      const payload = await fetchShardPayload(shard.url, state.lemmaPositionsCache);
+      const value = payload?.[normalizedLemma];
+      const parsed = parseLemmaPositionsPayload(value);
+      if (parsed.size) return parsed;
+    } catch {
+      hadFetchError = true;
+      continue;
+    }
+  }
+
+  if (hadFetchError) {
+    throw new Error("LEMMA_POSITIONS_SHARD_FETCH_FAILED");
+  }
+  return new Map();
+}
+
 async function loadLemmaShardsForCurrentDataset() {
   if (!el.lemmatizationToggle) return;
 
@@ -595,7 +646,8 @@ async function loadLemmaShardsForCurrentDataset() {
           built_at: normalizeSpace(payload.built_at),
           lemma_engine: payload.lemma_engine || {},
           forms_shards: sanitizeShardEntries(payload.forms_shards, url),
-          lemmas_shards: sanitizeShardEntries(payload.lemmas_shards, url)
+          lemmas_shards: sanitizeShardEntries(payload.lemmas_shards, url),
+          lemma_positions_shards: sanitizeShardEntries(payload.lemma_positions_shards, url)
         }
       };
       renderLemmaStatus();
@@ -2326,23 +2378,110 @@ function intersectPidSets(baseSet, nextSet) {
   return out;
 }
 
+function addPidPositions(targetMap, sourceMap) {
+  for (const [pid, positions] of sourceMap.entries()) {
+    let bucket = targetMap.get(pid);
+    if (!bucket) {
+      bucket = new Set();
+      targetMap.set(pid, bucket);
+    }
+    for (const pos of positions) {
+      bucket.add(pos);
+    }
+  }
+}
+
+async function buildLemmaTokenPidSet(token, manifest) {
+  const lemmas = await lookupLemmasForForm(token, manifest);
+  const lemmaCandidates = lemmas.length ? lemmas : [token];
+  const tokenPidSet = new Set();
+  for (const lemma of lemmaCandidates) {
+    const postings = await lookupPostingsForLemma(lemma, manifest);
+    for (const pid of postings) {
+      tokenPidSet.add(pid);
+    }
+  }
+  return tokenPidSet;
+}
+
+async function buildLemmaTokenPidPositions(token, manifest) {
+  const lemmas = await lookupLemmasForForm(token, manifest);
+  const lemmaCandidates = lemmas.length ? lemmas : [token];
+  const tokenPidPositions = new Map();
+
+  for (const lemma of lemmaCandidates) {
+    const lemmaPositions = await lookupLemmaPositionsForLemma(lemma, manifest);
+    addPidPositions(tokenPidPositions, lemmaPositions);
+  }
+
+  return tokenPidPositions;
+}
+
+function findPhrasePidMatches(tokenPidPositionsList) {
+  if (!tokenPidPositionsList.length) return new Set();
+  const [firstMap, ...rest] = tokenPidPositionsList;
+  const result = new Set();
+
+  for (const [pid, startPositions] of firstMap.entries()) {
+    let currentPositions = new Set(startPositions);
+    let matched = true;
+
+    for (const tokenMap of rest) {
+      const nextPositions = tokenMap.get(pid);
+      if (!nextPositions || !nextPositions.size) {
+        matched = false;
+        break;
+      }
+
+      const nextAligned = new Set();
+      for (const pos of currentPositions) {
+        const expected = pos + 1;
+        if (nextPositions.has(expected)) {
+          nextAligned.add(expected);
+        }
+      }
+
+      if (!nextAligned.size) {
+        matched = false;
+        break;
+      }
+      currentPositions = nextAligned;
+    }
+
+    if (matched && currentPositions.size) {
+      result.add(pid);
+    }
+  }
+
+  return result;
+}
+
+async function buildLemmaPhrasePidSet(tokens, manifest) {
+  if (!manifest?.lemma_positions_shards?.length) {
+    throw new Error("LEMMA_PHRASE_SHARDS_MISSING");
+  }
+
+  const tokenPidPositionsList = [];
+  for (const token of tokens) {
+    const tokenPidPositions = await buildLemmaTokenPidPositions(token, manifest);
+    if (!tokenPidPositions.size) return new Set();
+    tokenPidPositionsList.push(tokenPidPositions);
+  }
+
+  return findPhrasePidMatches(tokenPidPositionsList);
+}
+
 async function buildLemmaPidSetForOperand(operand, manifest) {
   const tokens = tokenizeLemmaOperand(operand);
   if (!tokens.length) return new Set();
 
+  if (operand?.quoted && tokens.length > 1) {
+    return buildLemmaPhrasePidSet(tokens, manifest);
+  }
+
   let intersection = null;
   for (const token of tokens) {
-    const lemmas = await lookupLemmasForForm(token, manifest);
-    const lemmaCandidates = lemmas.length ? lemmas : [token];
-
-    const tokenPidSet = new Set();
-    for (const lemma of lemmaCandidates) {
-      const postings = await lookupPostingsForLemma(lemma, manifest);
-      for (const pid of postings) {
-        tokenPidSet.add(pid);
-      }
-    }
-
+    const tokenPidSet = await buildLemmaTokenPidSet(token, manifest);
     if (!tokenPidSet.size) return new Set();
     if (intersection === null) {
       intersection = tokenPidSet;
@@ -2776,14 +2915,18 @@ async function runLemmaSearchMode(parsedQuery, filters, requestSeq) {
   let operandPidMap = null;
   try {
     operandPidMap = await buildLemmaOperandPidMap(parsedQuery, manifest);
-  } catch {
+  } catch (error) {
     if (requestSeq !== state.searchRequestSeq) return null;
+    const errorCode = normalizeSpace(error?.message || "");
+    const fallbackMessage = errorCode === "LEMMA_PHRASE_SHARDS_MISSING"
+      ? "Lematyzacja niedostępna dla zapytań frazowych (brak indeksu pozycji); użyto standardowego wyszukiwania."
+      : "Lematyzacja niedostępna (błąd pobierania shardów); użyto standardowego wyszukiwania.";
     state.lemmaShardsMeta = {
       loaded: true,
       available: false,
       sourceUrl: null,
       datasetHash: null,
-      message: "Lematyzacja niedostępna (błąd pobierania shardów); użyto standardowego wyszukiwania.",
+      message: fallbackMessage,
       manifest: null
     };
     renderLemmaStatus();

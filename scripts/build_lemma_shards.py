@@ -7,6 +7,7 @@ Output structure:
     manifest.json
     forms-001.json ...
     lemmas-001.json ...
+    lemma-pos-001.json ...
 """
 
 from __future__ import annotations
@@ -17,12 +18,12 @@ import re
 import sys
 import unicodedata
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, List, Sequence, Set, Tuple
+from typing import Any, Dict, Iterable, List, Sequence, Set, Tuple
 
 
-SCHEMA_VERSION = "tk-lemma-shards-v1"
+SCHEMA_VERSION = "tk-lemma-shards-v2"
 DEFAULT_MAX_TERMS_PER_SHARD = 20000
 TOKEN_SPLIT_RE = re.compile(r"[^\w-]+", flags=re.UNICODE)
 DATE_ISO_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -157,7 +158,7 @@ class MorfeuszLemmatizer:
 
 
 def split_to_shards(
-    mapping: Dict[str, List[int] | List[str]],
+    mapping: Dict[str, Any],
     prefix: str,
     max_terms_per_shard: int,
 ) -> Tuple[List[dict], Dict[str, dict]]:
@@ -212,17 +213,19 @@ def build_lemma_shards(
 
     forms_to_lemmas: Dict[str, Set[str]] = defaultdict(set)
     lemma_to_postings: Dict[str, Set[int]] = defaultdict(set)
+    lemma_to_positions: Dict[str, Dict[int, List[int]]] = defaultdict(lambda: defaultdict(list))
     paragraph_count = 0
 
     for pid, text in iter_paragraph_texts(sorted_cases):
         paragraph_count += 1
-        for token in tokenize_text_for_lemma(text):
-            lemmas = lemmatizer.lemmatize_token(token)
+        for position, token in enumerate(tokenize_text_for_lemma(text)):
+            lemmas = sorted(set(lemmatizer.lemmatize_token(token)))
             if not lemmas:
                 continue
             forms_to_lemmas[token].update(lemmas)
             for lemma in lemmas:
                 lemma_to_postings[lemma].add(pid)
+                lemma_to_positions[lemma][pid].append(position)
 
     forms_map: Dict[str, List[str]] = {
         term: sorted(values) for term, values in forms_to_lemmas.items()
@@ -230,6 +233,16 @@ def build_lemma_shards(
     lemmas_map: Dict[str, List[int]] = {
         lemma: sorted(values) for lemma, values in lemma_to_postings.items()
     }
+    lemma_positions_map: Dict[str, List[List[Any]]] = {}
+    for lemma, pid_positions in lemma_to_positions.items():
+        serialized_rows: List[List[Any]] = []
+        for pid in sorted(pid_positions.keys()):
+            positions = sorted(set(pid_positions[pid]))
+            if not positions:
+                continue
+            serialized_rows.append([pid, positions])
+        if serialized_rows:
+            lemma_positions_map[lemma] = serialized_rows
 
     forms_meta, forms_payloads = split_to_shards(
         mapping=forms_map,
@@ -241,6 +254,11 @@ def build_lemma_shards(
         prefix="lemmas",
         max_terms_per_shard=max_terms_per_shard,
     )
+    lemma_positions_meta, lemma_positions_payloads = split_to_shards(
+        mapping=lemma_positions_map,
+        prefix="lemma-pos",
+        max_terms_per_shard=max_terms_per_shard,
+    )
 
     target_dir = outdir / dataset_key
     target_dir.mkdir(parents=True, exist_ok=True)
@@ -249,18 +267,21 @@ def build_lemma_shards(
         write_json(target_dir / file_name, payload)
     for file_name, payload in lemmas_payloads.items():
         write_json(target_dir / file_name, payload)
+    for file_name, payload in lemma_positions_payloads.items():
+        write_json(target_dir / file_name, payload)
 
     manifest = {
         "schema_version": SCHEMA_VERSION,
         "dataset_hash": dataset_hash,
         "normalization_version": normalization_version,
-        "built_at": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+        "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
         "lemma_engine": {
             "name": "morfeusz2",
             "version": lemmatizer.version,
         },
         "forms_shards": forms_meta,
         "lemmas_shards": lemmas_meta,
+        "lemma_positions_shards": lemma_positions_meta,
     }
     write_json(target_dir / "manifest.json", manifest)
 
@@ -271,6 +292,7 @@ def build_lemma_shards(
     print(f"Paragraphs: {paragraph_count}")
     print(f"Forms: {len(forms_map)} in {len(forms_meta)} shard(s)")
     print(f"Lemmas: {len(lemmas_map)} in {len(lemmas_meta)} shard(s)")
+    print(f"Lemma positions: {len(lemma_positions_map)} in {len(lemma_positions_meta)} shard(s)")
 
 
 def parse_args(argv: Sequence[str]) -> argparse.Namespace:
