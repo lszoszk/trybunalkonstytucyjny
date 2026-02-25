@@ -1333,6 +1333,7 @@ function normalizeRawDecision(raw) {
     download_url: canonicalIpoDownloadUrl(raw.download?.href || raw.download_url, documentId),
     publication_entries: Array.isArray(raw.publication_entries) ? raw.publication_entries : [],
     metadata: raw.metadata || {},
+    case_metric: raw.case_metric || null,
     judge_names: judgeNames,
     judge_count: benchInfo.count,
     bench_size_key: benchInfo.key,
@@ -1472,6 +1473,7 @@ function sanitizeCase(caseItem, index = 0) {
     download_url: canonicalIpoDownloadUrl(caseItem.download_url || caseItem.download?.href, documentId),
     publication_entries: Array.isArray(caseItem.publication_entries) ? caseItem.publication_entries : [],
     metadata: caseItem.metadata || {},
+    case_metric: caseItem.case_metric || null,
     judge_names: judgeNames,
     judge_count: Number.isFinite(caseItem.judge_count) ? Number(caseItem.judge_count) : benchInfo.count,
     bench_size_key: benchKeyRaw,
@@ -1514,6 +1516,22 @@ function normalizeAndValidateRow(row, index = 0) {
   return {
     normalized,
     errors
+  };
+}
+
+function getCaseMetricDisplay(caseItem) {
+  const cm = caseItem.case_metric;
+  const meta = caseItem.metadata || {};
+  return {
+    podmiot: cm?.podmiot_w_sprawie?.present
+      ? cm.podmiot_w_sprawie
+      : (meta["Podmiot w sprawie"] ? { present: true, text: meta["Podmiot w sprawie"], items: [] } : null),
+    przedmiot: cm?.przedmiot_sprawy?.present
+      ? cm.przedmiot_sprawy
+      : (meta["Przedmiot sprawy"] ? { present: true, text: meta["Przedmiot sprawy"], items: [], acts: [] } : null),
+    wzorce: cm?.wzorce?.present
+      ? cm.wzorce
+      : (meta["Wzorce"] ? { present: true, text: meta["Wzorce"], items: [], acts: [] } : null),
   };
 }
 
@@ -1569,6 +1587,7 @@ function cacheElements() {
   el.yearTo = byId("yearTo");
   el.judgeFilter = byId("judgeFilter");
   el.signatureFilter = byId("signatureFilter");
+  el.wzorzecFilter = byId("wzorzecFilter");
 
   el.statCases = byId("statCases");
   el.statCasesSub = byId("statCasesSub");
@@ -1666,6 +1685,7 @@ function setSearchEnabled(enabled) {
   el.yearTo.disabled = !enabled;
   el.judgeFilter.disabled = !enabled;
   el.signatureFilter.disabled = !enabled;
+  if (el.wzorzecFilter) el.wzorzecFilter.disabled = !enabled;
   setDisabled(el.exportBtn);
   setDisabled(el.quoteExportBtn);
   setDisabled(el.dossierExportBtn);
@@ -2390,7 +2410,8 @@ function collectFilters() {
     yearFrom: Number.isFinite(yearFrom) ? yearFrom : null,
     yearTo: Number.isFinite(yearTo) ? yearTo : null,
     judge: normalizeSearchText(el.judgeFilter.value),
-    signature: normalizeSearchText(el.signatureFilter.value)
+    signature: normalizeSearchText(el.signatureFilter.value),
+    wzorzec: el.wzorzecFilter ? normalizeSearchText(el.wzorzecFilter.value) : ""
   };
 }
 
@@ -2431,6 +2452,23 @@ function casePassesFilters(caseItem, filters) {
         }
       : deriveIpoBenchInfo(caseItem.bench_size_key || derivedBench.key);
     if (!benchIpo.visible || !filters.benches.includes(benchIpo.key)) {
+      return false;
+    }
+  }
+  if (filters.wzorzec) {
+    const cm = caseItem.case_metric;
+    const meta = caseItem.metadata || {};
+    let wzorzecText = "";
+    if (cm?.wzorce?.present) {
+      wzorzecText = [
+        cm.wzorce.text || "",
+        ...(cm.wzorce.items || []),
+        ...(cm.wzorce.acts || []).flatMap((a) => [a.act || "", ...a.items])
+      ].join(" ");
+    } else if (meta["Wzorce"]) {
+      wzorzecText = meta["Wzorce"];
+    }
+    if (!normalizeSearchText(wzorzecText).includes(filters.wzorzec)) {
       return false;
     }
   }
@@ -3332,6 +3370,7 @@ function renderActiveFilters(filters) {
   if (filters.yearFrom || filters.yearTo) chips.push(`Rok: ${filters.yearFrom || "*"}–${filters.yearTo || "*"}`);
   if (filters.judge) chips.push(`Sędzia: ${filters.judge}`);
   if (filters.signature) chips.push(`Sygnatura: ${filters.signature}`);
+  if (filters.wzorzec) chips.push(`Wzorzec: ${filters.wzorzec}`);
   if (state.query) chips.push(`Zapytanie: ${state.query}`);
 
   el.activeFilters.innerHTML = chips.map((chip) => `<span class="filter-chip">${escapeHtml(chip)}</span>`).join("");
@@ -3350,6 +3389,8 @@ function buildResultsLayerSearchBlob(group) {
   if (typeof group.resultsLayerSearchBlob === "string") return group.resultsLayerSearchBlob;
 
   const caseItem = group.caseItem || {};
+  const cm = caseItem.case_metric;
+  const meta = caseItem.metadata || {};
   const parts = [
     caseItem.case_signature,
     caseItem.decision_type_ipo_label,
@@ -3358,7 +3399,10 @@ function buildResultsLayerSearchBlob(group) {
     caseItem.year,
     (caseItem.judge_names || []).join(" "),
     caseItem.document_id,
-    caseItem.case_id
+    caseItem.case_id,
+    cm?.podmiot_w_sprawie?.text || meta["Podmiot w sprawie"] || "",
+    cm?.przedmiot_sprawy?.text || meta["Przedmiot sprawy"] || "",
+    cm?.wzorce?.text || meta["Wzorce"] || ""
   ];
 
   for (const hit of (group.hits || []).slice(0, 32)) {
@@ -3709,6 +3753,7 @@ function renderResults(parsedQuery) {
         </div>
         ${caseItem.topic ? `<p class="case-topic"><strong>Dotyczy:</strong> ${escapeHtml(caseItem.topic)}</p>` : ""}
         ${judges ? `<p class="case-topic"><strong>Skład:</strong> ${escapeHtml(judges)}</p>` : ""}
+        ${buildCardPrzedmiotLine(caseItem)}
       </header>
       ${hitListHtml}
       <footer class="case-foot">
@@ -4300,6 +4345,8 @@ function buildJudgmentIdentitySection(caseItem) {
     ? `<p class="viewer-identity-proceeding">${escapeHtml(proceedingIntro)}</p>`
     : "";
 
+  const metricHtml = buildCaseMetricHtml(caseItem);
+
   return {
     targetId,
     tocItem: {
@@ -4319,9 +4366,104 @@ function buildJudgmentIdentitySection(caseItem) {
         ${judgesHtml}
         ${proceedingHtml}
         ${publicationHtml}
+        ${metricHtml}
       </section>
     `
   };
+}
+
+function buildCaseMetricHtml(caseItem) {
+  const display = getCaseMetricDisplay(caseItem);
+  const sections = [];
+
+  if (display.podmiot) {
+    const preview = truncateText(display.podmiot.text || (display.podmiot.items || []).join(", "), 90);
+    const bodyHtml = (display.podmiot.items || []).length
+      ? `<ul class="viewer-metric-items">${display.podmiot.items.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`
+      : (display.podmiot.text ? `<p class="viewer-metric-text">${escapeHtml(display.podmiot.text)}</p>` : "");
+    sections.push(`
+      <details class="viewer-metric-block">
+        <summary class="viewer-metric-summary"><strong>Podmiot w sprawie</strong><span class="viewer-metric-preview">${escapeHtml(preview)}</span></summary>
+        ${bodyHtml}
+      </details>
+    `);
+  }
+
+  if (display.przedmiot) {
+    const preview = buildMetricPreview(display.przedmiot);
+    const bodyHtml = renderMetricActsTree(display.przedmiot);
+    sections.push(`
+      <details class="viewer-metric-block">
+        <summary class="viewer-metric-summary"><strong>Przedmiot sprawy</strong><span class="viewer-metric-preview">${escapeHtml(preview)}</span></summary>
+        ${bodyHtml}
+      </details>
+    `);
+  }
+
+  if (display.wzorce) {
+    const preview = buildMetricPreview(display.wzorce);
+    const bodyHtml = renderMetricActsTree(display.wzorce);
+    sections.push(`
+      <details class="viewer-metric-block">
+        <summary class="viewer-metric-summary"><strong>Wzorce kontroli</strong><span class="viewer-metric-preview">${escapeHtml(preview)}</span></summary>
+        ${bodyHtml}
+      </details>
+    `);
+  }
+
+  if (!sections.length) return "";
+  return `<div class="viewer-metric-group">${sections.join("")}</div>`;
+}
+
+function truncateText(text, max) {
+  const s = normalizeSpace(text || "");
+  return s.length > max ? s.slice(0, max - 1) + "\u2026" : s;
+}
+
+function buildMetricPreview(metric) {
+  if (metric.acts?.length) {
+    const actNames = metric.acts.map((a) => a.act).filter(Boolean).slice(0, 3);
+    if (actNames.length) {
+      const suffix = metric.acts.length > 3 ? ` (+${metric.acts.length - 3})` : "";
+      return actNames.join("; ") + suffix;
+    }
+  }
+  return truncateText(metric.text || (metric.items || []).join(", "), 90);
+}
+
+function renderMetricActsTree(metric) {
+  if (metric.acts?.length) {
+    return metric.acts.map((act) => {
+      const actLabel = act.act || "Akt prawny";
+      const itemsHtml = (act.items || []).length
+        ? `<ul class="viewer-metric-act-items">${act.items.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`
+        : "";
+      return `<div class="viewer-metric-act"><p class="viewer-metric-act-name">${escapeHtml(actLabel)}</p>${itemsHtml}</div>`;
+    }).join("");
+  }
+  if ((metric.items || []).length) {
+    return `<ul class="viewer-metric-items">${metric.items.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`;
+  }
+  return metric.text ? `<p class="viewer-metric-text">${escapeHtml(metric.text)}</p>` : "";
+}
+
+function buildCardPrzedmiotLine(caseItem) {
+  const display = getCaseMetricDisplay(caseItem);
+  if (!display.przedmiot) return "";
+  let compact = "";
+  if (display.przedmiot.acts?.length) {
+    const actNames = display.przedmiot.acts.map((a) => a.act).filter(Boolean).slice(0, 3);
+    if (actNames.length) {
+      const suffix = display.przedmiot.acts.length > 3 ? ` (+${display.przedmiot.acts.length - 3})` : "";
+      compact = actNames.join("; ") + suffix;
+    }
+  }
+  if (!compact) {
+    const text = normalizeSpace(display.przedmiot.text || "");
+    compact = text.length > 120 ? text.slice(0, 117) + "\u2026" : text;
+  }
+  if (!compact) return "";
+  return `<p class="case-topic case-topic-metric"><strong>Przedmiot:</strong> ${escapeHtml(compact)}</p>`;
 }
 
 function renderViewerKeywordUi(totalParagraphs, visibleParagraphs) {
@@ -5072,6 +5214,7 @@ function readUrlStateFromLocation() {
     year_to: params.get("year_to") || "",
     judge: params.get("judge") || "",
     signature: params.get("signature") || "",
+    wzorzec: params.get("wzorzec") || "",
     lemma: params.get("lemma")
   };
 }
@@ -5085,6 +5228,7 @@ function applyUrlState(urlState) {
   el.yearTo.value = urlState.year_to || "";
   el.judgeFilter.value = urlState.judge || "";
   el.signatureFilter.value = urlState.signature || "";
+  if (el.wzorzecFilter) el.wzorzecFilter.value = urlState.wzorzec || "";
   if (el.lemmatizationToggle) {
     const nextUseLemmatization = urlState.lemma === "1"
       ? true
@@ -5131,6 +5275,7 @@ function updateUrlState(filters) {
   if (filters.yearTo) params.set("year_to", String(filters.yearTo));
   if (filters.judge) params.set("judge", filters.judge);
   if (filters.signature) params.set("signature", filters.signature);
+  if (filters.wzorzec) params.set("wzorzec", filters.wzorzec);
   if (el.lemmatizationToggle && state.uiPrefs.useLemmatization) params.set("lemma", "1");
 
   const query = params.toString();
@@ -5144,6 +5289,7 @@ function clearAllFiltersAndQuery() {
   el.yearTo.value = "";
   el.judgeFilter.value = "";
   el.signatureFilter.value = "";
+  if (el.wzorzecFilter) el.wzorzecFilter.value = "";
 
   document
     .querySelectorAll('input[data-filter="section"], input[data-filter="type"], input[data-filter="bench"]')
@@ -6008,7 +6154,7 @@ function initInteractions() {
     });
   }
 
-  [el.yearFrom, el.yearTo, el.judgeFilter, el.signatureFilter].forEach((input) => {
+  [el.yearFrom, el.yearTo, el.judgeFilter, el.signatureFilter, el.wzorzecFilter].filter(Boolean).forEach((input) => {
     input.addEventListener("change", () => {
       clearPresetOnManualFilterChange();
     });

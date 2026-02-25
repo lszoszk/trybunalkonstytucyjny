@@ -117,6 +117,9 @@
 
               <h3 class="filter-title space-top">Liczebność składu orzekającego</h3>
               <div id="benchSizeFilters" class="checkbox-list"></div>
+
+              <h3 class="filter-title space-top">Wzorzec kontroli (fragment)</h3>
+              <input id="wzorzecFilter" class="input-wide" type="text" placeholder="np. art. 32 Konstytucji" disabled>
             </div>
           </div>
         </section>
@@ -204,43 +207,43 @@
           <p id="resultsLayerSearchCoverage" class="results-layer-coverage" hidden></p>
         </div>
 
-        <div class="sidebar-block">
-          <h3>Sekcje</h3>
+        <details class="sidebar-block" open>
+          <summary class="sidebar-block-toggle"><h3>Sekcje</h3></summary>
           <div id="analyticsSections" class="bar-list"></div>
-        </div>
+        </details>
 
-        <div class="sidebar-block">
-          <h3>Typ orzeczenia</h3>
+        <details class="sidebar-block" open>
+          <summary class="sidebar-block-toggle"><h3>Typ orzeczenia</h3></summary>
           <div id="analyticsTypes" class="bar-list"></div>
-        </div>
+        </details>
 
-        <div class="sidebar-block">
-          <h3>Lata</h3>
+        <details class="sidebar-block" open>
+          <summary class="sidebar-block-toggle"><h3>Lata</h3></summary>
           <div id="analyticsYears" class="bar-list"></div>
-        </div>
+        </details>
 
-        <div class="sidebar-block">
-          <h3>Najczęstsze terminy</h3>
+        <details class="sidebar-block">
+          <summary class="sidebar-block-toggle"><h3>Najczęstsze terminy</h3></summary>
           <div id="analyticsTerms" class="term-cloud"></div>
-        </div>
+        </details>
 
-        <div class="sidebar-block">
-          <h3>Case folder</h3>
+        <details class="sidebar-block">
+          <summary class="sidebar-block-toggle"><h3>Case folder</h3></summary>
           <p id="folderSummary" class="folder-summary">Brak przypiętych elementów.</p>
           <div id="folderCasesList" class="folder-list"></div>
           <div id="folderParagraphsList" class="folder-list"></div>
-        </div>
+        </details>
 
-        <div class="sidebar-block">
-          <h3>Notatki robocze</h3>
+        <details class="sidebar-block">
+          <summary class="sidebar-block-toggle"><h3>Notatki robocze</h3></summary>
           <textarea id="folderNotes" class="folder-notes" placeholder="Notatki do argumentacji, teza, kontrargumenty..."></textarea>
-        </div>
+        </details>
 
-        <div class="sidebar-block">
-          <h3>Chronologia spraw</h3>
+        <details class="sidebar-block">
+          <summary class="sidebar-block-toggle"><h3>Chronologia spraw</h3></summary>
           <div id="timelineList" class="timeline-list"></div>
           <button id="compareBtn" type="button" class="btn btn-soft compare-btn" disabled>Porównaj przypięte sprawy</button>
-        </div>
+        </details>
       </aside>
     </section>
 
