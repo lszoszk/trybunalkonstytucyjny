@@ -253,6 +253,7 @@ const state = {
   formsCache: new Map(),
   lemmasCache: new Map(),
   lemmaPositionsCache: new Map(),
+  lemmaHighlightPlan: null,
   searchRequestSeq: 0,
   validationErrorsCount: 0,
   datasetMeta: {
@@ -359,6 +360,7 @@ function resetLemmaShardsState(options = {}) {
     state.lemmasCache = new Map();
     state.lemmaPositionsCache = new Map();
   }
+  state.lemmaHighlightPlan = null;
   state.lemmaShardsMeta = {
     loaded: false,
     available: false,
@@ -605,6 +607,58 @@ async function lookupLemmaPositionsForLemma(lemma, manifest) {
     throw new Error("LEMMA_POSITIONS_SHARD_FETCH_FAILED");
   }
   return new Map();
+}
+
+async function preloadAllFormsShards(manifest) {
+  const formShards = manifest?.forms_shards || [];
+  let hadFetchError = false;
+  for (const shard of formShards) {
+    try {
+      await fetchShardPayload(shard.url, state.formsCache);
+    } catch {
+      hadFetchError = true;
+    }
+  }
+  if (hadFetchError) {
+    throw new Error("LEMMA_FORMS_SHARD_FETCH_FAILED");
+  }
+}
+
+async function buildLemmaHighlightPlan(parsedQuery, manifest) {
+  if (!parsedQuery?.textOperands?.length) return null;
+
+  const descriptors = [];
+  for (const operand of parsedQuery.textOperands) {
+    const tokens = tokenizeLemmaOperand(operand);
+    if (!operand?.quoted || tokens.length < 2) continue;
+
+    const tokenLemmaSets = [];
+    for (const token of tokens) {
+      const lemmas = await lookupLemmasForForm(token, manifest);
+      const lemmaCandidates = lemmas.length ? lemmas : [token];
+      tokenLemmaSets.push(new Set(lemmaCandidates));
+    }
+
+    if (tokenLemmaSets.length > 1) {
+      descriptors.push({
+        key: makeTextOperandKey(operand),
+        tokenLemmaSets
+      });
+    }
+  }
+
+  if (!descriptors.length) return null;
+
+  await preloadAllFormsShards(manifest);
+
+  const phraseByOperandKey = new Map();
+  for (const descriptor of descriptors) {
+    phraseByOperandKey.set(descriptor.key, descriptor.tokenLemmaSets);
+  }
+
+  return {
+    phraseByOperandKey
+  };
 }
 
 async function loadLemmaShardsForCurrentDataset() {
@@ -2629,7 +2683,7 @@ function computeScore(entry, parsedQuery, entryTextLegal = getEntryTextLegal(ent
   };
 }
 
-function buildSnippet(text, terms, maxLen = 360) {
+function buildSnippet(text, terms, maxLen = 360, anchorIndex = -1) {
   const source = normalizeSpace(text);
   if (!source) return "";
   if (!terms.length) {
@@ -2644,6 +2698,11 @@ function buildSnippet(text, terms, maxLen = 360) {
     if (idx >= 0 && (firstIdx === -1 || idx < firstIdx)) {
       firstIdx = idx;
     }
+  }
+
+  const normalizedAnchor = Number(anchorIndex);
+  if (firstIdx === -1 && Number.isInteger(normalizedAnchor) && normalizedAnchor >= 0) {
+    firstIdx = normalizedAnchor;
   }
 
   if (firstIdx === -1) {
@@ -2728,6 +2787,97 @@ function isNormalizedWordChar(char) {
   return /[a-z0-9]/.test(char || "");
 }
 
+function parseLemmasFromFormsPayload(value) {
+  if (!Array.isArray(value) || !value.length) return [];
+  return [...new Set(value.map((entry) => normalizeLegalCitationText(entry)).filter(Boolean))];
+}
+
+function lookupCachedLemmasForForm(form, manifest) {
+  const normalizedForm = normalizeLegalCitationText(form || "");
+  if (!normalizedForm) return [];
+
+  const candidates = findShardCandidatesForTerm(normalizedForm, manifest?.forms_shards || []);
+  for (const shard of candidates) {
+    if (!state.formsCache.has(shard.url)) continue;
+    const payload = state.formsCache.get(shard.url);
+    const parsed = parseLemmasFromFormsPayload(payload?.[normalizedForm]);
+    if (parsed.length) return parsed;
+  }
+  return [];
+}
+
+function tokenizeTextToWordSpans(sourceText) {
+  const source = String(sourceText ?? "");
+  const spans = [];
+  const tokenRe = /[\p{L}\p{N}_-]+/gu;
+  for (const match of source.matchAll(tokenRe)) {
+    const raw = normalizeSpace(match[0]);
+    const norm = normalizeLegalCitationText(raw);
+    if (!norm) continue;
+    const start = Number(match.index);
+    const end = start + raw.length;
+    if (!Number.isInteger(start) || end <= start) continue;
+    spans.push({ start, end, norm });
+  }
+  return spans;
+}
+
+function collectLemmaPhraseHighlightRanges(sourceText, parsedQuery) {
+  const highlightPlan = state.lemmaHighlightPlan;
+  const manifest = state.lemmaShardsMeta?.manifest;
+  if (!highlightPlan?.phraseByOperandKey || !manifest) return [];
+  if (!parsedQuery?.textOperands?.length) return [];
+
+  const phraseTokenSets = [];
+  for (const operand of parsedQuery.textOperands) {
+    const key = makeTextOperandKey(operand);
+    const tokenLemmaSets = highlightPlan.phraseByOperandKey.get(key);
+    if (Array.isArray(tokenLemmaSets) && tokenLemmaSets.length > 1) {
+      phraseTokenSets.push(tokenLemmaSets);
+    }
+  }
+  if (!phraseTokenSets.length) return [];
+
+  const tokenSpans = tokenizeTextToWordSpans(sourceText);
+  if (!tokenSpans.length) return [];
+
+  const tokenLemmaCandidatesByNorm = new Map();
+  const ranges = [];
+
+  for (const tokenLemmaSets of phraseTokenSets) {
+    const phraseLength = tokenLemmaSets.length;
+    if (phraseLength > tokenSpans.length) continue;
+
+    for (let startIdx = 0; startIdx <= tokenSpans.length - phraseLength; startIdx += 1) {
+      let matched = true;
+      for (let offset = 0; offset < phraseLength; offset += 1) {
+        const tokenNorm = tokenSpans[startIdx + offset].norm;
+        if (!tokenLemmaCandidatesByNorm.has(tokenNorm)) {
+          const lemmas = lookupCachedLemmasForForm(tokenNorm, manifest);
+          tokenLemmaCandidatesByNorm.set(tokenNorm, lemmas.length ? lemmas : [tokenNorm]);
+        }
+
+        const candidates = tokenLemmaCandidatesByNorm.get(tokenNorm) || [];
+        const queryLemmaSet = tokenLemmaSets[offset];
+        const intersects = candidates.some((lemma) => queryLemmaSet.has(lemma));
+        if (!intersects) {
+          matched = false;
+          break;
+        }
+      }
+
+      if (!matched) continue;
+      const start = tokenSpans[startIdx].start;
+      const end = tokenSpans[startIdx + phraseLength - 1].end;
+      if (Number.isInteger(start) && Number.isInteger(end) && end > start) {
+        ranges.push([start, end]);
+      }
+    }
+  }
+
+  return ranges;
+}
+
 function collectHighlightRanges(sourceText, parsedQuery) {
   if (!parsedQuery?.textOperands?.length) return [];
 
@@ -2762,6 +2912,11 @@ function collectHighlightRanges(sourceText, parsedQuery) {
 
       idx = normalized.indexOf(pattern, idx + Math.max(1, pattern.length));
     }
+  }
+
+  const lemmaPhraseRanges = collectLemmaPhraseHighlightRanges(source, parsedQuery);
+  if (lemmaPhraseRanges.length) {
+    ranges.push(...lemmaPhraseRanges);
   }
 
   if (!ranges.length) return [];
@@ -2961,6 +3116,8 @@ async function runLemmaSearchMode(parsedQuery, filters, requestSeq) {
     return runClassicSearchMode(parsedQuery, filters);
   }
 
+  state.lemmaHighlightPlan = null;
+
   let operandPidMap = null;
   try {
     operandPidMap = await buildLemmaOperandPidMap(parsedQuery, manifest);
@@ -2986,6 +3143,16 @@ async function runLemmaSearchMode(parsedQuery, filters, requestSeq) {
     return null;
   }
 
+  try {
+    state.lemmaHighlightPlan = await buildLemmaHighlightPlan(parsedQuery, manifest);
+  } catch {
+    state.lemmaHighlightPlan = null;
+  }
+
+  if (requestSeq !== state.searchRequestSeq) {
+    return null;
+  }
+
   const grouped = new Map();
   let totalHits = 0;
   const queryNeedsTextLegal = Boolean(parsedQuery?.textOperands?.length);
@@ -3001,6 +3168,8 @@ async function runLemmaSearchMode(parsedQuery, filters, requestSeq) {
     const snippetTerms = (parsedQuery?.textOperands || [])
       .map((operand) => operand.legal || operand.norm)
       .filter(Boolean);
+    const lemmaPhraseRanges = collectLemmaPhraseHighlightRanges(entry.paragraph.text, parsedQuery);
+    const snippetAnchor = lemmaPhraseRanges.length ? lemmaPhraseRanges[0][0] : -1;
     const hit = {
       paragraph_id: entry.paragraph.paragraph_id,
       paragraph_index: entry.paragraph.paragraph_index,
@@ -3009,7 +3178,7 @@ async function runLemmaSearchMode(parsedQuery, filters, requestSeq) {
       section_label: entry.sectionLabel,
       section_confidence: entry.paragraph.section_confidence,
       text: entry.paragraph.text,
-      snippet: buildSnippet(entry.paragraph.text, snippetTerms, 420),
+      snippet: buildSnippet(entry.paragraph.text, snippetTerms, 420, snippetAnchor),
       score: scoring.score,
       score_explain: scoring.explain
     };
@@ -3052,6 +3221,7 @@ async function runSearch(options = {}) {
   state.query = query;
   state.currentParsedQuery = parsedQuery;
   state.hitTextOverrides.clear();
+  state.lemmaHighlightPlan = null;
 
   if (!parsedQuery && query) {
     state.currentMode = "search";
