@@ -51,10 +51,8 @@ const IPO_BENCH_SIZES = [
 ];
 const IPO_BENCH_BY_KEY = new Map(IPO_BENCH_SIZES.map((entry) => [entry.key, entry]));
 const IPO_HOSTNAME = "ipo.trybunal.gov.pl";
-const IPO_WARMUP_URL = "https://ipo.trybunal.gov.pl/ipo/Szukaj?cid=1";
 const IPO_OPEN_RECOVERY_STEP_MS = {
-  warmupToCase: 500,
-  caseRetry: 1900
+  caseRetry: 1400
 };
 
 const SECTION_META = {
@@ -1058,8 +1056,15 @@ function schedulePopupLocationReplace(popup, href, delayMs) {
   }, delayMs);
 }
 
+function shouldUseIpoRetryNavigation() {
+  const ua = String(navigator?.userAgent || "");
+  const isSafari = /Safari\//.test(ua)
+    && !/(Chrome|Chromium|CriOS|FxiOS|EdgiOS|OPiOS|Android)/.test(ua);
+  return !isSafari;
+}
+
 function openIpoSourceWithRecovery(targetUrl) {
-  const popup = window.open(IPO_WARMUP_URL, "_blank");
+  const popup = window.open(targetUrl.href, "_blank");
   if (!popup) return false;
 
   try {
@@ -1068,9 +1073,9 @@ function openIpoSourceWithRecovery(targetUrl) {
     // Ignore browsers that do not expose opener mutation.
   }
 
-  const caseHref = targetUrl.href;
-  schedulePopupLocationReplace(popup, caseHref, IPO_OPEN_RECOVERY_STEP_MS.warmupToCase);
-  schedulePopupLocationReplace(popup, caseHref, IPO_OPEN_RECOVERY_STEP_MS.caseRetry);
+  if (shouldUseIpoRetryNavigation()) {
+    schedulePopupLocationReplace(popup, targetUrl.href, IPO_OPEN_RECOVERY_STEP_MS.caseRetry);
+  }
   return true;
 }
 
