@@ -1,11 +1,6 @@
 # trybunalkonstytucyjny
 
-This repository (`trybunalkonstytucyjny`) includes two connected parts:
-
-- **Playwright scraper** for `https://ipo.trybunal.gov.pl/ipo/Szukaj?cid=1`
-- **Static legal search dashboard** (inspired by your ECHR dashboard workflow)
-
-The dashboard is focused on **paragraph-level legal retrieval** with section-aware filtering for TK decisions.
+**Static legal search dashboard** for paragraph-level retrieval and section-aware filtering of Polish Constitutional Tribunal (TK) decisions.
 
 Repo URL: `https://github.com/lszoszk/trybunalkonstytucyjny`
 
@@ -29,41 +24,7 @@ Repo URL: `https://github.com/lszoszk/trybunalkonstytucyjny`
 npm install
 ```
 
-If Playwright asks for browser binaries:
-
-```bash
-npx playwright install chromium
-```
-
-## 2) Scrape decisions
-
-Example (50 decisions):
-
-```bash
-npm run scrape:ipo -- --limit 50 --results-per-page 500 --output-prefix sample-50-v2
-```
-
-Incremental scrape for missing older IPO records (time range `od 1986 roku`) while skipping already-known `document_id` from `tk-all.decisions.json`:
-
-```bash
-npm run scrape:ipo:missing-1986
-npm run merge:ipo:missing-1986
-npm run build:refresh-from-tk-all
-```
-
-Equivalent raw CLI (if you need custom limits/paths):
-
-```bash
-npm run scrape:ipo -- --limit 5000 --pool-size 5000 --results-per-page 500 --concurrency 3 --time-range "od 1986 roku" --existing-decisions output/playwright/tk-all.decisions.json --output-prefix tk-missing-1986
-node scripts/merge_ipo_decisions.mjs --base output/playwright/tk-all.decisions.json --incremental output/playwright/tk-missing-1986.decisions.json --output output/playwright/tk-all.decisions.json
-npm run build:refresh-from-tk-all
-```
-
-Main raw output:
-
-- `output/playwright/<prefix>.decisions.json`
-
-## 3) Build dashboard data (normalization + stats)
+## 2) Build dashboard data (normalization + stats)
 
 ```bash
 node scripts/build_tk_dashboard_data.mjs --input output/playwright/sample-50-v2.decisions.json
@@ -75,7 +36,7 @@ Generated files:
 - `docs/data/tk_cases_sample50.jsonl`
 - `docs/data/stats.json`
 
-## 3a) Build lemma shards (optional, Expert dashboard)
+## 3) Build lemma shards (optional, Expert dashboard)
 
 Install Morfeusz2 first:
 
@@ -173,9 +134,10 @@ It documents the recommended legal section taxonomy and paragraph-level segmenta
 
 ## Key files
 
-- Scraper: `scripts/scrape_ipo_decisions.mjs`
-- Incremental merge helper: `scripts/merge_ipo_decisions.mjs`
 - Data build: `scripts/build_tk_dashboard_data.mjs`
+- Similarity build: `scripts/build_case_similarity.mjs`
+- Lemma shards build: `scripts/build_lemma_shards.py`
+- HF publishing: `scripts/publish_hf_dataset.py`
 - Landing: `docs/index.html`
 - Search app (expert): `docs/dashboard-expert.html`
 - Search app (student): `docs/dashboard-student.html`

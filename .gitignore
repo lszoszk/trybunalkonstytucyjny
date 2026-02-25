@@ -15,5 +15,13 @@ output/
 docs/data/tk_cases.jsonl
 docs/data/similar_cases.json
 
+# IPO scraper and enrichment scripts (local-only tooling)
+scripts/scrape_ipo_decisions.mjs
+scripts/enrich_case_metric.mjs
+scripts/enrich_proceeding_intro.mjs
+scripts/fetch_ipo_bench_map.mjs
+scripts/merge_ipo_decisions.mjs
+scripts/sync_case_metric_to_jsonl.mjs
+
 # Optional local previews
 *.log
