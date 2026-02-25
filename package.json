@@ -11,9 +11,10 @@
     "build:dashboard": "node scripts/build_tk_dashboard_data.mjs --input output/playwright/tk-all.decisions.json --force_no_inne true",
     "build:similarity": "node scripts/build_case_similarity.mjs --input docs/data/tk_cases.jsonl --outdir docs/data --sample50 docs/data/tk_cases_sample50.jsonl --sample200 docs/data/tk_cases_sample200.jsonl",
     "build:refresh-from-tk-all": "npm run build:dashboard && npm run build:similarity",
+    "build:lemma-shards:full": "python3 scripts/build_lemma_shards.py --input docs/data/tk_cases.jsonl --outdir docs/data/lemma_shards --dataset-key full",
     "build:lemma-shards:full-bench": "python3 scripts/build_lemma_shards.py --input docs/data/tk_cases_full_bench.jsonl --outdir docs/data/lemma_shards --dataset-key full_bench",
     "build:lemma-shards:sample200": "python3 scripts/build_lemma_shards.py --input docs/data/tk_cases_sample200.jsonl --outdir docs/data/lemma_shards --dataset-key sample200",
-    "build:lemma-shards:all": "npm run build:lemma-shards:full-bench && npm run build:lemma-shards:sample200",
+    "build:lemma-shards:all": "npm run build:lemma-shards:full && npm run build:lemma-shards:full-bench && npm run build:lemma-shards:sample200",
     "build:all": "npm run build:dashboard && npm run build:similarity",
     "preview:docs": "python3 -m http.server 4173 --directory docs"
   },

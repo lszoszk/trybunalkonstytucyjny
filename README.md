@@ -86,6 +86,7 @@ pip install morfeusz2
 Build shards:
 
 ```bash
+npm run build:lemma-shards:full
 npm run build:lemma-shards:full-bench
 npm run build:lemma-shards:sample200
 # optional:
@@ -94,6 +95,10 @@ npm run build:lemma-shards:all
 
 Generated structure:
 
+- `docs/data/lemma_shards/full/manifest.json`
+- `docs/data/lemma_shards/full/forms-*.json`
+- `docs/data/lemma_shards/full/lemmas-*.json`
+- `docs/data/lemma_shards/full/lemma-pos-*.json`
 - `docs/data/lemma_shards/full_bench/manifest.json`
 - `docs/data/lemma_shards/full_bench/forms-*.json`
 - `docs/data/lemma_shards/full_bench/lemmas-*.json`
