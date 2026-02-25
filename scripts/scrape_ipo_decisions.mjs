@@ -20,7 +20,9 @@ const SELECTORS = {
   resultsRows: "#wyszukiwanie\\:dataTable_data > tr",
   resultLinks: "#wyszukiwanie\\:dataTable_data a[href*='/ipo/Sprawa?']",
   nextPaginator: "a.ui-paginator-next",
-  resultTable: "#wyszukiwanie\\:dataTable_data"
+  resultTable: "#wyszukiwanie\\:dataTable_data",
+  timeRangePanel: "[id='filtr:facetSzablon_wyszukiwanieOkres']",
+  timeRangeLinks: "[id='filtr:facetSzablon_wyszukiwanieOkres'] a[id*='facetCommand-New']"
 };
 
 const HELP_TEXT = `
@@ -39,9 +41,11 @@ Options:
   --phrase <text>             Phrase to search for
   --where <value>             Search field for phrase (default: "${DEFAULT_WHERE}")
                               Common values: wyrok, komparycja, tenor, uzasadnienie
+  --time-range <text>         Apply "Zakres czasowy" facet by label (e.g. "od 1986 roku")
   --results-per-page <n>      Requested rows per page (default: ${DEFAULT_RESULTS_PER_PAGE})
   --checkpoint-every <n>      Persist summary/JSON snapshots every N new decisions (default: ${DEFAULT_CHECKPOINT_EVERY})
   --resume                    Resume from existing <prefix>.progress.jsonl / .decisions.json
+  --existing-decisions <path> Existing decisions JSON used as baseline for skipping already-known records
   --disable-inflection        Disable "odmiana slow" checkbox
   --output-dir <path>         Output directory (default: output/playwright)
   --output-prefix <name>      Output filename prefix (default: auto timestamp)
@@ -99,6 +103,10 @@ function normalizeFold(value) {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
+}
+
+function stripFacetCountSuffix(value) {
+  return normalizeSpace(value).replace(/\(\d+\)\s*$/, "").trim();
 }
 
 function hashStringToSeed(value) {
@@ -187,6 +195,14 @@ async function loadProgressDecisions(progressPath) {
     }
   }
   return rows;
+}
+
+async function loadDecisionsArray(jsonPath) {
+  const parsed = JSON.parse(await fs.readFile(jsonPath, "utf8"));
+  if (!Array.isArray(parsed)) {
+    throw new Error(`File is not a JSON array: ${jsonPath}`);
+  }
+  return parsed;
 }
 
 function buildParagraphLines(decisions) {
@@ -327,6 +343,74 @@ async function setResultsPerPage(page, requested, timeoutMs) {
   await page.selectOption(SELECTORS.rowsSelect, String(target));
   await waitForSearchRefresh(page, before, timeoutMs);
   return target;
+}
+
+async function collectTimeRangeFacetOptions(page) {
+  const labels = await page.$$eval(SELECTORS.timeRangeLinks, (links) =>
+    links.map((link) => String(link.textContent || "").replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim())
+  );
+  return labels.filter(Boolean);
+}
+
+async function applyTimeRangeFacet(page, label, timeoutMs) {
+  const requestedLabel = normalizeSpace(label);
+  if (!requestedLabel) {
+    return { requested_label: null, matched_label: null, applied: false, already_selected: false };
+  }
+
+  await page.waitForSelector(SELECTORS.timeRangePanel, { timeout: timeoutMs });
+  await page.waitForSelector(SELECTORS.timeRangeLinks, { timeout: timeoutMs });
+
+  const links = page.locator(SELECTORS.timeRangeLinks);
+  const count = await links.count();
+  const targetNorm = normalizeFold(stripFacetCountSuffix(requestedLabel));
+  let targetIndex = -1;
+  let matchedLabel = null;
+
+  for (let index = 0; index < count; index += 1) {
+    const rawText = await links.nth(index).innerText();
+    const text = normalizeSpace(rawText);
+    const textNorm = normalizeFold(stripFacetCountSuffix(text));
+    if (!textNorm) continue;
+    if (textNorm.includes(targetNorm) || targetNorm.includes(textNorm)) {
+      targetIndex = index;
+      matchedLabel = text;
+      break;
+    }
+  }
+
+  if (targetIndex < 0) {
+    const available = await collectTimeRangeFacetOptions(page);
+    throw new Error(
+      `Time range facet "${requestedLabel}" not found. Available: ${available.join(" | ")}`
+    );
+  }
+
+  const target = links.nth(targetIndex);
+  const alreadySelected = await target.evaluate((node) => {
+    return Boolean(
+      node.querySelector("img[src*='check']") ||
+      node.querySelector("span[style*='font-weight: bold']")
+    );
+  });
+  if (alreadySelected) {
+    return {
+      requested_label: requestedLabel,
+      matched_label: matchedLabel,
+      applied: false,
+      already_selected: true
+    };
+  }
+
+  const before = await firstResultHref(page);
+  await target.click();
+  await waitForSearchRefresh(page, before, timeoutMs);
+  return {
+    requested_label: requestedLabel,
+    matched_label: matchedLabel,
+    applied: true,
+    already_selected: false
+  };
 }
 
 async function collectRows(page) {
@@ -710,9 +794,14 @@ async function main() {
   const decisionTypeFilter = typeof args["decision-type"] === "string" ? normalizeFold(args["decision-type"]) : "";
   const phrase = typeof args.phrase === "string" ? args.phrase : "";
   const where = typeof args.where === "string" ? args.where : DEFAULT_WHERE;
+  const timeRangeLabel = typeof args["time-range"] === "string" ? normalizeSpace(args["time-range"]) : "";
   const disableInflection = Boolean(args["disable-inflection"]);
   const headed = Boolean(args.headed);
   const baseUrl = typeof args.url === "string" ? args.url : DEFAULT_URL;
+  const existingDecisionsPath =
+    typeof args["existing-decisions"] === "string"
+      ? path.resolve(args["existing-decisions"])
+      : null;
   const outputDir = path.resolve(typeof args["output-dir"] === "string" ? args["output-dir"] : "output/playwright");
   const outputPrefix =
     typeof args["output-prefix"] === "string" ? args["output-prefix"] : `ipo-${slugTimestamp()}-limit-${limit}`;
@@ -724,6 +813,23 @@ async function main() {
   const hitsPath = path.join(outputDir, `${outputPrefix}.hits.json`);
   const paragraphsPath = path.join(outputDir, `${outputPrefix}.paragraphs.jsonl`);
   const summaryPath = path.join(outputDir, `${outputPrefix}.summary.json`);
+
+  const existingDecisions = [];
+  const existingKnownKeys = new Set();
+  if (existingDecisionsPath) {
+    if (!(await fileExists(existingDecisionsPath))) {
+      throw new Error(`Existing decisions file not found: ${existingDecisionsPath}`);
+    }
+    existingDecisions.push(...(await loadDecisionsArray(existingDecisionsPath)));
+    for (const decision of existingDecisions) {
+      const key = decisionKeyFromDecision(decision);
+      if (!key) continue;
+      existingKnownKeys.add(key);
+    }
+    process.stdout.write(
+      `Loaded baseline decisions: ${existingDecisions.length} (${existingKnownKeys.size} unique keys) from ${existingDecisionsPath}\n`
+    );
+  }
 
   let decisions = [];
   if (resume) {
@@ -765,6 +871,12 @@ async function main() {
   try {
     let rawHits = [];
     let appliedRows = null;
+    let appliedTimeRange = {
+      requested_label: timeRangeLabel || null,
+      matched_label: null,
+      applied: false,
+      already_selected: false
+    };
 
     if (resume && (await fileExists(hitsPath))) {
       const cached = JSON.parse(await fs.readFile(hitsPath, "utf8"));
@@ -785,6 +897,16 @@ async function main() {
         timeoutMs
       });
 
+      if (timeRangeLabel) {
+        appliedTimeRange = await applyTimeRangeFacet(page, timeRangeLabel, timeoutMs);
+        const stateLabel = appliedTimeRange.already_selected
+          ? "already selected"
+          : (appliedTimeRange.applied ? "applied" : "not applied");
+        process.stdout.write(
+          `Time range facet ${stateLabel}: ${appliedTimeRange.matched_label || appliedTimeRange.requested_label}\n`
+        );
+      }
+
       appliedRows = await setResultsPerPage(page, resultsPerPage, timeoutMs);
       rawHits = await collectSearchHits(page, Math.max(limit, poolSize), timeoutMs);
       await fs.writeFile(hitsPath, `${JSON.stringify(rawHits, null, 2)}\n`, "utf8");
@@ -796,18 +918,41 @@ async function main() {
       hits = hits.filter((hit) => normalizeFold(hit.row_text || "").includes(decisionTypeFilter));
     }
 
+    const knownKeys = new Set([
+      ...existingKnownKeys,
+      ...decisions.map((decision) => decisionKeyFromDecision(decision)).filter(Boolean)
+    ]);
+    let skippedKnownHits = 0;
+    if (knownKeys.size) {
+      const freshHits = [];
+      for (const hit of hits) {
+        const hitKey = decisionKeyFromHit(hit);
+        if (hitKey && knownKeys.has(hitKey)) {
+          skippedKnownHits += 1;
+          continue;
+        }
+        freshHits.push(hit);
+      }
+      hits = freshHits;
+      process.stdout.write(
+        `Known-record prefilter: skipped ${skippedKnownHits} hits, ${hits.length} candidate hits remain.\n`
+      );
+    }
+
     if (randomSample) {
       const rng = createSeededRng(samplingSeed);
       shuffleInPlace(hits, rng);
     }
 
-    if (!hits.length) {
+    if (!rawHits.length) {
       throw new Error("No search hits found. Try a different phrase or remove filters.");
+    }
+    if (!hits.length) {
+      process.stdout.write("No new hits to scrape after applying filters and baseline dedupe.\n");
     }
 
     const scrapeErrors = [];
     const rejectedByDecisionType = [];
-    const knownKeys = new Set(decisions.map((decision) => decisionKeyFromDecision(decision)).filter(Boolean));
     let nextHitIndex = 0;
     let stopRequested = false;
     let scrapedSinceCheckpoint = 0;
@@ -820,6 +965,9 @@ async function main() {
       query: {
         phrase,
         where,
+        time_range_label: timeRangeLabel || null,
+        time_range_matched_label: appliedTimeRange.matched_label || null,
+        time_range_already_selected: Boolean(appliedTimeRange.already_selected),
         disable_inflection: disableInflection,
         decision_type_filter: decisionTypeFilter || null
       },
@@ -839,6 +987,7 @@ async function main() {
         requested_limit: limit,
         collected_hits: rawHits.length,
         collected_hits_after_prefilter: hits.length,
+        skipped_known_hits: skippedKnownHits,
         scraped_decisions: decisions.length,
         resumed_decisions: resumeLoaded,
         rejected_by_decision_type: rejectedByDecisionType.length,
@@ -859,6 +1008,10 @@ async function main() {
         progress_jsonl: progressPath,
         hits_json: hitsPath,
         paragraphs_jsonl: paragraphsPath
+      },
+      incremental: {
+        baseline_decisions_path: existingDecisionsPath || null,
+        baseline_known_keys: existingKnownKeys.size
       },
       diagnostics: {
         scrape_errors: scrapeErrors.slice(0, 100),
@@ -915,6 +1068,7 @@ async function main() {
         const hit = hits[index];
         const hitKey = decisionKeyFromHit(hit);
         if (hitKey && knownKeys.has(hitKey)) {
+          skippedKnownHits += 1;
           continue;
         }
         process.stdout.write(

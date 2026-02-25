@@ -1,9 +1,9 @@
 {
   "schema_version": "tk-similarity-v1",
   "similarity_version": "tk-sim-hybrid-v2-dotyczy",
-  "generated_at": "2026-02-20T10:37:31.227Z",
-  "dataset_hash": "dd8c258da67f48dfe6382ce784bf9b628be03d3b067b35980a2018b4f4e2d350",
-  "dataset_generated_at": "2026-02-20T10:31:36.567Z",
+  "generated_at": "2026-02-25T12:02:18.470Z",
+  "dataset_hash": "9bbb1a3e7c2ec1fe8d6b420b7eb5fac9b463cba7242648c3f19472974ee35c9c",
+  "dataset_generated_at": "2026-02-25T12:00:47.131Z",
   "source_name": "tk_cases_sample50.jsonl",
   "scope": "sample50",
   "config": {
@@ -51,13 +51,13 @@
       "stopwords": "built-in polish legal stopwords",
       "min_df": 2,
       "max_df_ratio": 0.12,
-      "max_df_applied": 394
+      "max_df_applied": 440
     }
   },
   "metrics": {
     "source_cases": 50,
     "coverage_top5": 1,
-    "avg_similarity_score_top5": 0.307875,
+    "avg_similarity_score_top5": 0.308086,
     "share_with_common_citation": 1,
     "share_with_common_dotyczy_bigram": 0.28
   },
@@ -68,9 +68,9 @@
         "case_signature": "U 4/25",
         "decision_date_iso": "2025-11-12",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.082918,
+        "score": 0.08266,
         "components": {
-          "lexical": 0.008508,
+          "lexical": 0.008012,
           "citations": 0.032468,
           "metadata": 0.9,
           "dotyczy_bigrams": 0
@@ -87,9 +87,9 @@
         "case_signature": "U 6/24",
         "decision_date_iso": "2025-11-27",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.077633,
+        "score": 0.077638,
         "components": {
-          "lexical": 0.000833,
+          "lexical": 0.000842,
           "citations": 0.05,
           "metadata": 0.84,
           "dotyczy_bigrams": 0
@@ -106,9 +106,9 @@
         "case_signature": "SK 50/22",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.06818,
+        "score": 0.068611,
         "components": {
-          "lexical": 0.076166,
+          "lexical": 0.076994,
           "citations": 0.01487,
           "metadata": 0.32,
           "dotyczy_bigrams": 0
@@ -124,16 +124,16 @@
         "case_signature": "SK 48/24",
         "decision_date_iso": "2026-01-15",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.065863,
+        "score": 0.065401,
         "components": {
-          "lexical": 0.003101,
+          "lexical": 0.002212,
           "citations": 0.149254,
           "metadata": 0.43,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 2, art. 32 ust. 1, art. 92 ust. 1",
-          "Wspólne frazy w tekście: zastapione, rozporzadzeniem, obowiazywac"
+          "Wspólne frazy w tekście: zastapione, obowiazywac, aktualny"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25235&sprawa=27911"
       },
@@ -142,9 +142,9 @@
         "case_signature": "K 22/19",
         "decision_date_iso": "2025-10-30",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.063988,
+        "score": 0.064454,
         "components": {
-          "lexical": 0.046501,
+          "lexical": 0.047397,
           "citations": 0.071038,
           "metadata": 0.32,
           "dotyczy_bigrams": 0
@@ -162,16 +162,16 @@
         "case_signature": "SK 11/20",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.093972,
+        "score": 0.093921,
         "components": {
-          "lexical": 0.005729,
+          "lexical": 0.00563,
           "citations": 0.081633,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 45 ust. 1, art. 79 ust. 1, art. 59 ust. 1 pkt 2",
-          "Wspólne frazy w tekście: sprawowanego, ujemna, zajecia",
+          "Wspólne frazy w tekście: ujemna, sprawowanego, zajecia",
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
@@ -181,9 +181,9 @@
         "case_signature": "SK 41/19",
         "decision_date_iso": "2025-11-25",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.091869,
+        "score": 0.092418,
         "components": {
-          "lexical": 0.009462,
+          "lexical": 0.010518,
           "citations": 0.08046,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -200,9 +200,9 @@
         "case_signature": "SK 70/25",
         "decision_date_iso": "2025-10-29",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.089459,
+        "score": 0.089633,
         "components": {
-          "lexical": 0.009216,
+          "lexical": 0.00955,
           "citations": 0.083333,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -215,13 +215,32 @@
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25140&sprawa=28824"
       },
       {
+        "document_id": "25169",
+        "case_signature": "SK 67/25",
+        "decision_date_iso": "2025-12-02",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.084839,
+        "components": {
+          "lexical": 0.002079,
+          "citations": 0.045455,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 45 ust. 1, art. 79 ust. 1, art. 45",
+          "Wspólne frazy w tekście: kasacyjnej, naruszen, wstepnej",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
+      },
+      {
         "document_id": "25165",
         "case_signature": "SK 58/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.08469,
+        "score": 0.084787,
         "components": {
-          "lexical": 0.003007,
+          "lexical": 0.003195,
           "citations": 0.07563,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -232,25 +251,6 @@
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
-      },
-      {
-        "document_id": "25169",
-        "case_signature": "SK 67/25",
-        "decision_date_iso": "2025-12-02",
-        "decision_type_ipo_label": "Postanowienie",
-        "score": 0.084684,
-        "components": {
-          "lexical": 0.001781,
-          "citations": 0.045455,
-          "metadata": 0.933333,
-          "dotyczy_bigrams": 0
-        },
-        "reasons": [
-          "Wspólne przepisy: art. 45 ust. 1, art. 79 ust. 1, art. 45",
-          "Wspólne frazy w tekście: naruszen, wstepnej, kasacyjnej",
-          "To samo repertorium: SK"
-        ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
       }
     ],
     "25081": [
@@ -259,9 +259,9 @@
         "case_signature": "SK 22/24",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.943906,
+        "score": 0.94393,
         "components": {
-          "lexical": 0.992246,
+          "lexical": 0.992293,
           "citations": 0.766355,
           "metadata": 0.933333,
           "dotyczy_bigrams": 1
@@ -278,9 +278,9 @@
         "case_signature": "SK 73/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.924583,
+        "score": 0.924642,
         "components": {
-          "lexical": 0.990281,
+          "lexical": 0.990393,
           "citations": 0.719298,
           "metadata": 0.822222,
           "dotyczy_bigrams": 1
@@ -297,9 +297,9 @@
         "case_signature": "SK 80/24",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.673988,
+        "score": 0.675244,
         "components": {
-          "lexical": 0.555004,
+          "lexical": 0.557421,
           "citations": 0.598039,
           "metadata": 0.822222,
           "dotyczy_bigrams": 1
@@ -316,9 +316,9 @@
         "case_signature": "SK 41/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.669854,
+        "score": 0.671052,
         "components": {
-          "lexical": 0.547055,
+          "lexical": 0.549359,
           "citations": 0.598039,
           "metadata": 0.822222,
           "dotyczy_bigrams": 1
@@ -335,9 +335,9 @@
         "case_signature": "SK 108/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.661592,
+        "score": 0.661137,
         "components": {
-          "lexical": 0.512533,
+          "lexical": 0.511658,
           "citations": 0.602041,
           "metadata": 0.933333,
           "dotyczy_bigrams": 1
@@ -356,9 +356,9 @@
         "case_signature": "SK 76/21",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.687132,
+        "score": 0.686331,
         "components": {
-          "lexical": 0.691764,
+          "lexical": 0.690224,
           "citations": 0.301075,
           "metadata": 0.84,
           "dotyczy_bigrams": 1
@@ -375,9 +375,9 @@
         "case_signature": "SK 93/22",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.613533,
+        "score": 0.615143,
         "components": {
-          "lexical": 0.554049,
+          "lexical": 0.557144,
           "citations": 0.291139,
           "metadata": 0.84,
           "dotyczy_bigrams": 1
@@ -394,9 +394,9 @@
         "case_signature": "SK 48/24",
         "decision_date_iso": "2026-01-15",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.53383,
+        "score": 0.533207,
         "components": {
-          "lexical": 0.582969,
+          "lexical": 0.581772,
           "citations": 0.321429,
           "metadata": 0.83,
           "dotyczy_bigrams": 0.5
@@ -413,9 +413,9 @@
         "case_signature": "SK 89/23",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.160819,
+        "score": 0.16151,
         "components": {
-          "lexical": 0.189553,
+          "lexical": 0.190883,
           "citations": 0.023256,
           "metadata": 0.72,
           "dotyczy_bigrams": 0
@@ -432,9 +432,9 @@
         "case_signature": "SK 45/25",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.099876,
+        "score": 0.100502,
         "components": {
-          "lexical": 0.062156,
+          "lexical": 0.06336,
           "citations": 0.049774,
           "metadata": 0.72,
           "dotyczy_bigrams": 0
@@ -453,9 +453,9 @@
         "case_signature": "SK 16/18",
         "decision_date_iso": "2025-11-19",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.130592,
+        "score": 0.130952,
         "components": {
-          "lexical": 0.083088,
+          "lexical": 0.08378,
           "citations": 0.160569,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -472,9 +472,9 @@
         "case_signature": "SK 67/25",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.122163,
+        "score": 0.123264,
         "components": {
-          "lexical": 0.02541,
+          "lexical": 0.027528,
           "citations": 0.204748,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -491,16 +491,16 @@
         "case_signature": "SK 101/22",
         "decision_date_iso": "2025-11-18",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.114637,
+        "score": 0.11539,
         "components": {
-          "lexical": 0.007871,
+          "lexical": 0.009319,
           "citations": 0.198433,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 31 ust. 3, art. 2, art. 64 ust. 1",
-          "Wspólne frazy w tekście: zastepcy, zastepcow, zwiazkowo",
+          "Wspólne frazy w tekście: zastepcy, zastepcow, przyzwoitej",
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25138&sprawa=26598"
@@ -510,9 +510,9 @@
         "case_signature": "SK 89/23",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.107146,
+        "score": 0.10741,
         "components": {
-          "lexical": 0.029511,
+          "lexical": 0.030018,
           "citations": 0.130112,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0
@@ -529,9 +529,9 @@
         "case_signature": "SK 41/19",
         "decision_date_iso": "2025-11-25",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.102594,
+        "score": 0.103689,
         "components": {
-          "lexical": 0.028065,
+          "lexical": 0.030172,
           "citations": 0.111111,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0
@@ -550,9 +550,9 @@
         "case_signature": "SK 47/25",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.609084,
+        "score": 0.607799,
         "components": {
-          "lexical": 0.841287,
+          "lexical": 0.838816,
           "citations": 0.518072,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -569,9 +569,9 @@
         "case_signature": "SK 50/22",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.33851,
+        "score": 0.337083,
         "components": {
-          "lexical": 0.462332,
+          "lexical": 0.459588,
           "citations": 0.136201,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -588,9 +588,9 @@
         "case_signature": "P 2/25",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.11836,
+        "score": 0.119443,
         "components": {
-          "lexical": 0.143841,
+          "lexical": 0.145923,
           "citations": 0.023529,
           "metadata": 0.485714,
           "dotyczy_bigrams": 0
@@ -606,9 +606,9 @@
         "case_signature": "SK 41/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.097298,
+        "score": 0.097593,
         "components": {
-          "lexical": 0.016436,
+          "lexical": 0.017003,
           "citations": 0.070423,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -625,9 +625,9 @@
         "case_signature": "SK 85/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.096837,
+        "score": 0.097131,
         "components": {
-          "lexical": 0.01555,
+          "lexical": 0.016115,
           "citations": 0.070423,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -646,9 +646,9 @@
         "case_signature": "SK 108/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.976342,
+        "score": 0.976347,
         "components": {
-          "lexical": 0.998415,
+          "lexical": 0.998423,
           "citations": 0.9125,
           "metadata": 0.933333,
           "dotyczy_bigrams": 1
@@ -665,9 +665,9 @@
         "case_signature": "SK 80/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.968874,
+        "score": 0.96884,
         "components": {
-          "lexical": 0.992066,
+          "lexical": 0.992,
           "citations": 0.925,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -684,9 +684,9 @@
         "case_signature": "SK 48/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.964798,
+        "score": 0.964813,
         "components": {
-          "lexical": 0.993842,
+          "lexical": 0.993872,
           "citations": 0.9,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -703,9 +703,9 @@
         "case_signature": "SK 53/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.896379,
+        "score": 0.895221,
         "components": {
-          "lexical": 0.907931,
+          "lexical": 0.905704,
           "citations": 0.76699,
           "metadata": 0.885714,
           "dotyczy_bigrams": 1
@@ -722,9 +722,9 @@
         "case_signature": "SK 41/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.889677,
+        "score": 0.888619,
         "components": {
-          "lexical": 0.864964,
+          "lexical": 0.862931,
           "citations": 0.870588,
           "metadata": 0.822222,
           "dotyczy_bigrams": 1
@@ -743,9 +743,9 @@
         "case_signature": "SK 80/24",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.9176,
+        "score": 0.917603,
         "components": {
-          "lexical": 0.945847,
+          "lexical": 0.945853,
           "citations": 0.77451,
           "metadata": 0.885714,
           "dotyczy_bigrams": 1
@@ -762,9 +762,9 @@
         "case_signature": "SK 41/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.91405,
+        "score": 0.914054,
         "components": {
-          "lexical": 0.944515,
+          "lexical": 0.944524,
           "citations": 0.77451,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -781,9 +781,9 @@
         "case_signature": "SK 58/23",
         "decision_date_iso": "2025-10-22",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.896379,
+        "score": 0.895221,
         "components": {
-          "lexical": 0.907931,
+          "lexical": 0.905704,
           "citations": 0.76699,
           "metadata": 0.885714,
           "dotyczy_bigrams": 1
@@ -800,9 +800,9 @@
         "case_signature": "SK 80/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.884458,
+        "score": 0.883189,
         "components": {
-          "lexical": 0.90741,
+          "lexical": 0.904969,
           "citations": 0.708738,
           "metadata": 0.885714,
           "dotyczy_bigrams": 1
@@ -819,9 +819,9 @@
         "case_signature": "SK 48/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.881472,
+        "score": 0.880229,
         "components": {
-          "lexical": 0.909136,
+          "lexical": 0.906745,
           "citations": 0.68932,
           "metadata": 0.885714,
           "dotyczy_bigrams": 1
@@ -840,9 +840,9 @@
         "case_signature": "SK 22/24",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.974884,
+        "score": 0.974892,
         "components": {
-          "lexical": 0.998816,
+          "lexical": 0.998831,
           "citations": 0.9375,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -850,7 +850,7 @@
         "reasons": [
           "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
-          "Wspólne frazy w tekście: sanitarnej, szczepien, ochronnych"
+          "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25174&sprawa=27639"
       },
@@ -859,9 +859,9 @@
         "case_signature": "SK 6/25",
         "decision_date_iso": "2025-10-14",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.924583,
+        "score": 0.924642,
         "components": {
-          "lexical": 0.990281,
+          "lexical": 0.990393,
           "citations": 0.719298,
           "metadata": 0.822222,
           "dotyczy_bigrams": 1
@@ -878,9 +878,9 @@
         "case_signature": "SK 53/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.667051,
+        "score": 0.668708,
         "components": {
-          "lexical": 0.498786,
+          "lexical": 0.501972,
           "citations": 0.698413,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -897,9 +897,9 @@
         "case_signature": "SK 80/24",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.660008,
+        "score": 0.661672,
         "components": {
-          "lexical": 0.513476,
+          "lexical": 0.516677,
           "citations": 0.591667,
           "metadata": 0.933333,
           "dotyczy_bigrams": 1
@@ -916,9 +916,9 @@
         "case_signature": "SK 41/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.652107,
+        "score": 0.653704,
         "components": {
-          "lexical": 0.505609,
+          "lexical": 0.508679,
           "citations": 0.591667,
           "metadata": 0.885714,
           "dotyczy_bigrams": 1
@@ -937,9 +937,9 @@
         "case_signature": "SK 41/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.950364,
+        "score": 0.950243,
         "components": {
-          "lexical": 0.922128,
+          "lexical": 0.921896,
           "citations": 1,
           "metadata": 0.885714,
           "dotyczy_bigrams": 1
@@ -956,9 +956,9 @@
         "case_signature": "SK 53/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.9176,
+        "score": 0.917603,
         "components": {
-          "lexical": 0.945847,
+          "lexical": 0.945853,
           "citations": 0.77451,
           "metadata": 0.885714,
           "dotyczy_bigrams": 1
@@ -975,9 +975,9 @@
         "case_signature": "SK 58/23",
         "decision_date_iso": "2025-10-22",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.88874,
+        "score": 0.887702,
         "components": {
-          "lexical": 0.85889,
+          "lexical": 0.856894,
           "citations": 0.870588,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -994,9 +994,9 @@
         "case_signature": "SK 48/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.885451,
+        "score": 0.884344,
         "components": {
-          "lexical": 0.857553,
+          "lexical": 0.855424,
           "citations": 0.797619,
           "metadata": 1,
           "dotyczy_bigrams": 1
@@ -1013,9 +1013,9 @@
         "case_signature": "SK 80/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.884105,
+        "score": 0.882973,
         "components": {
-          "lexical": 0.856063,
+          "lexical": 0.853886,
           "citations": 0.821429,
           "metadata": 0.933333,
           "dotyczy_bigrams": 1
@@ -1034,9 +1034,9 @@
         "case_signature": "K 14/23",
         "decision_date_iso": "2025-12-03",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.084775,
+        "score": 0.084839,
         "components": {
-          "lexical": 0.007835,
+          "lexical": 0.007959,
           "citations": 0.049217,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -1053,16 +1053,16 @@
         "case_signature": "K 24/20",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.083524,
+        "score": 0.084346,
         "components": {
-          "lexical": 0.005787,
+          "lexical": 0.007368,
           "citations": 0.02924,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 1, art. 59 ust. 1 pkt 2, art. 10",
-          "Wspólne frazy w tekście: csk, powoda, urzad",
+          "Wspólne frazy w tekście: csk, powodztwa, zobowiazuje",
           "To samo repertorium: K"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
@@ -1072,9 +1072,9 @@
         "case_signature": "K 5/25",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.079026,
+        "score": 0.079222,
         "components": {
-          "lexical": 0.00408,
+          "lexical": 0.004457,
           "citations": 0.030238,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -1091,9 +1091,9 @@
         "case_signature": "K 2/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.076953,
+        "score": 0.076966,
         "components": {
-          "lexical": 0.00685,
+          "lexical": 0.006875,
           "citations": 0.026954,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -1110,16 +1110,16 @@
         "case_signature": "K 13/22",
         "decision_date_iso": "2025-12-10",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.073579,
+        "score": 0.073761,
         "components": {
-          "lexical": 0.004318,
+          "lexical": 0.004669,
           "citations": 0.016667,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 2, art. 1",
-          "Wspólne frazy w tekście: likwidacji, przejecia, finansowania",
+          "Wspólne frazy w tekście: likwidacji, przejecia, zobowiazuje",
           "To samo repertorium: K"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25177&sprawa=26324"
@@ -1131,9 +1131,9 @@
         "case_signature": "K 2/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.155332,
+        "score": 0.155162,
         "components": {
-          "lexical": 0.151759,
+          "lexical": 0.151432,
           "citations": 0.081481,
           "metadata": 0.6,
           "dotyczy_bigrams": 0.060606
@@ -1150,16 +1150,16 @@
         "case_signature": "SK 67/25",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.1225,
+        "score": 0.123696,
         "components": {
-          "lexical": 0.009169,
+          "lexical": 0.011469,
           "citations": 0.234375,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 32",
-          "Wspólne frazy w tekście: powiazala, samodzielny, finansowego",
+          "Wspólne frazy w tekście: powiazala, przyzwoitej, wsa",
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25169&sprawa=28821"
@@ -1169,16 +1169,16 @@
         "case_signature": "SK 51/20",
         "decision_date_iso": "2025-10-08",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.114637,
+        "score": 0.11539,
         "components": {
-          "lexical": 0.007871,
+          "lexical": 0.009319,
           "citations": 0.198433,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 31 ust. 3, art. 2, art. 64 ust. 1",
-          "Wspólne frazy w tekście: zastepcy, zastepcow, zwiazkowo",
+          "Wspólne frazy w tekście: zastepcy, zastepcow, przyzwoitej",
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25083&sprawa=22860"
@@ -1188,9 +1188,9 @@
         "case_signature": "SK 53/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.111244,
+        "score": 0.111808,
         "components": {
-          "lexical": 0.007155,
+          "lexical": 0.008238,
           "citations": 0.164286,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -1207,16 +1207,16 @@
         "case_signature": "SK 58/23",
         "decision_date_iso": "2025-10-22",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.103523,
+        "score": 0.104076,
         "components": {
-          "lexical": 0.002194,
+          "lexical": 0.003258,
           "citations": 0.138577,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 5 ust. 2",
-          "Wspólne frazy w tekście: powiazala, samodzielnym, rekonstrukcji",
+          "Wspólne frazy w tekście: powiazala, wsa, samodzielnym",
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
@@ -1228,9 +1228,9 @@
         "case_signature": "K 14/23",
         "decision_date_iso": "2025-12-03",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.193266,
+        "score": 0.192513,
         "components": {
-          "lexical": 0.228978,
+          "lexical": 0.22753,
           "citations": 0.016701,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -1247,9 +1247,9 @@
         "case_signature": "Kp 2/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.173941,
+        "score": 0.173181,
         "components": {
-          "lexical": 0.261928,
+          "lexical": 0.260467,
           "citations": 0.072327,
           "metadata": 0.290909,
           "dotyczy_bigrams": 0
@@ -1265,9 +1265,9 @@
         "case_signature": "K 5/25",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.144656,
+        "score": 0.143003,
         "components": {
-          "lexical": 0.138674,
+          "lexical": 0.135496,
           "citations": 0.022727,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -1284,9 +1284,9 @@
         "case_signature": "U 4/25",
         "decision_date_iso": "2025-11-12",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.130248,
+        "score": 0.128663,
         "components": {
-          "lexical": 0.192109,
+          "lexical": 0.189061,
           "citations": 0.023758,
           "metadata": 0.32,
           "dotyczy_bigrams": 0
@@ -1302,9 +1302,9 @@
         "case_signature": "K 2/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.095621,
+        "score": 0.095929,
         "components": {
-          "lexical": 0.047246,
+          "lexical": 0.047838,
           "citations": 0.015267,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -1323,9 +1323,9 @@
         "case_signature": "SK 90/24",
         "decision_date_iso": "2025-12-09",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.143155,
+        "score": 0.143464,
         "components": {
-          "lexical": 0.114165,
+          "lexical": 0.114758,
           "citations": 0.078947,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -1342,9 +1342,9 @@
         "case_signature": "SK 63/19",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.124337,
+        "score": 0.124094,
         "components": {
-          "lexical": 0.108943,
+          "lexical": 0.108476,
           "citations": 0.062069,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -1361,16 +1361,16 @@
         "case_signature": "SK 41/19",
         "decision_date_iso": "2025-11-25",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.1015,
+        "score": 0.102256,
         "components": {
-          "lexical": 0.006777,
+          "lexical": 0.008232,
           "citations": 0.135593,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 45 ust. 1, art. 78, art. 31 ust. 3",
-          "Wspólne frazy w tekście: skutkujaca, nalezytej, odrzucil",
+          "Wspólne frazy w tekście: skutkujaca, nalezytej, wniesionej",
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
@@ -1380,9 +1380,9 @@
         "case_signature": "SK 11/20",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.097663,
+        "score": 0.097683,
         "components": {
-          "lexical": 0.008213,
+          "lexical": 0.008252,
           "citations": 0.112676,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -1399,9 +1399,9 @@
         "case_signature": "SK 80/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.091713,
+        "score": 0.09173,
         "components": {
-          "lexical": 0.008711,
+          "lexical": 0.008743,
           "citations": 0.081633,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -1420,9 +1420,9 @@
         "case_signature": "SK 73/24",
         "decision_date_iso": "2025-10-15",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.11836,
+        "score": 0.119443,
         "components": {
-          "lexical": 0.143841,
+          "lexical": 0.145923,
           "citations": 0.023529,
           "metadata": 0.485714,
           "dotyczy_bigrams": 0
@@ -1438,9 +1438,9 @@
         "case_signature": "SK 47/25",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.108247,
+        "score": 0.109325,
         "components": {
-          "lexical": 0.136372,
+          "lexical": 0.138446,
           "citations": 0.026667,
           "metadata": 0.4,
           "dotyczy_bigrams": 0
@@ -1456,9 +1456,9 @@
         "case_signature": "P 3/24",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.080669,
+        "score": 0.080692,
         "components": {
-          "lexical": 0.008365,
+          "lexical": 0.008408,
           "citations": 0.008264,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -1475,9 +1475,9 @@
         "case_signature": "SK 50/22",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.072083,
+        "score": 0.072879,
         "components": {
-          "lexical": 0.060522,
+          "lexical": 0.062053,
           "citations": 0.008772,
           "metadata": 0.485714,
           "dotyczy_bigrams": 0
@@ -1493,9 +1493,9 @@
         "case_signature": "P 13/24",
         "decision_date_iso": "2025-12-10",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.070514,
+        "score": 0.070504,
         "components": {
-          "lexical": 0.004145,
+          "lexical": 0.004126,
           "citations": 0.012903,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0
@@ -1514,9 +1514,9 @@
         "case_signature": "SK 80/24",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.950364,
+        "score": 0.950243,
         "components": {
-          "lexical": 0.922128,
+          "lexical": 0.921896,
           "citations": 1,
           "metadata": 0.885714,
           "dotyczy_bigrams": 1
@@ -1533,9 +1533,9 @@
         "case_signature": "SK 53/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.91405,
+        "score": 0.914054,
         "components": {
-          "lexical": 0.944515,
+          "lexical": 0.944524,
           "citations": 0.77451,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -1552,9 +1552,9 @@
         "case_signature": "SK 58/23",
         "decision_date_iso": "2025-10-22",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.889677,
+        "score": 0.888619,
         "components": {
-          "lexical": 0.864964,
+          "lexical": 0.862931,
           "citations": 0.870588,
           "metadata": 0.822222,
           "dotyczy_bigrams": 1
@@ -1571,9 +1571,9 @@
         "case_signature": "SK 108/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.881709,
+        "score": 0.880568,
         "components": {
-          "lexical": 0.864742,
+          "lexical": 0.862548,
           "citations": 0.831325,
           "metadata": 0.822222,
           "dotyczy_bigrams": 1
@@ -1590,9 +1590,9 @@
         "case_signature": "SK 80/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.880348,
+        "score": 0.879196,
         "components": {
-          "lexical": 0.861658,
+          "lexical": 0.859442,
           "citations": 0.821429,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -1613,7 +1613,7 @@
         "decision_type_ipo_label": "Postanowienie",
         "score": 0.793386,
         "components": {
-          "lexical": 0.997538,
+          "lexical": 0.997537,
           "citations": 1,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -1630,9 +1630,9 @@
         "case_signature": "SK 80/24",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.764985,
+        "score": 0.764911,
         "components": {
-          "lexical": 0.942919,
+          "lexical": 0.942777,
           "citations": 1,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -1649,9 +1649,9 @@
         "case_signature": "SK 53/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.722376,
+        "score": 0.722402,
         "components": {
-          "lexical": 0.955033,
+          "lexical": 0.955083,
           "citations": 0.77451,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -1668,9 +1668,9 @@
         "case_signature": "SK 58/23",
         "decision_date_iso": "2025-10-22",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.695564,
+        "score": 0.694516,
         "components": {
-          "lexical": 0.872013,
+          "lexical": 0.869996,
           "citations": 0.870588,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -1687,9 +1687,9 @@
         "case_signature": "SK 80/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.686967,
+        "score": 0.685822,
         "components": {
-          "lexical": 0.868893,
+          "lexical": 0.86669,
           "citations": 0.821429,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -1708,9 +1708,9 @@
         "case_signature": "SK 76/21",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.663584,
+        "score": 0.665353,
         "components": {
-          "lexical": 0.581624,
+          "lexical": 0.585026,
           "citations": 0.469697,
           "metadata": 0.84,
           "dotyczy_bigrams": 1
@@ -1727,9 +1727,9 @@
         "case_signature": "SK 78/23",
         "decision_date_iso": "2025-10-14",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.613533,
+        "score": 0.615143,
         "components": {
-          "lexical": 0.554049,
+          "lexical": 0.557144,
           "citations": 0.291139,
           "metadata": 0.84,
           "dotyczy_bigrams": 1
@@ -1746,9 +1746,9 @@
         "case_signature": "SK 48/24",
         "decision_date_iso": "2026-01-15",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.51574,
+        "score": 0.517182,
         "components": {
-          "lexical": 0.504884,
+          "lexical": 0.507658,
           "citations": 0.45,
           "metadata": 0.79,
           "dotyczy_bigrams": 0.5
@@ -1756,7 +1756,7 @@
         "reasons": [
           "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 64 ust. 2",
           "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
-          "Wspólne frazy w tekście: nieoplaconej, udzielonej, adwokata"
+          "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25235&sprawa=27911"
       },
@@ -1765,9 +1765,9 @@
         "case_signature": "SK 89/23",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.115482,
+        "score": 0.115401,
         "components": {
-          "lexical": 0.088748,
+          "lexical": 0.088591,
           "citations": 0.08,
           "metadata": 0.666667,
           "dotyczy_bigrams": 0
@@ -1784,9 +1784,9 @@
         "case_signature": "SK 41/19",
         "decision_date_iso": "2025-11-25",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.093004,
+        "score": 0.093799,
         "components": {
-          "lexical": 0.029669,
+          "lexical": 0.031199,
           "citations": 0.121212,
           "metadata": 0.666667,
           "dotyczy_bigrams": 0
@@ -1805,9 +1805,9 @@
         "case_signature": "U 4/25",
         "decision_date_iso": "2025-11-12",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.08379,
+        "score": 0.084128,
         "components": {
-          "lexical": 0.014579,
+          "lexical": 0.015229,
           "citations": 0.061047,
           "metadata": 0.8,
           "dotyczy_bigrams": 0
@@ -1824,9 +1824,9 @@
         "case_signature": "U 2/23",
         "decision_date_iso": "2025-10-08",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.077633,
+        "score": 0.077638,
         "components": {
-          "lexical": 0.000833,
+          "lexical": 0.000842,
           "citations": 0.05,
           "metadata": 0.84,
           "dotyczy_bigrams": 0
@@ -1843,9 +1843,9 @@
         "case_signature": "SK 78/23",
         "decision_date_iso": "2025-10-14",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.058453,
+        "score": 0.058445,
         "components": {
-          "lexical": 0.00084,
+          "lexical": 0.000825,
           "citations": 0.130081,
           "metadata": 0.4,
           "dotyczy_bigrams": 0
@@ -1861,9 +1861,9 @@
         "case_signature": "SK 80/24",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.051493,
+        "score": 0.051637,
         "components": {
-          "lexical": 0.002415,
+          "lexical": 0.002692,
           "citations": 0.123188,
           "metadata": 0.32,
           "dotyczy_bigrams": 0
@@ -1879,9 +1879,9 @@
         "case_signature": "SK 67/25",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.048853,
+        "score": 0.048915,
         "components": {
-          "lexical": 0.021786,
+          "lexical": 0.021904,
           "citations": 0.107623,
           "metadata": 0.2,
           "dotyczy_bigrams": 0
@@ -1899,9 +1899,9 @@
         "case_signature": "SK 41/19",
         "decision_date_iso": "2025-11-25",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.124316,
+        "score": 0.124599,
         "components": {
-          "lexical": 0.005111,
+          "lexical": 0.005655,
           "citations": 0.268293,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -1918,9 +1918,9 @@
         "case_signature": "SK 33/24",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.103387,
+        "score": 0.103645,
         "components": {
-          "lexical": 0.022804,
+          "lexical": 0.023299,
           "citations": 0.117647,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -1937,9 +1937,9 @@
         "case_signature": "SK 11/20",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.101926,
+        "score": 0.101932,
         "components": {
-          "lexical": 0.002627,
+          "lexical": 0.002639,
           "citations": 0.148515,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -1956,16 +1956,16 @@
         "case_signature": "SK 106/22",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.098866,
+        "score": 0.09904,
         "components": {
-          "lexical": 0.00272,
+          "lexical": 0.003055,
           "citations": 0.113924,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 2, art. 32 ust. 1, art. 53",
-          "Wspólne frazy w tekście: przedsiebiorstwa, zakwestionowac, dookreslone",
+          "Wspólne frazy w tekście: przedsiebiorstwa, zakwestionowac, kognicja",
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25229&sprawa=26603"
@@ -1975,9 +1975,9 @@
         "case_signature": "SK 51/20",
         "decision_date_iso": "2025-10-08",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.097977,
+        "score": 0.09803,
         "components": {
-          "lexical": 0.010042,
+          "lexical": 0.010144,
           "citations": 0.109489,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -1996,9 +1996,9 @@
         "case_signature": "SK 101/22",
         "decision_date_iso": "2025-11-18",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.155332,
+        "score": 0.155162,
         "components": {
-          "lexical": 0.151759,
+          "lexical": 0.151432,
           "citations": 0.081481,
           "metadata": 0.6,
           "dotyczy_bigrams": 0.060606
@@ -2015,9 +2015,9 @@
         "case_signature": "K 5/25",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.098295,
+        "score": 0.098695,
         "components": {
-          "lexical": 0.040652,
+          "lexical": 0.04142,
           "citations": 0.031496,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -2034,9 +2034,9 @@
         "case_signature": "K 24/20",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.095621,
+        "score": 0.095929,
         "components": {
-          "lexical": 0.047246,
+          "lexical": 0.047838,
           "citations": 0.015267,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -2053,9 +2053,9 @@
         "case_signature": "SK 22/24",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.094945,
+        "score": 0.095729,
         "components": {
-          "lexical": 0.044694,
+          "lexical": 0.046203,
           "citations": 0.164234,
           "metadata": 0.485714,
           "dotyczy_bigrams": 0
@@ -2071,9 +2071,9 @@
         "case_signature": "SK 73/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.093473,
+        "score": 0.094262,
         "components": {
-          "lexical": 0.044116,
+          "lexical": 0.045634,
           "citations": 0.172662,
           "metadata": 0.45,
           "dotyczy_bigrams": 0
@@ -2091,16 +2091,16 @@
         "case_signature": "SK 11/20",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.148389,
+        "score": 0.148778,
         "components": {
-          "lexical": 0.0386,
+          "lexical": 0.039347,
           "citations": 0.301587,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 31 ust. 3, art. 45 ust. 1, art. 78",
-          "Wspólne frazy w tekście: gwarantowanymi, niedozwolona, wstepnej",
+          "Wspólne frazy w tekście: gwarantowanymi, wstepnej, niedozwolona",
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25178&sprawa=22576"
@@ -2110,9 +2110,9 @@
         "case_signature": "SK 58/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.124316,
+        "score": 0.124599,
         "components": {
-          "lexical": 0.005111,
+          "lexical": 0.005655,
           "citations": 0.268293,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -2129,9 +2129,9 @@
         "case_signature": "SK 76/21",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.110854,
+        "score": 0.110871,
         "components": {
-          "lexical": 0.005242,
+          "lexical": 0.005275,
           "citations": 0.273973,
           "metadata": 0.666667,
           "dotyczy_bigrams": 0
@@ -2148,9 +2148,9 @@
         "case_signature": "SK 6/25",
         "decision_date_iso": "2025-10-14",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.106599,
+        "score": 0.107151,
         "components": {
-          "lexical": 0.010126,
+          "lexical": 0.011188,
           "citations": 0.133333,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -2167,9 +2167,9 @@
         "case_signature": "SK 108/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.105738,
+        "score": 0.105772,
         "components": {
-          "lexical": 0.007122,
+          "lexical": 0.007187,
           "citations": 0.136842,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -2188,9 +2188,9 @@
         "case_signature": "SK 78/23",
         "decision_date_iso": "2025-10-14",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.160819,
+        "score": 0.16151,
         "components": {
-          "lexical": 0.189553,
+          "lexical": 0.190883,
           "citations": 0.023256,
           "metadata": 0.72,
           "dotyczy_bigrams": 0
@@ -2207,9 +2207,9 @@
         "case_signature": "SK 76/21",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.138755,
+        "score": 0.138979,
         "components": {
-          "lexical": 0.115934,
+          "lexical": 0.116364,
           "citations": 0.104348,
           "metadata": 0.72,
           "dotyczy_bigrams": 0
@@ -2226,9 +2226,9 @@
         "case_signature": "SK 45/25",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.135441,
+        "score": 0.136166,
         "components": {
-          "lexical": 0.054959,
+          "lexical": 0.056354,
           "citations": 0.160976,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -2245,9 +2245,9 @@
         "case_signature": "SK 93/22",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.115482,
+        "score": 0.115401,
         "components": {
-          "lexical": 0.088748,
+          "lexical": 0.088591,
           "citations": 0.08,
           "metadata": 0.666667,
           "dotyczy_bigrams": 0
@@ -2264,9 +2264,9 @@
         "case_signature": "SK 51/20",
         "decision_date_iso": "2025-10-08",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.107146,
+        "score": 0.10741,
         "components": {
-          "lexical": 0.029511,
+          "lexical": 0.030018,
           "citations": 0.130112,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0
@@ -2285,9 +2285,9 @@
         "case_signature": "SK 108/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.158928,
+        "score": 0.159137,
         "components": {
-          "lexical": 0.101888,
+          "lexical": 0.102289,
           "citations": 0.156398,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -2304,9 +2304,9 @@
         "case_signature": "SK 53/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.156688,
+        "score": 0.156959,
         "components": {
-          "lexical": 0.093153,
+          "lexical": 0.093674,
           "citations": 0.186957,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -2323,9 +2323,9 @@
         "case_signature": "SK 58/23",
         "decision_date_iso": "2025-10-22",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.156222,
+        "score": 0.156429,
         "components": {
-          "lexical": 0.101841,
+          "lexical": 0.102239,
           "citations": 0.162037,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -2342,9 +2342,9 @@
         "case_signature": "SK 80/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.150176,
+        "score": 0.150377,
         "components": {
-          "lexical": 0.098161,
+          "lexical": 0.098548,
           "citations": 0.15566,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -2361,9 +2361,9 @@
         "case_signature": "SK 48/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.146215,
+        "score": 0.146425,
         "components": {
-          "lexical": 0.098446,
+          "lexical": 0.09885,
           "citations": 0.146226,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0
@@ -2382,9 +2382,9 @@
         "case_signature": "SK 73/24",
         "decision_date_iso": "2025-10-15",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.609084,
+        "score": 0.607799,
         "components": {
-          "lexical": 0.841287,
+          "lexical": 0.838816,
           "citations": 0.518072,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -2401,9 +2401,9 @@
         "case_signature": "SK 50/22",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.347992,
+        "score": 0.346708,
         "components": {
-          "lexical": 0.448064,
+          "lexical": 0.445596,
           "citations": 0.083942,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0.162162
@@ -2411,7 +2411,7 @@
         "reasons": [
           "Wspólne przepisy: art. 71 ust. 1, art. 32 ust. 1, art. 18",
           "Wspólne frazy w tytule: innej pracy, pielegnacyjnego tytulu, pracy zarobkowej",
-          "Wspólne frazy w tekście: pielegnacyjnego, opieki, pielegnacyjne"
+          "Wspólne frazy w tekście: pielegnacyjnego, opieki, niepelnosprawnym"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25173&sprawa=25902"
       },
@@ -2420,9 +2420,9 @@
         "case_signature": "P 2/25",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.108247,
+        "score": 0.109325,
         "components": {
-          "lexical": 0.136372,
+          "lexical": 0.138446,
           "citations": 0.026667,
           "metadata": 0.4,
           "dotyczy_bigrams": 0
@@ -2438,9 +2438,9 @@
         "case_signature": "SK 6/25",
         "decision_date_iso": "2025-10-14",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.089642,
+        "score": 0.089748,
         "components": {
-          "lexical": 0.021555,
+          "lexical": 0.02176,
           "citations": 0.037879,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -2457,9 +2457,9 @@
         "case_signature": "SK 73/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.086066,
+        "score": 0.08619,
         "components": {
-          "lexical": 0.020228,
+          "lexical": 0.020466,
           "citations": 0.037736,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -2478,9 +2478,9 @@
         "case_signature": "SK 63/19",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.062826,
+        "score": 0.062562,
         "components": {
-          "lexical": 0.024285,
+          "lexical": 0.023777,
           "citations": 0.010989,
           "metadata": 0.6,
           "dotyczy_bigrams": 0
@@ -2496,9 +2496,9 @@
         "case_signature": "K 22/19",
         "decision_date_iso": "2025-10-30",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.059302,
+        "score": 0.059275,
         "components": {
-          "lexical": 0.004952,
+          "lexical": 0.004899,
           "citations": 0.167273,
           "metadata": 0.290909,
           "dotyczy_bigrams": 0
@@ -2514,16 +2514,16 @@
         "case_signature": "Kp 2/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.057743,
+        "score": 0.057691,
         "components": {
-          "lexical": 0.014555,
+          "lexical": 0.014455,
           "citations": 0.01087,
           "metadata": 0.6,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 1, art. 188 pkt 4, art. 191 ust. 1 pkt 1",
-          "Wspólne frazy w tekście: partii, posla, https"
+          "Wspólne frazy w tekście: partii, https, posla"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
       },
@@ -2532,9 +2532,9 @@
         "case_signature": "SK 16/18",
         "decision_date_iso": "2025-11-19",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.053347,
+        "score": 0.053314,
         "components": {
-          "lexical": 0.007118,
+          "lexical": 0.007053,
           "citations": 0.00823,
           "metadata": 0.6,
           "dotyczy_bigrams": 0
@@ -2550,9 +2550,9 @@
         "case_signature": "SK 17/18",
         "decision_date_iso": "2025-12-03",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.052072,
+        "score": 0.052128,
         "components": {
-          "lexical": 0.006025,
+          "lexical": 0.006132,
           "citations": 0.004695,
           "metadata": 0.6,
           "dotyczy_bigrams": 0
@@ -2570,9 +2570,9 @@
         "case_signature": "SK 47/25",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.347992,
+        "score": 0.346708,
         "components": {
-          "lexical": 0.448064,
+          "lexical": 0.445596,
           "citations": 0.083942,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0.162162
@@ -2580,7 +2580,7 @@
         "reasons": [
           "Wspólne przepisy: art. 71 ust. 1, art. 32 ust. 1, art. 18",
           "Wspólne frazy w tytule: innej pracy, pielegnacyjnego tytulu, pracy zarobkowej",
-          "Wspólne frazy w tekście: pielegnacyjnego, opieki, pielegnacyjne"
+          "Wspólne frazy w tekście: pielegnacyjnego, opieki, niepelnosprawnym"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25170&sprawa=28659"
       },
@@ -2589,9 +2589,9 @@
         "case_signature": "SK 73/24",
         "decision_date_iso": "2025-10-15",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.33851,
+        "score": 0.337083,
         "components": {
-          "lexical": 0.462332,
+          "lexical": 0.459588,
           "citations": 0.136201,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -2608,9 +2608,9 @@
         "case_signature": "SK 73/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.119219,
+        "score": 0.119587,
         "components": {
-          "lexical": 0.049813,
+          "lexical": 0.05052,
           "citations": 0.126582,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -2627,9 +2627,9 @@
         "case_signature": "SK 22/24",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.115668,
+        "score": 0.116031,
         "components": {
-          "lexical": 0.050332,
+          "lexical": 0.051029,
           "citations": 0.11859,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0
@@ -2646,9 +2646,9 @@
         "case_signature": "SK 6/25",
         "decision_date_iso": "2025-10-14",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.112872,
+        "score": 0.113196,
         "components": {
-          "lexical": 0.051846,
+          "lexical": 0.05247,
           "citations": 0.100671,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0
@@ -2667,9 +2667,9 @@
         "case_signature": "SK 73/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.974884,
+        "score": 0.974892,
         "components": {
-          "lexical": 0.998816,
+          "lexical": 0.998831,
           "citations": 0.9375,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -2677,7 +2677,7 @@
         "reasons": [
           "Wspólne przepisy: art. 47, art. 31 ust. 3, art. 2",
           "Wspólne frazy w tytule: obowiazkowe szczepienia, szczepienia ochronne",
-          "Wspólne frazy w tekście: sanitarnej, szczepien, ochronnych"
+          "Wspólne frazy w tekście: szczepien, sanitarnej, ochronnych"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25134&sprawa=27156"
       },
@@ -2686,9 +2686,9 @@
         "case_signature": "SK 6/25",
         "decision_date_iso": "2025-10-14",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.943906,
+        "score": 0.94393,
         "components": {
-          "lexical": 0.992246,
+          "lexical": 0.992293,
           "citations": 0.766355,
           "metadata": 0.933333,
           "dotyczy_bigrams": 1
@@ -2705,9 +2705,9 @@
         "case_signature": "SK 53/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.675496,
+        "score": 0.677078,
         "components": {
-          "lexical": 0.502857,
+          "lexical": 0.505899,
           "citations": 0.696721,
           "metadata": 0.933333,
           "dotyczy_bigrams": 1
@@ -2724,9 +2724,9 @@
         "case_signature": "SK 80/24",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.659994,
+        "score": 0.661581,
         "components": {
-          "lexical": 0.517668,
+          "lexical": 0.52072,
           "citations": 0.614035,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -2743,9 +2743,9 @@
         "case_signature": "SK 41/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.653631,
+        "score": 0.655151,
         "components": {
-          "lexical": 0.509705,
+          "lexical": 0.512627,
           "citations": 0.614035,
           "metadata": 0.822222,
           "dotyczy_bigrams": 1
@@ -2764,9 +2764,9 @@
         "case_signature": "SK 58/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.103387,
+        "score": 0.103645,
         "components": {
-          "lexical": 0.022804,
+          "lexical": 0.023299,
           "citations": 0.117647,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -2783,9 +2783,9 @@
         "case_signature": "SK 45/25",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.096931,
+        "score": 0.097279,
         "components": {
-          "lexical": 0.021974,
+          "lexical": 0.022645,
           "citations": 0.054187,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -2802,9 +2802,9 @@
         "case_signature": "SK 106/22",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.091663,
+        "score": 0.091738,
         "components": {
-          "lexical": 0.009534,
+          "lexical": 0.009678,
           "citations": 0.093525,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -2817,13 +2817,32 @@
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25229&sprawa=26603"
       },
       {
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.088031,
+        "components": {
+          "lexical": 0.001641,
+          "citations": 0.09589,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 64 ust. 1, art. 53 ust. 1 pkt 1, art. 53 ust. 1 pkt 2",
+          "Wspólne frazy w tekście: prawami",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
+      },
+      {
         "document_id": "25264",
         "case_signature": "SK 16/18",
         "decision_date_iso": "2025-11-19",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.087579,
+        "score": 0.087594,
         "components": {
-          "lexical": 0.037417,
+          "lexical": 0.037446,
           "citations": 0.064246,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -2834,24 +2853,6 @@
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
-      },
-      {
-        "document_id": "25167",
-        "case_signature": "SK 41/19",
-        "decision_date_iso": "2025-11-25",
-        "decision_type_ipo_label": "Postanowienie",
-        "score": 0.087178,
-        "components": {
-          "lexical": 0,
-          "citations": 0.09589,
-          "metadata": 0.85,
-          "dotyczy_bigrams": 0
-        },
-        "reasons": [
-          "Wspólne przepisy: art. 64 ust. 1, art. 53 ust. 1 pkt 1, art. 53 ust. 1 pkt 2",
-          "To samo repertorium: SK"
-        ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
       }
     ],
     "25176": [
@@ -2860,9 +2861,9 @@
         "case_signature": "SK 89/23",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.135441,
+        "score": 0.136166,
         "components": {
-          "lexical": 0.054959,
+          "lexical": 0.056354,
           "citations": 0.160976,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -2879,9 +2880,9 @@
         "case_signature": "SK 51/20",
         "decision_date_iso": "2025-10-08",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.101841,
+        "score": 0.102076,
         "components": {
-          "lexical": 0.020455,
+          "lexical": 0.020906,
           "citations": 0.116022,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -2898,9 +2899,9 @@
         "case_signature": "SK 78/23",
         "decision_date_iso": "2025-10-14",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.099876,
+        "score": 0.100502,
         "components": {
-          "lexical": 0.062156,
+          "lexical": 0.06336,
           "citations": 0.049774,
           "metadata": 0.72,
           "dotyczy_bigrams": 0
@@ -2917,9 +2918,9 @@
         "case_signature": "SK 58/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.0977,
+        "score": 0.097928,
         "components": {
-          "lexical": 0.019894,
+          "lexical": 0.020334,
           "citations": 0.096774,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -2936,9 +2937,9 @@
         "case_signature": "SK 33/24",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.096931,
+        "score": 0.097279,
         "components": {
-          "lexical": 0.021974,
+          "lexical": 0.022645,
           "citations": 0.054187,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -2957,9 +2958,9 @@
         "case_signature": "SK 101/22",
         "decision_date_iso": "2025-11-18",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.091606,
+        "score": 0.090647,
         "components": {
-          "lexical": 0.102066,
+          "lexical": 0.100221,
           "citations": 0.012658,
           "metadata": 0.45,
           "dotyczy_bigrams": 0
@@ -2975,9 +2976,9 @@
         "case_signature": "K 2/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.075463,
+        "score": 0.075554,
         "components": {
-          "lexical": 0.010978,
+          "lexical": 0.011153,
           "citations": 0.008772,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -2994,57 +2995,57 @@
         "case_signature": "K 22/19",
         "decision_date_iso": "2025-10-30",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.073579,
+        "score": 0.073761,
         "components": {
-          "lexical": 0.004318,
+          "lexical": 0.004669,
           "citations": 0.016667,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 2, art. 1",
-          "Wspólne frazy w tekście: likwidacji, przejecia, finansowania",
+          "Wspólne frazy w tekście: likwidacji, przejecia, zobowiazuje",
           "To samo repertorium: K"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25136&sprawa=22292"
-      },
-      {
-        "document_id": "25180",
-        "case_signature": "K 5/25",
-        "decision_date_iso": "2025-11-26",
-        "decision_type_ipo_label": "Wyrok",
-        "score": 0.070547,
-        "components": {
-          "lexical": 0.001325,
-          "citations": 0.009288,
-          "metadata": 0.85,
-          "dotyczy_bigrams": 0
-        },
-        "reasons": [
-          "Wspólne przepisy: art. 2, art. 1",
-          "Wspólne frazy w tekście: utrzymywania, powodowac, zbedny",
-          "To samo repertorium: K"
-        ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
       },
       {
         "document_id": "25139",
         "case_signature": "K 24/20",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.070251,
+        "score": 0.070717,
         "components": {
-          "lexical": 0.00668,
+          "lexical": 0.007576,
           "citations": 0.005,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 1",
-          "Wspólne frazy w tekście: grozaca, gwarancyjny, glownym",
+          "Wspólne frazy w tekście: zobowiazuje, grozaca, gwarancyjny",
           "To samo repertorium: K"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25139&sprawa=23692"
+      },
+      {
+        "document_id": "25180",
+        "case_signature": "K 5/25",
+        "decision_date_iso": "2025-11-26",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.070627,
+        "components": {
+          "lexical": 0.00148,
+          "citations": 0.009288,
+          "metadata": 0.85,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 1",
+          "Wspólne frazy w tekście: utrzymywania, powodowac, zobowiazuje",
+          "To samo repertorium: K"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
       }
     ],
     "25178": [
@@ -3053,16 +3054,16 @@
         "case_signature": "SK 41/19",
         "decision_date_iso": "2025-11-25",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.148389,
+        "score": 0.148778,
         "components": {
-          "lexical": 0.0386,
+          "lexical": 0.039347,
           "citations": 0.301587,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 31 ust. 3, art. 45 ust. 1, art. 78",
-          "Wspólne frazy w tekście: gwarantowanymi, niedozwolona, wstepnej",
+          "Wspólne frazy w tekście: gwarantowanymi, wstepnej, niedozwolona",
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
@@ -3072,9 +3073,9 @@
         "case_signature": "SK 58/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.101926,
+        "score": 0.101932,
         "components": {
-          "lexical": 0.002627,
+          "lexical": 0.002639,
           "citations": 0.148515,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -3091,9 +3092,9 @@
         "case_signature": "SK 90/24",
         "decision_date_iso": "2025-12-09",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.101297,
+        "score": 0.101298,
         "components": {
-          "lexical": 0.009734,
+          "lexical": 0.009737,
           "citations": 0.141176,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -3110,9 +3111,9 @@
         "case_signature": "SK 70/25",
         "decision_date_iso": "2025-10-29",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.097663,
+        "score": 0.097683,
         "components": {
-          "lexical": 0.008213,
+          "lexical": 0.008252,
           "citations": 0.112676,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -3129,9 +3130,9 @@
         "case_signature": "SK 67/25",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.097415,
+        "score": 0.097524,
         "components": {
-          "lexical": 0.022653,
+          "lexical": 0.022862,
           "citations": 0.073892,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -3150,9 +3151,9 @@
         "case_signature": "SK 80/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.980866,
+        "score": 0.980843,
         "components": {
-          "lexical": 0.991478,
+          "lexical": 0.991435,
           "citations": 0.986486,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -3169,9 +3170,9 @@
         "case_signature": "SK 58/23",
         "decision_date_iso": "2025-10-22",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.976342,
+        "score": 0.976347,
         "components": {
-          "lexical": 0.998415,
+          "lexical": 0.998423,
           "citations": 0.9125,
           "metadata": 0.933333,
           "dotyczy_bigrams": 1
@@ -3188,9 +3189,9 @@
         "case_signature": "SK 48/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.971133,
+        "score": 0.971159,
         "components": {
-          "lexical": 0.993205,
+          "lexical": 0.993255,
           "citations": 0.933333,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -3207,9 +3208,9 @@
         "case_signature": "SK 41/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.881709,
+        "score": 0.880568,
         "components": {
-          "lexical": 0.864742,
+          "lexical": 0.862548,
           "citations": 0.831325,
           "metadata": 0.822222,
           "dotyczy_bigrams": 1
@@ -3226,9 +3227,9 @@
         "case_signature": "SK 80/24",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.880876,
+        "score": 0.879757,
         "components": {
-          "lexical": 0.858867,
+          "lexical": 0.856716,
           "citations": 0.831325,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -3247,9 +3248,9 @@
         "case_signature": "K 24/20",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.144656,
+        "score": 0.143003,
         "components": {
-          "lexical": 0.138674,
+          "lexical": 0.135496,
           "citations": 0.022727,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -3266,9 +3267,9 @@
         "case_signature": "K 14/23",
         "decision_date_iso": "2025-12-03",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.132727,
+        "score": 0.133781,
         "components": {
-          "lexical": 0.081328,
+          "lexical": 0.083355,
           "citations": 0.053356,
           "metadata": 0.85,
           "dotyczy_bigrams": 0.058824
@@ -3285,9 +3286,9 @@
         "case_signature": "K 2/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.098295,
+        "score": 0.098695,
         "components": {
-          "lexical": 0.040652,
+          "lexical": 0.04142,
           "citations": 0.031496,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -3304,9 +3305,9 @@
         "case_signature": "K 22/19",
         "decision_date_iso": "2025-10-30",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.079026,
+        "score": 0.079222,
         "components": {
-          "lexical": 0.00408,
+          "lexical": 0.004457,
           "citations": 0.030238,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -3323,16 +3324,16 @@
         "case_signature": "K 13/22",
         "decision_date_iso": "2025-12-10",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.070547,
+        "score": 0.070627,
         "components": {
-          "lexical": 0.001325,
+          "lexical": 0.00148,
           "citations": 0.009288,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 2, art. 1",
-          "Wspólne frazy w tekście: utrzymywania, powodowac, zbedny",
+          "Wspólne frazy w tekście: utrzymywania, powodowac, zobowiazuje",
           "To samo repertorium: K"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25177&sprawa=26324"
@@ -3344,9 +3345,9 @@
         "case_signature": "K 14/23",
         "decision_date_iso": "2025-12-03",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.201924,
+        "score": 0.206032,
         "components": {
-          "lexical": 0.289673,
+          "lexical": 0.297572,
           "citations": 0.149805,
           "metadata": 0.266667,
           "dotyczy_bigrams": 0
@@ -3362,16 +3363,16 @@
         "case_signature": "Kp 2/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.194425,
+        "score": 0.198274,
         "components": {
-          "lexical": 0.294163,
+          "lexical": 0.301565,
           "citations": 0.105485,
           "metadata": 0.254545,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 7, art. 2, art. 45 ust. 1",
-          "Wspólne frazy w tekście: krs, prezydent, legalizmu"
+          "Wspólne frazy w tekście: krs, prezydent, sadownictwa"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
       },
@@ -3380,9 +3381,9 @@
         "case_signature": "K 24/20",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.130248,
+        "score": 0.128663,
         "components": {
-          "lexical": 0.192109,
+          "lexical": 0.189061,
           "citations": 0.023758,
           "metadata": 0.32,
           "dotyczy_bigrams": 0
@@ -3398,9 +3399,9 @@
         "case_signature": "U 6/24",
         "decision_date_iso": "2025-11-27",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.08379,
+        "score": 0.084128,
         "components": {
-          "lexical": 0.014579,
+          "lexical": 0.015229,
           "citations": 0.061047,
           "metadata": 0.8,
           "dotyczy_bigrams": 0
@@ -3417,9 +3418,9 @@
         "case_signature": "U 2/23",
         "decision_date_iso": "2025-10-08",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.082918,
+        "score": 0.08266,
         "components": {
-          "lexical": 0.008508,
+          "lexical": 0.008012,
           "citations": 0.032468,
           "metadata": 0.9,
           "dotyczy_bigrams": 0
@@ -3438,9 +3439,9 @@
         "case_signature": "P 2/25",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.080669,
+        "score": 0.080692,
         "components": {
-          "lexical": 0.008365,
+          "lexical": 0.008408,
           "citations": 0.008264,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -3457,9 +3458,9 @@
         "case_signature": "P 13/24",
         "decision_date_iso": "2025-12-10",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.076759,
+        "score": 0.076737,
         "components": {
-          "lexical": 0.001252,
+          "lexical": 0.001209,
           "citations": 0.040541,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -3476,9 +3477,9 @@
         "case_signature": "P 1/21",
         "decision_date_iso": "2026-02-04",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.069836,
+        "score": 0.070042,
         "components": {
-          "lexical": 0.003775,
+          "lexical": 0.004171,
           "citations": 0.023364,
           "metadata": 0.79,
           "dotyczy_bigrams": 0
@@ -3495,9 +3496,9 @@
         "case_signature": "SK 73/24",
         "decision_date_iso": "2025-10-15",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.066209,
+        "score": 0.06615,
         "components": {
-          "lexical": 0.023666,
+          "lexical": 0.023552,
           "citations": 0.05618,
           "metadata": 0.533333,
           "dotyczy_bigrams": 0
@@ -3513,9 +3514,9 @@
         "case_signature": "P 10/16",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.059036,
+        "score": 0.059087,
         "components": {
-          "lexical": 0.001211,
+          "lexical": 0.00131,
           "citations": 0.015666,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -3534,9 +3535,9 @@
         "case_signature": "SK 106/22",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.587548,
+        "score": 0.587056,
         "components": {
-          "lexical": 0.933779,
+          "lexical": 0.932833,
           "citations": 0.211735,
           "metadata": 0.290909,
           "dotyczy_bigrams": 0.181818
@@ -3553,9 +3554,9 @@
         "case_signature": "SK 16/18",
         "decision_date_iso": "2025-11-19",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.073158,
+        "score": 0.072958,
         "components": {
-          "lexical": 0.007926,
+          "lexical": 0.007541,
           "citations": 0.105181,
           "metadata": 0.6,
           "dotyczy_bigrams": 0
@@ -3571,9 +3572,9 @@
         "case_signature": "P 1/21",
         "decision_date_iso": "2026-02-04",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.064778,
+        "score": 0.064803,
         "components": {
-          "lexical": 0.001869,
+          "lexical": 0.001918,
           "citations": 0.046667,
           "metadata": 0.680909,
           "dotyczy_bigrams": 0
@@ -3590,9 +3591,9 @@
         "case_signature": "P 13/24",
         "decision_date_iso": "2025-12-10",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.061456,
+        "score": 0.061504,
         "components": {
-          "lexical": 0.00355,
+          "lexical": 0.003643,
           "citations": 0.021687,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -3605,23 +3606,22 @@
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25204&sprawa=28304"
       },
       {
-        "document_id": "25202",
-        "case_signature": "P 3/24",
-        "decision_date_iso": "2025-12-04",
-        "decision_type_ipo_label": "Postanowienie",
-        "score": 0.059036,
+        "document_id": "25206",
+        "case_signature": "Kp 2/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Wyrok",
+        "score": 0.059119,
         "components": {
-          "lexical": 0.001211,
-          "citations": 0.015666,
-          "metadata": 0.690909,
+          "lexical": 0.003223,
+          "citations": 0.047215,
+          "metadata": 0.6,
           "dotyczy_bigrams": 0
         },
         "reasons": [
-          "Wspólne przepisy: art. 193, art. 175, art. 59 ust. 1 pkt 2",
-          "Wspólne frazy w tekście: odpowiedzia, legitymuje, zadane",
-          "To samo repertorium: P"
+          "Wspólne przepisy: art. 2, art. 31 ust. 3, art. 1",
+          "Wspólne frazy w tekście: sadownictwa, legalizmu, wydano"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25202&sprawa=27638"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
       }
     ],
     "25204": [
@@ -3630,9 +3630,9 @@
         "case_signature": "P 1/21",
         "decision_date_iso": "2026-02-04",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.09411,
+        "score": 0.094684,
         "components": {
-          "lexical": 0.039638,
+          "lexical": 0.040743,
           "citations": 0.017204,
           "metadata": 0.875714,
           "dotyczy_bigrams": 0
@@ -3649,9 +3649,9 @@
         "case_signature": "P 3/24",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.076759,
+        "score": 0.076737,
         "components": {
-          "lexical": 0.001252,
+          "lexical": 0.001209,
           "citations": 0.040541,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -3668,9 +3668,9 @@
         "case_signature": "P 2/25",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.070514,
+        "score": 0.070504,
         "components": {
-          "lexical": 0.004145,
+          "lexical": 0.004126,
           "citations": 0.012903,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0
@@ -3687,9 +3687,9 @@
         "case_signature": "K 22/19",
         "decision_date_iso": "2025-10-30",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.06215,
+        "score": 0.062013,
         "components": {
-          "lexical": 0.039654,
+          "lexical": 0.039391,
           "citations": 0.02765,
           "metadata": 0.45,
           "dotyczy_bigrams": 0
@@ -3705,9 +3705,9 @@
         "case_signature": "P 10/16",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.061456,
+        "score": 0.061504,
         "components": {
-          "lexical": 0.00355,
+          "lexical": 0.003643,
           "citations": 0.021687,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -3726,9 +3726,9 @@
         "case_signature": "SK 90/24",
         "decision_date_iso": "2025-12-09",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.202335,
+        "score": 0.202853,
         "components": {
-          "lexical": 0.223443,
+          "lexical": 0.224438,
           "citations": 0.154362,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -3745,9 +3745,9 @@
         "case_signature": "SK 70/25",
         "decision_date_iso": "2025-10-29",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.124337,
+        "score": 0.124094,
         "components": {
-          "lexical": 0.108943,
+          "lexical": 0.108476,
           "citations": 0.062069,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -3764,9 +3764,9 @@
         "case_signature": "SK 17/18",
         "decision_date_iso": "2025-12-03",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.102083,
+        "score": 0.103023,
         "components": {
-          "lexical": 0.029412,
+          "lexical": 0.03122,
           "citations": 0.033943,
           "metadata": 1,
           "dotyczy_bigrams": 0
@@ -3783,9 +3783,9 @@
         "case_signature": "SK 41/19",
         "decision_date_iso": "2025-11-25",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.095614,
+        "score": 0.096041,
         "components": {
-          "lexical": 0.039924,
+          "lexical": 0.040746,
           "citations": 0.097902,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -3802,9 +3802,9 @@
         "case_signature": "SK 16/18",
         "decision_date_iso": "2025-11-19",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.093173,
+        "score": 0.093168,
         "components": {
-          "lexical": 0.009598,
+          "lexical": 0.009589,
           "citations": 0.040909,
           "metadata": 1,
           "dotyczy_bigrams": 0
@@ -3823,16 +3823,16 @@
         "case_signature": "K 14/23",
         "decision_date_iso": "2025-12-03",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.206105,
+        "score": 0.211391,
         "components": {
-          "lexical": 0.31351,
+          "lexical": 0.323675,
           "citations": 0.099037,
           "metadata": 0.290909,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 2, art. 7, art. 45 ust. 1",
-          "Wspólne frazy w tekście: krs, niezawislosci, sedziowskiej"
+          "Wspólne frazy w tekście: krs, niezawislosci, sadownictwa"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25230&sprawa=27301"
       },
@@ -3841,16 +3841,16 @@
         "case_signature": "U 4/25",
         "decision_date_iso": "2025-11-12",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.194425,
+        "score": 0.198274,
         "components": {
-          "lexical": 0.294163,
+          "lexical": 0.301565,
           "citations": 0.105485,
           "metadata": 0.254545,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 7, art. 2, art. 45 ust. 1",
-          "Wspólne frazy w tekście: krs, prezydent, legalizmu"
+          "Wspólne frazy w tekście: krs, prezydent, sadownictwa"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25181&sprawa=28948"
       },
@@ -3859,9 +3859,9 @@
         "case_signature": "K 24/20",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.173941,
+        "score": 0.173181,
         "components": {
-          "lexical": 0.261928,
+          "lexical": 0.260467,
           "citations": 0.072327,
           "metadata": 0.290909,
           "dotyczy_bigrams": 0
@@ -3877,16 +3877,16 @@
         "case_signature": "SK 17/18",
         "decision_date_iso": "2025-12-03",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.067789,
+        "score": 0.068878,
         "components": {
-          "lexical": 0.023561,
+          "lexical": 0.025655,
           "citations": 0.037685,
           "metadata": 0.6,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 45 ust. 1, art. 31 ust. 3, art. 32 ust. 1",
-          "Wspólne frazy w tekście: kontrolowanej, niezawislosci, sedziowskiej"
+          "Wspólne frazy w tekście: kontrolowanej, niezawislosci, sadownictwa"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25233&sprawa=20713"
       },
@@ -3895,16 +3895,16 @@
         "case_signature": "K 5/25",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.06422,
+        "score": 0.067168,
         "components": {
-          "lexical": 0.055495,
+          "lexical": 0.061165,
           "citations": 0.060447,
           "metadata": 0.290909,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 2, art. 9a, art. 10 ust. 1",
-          "Wspólne frazy w tekście: krs, objeli, sedziowie"
+          "Wspólne frazy w tekście: krs, objeli, sadownictwa"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25180&sprawa=28825"
       }
@@ -3915,9 +3915,9 @@
         "case_signature": "SK 80/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.982955,
+        "score": 0.982904,
         "components": {
-          "lexical": 0.997991,
+          "lexical": 0.997892,
           "citations": 0.946667,
           "metadata": 0.933333,
           "dotyczy_bigrams": 1
@@ -3934,9 +3934,9 @@
         "case_signature": "SK 108/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.971133,
+        "score": 0.971159,
         "components": {
-          "lexical": 0.993205,
+          "lexical": 0.993255,
           "citations": 0.933333,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -3953,9 +3953,9 @@
         "case_signature": "SK 58/23",
         "decision_date_iso": "2025-10-22",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.964798,
+        "score": 0.964813,
         "components": {
-          "lexical": 0.993842,
+          "lexical": 0.993872,
           "citations": 0.9,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -3972,9 +3972,9 @@
         "case_signature": "SK 80/24",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.885451,
+        "score": 0.884344,
         "components": {
-          "lexical": 0.857553,
+          "lexical": 0.855424,
           "citations": 0.797619,
           "metadata": 1,
           "dotyczy_bigrams": 1
@@ -3991,9 +3991,9 @@
         "case_signature": "SK 53/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.881472,
+        "score": 0.880229,
         "components": {
-          "lexical": 0.909136,
+          "lexical": 0.906745,
           "citations": 0.68932,
           "metadata": 0.885714,
           "dotyczy_bigrams": 1
@@ -4012,9 +4012,9 @@
         "case_signature": "SK 78/23",
         "decision_date_iso": "2025-10-14",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.687132,
+        "score": 0.686331,
         "components": {
-          "lexical": 0.691764,
+          "lexical": 0.690224,
           "citations": 0.301075,
           "metadata": 0.84,
           "dotyczy_bigrams": 1
@@ -4031,9 +4031,9 @@
         "case_signature": "SK 93/22",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.663584,
+        "score": 0.665353,
         "components": {
-          "lexical": 0.581624,
+          "lexical": 0.585026,
           "citations": 0.469697,
           "metadata": 0.84,
           "dotyczy_bigrams": 1
@@ -4050,9 +4050,9 @@
         "case_signature": "SK 48/24",
         "decision_date_iso": "2026-01-15",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.62436,
+        "score": 0.625302,
         "components": {
-          "lexical": 0.699069,
+          "lexical": 0.70088,
           "citations": 0.472222,
           "metadata": 0.83,
           "dotyczy_bigrams": 0.5
@@ -4069,9 +4069,9 @@
         "case_signature": "SK 89/23",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.138755,
+        "score": 0.138979,
         "components": {
-          "lexical": 0.115934,
+          "lexical": 0.116364,
           "citations": 0.104348,
           "metadata": 0.72,
           "dotyczy_bigrams": 0
@@ -4088,9 +4088,9 @@
         "case_signature": "SK 41/19",
         "decision_date_iso": "2025-11-25",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.110854,
+        "score": 0.110871,
         "components": {
-          "lexical": 0.005242,
+          "lexical": 0.005275,
           "citations": 0.273973,
           "metadata": 0.666667,
           "dotyczy_bigrams": 0
@@ -4109,9 +4109,9 @@
         "case_signature": "SK 48/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.982955,
+        "score": 0.982904,
         "components": {
-          "lexical": 0.997991,
+          "lexical": 0.997892,
           "citations": 0.946667,
           "metadata": 0.933333,
           "dotyczy_bigrams": 1
@@ -4128,9 +4128,9 @@
         "case_signature": "SK 108/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.980866,
+        "score": 0.980843,
         "components": {
-          "lexical": 0.991478,
+          "lexical": 0.991435,
           "citations": 0.986486,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -4147,9 +4147,9 @@
         "case_signature": "SK 58/23",
         "decision_date_iso": "2025-10-22",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.968874,
+        "score": 0.96884,
         "components": {
-          "lexical": 0.992066,
+          "lexical": 0.992,
           "citations": 0.925,
           "metadata": 0.85,
           "dotyczy_bigrams": 1
@@ -4166,9 +4166,9 @@
         "case_signature": "SK 53/23",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.884458,
+        "score": 0.883189,
         "components": {
-          "lexical": 0.90741,
+          "lexical": 0.904969,
           "citations": 0.708738,
           "metadata": 0.885714,
           "dotyczy_bigrams": 1
@@ -4185,9 +4185,9 @@
         "case_signature": "SK 80/24",
         "decision_date_iso": "2025-10-28",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.884105,
+        "score": 0.882973,
         "components": {
-          "lexical": 0.856063,
+          "lexical": 0.853886,
           "citations": 0.821429,
           "metadata": 0.933333,
           "dotyczy_bigrams": 1
@@ -4206,9 +4206,9 @@
         "case_signature": "P 10/16",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.587548,
+        "score": 0.587056,
         "components": {
-          "lexical": 0.933779,
+          "lexical": 0.932833,
           "citations": 0.211735,
           "metadata": 0.290909,
           "dotyczy_bigrams": 0.181818
@@ -4225,9 +4225,9 @@
         "case_signature": "SK 41/19",
         "decision_date_iso": "2025-11-25",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.099712,
+        "score": 0.099859,
         "components": {
-          "lexical": 0.010064,
+          "lexical": 0.010346,
           "citations": 0.11811,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -4240,13 +4240,32 @@
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
       },
       {
+        "document_id": "25165",
+        "case_signature": "SK 58/24",
+        "decision_date_iso": "2025-11-20",
+        "decision_type_ipo_label": "Postanowienie",
+        "score": 0.09904,
+        "components": {
+          "lexical": 0.003055,
+          "citations": 0.113924,
+          "metadata": 0.933333,
+          "dotyczy_bigrams": 0
+        },
+        "reasons": [
+          "Wspólne przepisy: art. 2, art. 32 ust. 1, art. 53",
+          "Wspólne frazy w tekście: przedsiebiorstwa, zakwestionowac, kognicja",
+          "To samo repertorium: SK"
+        ],
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
+      },
+      {
         "document_id": "25108",
         "case_signature": "SK 58/23",
         "decision_date_iso": "2025-10-22",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.098973,
+        "score": 0.098976,
         "components": {
-          "lexical": 0.000681,
+          "lexical": 0.000687,
           "citations": 0.11976,
           "metadata": 0.933333,
           "dotyczy_bigrams": 0
@@ -4259,32 +4278,13 @@
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25108&sprawa=27006"
       },
       {
-        "document_id": "25165",
-        "case_signature": "SK 58/24",
-        "decision_date_iso": "2025-11-20",
-        "decision_type_ipo_label": "Postanowienie",
-        "score": 0.098866,
-        "components": {
-          "lexical": 0.00272,
-          "citations": 0.113924,
-          "metadata": 0.933333,
-          "dotyczy_bigrams": 0
-        },
-        "reasons": [
-          "Wspólne przepisy: art. 2, art. 32 ust. 1, art. 53",
-          "Wspólne frazy w tekście: przedsiebiorstwa, zakwestionowac, dookreslone",
-          "To samo repertorium: SK"
-        ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25165&sprawa=28022"
-      },
-      {
         "document_id": "25226",
         "case_signature": "SK 48/23",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.09643,
+        "score": 0.096434,
         "components": {
-          "lexical": 0.0008,
+          "lexical": 0.000807,
           "citations": 0.125786,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -4303,16 +4303,16 @@
         "case_signature": "Kp 2/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.206105,
+        "score": 0.211391,
         "components": {
-          "lexical": 0.31351,
+          "lexical": 0.323675,
           "citations": 0.099037,
           "metadata": 0.290909,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 2, art. 7, art. 45 ust. 1",
-          "Wspólne frazy w tekście: krs, niezawislosci, sedziowskiej"
+          "Wspólne frazy w tekście: krs, niezawislosci, sadownictwa"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25206&sprawa=28102"
       },
@@ -4321,9 +4321,9 @@
         "case_signature": "U 4/25",
         "decision_date_iso": "2025-11-12",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.201924,
+        "score": 0.206032,
         "components": {
-          "lexical": 0.289673,
+          "lexical": 0.297572,
           "citations": 0.149805,
           "metadata": 0.266667,
           "dotyczy_bigrams": 0
@@ -4339,9 +4339,9 @@
         "case_signature": "K 24/20",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.193266,
+        "score": 0.192513,
         "components": {
-          "lexical": 0.228978,
+          "lexical": 0.22753,
           "citations": 0.016701,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -4358,9 +4358,9 @@
         "case_signature": "K 5/25",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.132727,
+        "score": 0.133781,
         "components": {
-          "lexical": 0.081328,
+          "lexical": 0.083355,
           "citations": 0.053356,
           "metadata": 0.85,
           "dotyczy_bigrams": 0.058824
@@ -4377,9 +4377,9 @@
         "case_signature": "K 2/23",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.091186,
+        "score": 0.09164,
         "components": {
-          "lexical": 0.031734,
+          "lexical": 0.032606,
           "citations": 0.044534,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0
@@ -4398,9 +4398,9 @@
         "case_signature": "SK 63/19",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.102083,
+        "score": 0.103023,
         "components": {
-          "lexical": 0.029412,
+          "lexical": 0.03122,
           "citations": 0.033943,
           "metadata": 1,
           "dotyczy_bigrams": 0
@@ -4417,9 +4417,9 @@
         "case_signature": "SK 51/20",
         "decision_date_iso": "2025-10-08",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.096908,
+        "score": 0.097251,
         "components": {
-          "lexical": 0.019754,
+          "lexical": 0.020413,
           "citations": 0.156818,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -4436,16 +4436,16 @@
         "case_signature": "SK 16/18",
         "decision_date_iso": "2025-11-19",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.096559,
+        "score": 0.096868,
         "components": {
-          "lexical": 0.007721,
+          "lexical": 0.008316,
           "citations": 0.062718,
           "metadata": 1,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 59 ust. 1 pkt 2",
-          "Wspólne frazy w tekście: nadaniu, uniemozliwienie, csk",
+          "Wspólne frazy w tekście: nadaniu, powodztwa, uniemozliwienie",
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25264&sprawa=20712"
@@ -4455,9 +4455,9 @@
         "case_signature": "SK 58/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.094011,
+        "score": 0.094467,
         "components": {
-          "lexical": 0.056907,
+          "lexical": 0.057784,
           "citations": 0.045732,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -4474,9 +4474,9 @@
         "case_signature": "SK 67/25",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.09047,
+        "score": 0.090732,
         "components": {
-          "lexical": 0.022268,
+          "lexical": 0.022772,
           "citations": 0.11809,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -4495,9 +4495,9 @@
         "case_signature": "SK 63/19",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.202335,
+        "score": 0.202853,
         "components": {
-          "lexical": 0.223443,
+          "lexical": 0.224438,
           "citations": 0.154362,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -4514,9 +4514,9 @@
         "case_signature": "SK 70/25",
         "decision_date_iso": "2025-10-29",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.143155,
+        "score": 0.143464,
         "components": {
-          "lexical": 0.114165,
+          "lexical": 0.114758,
           "citations": 0.078947,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -4533,9 +4533,9 @@
         "case_signature": "SK 11/20",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.101297,
+        "score": 0.101298,
         "components": {
-          "lexical": 0.009734,
+          "lexical": 0.009737,
           "citations": 0.141176,
           "metadata": 0.85,
           "dotyczy_bigrams": 0
@@ -4552,9 +4552,9 @@
         "case_signature": "SK 58/24",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.09724,
+        "score": 0.097347,
         "components": {
-          "lexical": 0.007601,
+          "lexical": 0.007807,
           "citations": 0.11215,
           "metadata": 0.885714,
           "dotyczy_bigrams": 0
@@ -4571,9 +4571,9 @@
         "case_signature": "SK 41/19",
         "decision_date_iso": "2025-11-25",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.088561,
+        "score": 0.088587,
         "components": {
-          "lexical": 0.003854,
+          "lexical": 0.003904,
           "citations": 0.103896,
           "metadata": 0.822222,
           "dotyczy_bigrams": 0
@@ -4592,9 +4592,9 @@
         "case_signature": "SK 76/21",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.62436,
+        "score": 0.625302,
         "components": {
-          "lexical": 0.699069,
+          "lexical": 0.70088,
           "citations": 0.472222,
           "metadata": 0.83,
           "dotyczy_bigrams": 0.5
@@ -4611,9 +4611,9 @@
         "case_signature": "SK 78/23",
         "decision_date_iso": "2025-10-14",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.53383,
+        "score": 0.533207,
         "components": {
-          "lexical": 0.582969,
+          "lexical": 0.581772,
           "citations": 0.321429,
           "metadata": 0.83,
           "dotyczy_bigrams": 0.5
@@ -4630,9 +4630,9 @@
         "case_signature": "SK 93/22",
         "decision_date_iso": "2025-11-26",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.51574,
+        "score": 0.517182,
         "components": {
-          "lexical": 0.504884,
+          "lexical": 0.507658,
           "citations": 0.45,
           "metadata": 0.79,
           "dotyczy_bigrams": 0.5
@@ -4640,7 +4640,7 @@
         "reasons": [
           "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 64 ust. 2",
           "Wspólne frazy w tytule: adwokata urzedu, nieoplaconej pomocy, pomocy prawnej",
-          "Wspólne frazy w tekście: nieoplaconej, udzielonej, adwokata"
+          "Wspólne frazy w tekście: nieoplaconej, adwokata, udzielonej"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25163&sprawa=26541"
       },
@@ -4649,9 +4649,9 @@
         "case_signature": "SK 106/22",
         "decision_date_iso": "2025-12-16",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.084645,
+        "score": 0.084704,
         "components": {
-          "lexical": 0.001478,
+          "lexical": 0.001592,
           "citations": 0.156716,
           "metadata": 0.656667,
           "dotyczy_bigrams": 0
@@ -4664,23 +4664,23 @@
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25229&sprawa=26603"
       },
       {
-        "document_id": "25168",
-        "case_signature": "SK 89/23",
-        "decision_date_iso": "2025-11-26",
+        "document_id": "25167",
+        "case_signature": "SK 41/19",
+        "decision_date_iso": "2025-11-25",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.082765,
+        "score": 0.083138,
         "components": {
-          "lexical": 0.046828,
-          "citations": 0.044643,
+          "lexical": 0.01203,
+          "citations": 0.136986,
           "metadata": 0.618571,
           "dotyczy_bigrams": 0
         },
         "reasons": [
-          "Wspólne przepisy: art. 32 ust. 1",
-          "Wspólne frazy w tekście: obroncy, obroncow, adwokata",
+          "Wspólne przepisy: art. 31 ust. 3, art. 2, art. 79 ust. 1",
+          "Wspólne frazy w tekście: wstepnej, ujemna, kosztach",
           "To samo repertorium: SK"
         ],
-        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25168&sprawa=27357"
+        "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25167&sprawa=21647"
       }
     ],
     "25264": [
@@ -4689,9 +4689,9 @@
         "case_signature": "SK 51/20",
         "decision_date_iso": "2025-10-08",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.130592,
+        "score": 0.130952,
         "components": {
-          "lexical": 0.083088,
+          "lexical": 0.08378,
           "citations": 0.160569,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -4708,16 +4708,16 @@
         "case_signature": "SK 17/18",
         "decision_date_iso": "2025-12-03",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.096559,
+        "score": 0.096868,
         "components": {
-          "lexical": 0.007721,
+          "lexical": 0.008316,
           "citations": 0.062718,
           "metadata": 1,
           "dotyczy_bigrams": 0
         },
         "reasons": [
           "Wspólne przepisy: art. 31 ust. 3, art. 32 ust. 1, art. 59 ust. 1 pkt 2",
-          "Wspólne frazy w tekście: nadaniu, uniemozliwienie, csk",
+          "Wspólne frazy w tekście: nadaniu, powodztwa, uniemozliwienie",
           "To samo repertorium: SK"
         ],
         "source_url": "https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=25233&sprawa=20713"
@@ -4727,9 +4727,9 @@
         "case_signature": "SK 63/19",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.093173,
+        "score": 0.093168,
         "components": {
-          "lexical": 0.009598,
+          "lexical": 0.009589,
           "citations": 0.040909,
           "metadata": 1,
           "dotyczy_bigrams": 0
@@ -4746,9 +4746,9 @@
         "case_signature": "SK 101/22",
         "decision_date_iso": "2025-11-18",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.091841,
+        "score": 0.091887,
         "components": {
-          "lexical": 0.01176,
+          "lexical": 0.01185,
           "citations": 0.152263,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -4765,9 +4765,9 @@
         "case_signature": "SK 33/24",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.087579,
+        "score": 0.087594,
         "components": {
-          "lexical": 0.037417,
+          "lexical": 0.037446,
           "citations": 0.064246,
           "metadata": 0.690909,
           "dotyczy_bigrams": 0
@@ -4786,9 +4786,9 @@
         "case_signature": "P 13/24",
         "decision_date_iso": "2025-12-10",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.09411,
+        "score": 0.094684,
         "components": {
-          "lexical": 0.039638,
+          "lexical": 0.040743,
           "citations": 0.017204,
           "metadata": 0.875714,
           "dotyczy_bigrams": 0
@@ -4805,9 +4805,9 @@
         "case_signature": "P 3/24",
         "decision_date_iso": "2025-12-04",
         "decision_type_ipo_label": "Postanowienie",
-        "score": 0.069836,
+        "score": 0.070042,
         "components": {
-          "lexical": 0.003775,
+          "lexical": 0.004171,
           "citations": 0.023364,
           "metadata": 0.79,
           "dotyczy_bigrams": 0
@@ -4824,9 +4824,9 @@
         "case_signature": "P 2/25",
         "decision_date_iso": "2025-11-20",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.067568,
+        "score": 0.067822,
         "components": {
-          "lexical": 0.005407,
+          "lexical": 0.005895,
           "citations": 0.007782,
           "metadata": 0.79,
           "dotyczy_bigrams": 0
@@ -4843,9 +4843,9 @@
         "case_signature": "SK 51/20",
         "decision_date_iso": "2025-10-08",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.065672,
+        "score": 0.065824,
         "components": {
-          "lexical": 0.005363,
+          "lexical": 0.005655,
           "citations": 0.105085,
           "metadata": 0.523333,
           "dotyczy_bigrams": 0
@@ -4861,9 +4861,9 @@
         "case_signature": "P 10/16",
         "decision_date_iso": "2025-12-02",
         "decision_type_ipo_label": "Wyrok",
-        "score": 0.064778,
+        "score": 0.064803,
         "components": {
-          "lexical": 0.001869,
+          "lexical": 0.001918,
           "citations": 0.046667,
           "metadata": 0.680909,
           "dotyczy_bigrams": 0

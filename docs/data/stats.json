@@ -1,26 +1,70 @@
 {
-  "generated_at": "2026-02-20T10:32:18.161Z",
+  "generated_at": "2026-02-25T12:01:32.720Z",
   "source_file": "/Users/lszoszk/constcourt/output/playwright/tk-all.decisions.json",
   "schema_version": "tk-dashboard-v2",
   "summary": {
-    "total_cases": 3288,
-    "dated_cases": 3288,
+    "total_cases": 3672,
+    "dated_cases": 3672,
     "undated_cases": 0,
-    "total_paragraphs": 265870,
-    "avg_paragraphs_per_case": 80.86,
-    "unique_decision_types": 13,
+    "total_paragraphs": 284991,
+    "avg_paragraphs_per_case": 77.61,
+    "unique_decision_types": 16,
     "unique_decision_types_ipo": 4,
-    "unique_judges": 60,
+    "unique_judges": 75,
     "date_range": {
-      "from": 1997,
+      "from": 1986,
       "to": 2026
     }
   },
   "series": {
     "cases_by_year": [
       [
+        1986,
+        7
+      ],
+      [
+        1987,
+        7
+      ],
+      [
+        1988,
+        21
+      ],
+      [
+        1989,
+        25
+      ],
+      [
+        1990,
+        30
+      ],
+      [
+        1991,
+        28
+      ],
+      [
+        1992,
+        38
+      ],
+      [
+        1993,
+        49
+      ],
+      [
+        1994,
+        43
+      ],
+      [
+        1995,
+        48
+      ],
+      [
+        1996,
+        48
+      ],
+      [
         1997,
-        26
+        65
       ],
       [
         1998,
@@ -136,23 +180,31 @@
       ],
       [
         2026,
-        2
+        3
       ]
     ]
   },
   "rankings": {
     "decision_types": [
       [
+        "Postanowienie - umorzenie",
+        1607
+      ],
+      [
         "Wyrok",
         1548
       ],
       [
-        "Postanowienie - umorzenie",
-        1519
+        "Orzeczenie",
+        185
       ],
       [
         "Postanowienie dot. kosztów",
         100
+      ],
+      [
+        "Uchwała",
+        84
       ],
       [
         "Postanowienie inne",
@@ -160,7 +212,11 @@
       ],
       [
         "Postanowienie po wydaniu orzeczenia",
-        28
+        30
+      ],
+      [
+        "Postanowienie",
+        18
       ],
       [
         "Postanowienie - sprostowanie",
@@ -171,16 +227,16 @@
         17
       ],
       [
+        "Postanowienie na wniosek o ustalenie wykładni",
+        12
+      ],
+      [
         "Postanowienie tymczasowe",
         7
       ],
       [
         "Postanowienie na zażalenie",
         6
-      ],
-      [
-        "Postanowienie",
-        5
       ],
       [
         "Postanowienie w sporze kompetencyjnym",
@@ -198,7 +254,7 @@
     "decision_types_ipo": [
       [
         "Postanowienie",
-        1730
+        1845
       ],
       [
         "Postanowienie Tymczasowe",
@@ -216,52 +272,56 @@
     "bench_sizes_ipo": [
       [
         "Pełny skład",
-        331
+        409
       ],
       [
         "Pięcioosobowa",
-        2630
+        2742
       ],
       [
         "Trójosobowa",
-        325
+        436
       ]
     ],
     "sections": [
       [
         "Uzasadnienie prawne",
-        143489
+        152790
       ],
       [
         "Uzasadnienie: część historyczna",
-        82938
+        87786
       ],
       [
         "Zdanie odrębne",
-        20468
+        21831
       ],
       [
         "Tenor",
-        10164
+        11582
       ],
       [
         "Uzasadnienie: część postępowania",
-        5647
+        7016
       ],
       [
         "Postanawia",
-        2306
+        2644
       ],
       [
         "Orzeka",
-        840
+        1295
       ],
       [
-        "Komparycja / Skład",
-        9
+        "Uzasadnienie (ogólne)",
+        27
       ],
       [
         "Sentencja (inne)",
+        11
+      ],
+      [
+        "Komparycja / Skład",
         9
       ]
     ],
@@ -452,215 +512,231 @@
     "bigrams": [
       [
         "prokurator generalny",
-        23410
+        25695
       ],
       [
         "pytanie prawne",
-        17081
+        17266
       ],
       [
         "marszałek sejmu",
-        13487
+        13558
       ],
       [
         "skargi konstytucyjnej",
-        10815
-      ],
-      [
-        "praw obywatelskich",
-        7271
+        10823
       ],
       [
         "rada ministrów",
-        7068
+        9340
+      ],
+      [
+        "praw obywatelskich",
+        8751
       ],
       [
         "samorządu terytorialnego",
-        6841
+        7392
       ],
       [
         "sądu najwyższego",
-        6657
-      ],
-      [
-        "wolności praw",
-        5892
+        7005
       ],
       [
         "wejścia życie",
-        5759
+        6272
+      ],
+      [
+        "wolności praw",
+        5904
       ],
       [
         "władzy publicznej",
-        5218
-      ],
-      [
-        "skarga konstytucyjna",
-        5074
-      ],
-      [
-        "prawa sądu",
-        5043
-      ],
-      [
-        "przed sądem",
-        4880
-      ],
-      [
-        "praw wolności",
-        4867
-      ],
-      [
-        "wydania wyroku",
-        4808
-      ],
-      [
-        "związku związku",
-        4788
-      ],
-      [
-        "aktu normatywnego",
-        4692
+        5258
       ],
       [
         "państwa prawnego",
-        4620
+        5196
       ],
       [
-        "działalności gospodarczej",
-        4609
+        "prawa sądu",
+        5098
       ],
       [
-        "sąd najwyższy",
-        4511
-      ],
-      [
-        "skardze konstytucyjnej",
-        4474
-      ],
-      [
-        "zaskarżonego przepisu",
-        4362
+        "skarga konstytucyjna",
+        5079
       ],
       [
         "skarbu państwa",
-        4300
+        5017
+      ],
+      [
+        "działalności gospodarczej",
+        5016
+      ],
+      [
+        "praw wolności",
+        5006
+      ],
+      [
+        "aktu normatywnego",
+        4969
+      ],
+      [
+        "przed sądem",
+        4928
+      ],
+      [
+        "wydania wyroku",
+        4812
+      ],
+      [
+        "związku związku",
+        4794
+      ],
+      [
+        "sąd najwyższy",
+        4660
       ],
       [
         "zasady równości",
-        4286
+        4529
       ],
       [
-        "pierwszej instancji",
-        4150
+        "skardze konstytucyjnej",
+        4479
       ],
       [
-        "prawa własności",
-        4067
-      ],
-      [
-        "praw człowieka",
-        4059
+        "zaskarżonego przepisu",
+        4428
       ],
       [
         "ubezpieczeń społecznych",
-        4047
+        4247
       ],
       [
-        "praw majątkowych",
-        3993
-      ],
-      [
-        "zaskarżony przepis",
-        3906
-      ],
-      [
-        "ochrony praw",
-        3896
+        "prawa własności",
+        4246
       ],
       [
         "demokratycznego państwa",
-        3861
+        4200
       ],
       [
-        "zdanie drugie",
-        3837
-      ],
-      [
-        "sytuacji gdy",
-        3715
-      ],
-      [
-        "zdaniem prokuratora",
-        3686
-      ],
-      [
-        "zdanie pierwsze",
-        3684
-      ],
-      [
-        "mocy obowiązującej",
-        3667
-      ],
-      [
-        "sądu administracyjnego",
-        3607
-      ],
-      [
-        "sprawiedliwości społecznej",
-        3604
+        "pierwszej instancji",
+        4154
       ],
       [
         "rzecznik praw",
-        3600
+        4144
       ],
       [
-        "niedopuszczalność wydania",
-        3431
+        "praw człowieka",
+        4138
+      ],
+      [
+        "ochrony praw",
+        4122
+      ],
+      [
+        "sprawiedliwości społecznej",
+        4078
+      ],
+      [
+        "praw majątkowych",
+        4063
+      ],
+      [
+        "zdaniem prokuratora",
+        4032
+      ],
+      [
+        "sądu administracyjnego",
+        4019
+      ],
+      [
+        "zaskarżony przepis",
+        3981
+      ],
+      [
+        "sytuacji gdy",
+        3915
+      ],
+      [
+        "mocy obowiązującej",
+        3912
+      ],
+      [
+        "zdanie drugie",
+        3890
+      ],
+      [
+        "rzecznika praw",
+        3808
+      ],
+      [
+        "zdanie pierwsze",
+        3717
       ],
       [
         "zgodności konstytucją",
-        3401
+        3579
       ],
       [
         "administracji publicznej",
-        3381
-      ],
-      [
-        "kontroli konstytucyjności",
-        3356
+        3546
       ],
       [
         "przepisów prawa",
-        3349
-      ],
-      [
-        "ministra sprawiedliwości",
-        3346
+        3526
       ],
       [
         "sądów powszechnych",
-        3263
+        3488
       ],
       [
-        "zaskarżonych przepisów",
-        3213
+        "niedopuszczalność wydania",
+        3432
       ],
       [
-        "względu niedopuszczalność",
-        3130
+        "kontroli konstytucyjności",
+        3431
       ],
       [
-        "zgodnie którym",
-        3129
-      ],
-      [
-        "zważył następuje",
-        3107
+        "ministra sprawiedliwości",
+        3423
       ],
       [
         "zdaniem trybunału",
-        3093
+        3334
+      ],
+      [
+        "zaskarżonych przepisów",
+        3322
+      ],
+      [
+        "zważył następuje",
+        3269
+      ],
+      [
+        "zgodnie którym",
+        3209
+      ],
+      [
+        "zwrócił uwagę",
+        3138
+      ],
+      [
+        "względu niedopuszczalność",
+        3131
+      ],
+      [
+        "rozporządzenia ministra",
+        3124
+      ],
+      [
+        "wymiaru sprawiedliwości",
+        3096
       ],
       [
         "wyroku trybunału",
@@ -668,169 +744,157 @@
       ],
       [
         "unii europejskiej",
-        3071
+        3081
       ],
       [
         "drugiej instancji",
-        3063
-      ],
-      [
-        "wymiaru sprawiedliwości",
-        3033
-      ],
-      [
-        "zwrócił uwagę",
-        3022
-      ],
-      [
-        "rzecznika praw",
-        2999
-      ],
-      [
-        "towarów usług",
-        2934
-      ],
-      [
-        "rozporządzenia ministra",
-        2879
-      ],
-      [
-        "jednostek samorządu",
-        2868
-      ],
-      [
-        "stosowania prawa",
-        2863
+        3065
       ],
       [
         "innych ustaw",
-        2843
-      ],
-      [
-        "państwa stanowionego",
-        2838
-      ],
-      [
-        "zarzut naruszenia",
-        2829
-      ],
-      [
-        "przy czym",
-        2828
-      ],
-      [
-        "powołanej punkcie",
-        2812
+        3040
       ],
       [
         "jak sentencji",
-        2792
+        3037
       ],
       [
-        "niezgodny związku",
-        2768
+        "przy czym",
+        3015
       ],
       [
-        "stanowionego prawa",
-        2754
+        "przepisów konstytucyjnych",
+        3009
       ],
       [
-        "której mowa",
-        2749
+        "towarów usług",
+        2971
       ],
       [
-        "orzecznictwie trybunału",
-        2720
+        "jednostek samorządu",
+        2956
       ],
       [
-        "sądu okręgowego",
-        2713
-      ],
-      [
-        "postępowaniu przed",
-        2707
-      ],
-      [
-        "pozbawienia wolności",
-        2703
-      ],
-      [
-        "kwestionowanego przepisu",
-        2699
+        "stosowania prawa",
+        2923
       ],
       [
         "sytuacji prawnej",
-        2685
+        2908
       ],
       [
-        "ocenie trybunału",
-        2680
+        "państwa stanowionego",
+        2907
+      ],
+      [
+        "zarzut naruszenia",
+        2901
+      ],
+      [
+        "tym przepisie",
+        2898
+      ],
+      [
+        "zdaniem wnioskodawcy",
+        2890
+      ],
+      [
+        "której mowa",
+        2869
+      ],
+      [
+        "orzecznictwie trybunału",
+        2815
+      ],
+      [
+        "powołanej punkcie",
+        2815
       ],
       [
         "należy uznać",
-        2676
+        2796
+      ],
+      [
+        "stanowionego prawa",
+        2794
+      ],
+      [
+        "ocenie trybunału",
+        2787
+      ],
+      [
+        "kwestionowanego przepisu",
+        2783
+      ],
+      [
+        "postępowaniu przed",
+        2782
       ]
     ],
     "bigrams_removed": [
       [
         "trybunału konstytucyjnego",
-        27631
+        29850
       ],
       [
         "może być",
-        15548
+        16526
       ],
       [
         "zakresie jakim",
-        14392
-      ],
-      [
-        "niniejszej sprawie",
-        12055
+        14545
       ],
       [
         "rzeczypospolitej polskiej",
-        11401
+        12498
+      ],
+      [
+        "niniejszej sprawie",
+        12288
       ],
       [
         "tym samym",
-        9884
-      ],
-      [
-        "tym zakresie",
-        8371
+        10486
       ],
       [
         "punktu widzenia",
-        8225
+        8803
+      ],
+      [
+        "tym zakresie",
+        8798
       ],
       [
         "przede wszystkim",
-        7961
-      ],
-      [
-        "przed trybunałem",
-        6986
+        8628
       ],
       [
         "trybunale konstytucyjnym",
-        6669
+        7496
+      ],
+      [
+        "przed trybunałem",
+        7260
       ],
       [
         "mogą być",
-        6245
+        6711
       ],
       [
         "tego przepisu",
-        6096
+        6663
       ],
       [
         "przy tym",
-        6048
+        6410
       ],
       [
         "których mowa",
-        5296
+        5734
+      ],
+      [
+        "pod uwagę",
+        5117
       ],
       [
         "sąd pytający",
@@ -838,48 +902,44 @@
       ],
       [
         "zob wyrok",
-        5067
-      ],
-      [
-        "pod uwagę",
-        4815
+        5069
       ],
       [
         "trybunałem konstytucyjnym",
-        4751
+        5004
       ],
       [
         "którym mowa",
-        3939
+        4133
       ],
       [
         "związku tym",
-        3845
+        4115
+      ],
+      [
+        "musi być",
+        3613
       ],
       [
         "sierpnia trybunale",
         3418
       ],
       [
-        "musi być",
-        3378
+        "tego rodzaju",
+        3351
       ],
       [
         "por wyrok",
-        3191
+        3199
       ],
       [
         "pytający sąd",
         3179
-      ],
-      [
-        "tego rodzaju",
-        3154
       ]
     ],
     "bigrams_filtering": {
       "disclaimer": "Ranking bigramów wyklucza frazy boilerplate, zwroty techniczne i nazwy instytucjonalne o niskiej wartości argumentacyjnej dla analizy prawniczej.",
-      "removed_total_count": 196657,
+      "removed_total_count": 208006,
       "removed_unique_count": 26,
       "removed_phrase_catalog": [
         "trybunału konstytucyjnego",
@@ -1365,27 +1425,28 @@
     "section_unknown_share": 0,
     "validation_errors_count": 0,
     "dropped_invalid_cases_count": 0,
-    "section_reclassified_from_inne_count": 4233,
+    "section_reclassified_from_inne_count": 5402,
     "section_reclassified_from_inne_by_section": {
-      "tenor": 3815,
-      "postanawia": 40,
-      "uzasadnienie_historyczne": 253,
-      "uzasadnienie_postepowanie": 31,
-      "uzasadnienie_prawne": 94
+      "tenor": 4190,
+      "postanawia": 44,
+      "uzasadnienie_historyczne": 620,
+      "uzasadnienie_postepowanie": 198,
+      "uzasadnienie_prawne": 350
     },
     "section_reclassified_by_llm_count": 0,
     "section_reclassified_by_llm_by_section": {},
-    "section_reclassified_by_forced_count": 842,
+    "section_reclassified_by_forced_count": 1308,
     "section_reclassified_by_forced_by_section": {
-      "tenor": 780,
+      "tenor": 1143,
       "postanawia": 5,
-      "uzasadnienie_prawne": 15,
-      "uzasadnienie_historyczne": 42
+      "uzasadnienie_prawne": 26,
+      "uzasadnienie_historyczne": 131,
+      "uzasadnienie_postepowanie": 3
     },
     "llm_review_model": null,
     "llm_review_attempted": false,
     "force_no_inne_applied": true,
-    "bench_outside_ipo_count": 2
+    "bench_outside_ipo_count": 85
   },
   "section_meta": {
     "komparycja": {
@@ -1433,7 +1494,7 @@
       "color": "#94a3b8"
     }
   },
-  "dataset_hash": "dd8c258da67f48dfe6382ce784bf9b628be03d3b067b35980a2018b4f4e2d350",
-  "dataset_generated_at": "2026-02-20T10:31:36.567Z",
+  "dataset_hash": "9bbb1a3e7c2ec1fe8d6b420b7eb5fac9b463cba7242648c3f19472974ee35c9c",
+  "dataset_generated_at": "2026-02-25T12:00:47.131Z",
   "normalization_version": "tk-norm-v2"
 }

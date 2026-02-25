@@ -43,6 +43,22 @@ Example (50 decisions):
 npm run scrape:ipo -- --limit 50 --results-per-page 500 --output-prefix sample-50-v2
 ```
 
+Incremental scrape for missing older IPO records (time range `od 1986 roku`) while skipping already-known `document_id` from `tk-all.decisions.json`:
+
+```bash
+npm run scrape:ipo:missing-1986
+npm run merge:ipo:missing-1986
+npm run build:refresh-from-tk-all
+```
+
+Equivalent raw CLI (if you need custom limits/paths):
+
+```bash
+npm run scrape:ipo -- --limit 5000 --pool-size 5000 --results-per-page 500 --concurrency 3 --time-range "od 1986 roku" --existing-decisions output/playwright/tk-all.decisions.json --output-prefix tk-missing-1986
+node scripts/merge_ipo_decisions.mjs --base output/playwright/tk-all.decisions.json --incremental output/playwright/tk-missing-1986.decisions.json --output output/playwright/tk-all.decisions.json
+npm run build:refresh-from-tk-all
+```
+
 Main raw output:
 
 - `output/playwright/<prefix>.decisions.json`
@@ -112,6 +128,7 @@ It documents the recommended legal section taxonomy and paragraph-level segmenta
 ## Key files
 
 - Scraper: `scripts/scrape_ipo_decisions.mjs`
+- Incremental merge helper: `scripts/merge_ipo_decisions.mjs`
 - Data build: `scripts/build_tk_dashboard_data.mjs`
 - Landing: `docs/index.html`
 - Search app (expert): `docs/dashboard-expert.html`
