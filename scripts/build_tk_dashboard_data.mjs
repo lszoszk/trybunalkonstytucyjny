@@ -1171,7 +1171,7 @@ function canonicalIpoCaseUrl(sourceUrl, caseId, documentId) {
   const caseValue = normalizeSpace(caseId);
   const documentValue = normalizeSpace(documentId);
   if (caseValue && documentValue) {
-    return `https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=${encodeURIComponent(documentValue)}&sprawa=${encodeURIComponent(caseValue)}`;
+    return `https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=${encodeURIComponent(documentValue)}&sprawa=${encodeURIComponent(caseValue)}`;
   }
   return normalizeSpace(sourceUrl) || null;
 }

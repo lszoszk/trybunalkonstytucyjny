@@ -1025,9 +1025,27 @@ function canonicalIpoCaseUrl(sourceUrl, caseId, documentId) {
   const caseValue = normalizeSpace(caseId);
   const documentValue = normalizeSpace(documentId);
   if (caseValue && documentValue) {
-    return `https://ipo.trybunal.gov.pl/ipo/Sprawa?cid=1&dokument=${encodeURIComponent(documentValue)}&sprawa=${encodeURIComponent(caseValue)}`;
+    return `https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=${encodeURIComponent(documentValue)}&sprawa=${encodeURIComponent(caseValue)}`;
   }
-  return normalizeSpace(sourceUrl) || null;
+
+  const parsed = parseAbsoluteUrl(sourceUrl);
+  if (!parsed || !isIpoSourceUrl(parsed)) {
+    return normalizeSpace(sourceUrl) || null;
+  }
+
+  const path = normalizeSpace(parsed.pathname).toLowerCase();
+  if (!path.includes("/ipo/sprawa")) {
+    return parsed.href;
+  }
+
+  const urlCase = normalizeSpace(parsed.searchParams.get("sprawa"));
+  const urlDocument = normalizeSpace(parsed.searchParams.get("dokument"));
+  if (urlCase && urlDocument) {
+    return `https://ipo.trybunal.gov.pl/ipo/Sprawa?dokument=${encodeURIComponent(urlDocument)}&sprawa=${encodeURIComponent(urlCase)}`;
+  }
+
+  parsed.searchParams.delete("cid");
+  return parsed.href;
 }
 
 function canonicalIpoDownloadUrl(downloadUrl, documentId) {
@@ -1055,13 +1073,18 @@ function resolveSourceUrl(urlValue, options = {}) {
   const path = normalizeSpace(targetUrl.pathname).toLowerCase();
   if (!path.includes("/ipo/sprawa")) return targetUrl;
 
-  const hasCase = normalizeSpace(targetUrl.searchParams.get("sprawa"));
-  const hasDocument = normalizeSpace(targetUrl.searchParams.get("dokument"));
-  if (hasCase && hasDocument) return targetUrl;
+  const urlCase = normalizeSpace(targetUrl.searchParams.get("sprawa"));
+  const urlDocument = normalizeSpace(targetUrl.searchParams.get("dokument"));
+  const effectiveCase = caseId || urlCase;
+  const effectiveDocument = documentId || urlDocument;
 
-  if (!caseId || !documentId) return targetUrl;
-  const canonical = canonicalIpoCaseUrl(targetUrl.href, caseId, documentId);
-  return parseAbsoluteUrl(canonical);
+  if (effectiveCase && effectiveDocument) {
+    const canonical = canonicalIpoCaseUrl(targetUrl.href, effectiveCase, effectiveDocument);
+    return parseAbsoluteUrl(canonical);
+  }
+
+  targetUrl.searchParams.delete("cid");
+  return targetUrl;
 }
 
 function openUrlInNewTabWithAnchor(href) {
