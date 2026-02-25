@@ -51,9 +51,6 @@ const IPO_BENCH_SIZES = [
 ];
 const IPO_BENCH_BY_KEY = new Map(IPO_BENCH_SIZES.map((entry) => [entry.key, entry]));
 const IPO_HOSTNAME = "ipo.trybunal.gov.pl";
-const IPO_OPEN_RECOVERY_STEP_MS = {
-  caseRetry: 1400
-};
 
 const SECTION_META = {
   komparycja: { label: "Komparycja / Skład", color: "#6b7280" },
@@ -1045,50 +1042,48 @@ function isIpoSourceUrl(targetUrl) {
   return normalizeSpace(targetUrl?.hostname).toLowerCase() === IPO_HOSTNAME;
 }
 
-function schedulePopupLocationReplace(popup, href, delayMs) {
-  setTimeout(() => {
-    if (!popup || popup.closed) return;
-    try {
-      popup.location.replace(href);
-    } catch {
-      // Ignore cross-origin timing races; user still has direct link fallback.
-    }
-  }, delayMs);
+function resolveSourceUrl(urlValue, options = {}) {
+  const caseId = normalizeSpace(options.caseId);
+  const documentId = normalizeSpace(options.documentId);
+
+  const fallbackCanonical = canonicalIpoCaseUrl(urlValue, caseId, documentId);
+  let targetUrl = parseAbsoluteUrl(fallbackCanonical || urlValue);
+  if (!targetUrl) return null;
+
+  if (!isIpoSourceUrl(targetUrl)) return targetUrl;
+
+  const path = normalizeSpace(targetUrl.pathname).toLowerCase();
+  if (!path.includes("/ipo/sprawa")) return targetUrl;
+
+  const hasCase = normalizeSpace(targetUrl.searchParams.get("sprawa"));
+  const hasDocument = normalizeSpace(targetUrl.searchParams.get("dokument"));
+  if (hasCase && hasDocument) return targetUrl;
+
+  if (!caseId || !documentId) return targetUrl;
+  const canonical = canonicalIpoCaseUrl(targetUrl.href, caseId, documentId);
+  return parseAbsoluteUrl(canonical);
 }
 
-function shouldUseIpoRetryNavigation() {
-  const ua = String(navigator?.userAgent || "");
-  const isSafari = /Safari\//.test(ua)
-    && !/(Chrome|Chromium|CriOS|FxiOS|EdgiOS|OPiOS|Android)/.test(ua);
-  return !isSafari;
-}
+function openUrlInNewTabWithAnchor(href) {
+  const targetHref = normalizeSpace(href);
+  if (!targetHref) return false;
 
-function openIpoSourceWithRecovery(targetUrl) {
-  const popup = window.open(targetUrl.href, "_blank");
-  if (!popup) return false;
-
-  try {
-    popup.opener = null;
-  } catch {
-    // Ignore browsers that do not expose opener mutation.
-  }
-
-  if (shouldUseIpoRetryNavigation()) {
-    schedulePopupLocationReplace(popup, targetUrl.href, IPO_OPEN_RECOVERY_STEP_MS.caseRetry);
-  }
+  const anchor = document.createElement("a");
+  anchor.href = targetHref;
+  anchor.target = "_blank";
+  anchor.rel = "noopener noreferrer";
+  anchor.referrerPolicy = "no-referrer";
+  anchor.style.display = "none";
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
   return true;
 }
 
-function openSourceLink(urlValue) {
-  const targetUrl = parseAbsoluteUrl(urlValue);
+function openSourceLink(urlValue, options = {}) {
+  const targetUrl = resolveSourceUrl(urlValue, options);
   if (!targetUrl) return false;
-
-  if (isIpoSourceUrl(targetUrl)) {
-    return openIpoSourceWithRecovery(targetUrl);
-  }
-
-  const opened = window.open(targetUrl.href, "_blank", "noopener");
-  return Boolean(opened);
+  return openUrlInNewTabWithAnchor(targetUrl.href);
 }
 
 function handleOpenSourceLinkClick(event) {
@@ -1098,16 +1093,20 @@ function handleOpenSourceLinkClick(event) {
   const href = link.dataset.sourceUrl || link.getAttribute("href");
   if (!href) return false;
 
-  event.preventDefault();
-  const opened = openSourceLink(href);
-  if (!opened) {
-    const fallbackUrl = parseAbsoluteUrl(href);
-    if (fallbackUrl) {
-      window.location.assign(fallbackUrl.href);
-      return true;
-    }
+  const targetUrl = resolveSourceUrl(href, {
+    caseId: link.dataset.caseId,
+    documentId: link.dataset.documentId
+  });
+  if (targetUrl) {
+    link.href = targetUrl.href;
+    link.dataset.sourceUrl = targetUrl.href;
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener noreferrer");
+    link.setAttribute("referrerpolicy", "no-referrer");
   }
-  return opened;
+
+  // Let native anchor navigation run to mimic manual open behavior in Safari.
+  return false;
 }
 
 function makeHitId(caseItem, hit) {
@@ -3489,7 +3488,7 @@ function renderResults(parsedQuery) {
           <button type="button" class="mini-btn" data-action="pin-case" data-case-index="${group.caseIndex}">${isCasePinned(caseItem) ? "Odepnij sprawę" : "Przypnij sprawę"}</button>
         </div>
         <div>
-          ${caseItem.source_url ? `<a href="${escapeHtml(caseItem.source_url)}" data-action="open-ipo-source" data-source-url="${escapeHtml(caseItem.source_url)}" target="_blank" rel="noopener">Otwórz w IPO</a>` : ""}
+          ${caseItem.source_url ? `<a href="${escapeHtml(caseItem.source_url)}" data-action="open-ipo-source" data-source-url="${escapeHtml(caseItem.source_url)}" data-case-id="${escapeHtml(caseItem.case_id || "")}" data-document-id="${escapeHtml(caseItem.document_id || "")}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Otwórz w IPO</a>` : ""}
         </div>
       </footer>
     `;
@@ -4209,14 +4208,19 @@ function renderCaseViewer(caseItem, options = {}) {
   el.judgmentViewerTitle.textContent = `${caseItem.case_signature} — pełna treść`;
   el.judgmentViewerMeta.textContent = `${caseItem.decision_type} • ${formatDate(caseItem.decision_date_iso || caseItem.decision_date_raw)} • ${fmtNumber(visibleParagraphs)} / ${fmtNumber(totalParagraphs)} akapitów`;
 
-  if (caseItem.source_url) {
+  const viewerSourceUrl = canonicalIpoCaseUrl(caseItem.source_url, caseItem.case_id, caseItem.document_id);
+  if (viewerSourceUrl) {
     el.judgmentViewerSourceLink.hidden = false;
-    el.judgmentViewerSourceLink.href = caseItem.source_url;
-    el.judgmentViewerSourceLink.dataset.sourceUrl = caseItem.source_url;
+    el.judgmentViewerSourceLink.href = viewerSourceUrl;
+    el.judgmentViewerSourceLink.dataset.sourceUrl = viewerSourceUrl;
+    el.judgmentViewerSourceLink.dataset.caseId = normalizeSpace(caseItem.case_id);
+    el.judgmentViewerSourceLink.dataset.documentId = normalizeSpace(caseItem.document_id);
   } else {
     el.judgmentViewerSourceLink.hidden = true;
     el.judgmentViewerSourceLink.removeAttribute("href");
     delete el.judgmentViewerSourceLink.dataset.sourceUrl;
+    delete el.judgmentViewerSourceLink.dataset.caseId;
+    delete el.judgmentViewerSourceLink.dataset.documentId;
   }
 
   renderViewerKeywordUi(totalParagraphs, visibleParagraphs);
@@ -4348,7 +4352,7 @@ async function handleViewerContentAction(event) {
       return;
     }
     if (sourceUrl) {
-      openSourceLink(sourceUrl);
+      openSourceLink(sourceUrl, { documentId: targetDocumentId });
     }
     return;
   }
