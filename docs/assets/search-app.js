@@ -50,6 +50,12 @@ const IPO_BENCH_SIZES = [
   { key: "trojosobowa", label: "Trójosobowa" }
 ];
 const IPO_BENCH_BY_KEY = new Map(IPO_BENCH_SIZES.map((entry) => [entry.key, entry]));
+const IPO_HOSTNAME = "ipo.trybunal.gov.pl";
+const IPO_WARMUP_URL = "https://ipo.trybunal.gov.pl/ipo/Szukaj?cid=1";
+const IPO_OPEN_RECOVERY_STEP_MS = {
+  warmupToCase: 500,
+  caseRetry: 1900
+};
 
 const SECTION_META = {
   komparycja: { label: "Komparycja / Skład", color: "#6b7280" },
@@ -983,12 +989,47 @@ function canonicalIpoDownloadUrl(downloadUrl, documentId) {
   return normalizeSpace(downloadUrl) || null;
 }
 
+function isIpoSourceUrl(targetUrl) {
+  return normalizeSpace(targetUrl?.hostname).toLowerCase() === IPO_HOSTNAME;
+}
+
+function schedulePopupLocationReplace(popup, href, delayMs) {
+  setTimeout(() => {
+    if (!popup || popup.closed) return;
+    try {
+      popup.location.replace(href);
+    } catch {
+      // Ignore cross-origin timing races; user still has direct link fallback.
+    }
+  }, delayMs);
+}
+
+function openIpoSourceWithRecovery(targetUrl) {
+  const popup = window.open(IPO_WARMUP_URL, "_blank");
+  if (!popup) return false;
+
+  try {
+    popup.opener = null;
+  } catch {
+    // Ignore browsers that do not expose opener mutation.
+  }
+
+  const caseHref = targetUrl.href;
+  schedulePopupLocationReplace(popup, caseHref, IPO_OPEN_RECOVERY_STEP_MS.warmupToCase);
+  schedulePopupLocationReplace(popup, caseHref, IPO_OPEN_RECOVERY_STEP_MS.caseRetry);
+  return true;
+}
+
 function openSourceLink(urlValue) {
   const targetUrl = parseAbsoluteUrl(urlValue);
   if (!targetUrl) return false;
 
-  window.open(targetUrl.href, "_blank", "noopener,noreferrer");
-  return true;
+  if (isIpoSourceUrl(targetUrl)) {
+    return openIpoSourceWithRecovery(targetUrl);
+  }
+
+  const opened = window.open(targetUrl.href, "_blank", "noopener");
+  return Boolean(opened);
 }
 
 function handleOpenSourceLinkClick(event) {
@@ -999,7 +1040,15 @@ function handleOpenSourceLinkClick(event) {
   if (!href) return false;
 
   event.preventDefault();
-  return openSourceLink(href);
+  const opened = openSourceLink(href);
+  if (!opened) {
+    const fallbackUrl = parseAbsoluteUrl(href);
+    if (fallbackUrl) {
+      window.location.assign(fallbackUrl.href);
+      return true;
+    }
+  }
+  return opened;
 }
 
 function makeHitId(caseItem, hit) {
@@ -3265,7 +3314,7 @@ function renderResults(parsedQuery) {
           <button type="button" class="mini-btn" data-action="pin-case" data-case-index="${group.caseIndex}">${isCasePinned(caseItem) ? "Odepnij sprawę" : "Przypnij sprawę"}</button>
         </div>
         <div>
-          ${caseItem.source_url ? `<a href="${escapeHtml(caseItem.source_url)}" data-action="open-ipo-source" data-source-url="${escapeHtml(caseItem.source_url)}" target="_blank" rel="noopener noreferrer">Otwórz w IPO</a>` : ""}
+          ${caseItem.source_url ? `<a href="${escapeHtml(caseItem.source_url)}" data-action="open-ipo-source" data-source-url="${escapeHtml(caseItem.source_url)}" target="_blank" rel="noopener">Otwórz w IPO</a>` : ""}
         </div>
       </footer>
     `;
