@@ -218,6 +218,7 @@ const state = {
   years: [],
   query: "",
   currentResults: [],
+  resultsLayerQuery: "",
   currentHits: 0,
   currentPage: 1,
   currentMode: "idle",
@@ -1580,6 +1581,11 @@ function cacheElements() {
 
   el.resultsHeader = byId("resultsHeader");
   el.resultsSummary = byId("resultsSummary");
+  el.resultsLayerSearch = byId("resultsLayerSearch");
+  el.resultsLayerSearchInput = byId("resultsLayerSearchInput");
+  el.resultsLayerSearchClearBtn = byId("resultsLayerSearchClearBtn");
+  el.resultsLayerSearchInfo = byId("resultsLayerSearchInfo");
+  el.resultsLayerSearchCoverage = byId("resultsLayerSearchCoverage");
   el.similarityStatus = byId("similarityStatus");
   el.activeFilters = byId("activeFilters");
   el.emptyState = byId("emptyState");
@@ -1665,6 +1671,8 @@ function setSearchEnabled(enabled) {
   setDisabled(el.dossierExportBtn);
   setDisabled(el.matrixExportBtn);
   setDisabled(el.clearBtn);
+  setDisabled(el.resultsLayerSearchInput);
+  setDisabled(el.resultsLayerSearchClearBtn);
   setDisabled(el.selectedCitationsClearBtn);
 
   for (const input of document.querySelectorAll("#sectionFilters input, #typeFilters input, #benchSizeFilters input")) {
@@ -3256,6 +3264,8 @@ async function runSearch(options = {}) {
 
   state.currentFilters = filters;
   state.currentPage = 1;
+  state.resultsLayerQuery = "";
+  if (el.resultsLayerSearchInput) el.resultsLayerSearchInput.value = "";
   state.query = query;
   state.currentParsedQuery = parsedQuery;
   state.hitTextOverrides.clear();
@@ -3333,6 +3343,173 @@ function formatResultSummary(caseCount, hitCount, mode) {
     return `${fmtNumber(caseCount)} ${plural(caseCount, "sprawa", "sprawy", "spraw")} w trybie przeglądania`;
   }
   return `${fmtNumber(hitCount)} ${plural(hitCount, "trafienie", "trafienia", "trafień")} w ${fmtNumber(caseCount)} ${plural(caseCount, "sprawie", "sprawach", "sprawach")}`;
+}
+
+function buildResultsLayerSearchBlob(group) {
+  if (!group || typeof group !== "object") return "";
+  if (typeof group.resultsLayerSearchBlob === "string") return group.resultsLayerSearchBlob;
+
+  const caseItem = group.caseItem || {};
+  const parts = [
+    caseItem.case_signature,
+    caseItem.decision_type_ipo_label,
+    caseItem.decision_type,
+    caseItem.topic,
+    caseItem.year,
+    (caseItem.judge_names || []).join(" "),
+    caseItem.document_id,
+    caseItem.case_id
+  ];
+
+  for (const hit of (group.hits || []).slice(0, 32)) {
+    parts.push(hit.section_label, hit.paragraph_number, hit.snippet || hit.text || "");
+  }
+
+  const blob = normalizeSearchText(parts.filter(Boolean).join(" "));
+  group.resultsLayerSearchBlob = blob;
+  return blob;
+}
+
+function getResultsLayerTextNorm(target) {
+  if (!target || typeof target !== "object") return "";
+  if (typeof target.resultsLayerTextNorm === "string") return target.resultsLayerTextNorm;
+  const normalized = normalizeSearchText(target.text || "");
+  target.resultsLayerTextNorm = normalized;
+  return normalized;
+}
+
+function textMatchesResultsLayerTerms(normalizedText, terms) {
+  if (!normalizedText || !terms.length) return false;
+  return terms.every((term) => normalizedText.includes(term));
+}
+
+function computeResultsLayerCoverage(sourceGroups, terms) {
+  let totalParagraphs = 0;
+  let matchingParagraphs = 0;
+
+  if (!terms.length) {
+    return { totalParagraphs: 0, matchingParagraphs: 0, percent: 0 };
+  }
+
+  if (state.currentMode === "search") {
+    for (const group of sourceGroups) {
+      for (const hit of (group.hits || [])) {
+        totalParagraphs += 1;
+        if (textMatchesResultsLayerTerms(getResultsLayerTextNorm(hit), terms)) {
+          matchingParagraphs += 1;
+        }
+      }
+    }
+  } else {
+    for (const group of sourceGroups) {
+      for (const paragraph of (group.caseItem?.paragraphs || [])) {
+        totalParagraphs += 1;
+        if (textMatchesResultsLayerTerms(getResultsLayerTextNorm(paragraph), terms)) {
+          matchingParagraphs += 1;
+        }
+      }
+    }
+  }
+
+  const percent = totalParagraphs > 0 ? (matchingParagraphs / totalParagraphs) * 100 : 0;
+  return { totalParagraphs, matchingParagraphs, percent };
+}
+
+function getResultsLayerView() {
+  const sourceGroups = state.currentResults || [];
+  const rawQuery = normalizeSpace(state.resultsLayerQuery);
+  const normalizedQuery = normalizeSearchText(rawQuery);
+  const terms = normalizedQuery.split(" ").filter(Boolean);
+
+  if (!terms.length) {
+    return {
+      groups: sourceGroups,
+      filtered: false,
+      query: "",
+      caseCount: sourceGroups.length,
+      hitCount: state.currentMode === "search" ? state.currentHits : 0,
+      baseCaseCount: sourceGroups.length,
+      baseHitCount: state.currentMode === "search" ? state.currentHits : 0,
+      totalParagraphs: 0,
+      matchingParagraphs: 0,
+      paragraphPercent: 0
+    };
+  }
+
+  const filteredGroups = sourceGroups.filter((group) => {
+    const blob = buildResultsLayerSearchBlob(group);
+    return terms.every((term) => blob.includes(term));
+  });
+
+  const filteredHitCount = state.currentMode === "search"
+    ? filteredGroups.reduce((sum, group) => sum + Number(group.hitCount || group.hits?.length || 0), 0)
+    : 0;
+  const coverage = computeResultsLayerCoverage(sourceGroups, terms);
+
+  return {
+    groups: filteredGroups,
+    filtered: true,
+    query: rawQuery,
+    caseCount: filteredGroups.length,
+    hitCount: filteredHitCount,
+    baseCaseCount: sourceGroups.length,
+    baseHitCount: state.currentMode === "search" ? state.currentHits : 0,
+    totalParagraphs: coverage.totalParagraphs,
+    matchingParagraphs: coverage.matchingParagraphs,
+    paragraphPercent: coverage.percent
+  };
+}
+
+function renderResultsLayerSearch(view) {
+  if (!el.resultsLayerSearch) return;
+
+  const hasBaseResults = view.baseCaseCount > 0;
+  el.resultsLayerSearch.hidden = !hasBaseResults;
+  if (!hasBaseResults) return;
+
+  if (el.resultsLayerSearchInput && el.resultsLayerSearchInput.value !== state.resultsLayerQuery) {
+    el.resultsLayerSearchInput.value = state.resultsLayerQuery;
+  }
+
+  if (el.resultsLayerSearchClearBtn) {
+    const hasQuery = Boolean(view.query);
+    el.resultsLayerSearchClearBtn.hidden = !hasQuery;
+    el.resultsLayerSearchClearBtn.disabled = !hasQuery;
+  }
+
+  if (!el.resultsLayerSearchInfo) return;
+
+  if (!view.filtered) {
+    el.resultsLayerSearchInfo.textContent = "Wpisz termin, aby zawęzić wyniki na tej liście.";
+    if (el.resultsLayerSearchCoverage) {
+      el.resultsLayerSearchCoverage.hidden = true;
+      el.resultsLayerSearchCoverage.textContent = "";
+    }
+    return;
+  }
+
+  if (!view.caseCount) {
+    el.resultsLayerSearchInfo.textContent = "Brak pozycji po dodatkowym filtrowaniu listy.";
+  } else if (state.currentMode === "search") {
+    el.resultsLayerSearchInfo.textContent = `Pokazano ${fmtNumber(view.hitCount)} z ${fmtNumber(view.baseHitCount)} trafień w ${fmtNumber(view.caseCount)} z ${fmtNumber(view.baseCaseCount)} spraw.`;
+  } else {
+    el.resultsLayerSearchInfo.textContent = `Pokazano ${fmtNumber(view.caseCount)} z ${fmtNumber(view.baseCaseCount)} spraw.`;
+  }
+
+  if (!el.resultsLayerSearchCoverage) return;
+
+  if (!view.totalParagraphs) {
+    el.resultsLayerSearchCoverage.hidden = true;
+    el.resultsLayerSearchCoverage.textContent = "";
+    return;
+  }
+
+  const percentLabel = view.paragraphPercent.toLocaleString("pl-PL", {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1
+  });
+  el.resultsLayerSearchCoverage.hidden = false;
+  el.resultsLayerSearchCoverage.textContent = `Termin występuje w ${percentLabel}% akapitów (${fmtNumber(view.matchingParagraphs)} z ${fmtNumber(view.totalParagraphs)}).`;
 }
 
 function isCasePinned(caseItem) {
@@ -3415,28 +3592,40 @@ function renderSimilarCasesList(caseItem, similarEntries, options = {}) {
 }
 
 function renderResults(parsedQuery) {
-  const caseCount = state.currentResults.length;
+  const view = getResultsLayerView();
+  const caseCount = view.caseCount;
   const totalPages = Math.max(1, Math.ceil(caseCount / PAGE_SIZE));
   state.currentPage = Math.min(state.currentPage, totalPages);
 
   const start = (state.currentPage - 1) * PAGE_SIZE;
   const end = start + PAGE_SIZE;
-  const pageItems = state.currentResults.slice(start, end);
+  const pageItems = view.groups.slice(start, end);
 
   el.resultsHeader.hidden = false;
+  renderResultsLayerSearch(view);
   renderSimilarityStatus();
   el.emptyState.hidden = caseCount > 0;
   el.resultsList.innerHTML = "";
 
   if (!caseCount) {
-    el.resultsSummary.textContent = "Brak wyników dla podanych kryteriów.";
+    el.resultsSummary.textContent = view.filtered
+      ? "Brak pozycji po dodatkowym filtrowaniu listy."
+      : "Brak wyników dla podanych kryteriów.";
     renderPagination(totalPages);
     updateActionButtons();
     renderSelectedCitationsPanel();
     return;
   }
 
-  el.resultsSummary.textContent = formatResultSummary(caseCount, state.currentHits, state.currentMode);
+  if (view.filtered) {
+    if (state.currentMode === "search") {
+      el.resultsSummary.textContent = `Wyniki po dodatkowym filtrowaniu: ${fmtNumber(view.hitCount)} ${plural(view.hitCount, "trafienie", "trafienia", "trafień")} w ${fmtNumber(view.caseCount)} ${plural(view.caseCount, "sprawie", "sprawach", "sprawach")}`;
+    } else {
+      el.resultsSummary.textContent = `Wyniki po dodatkowym filtrowaniu: ${fmtNumber(view.caseCount)} ${plural(view.caseCount, "sprawa", "sprawy", "spraw")}`;
+    }
+  } else {
+    el.resultsSummary.textContent = formatResultSummary(caseCount, state.currentHits, state.currentMode);
+  }
 
   for (const group of pageItems) {
     const caseItem = group.caseItem;
@@ -5743,6 +5932,29 @@ function initInteractions() {
     event.preventDefault();
     void runSearch();
   });
+
+  let resultsLayerInputTimer = null;
+  if (el.resultsLayerSearchInput) {
+    el.resultsLayerSearchInput.addEventListener("input", () => {
+      if (resultsLayerInputTimer) clearTimeout(resultsLayerInputTimer);
+      resultsLayerInputTimer = setTimeout(() => {
+        state.resultsLayerQuery = normalizeSpace(el.resultsLayerSearchInput.value);
+        state.currentPage = 1;
+        renderResults(state.currentParsedQuery || { hasQuery: false, textOperands: [], allTerms: [], highlightTerms: [] });
+      }, 120);
+    });
+  }
+
+  if (el.resultsLayerSearchClearBtn) {
+    el.resultsLayerSearchClearBtn.addEventListener("click", () => {
+      if (resultsLayerInputTimer) clearTimeout(resultsLayerInputTimer);
+      state.resultsLayerQuery = "";
+      if (el.resultsLayerSearchInput) el.resultsLayerSearchInput.value = "";
+      state.currentPage = 1;
+      renderResults(state.currentParsedQuery || { hasQuery: false, textOperands: [], allTerms: [], highlightTerms: [] });
+      if (el.resultsLayerSearchInput) el.resultsLayerSearchInput.focus();
+    });
+  }
 
   const bindParagraphModeButtons = (collapsedBtn, expandedBtn) => {
     [collapsedBtn, expandedBtn].forEach((button) => {

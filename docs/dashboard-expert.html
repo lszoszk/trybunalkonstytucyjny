@@ -193,6 +193,17 @@
       <aside class="panel sidebar" id="sidebar" hidden>
         <h2 class="sidebar-title">Rozkład wyników</h2>
 
+        <div id="resultsLayerSearch" class="sidebar-block" hidden>
+          <h3>Szukaj w tej liście</h3>
+          <label for="resultsLayerSearchInput" class="results-layer-label">Dodatkowa warstwa wyszukiwania</label>
+          <div class="results-layer-row">
+            <input id="resultsLayerSearchInput" class="results-layer-input" type="text" placeholder="Np. podatek od nieruchomości" disabled>
+            <button id="resultsLayerSearchClearBtn" type="button" class="mini-btn results-layer-clear" disabled hidden>Wyczyść</button>
+          </div>
+          <p id="resultsLayerSearchInfo" class="results-layer-info"></p>
+          <p id="resultsLayerSearchCoverage" class="results-layer-coverage" hidden></p>
+        </div>
+
         <div class="sidebar-block">
           <h3>Sekcje</h3>
           <div id="analyticsSections" class="bar-list"></div>
