@@ -5,6 +5,12 @@ const SIMILARITY_SAMPLE200_URL = "data/similar_cases_sample200.json";
 const SIMILARITY_SAMPLE50_URL = "data/similar_cases_sample50.json";
 const SIMILARITY_FULL_BENCH_URL = "data/similar_cases_full_bench.json";
 const SIMILARITY_SCHEMA_VERSION = "tk-similarity-v1";
+const LEMMA_SHARDS_SCHEMA_VERSION = "tk-lemma-shards-v1";
+const LEMMA_SHARDS_BASE_DIR = "data/lemma_shards";
+const LEMMA_MANIFEST_FULL_URL = `${LEMMA_SHARDS_BASE_DIR}/full/manifest.json`;
+const LEMMA_MANIFEST_FULL_BENCH_URL = `${LEMMA_SHARDS_BASE_DIR}/full_bench/manifest.json`;
+const LEMMA_MANIFEST_SAMPLE200_URL = `${LEMMA_SHARDS_BASE_DIR}/sample200/manifest.json`;
+const LEMMA_MANIFEST_SAMPLE50_URL = `${LEMMA_SHARDS_BASE_DIR}/sample50/manifest.json`;
 const PAGE_SIZE = 10;
 const TOOL_VERSION = "tk-dashboard-v2";
 const NORMALIZATION_VERSION = "tk-norm-v2";
@@ -228,6 +234,18 @@ const state = {
     message: ""
   },
   similarityRequestSeq: 0,
+  lemmaShardsMeta: {
+    loaded: false,
+    available: false,
+    sourceUrl: null,
+    datasetHash: null,
+    message: "",
+    manifest: null
+  },
+  lemmaRequestSeq: 0,
+  formsCache: new Map(),
+  lemmasCache: new Map(),
+  searchRequestSeq: 0,
   validationErrorsCount: 0,
   datasetMeta: {
     sourceName: null,
@@ -246,7 +264,8 @@ const state = {
     filtersOpen: false,
     activePreset: null,
     viewMode: "expert",
-    paragraphDisplayMode: "collapsed"
+    paragraphDisplayMode: "collapsed",
+    useLemmatization: false
   },
   currentFileReader: null,
   pendingUrlState: null,
@@ -305,6 +324,15 @@ function inferSimilarityUrlCandidates(sourceName) {
   return [SIMILARITY_DATA_URL, SIMILARITY_FULL_BENCH_URL, SIMILARITY_SAMPLE200_URL, SIMILARITY_SAMPLE50_URL];
 }
 
+function inferLemmaManifestCandidates(sourceName) {
+  const normalized = normalizeSearchText(sourceName || "");
+  if (normalized.includes("sample50")) return [LEMMA_MANIFEST_SAMPLE50_URL];
+  if (normalized.includes("sample200")) return [LEMMA_MANIFEST_SAMPLE200_URL];
+  if (normalized.includes("full_bench")) return [LEMMA_MANIFEST_FULL_BENCH_URL, LEMMA_MANIFEST_FULL_URL];
+  if (normalized.includes("tk_cases.jsonl")) return [LEMMA_MANIFEST_FULL_URL];
+  return [LEMMA_MANIFEST_FULL_URL, LEMMA_MANIFEST_FULL_BENCH_URL, LEMMA_MANIFEST_SAMPLE200_URL, LEMMA_MANIFEST_SAMPLE50_URL];
+}
+
 function resetSimilarityState() {
   state.similarityIndex = new Map();
   state.similarityMeta = {
@@ -316,11 +344,53 @@ function resetSimilarityState() {
   };
 }
 
+function resetLemmaShardsState(options = {}) {
+  const keepCache = options.keepCache === true;
+  if (!keepCache) {
+    state.formsCache = new Map();
+    state.lemmasCache = new Map();
+  }
+  state.lemmaShardsMeta = {
+    loaded: false,
+    available: false,
+    sourceUrl: null,
+    datasetHash: null,
+    message: "",
+    manifest: null
+  };
+}
+
 function renderSimilarityStatus() {
   if (!el.similarityStatus) return;
   el.similarityStatus.hidden = true;
   el.similarityStatus.textContent = "";
   el.similarityStatus.classList.remove("warn", "ok");
+}
+
+function renderLemmaStatus() {
+  if (!el.lemmaStatus) return;
+  el.lemmaStatus.hidden = true;
+  el.lemmaStatus.textContent = "";
+  el.lemmaStatus.classList.remove("warn", "ok");
+
+  if (!state.uiPrefs.useLemmatization) return;
+
+  el.lemmaStatus.hidden = false;
+  if (!state.lemmaShardsMeta.loaded) {
+    el.lemmaStatus.textContent = "Lematyzacja: sprawdzanie shardów. Do czasu weryfikacji użyto standardowego wyszukiwania.";
+    el.lemmaStatus.classList.add("warn");
+    return;
+  }
+  if (state.lemmaShardsMeta.available) {
+    el.lemmaStatus.textContent = "Lematyzacja aktywna: wyszukiwanie po shardach.";
+    el.lemmaStatus.classList.add("ok");
+    return;
+  }
+  const fallbackMessage = state.lemmaShardsMeta.message || "Lematyzacja niedostępna.";
+  el.lemmaStatus.textContent = fallbackMessage.includes("użyto standardowego wyszukiwania")
+    ? fallbackMessage
+    : `${fallbackMessage} Użyto standardowego wyszukiwania.`;
+  el.lemmaStatus.classList.add("warn");
 }
 
 function isValidSimilarityPayload(payload) {
@@ -356,6 +426,211 @@ function parseSimilarityIndex(payload) {
     );
   }
   return index;
+}
+
+function isValidLemmaManifest(payload) {
+  if (!payload || typeof payload !== "object") return false;
+  if (normalizeSpace(payload.schema_version) !== LEMMA_SHARDS_SCHEMA_VERSION) return false;
+  if (!Array.isArray(payload.forms_shards) || !Array.isArray(payload.lemmas_shards)) return false;
+  return true;
+}
+
+function isLikelyLocalUploadSource(sourceName) {
+  const normalized = normalizeSearchText(sourceName || "");
+  if (!normalized) return false;
+  if (normalized.includes("sample50")) return false;
+  if (normalized.includes("sample200")) return false;
+  if (normalized.includes("full_bench")) return false;
+  if (normalized.includes("tk_cases.jsonl")) return false;
+  return true;
+}
+
+function resolveShardUrl(manifestUrl, shardUrl) {
+  const normalized = normalizeSpace(shardUrl);
+  if (!normalized) return "";
+  try {
+    return new URL(normalized, new URL(manifestUrl, window.location.href)).toString();
+  } catch {
+    return normalized;
+  }
+}
+
+function sanitizeShardEntries(entries, manifestUrl) {
+  return (entries || [])
+    .map((entry, index) => {
+      const id = normalizeSpace(entry?.id || `${index + 1}`);
+      const url = resolveShardUrl(manifestUrl, entry?.url || "");
+      if (!id || !url) return null;
+      return {
+        id,
+        url,
+        from: normalizeLegalCitationText(entry?.from || ""),
+        to: normalizeLegalCitationText(entry?.to || ""),
+        term_count: Number(entry?.term_count) || 0
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => String(a.from).localeCompare(String(b.from), "pl"));
+}
+
+function termInShardRange(term, shardEntry) {
+  const from = normalizeLegalCitationText(shardEntry?.from || "");
+  const to = normalizeLegalCitationText(shardEntry?.to || "");
+  if (from && term < from) return false;
+  if (to && term > to) return false;
+  return true;
+}
+
+function findShardCandidatesForTerm(term, shardEntries) {
+  const normalizedTerm = normalizeLegalCitationText(term || "");
+  if (!normalizedTerm) return [];
+  const ranged = (shardEntries || []).filter((entry) => termInShardRange(normalizedTerm, entry));
+  if (ranged.length) return ranged;
+  return shardEntries || [];
+}
+
+async function fetchShardPayload(url, cacheMap) {
+  if (cacheMap.has(url)) {
+    return cacheMap.get(url);
+  }
+  const response = await fetch(url, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`Nie można pobrać shardu (${response.status}): ${url}`);
+  }
+  const payload = await response.json();
+  cacheMap.set(url, payload && typeof payload === "object" ? payload : {});
+  return cacheMap.get(url);
+}
+
+async function lookupLemmasForForm(form, manifest) {
+  const normalizedForm = normalizeLegalCitationText(form || "");
+  if (!normalizedForm) return [];
+  const candidates = findShardCandidatesForTerm(normalizedForm, manifest?.forms_shards || []);
+  let hadFetchError = false;
+  for (const shard of candidates) {
+    try {
+      const payload = await fetchShardPayload(shard.url, state.formsCache);
+      const value = payload?.[normalizedForm];
+      if (!Array.isArray(value) || !value.length) continue;
+      return [...new Set(value.map((entry) => normalizeLegalCitationText(entry)).filter(Boolean))];
+    } catch {
+      hadFetchError = true;
+      continue;
+    }
+  }
+  if (hadFetchError) {
+    throw new Error("LEMMA_FORMS_SHARD_FETCH_FAILED");
+  }
+  return [];
+}
+
+async function lookupPostingsForLemma(lemma, manifest) {
+  const normalizedLemma = normalizeLegalCitationText(lemma || "");
+  if (!normalizedLemma) return [];
+  const candidates = findShardCandidatesForTerm(normalizedLemma, manifest?.lemmas_shards || []);
+  let hadFetchError = false;
+  for (const shard of candidates) {
+    try {
+      const payload = await fetchShardPayload(shard.url, state.lemmasCache);
+      const value = payload?.[normalizedLemma];
+      if (!Array.isArray(value) || !value.length) continue;
+      const asNumbers = value
+        .map((entry) => Number(entry))
+        .filter((entry) => Number.isInteger(entry) && entry >= 0)
+        .sort((a, b) => a - b);
+      if (asNumbers.length) return asNumbers;
+    } catch {
+      hadFetchError = true;
+      continue;
+    }
+  }
+  if (hadFetchError) {
+    throw new Error("LEMMA_POSTINGS_SHARD_FETCH_FAILED");
+  }
+  return [];
+}
+
+async function loadLemmaShardsForCurrentDataset() {
+  if (!el.lemmatizationToggle) return;
+
+  state.lemmaRequestSeq += 1;
+  const requestSeq = state.lemmaRequestSeq;
+  const expectedDatasetHash = normalizeSpace(state.datasetMeta?.hash);
+  const sourceName = normalizeSpace(state.datasetMeta?.sourceName || "");
+  const localUploadSource = isLikelyLocalUploadSource(sourceName);
+  resetLemmaShardsState();
+  renderLemmaStatus();
+
+  const candidates = inferLemmaManifestCandidates(sourceName);
+  let firstMismatchInfo = null;
+
+  for (const url of candidates) {
+    try {
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) continue;
+      const payload = await response.json();
+      if (!isValidLemmaManifest(payload)) continue;
+
+      const payloadHash = normalizeSpace(payload.dataset_hash);
+      const datasetHash = normalizeSpace(state.datasetMeta?.hash);
+      if (!payloadHash || !datasetHash || payloadHash !== datasetHash) {
+        firstMismatchInfo = `Lematyzacja niedostępna: hash manifestu ${url} nie pasuje do aktualnego zbioru.`;
+        continue;
+      }
+
+      if (requestSeq !== state.lemmaRequestSeq || expectedDatasetHash !== normalizeSpace(state.datasetMeta?.hash)) {
+        return;
+      }
+
+      state.lemmaShardsMeta = {
+        loaded: true,
+        available: true,
+        sourceUrl: url,
+        datasetHash: payloadHash,
+        message: `Lematyzacja aktywna (manifest: ${url.replace(/^data\//, "")}).`,
+        manifest: {
+          schema_version: payload.schema_version,
+          dataset_hash: payloadHash,
+          normalization_version: normalizeSpace(payload.normalization_version),
+          built_at: normalizeSpace(payload.built_at),
+          lemma_engine: payload.lemma_engine || {},
+          forms_shards: sanitizeShardEntries(payload.forms_shards, url),
+          lemmas_shards: sanitizeShardEntries(payload.lemmas_shards, url)
+        }
+      };
+      renderLemmaStatus();
+
+      if (state.loaded && state.uiPrefs.useLemmatization) {
+        void runSearch();
+      }
+      return;
+    } catch {
+      continue;
+    }
+  }
+
+  if (requestSeq !== state.lemmaRequestSeq || expectedDatasetHash !== normalizeSpace(state.datasetMeta?.hash)) {
+    return;
+  }
+
+  let message = firstMismatchInfo || "Lematyzacja niedostępna: brak shardów dla aktualnie załadowanego zbioru.";
+  if (localUploadSource) {
+    message = "Lematyzacja niedostępna dla lokalnie załadowanego pliku (brak shardów); użyto standardowego wyszukiwania.";
+  }
+
+  state.lemmaShardsMeta = {
+    loaded: true,
+    available: false,
+    sourceUrl: null,
+    datasetHash: null,
+    message,
+    manifest: null
+  };
+  renderLemmaStatus();
+
+  if (state.loaded && state.uiPrefs.useLemmatization) {
+    void runSearch();
+  }
 }
 
 async function loadSimilarityForCurrentDataset() {
@@ -1082,6 +1357,8 @@ function cacheElements() {
   el.searchInput = byId("searchInput");
   el.searchBtn = byId("searchBtn");
   el.queryError = byId("queryError");
+  el.lemmatizationToggle = byId("lemmatizationToggle");
+  el.lemmaStatus = byId("lemmaStatus");
   el.quickPresets = byId("quickPresets");
   el.paragraphDisplayControl = byId("paragraphDisplayControl");
   el.paragraphModeCollapsedBtn = byId("paragraphModeCollapsedBtn");
@@ -1180,6 +1457,7 @@ function setSearchEnabled(enabled) {
   el.searchForm.classList.toggle("disabled", !enabled);
   el.searchInput.disabled = !enabled;
   el.searchBtn.disabled = !enabled;
+  if (el.lemmatizationToggle) el.lemmatizationToggle.disabled = !enabled;
   setDisabled(el.paragraphModeCollapsedBtn);
   setDisabled(el.paragraphModeExpandedBtn);
   setDisabled(el.viewerParagraphModeCollapsedBtn);
@@ -2025,6 +2303,102 @@ function evaluateQuery(entry, parsedQuery, entryTextLegal) {
   return stack.length ? Boolean(stack[0]) : true;
 }
 
+function makeTextOperandKey(operand) {
+  return `${operand?.kind || "text"}::${operand?.norm || ""}::${operand?.legal || ""}::${operand?.quoted ? "1" : "0"}`;
+}
+
+function tokenizeLemmaOperand(operand) {
+  const source = normalizeLegalCitationText(operand?.legal || operand?.norm || operand?.raw || "");
+  if (!source) return [];
+  return source
+    .split(/[^\p{L}\p{N}_-]+/u)
+    .map((token) => normalizeLegalCitationText(token))
+    .filter(Boolean);
+}
+
+function intersectPidSets(baseSet, nextSet) {
+  const left = baseSet.size <= nextSet.size ? baseSet : nextSet;
+  const right = baseSet.size <= nextSet.size ? nextSet : baseSet;
+  const out = new Set();
+  for (const pid of left) {
+    if (right.has(pid)) out.add(pid);
+  }
+  return out;
+}
+
+async function buildLemmaPidSetForOperand(operand, manifest) {
+  const tokens = tokenizeLemmaOperand(operand);
+  if (!tokens.length) return new Set();
+
+  let intersection = null;
+  for (const token of tokens) {
+    const lemmas = await lookupLemmasForForm(token, manifest);
+    const lemmaCandidates = lemmas.length ? lemmas : [token];
+
+    const tokenPidSet = new Set();
+    for (const lemma of lemmaCandidates) {
+      const postings = await lookupPostingsForLemma(lemma, manifest);
+      for (const pid of postings) {
+        tokenPidSet.add(pid);
+      }
+    }
+
+    if (!tokenPidSet.size) return new Set();
+    if (intersection === null) {
+      intersection = tokenPidSet;
+      continue;
+    }
+    intersection = intersectPidSets(intersection, tokenPidSet);
+    if (!intersection.size) return intersection;
+  }
+
+  return intersection || new Set();
+}
+
+async function buildLemmaOperandPidMap(parsedQuery, manifest) {
+  const map = new Map();
+  for (const operand of parsedQuery?.textOperands || []) {
+    const key = makeTextOperandKey(operand);
+    if (map.has(key)) continue;
+    const pidSet = await buildLemmaPidSetForOperand(operand, manifest);
+    map.set(key, pidSet);
+  }
+  return map;
+}
+
+function evaluateLemmaQueryForPid(entry, parsedQuery, pid, operandPidMap) {
+  if (!parsedQuery?.hasQuery) return true;
+  const stack = [];
+
+  for (const token of parsedQuery.rpn) {
+    if (token.type === "OPERAND") {
+      if (token.operand?.kind === "text") {
+        const key = makeTextOperandKey(token.operand);
+        stack.push(Boolean(operandPidMap.get(key)?.has(pid)));
+      } else {
+        stack.push(evaluateFieldOperand(token.operand, entry));
+      }
+      continue;
+    }
+
+    if (token.type === "OP" && token.op === "NOT") {
+      const val = stack.pop();
+      stack.push(!val);
+      continue;
+    }
+
+    const right = stack.pop();
+    const left = stack.pop();
+    if (token.op === "AND") {
+      stack.push(Boolean(left && right));
+    } else {
+      stack.push(Boolean(left || right));
+    }
+  }
+
+  return stack.length ? Boolean(stack[0]) : true;
+}
+
 function countOccurrences(text, term) {
   if (!text || !term) return 0;
   let count = 0;
@@ -2317,8 +2691,164 @@ function paragraphMatchesViewerFilter(caseItem, paragraph, parsedQuery) {
   return evaluateQuery(entry, parsedQuery);
 }
 
-function runSearch(options = {}) {
+function collectBrowseGroups(filters) {
+  const groups = [];
+  for (const [caseIndex, caseItem] of state.cases.entries()) {
+    if (!casePassesFilters(caseItem, filters)) continue;
+    groups.push({ caseItem, caseIndex, hits: [], hitCount: 0, topScore: 0 });
+  }
+  return groups;
+}
+
+function finalizeGroupedResults(grouped) {
+  return [...grouped.values()]
+    .map((group) => {
+      group.hits.sort((a, b) => b.score - a.score || a.paragraph_index - b.paragraph_index || String(a.paragraph_id).localeCompare(String(b.paragraph_id)));
+      return group;
+    })
+    .sort((a, b) => {
+      if (b.topScore !== a.topScore) return b.topScore - a.topScore;
+      const da = parseDateIso(a.caseItem.decision_date_iso)?.getTime() || 0;
+      const db = parseDateIso(b.caseItem.decision_date_iso)?.getTime() || 0;
+      if (db !== da) return db - da;
+      return String(a.caseItem.case_signature).localeCompare(String(b.caseItem.case_signature), "pl");
+    });
+}
+
+function runClassicSearchMode(parsedQuery, filters) {
+  const grouped = new Map();
+  let totalHits = 0;
+  const queryNeedsTextLegal = Boolean(parsedQuery?.textOperands?.length);
+
+  for (const entry of state.paragraphIndex) {
+    const caseItem = state.cases[entry.caseIndex];
+    if (!casePassesFilters(caseItem, filters)) continue;
+    if (filters.sections.length && !filters.sections.includes(entry.sectionKey)) continue;
+    const entryTextLegal = queryNeedsTextLegal ? getEntryTextLegal(entry) : "";
+    if (!evaluateQuery(entry, parsedQuery, entryTextLegal)) continue;
+
+    const scoring = computeScore(entry, parsedQuery, entryTextLegal);
+    const snippetTerms = (parsedQuery?.textOperands || [])
+      .map((operand) => operand.legal || operand.norm)
+      .filter(Boolean);
+    const hit = {
+      paragraph_id: entry.paragraph.paragraph_id,
+      paragraph_index: entry.paragraph.paragraph_index,
+      paragraph_number: entry.paragraph.paragraph_number,
+      section_key: entry.sectionKey,
+      section_label: entry.sectionLabel,
+      section_confidence: entry.paragraph.section_confidence,
+      text: entry.paragraph.text,
+      snippet: buildSnippet(entry.paragraph.text, snippetTerms, 420),
+      score: scoring.score,
+      score_explain: scoring.explain
+    };
+
+    if (!grouped.has(entry.caseIndex)) {
+      grouped.set(entry.caseIndex, {
+        caseItem,
+        caseIndex: entry.caseIndex,
+        hits: [],
+        hitCount: 0,
+        topScore: 0
+      });
+    }
+
+    const bucket = grouped.get(entry.caseIndex);
+    bucket.hits.push(hit);
+    bucket.hitCount += 1;
+    bucket.topScore = Math.max(bucket.topScore, scoring.score);
+    totalHits += 1;
+  }
+
+  return {
+    results: finalizeGroupedResults(grouped),
+    totalHits
+  };
+}
+
+async function runLemmaSearchMode(parsedQuery, filters, requestSeq) {
+  const manifest = state.lemmaShardsMeta?.manifest;
+  if (!manifest) {
+    return runClassicSearchMode(parsedQuery, filters);
+  }
+
+  let operandPidMap = null;
+  try {
+    operandPidMap = await buildLemmaOperandPidMap(parsedQuery, manifest);
+  } catch {
+    if (requestSeq !== state.searchRequestSeq) return null;
+    state.lemmaShardsMeta = {
+      loaded: true,
+      available: false,
+      sourceUrl: null,
+      datasetHash: null,
+      message: "Lematyzacja niedostępna (błąd pobierania shardów); użyto standardowego wyszukiwania.",
+      manifest: null
+    };
+    renderLemmaStatus();
+    return runClassicSearchMode(parsedQuery, filters);
+  }
+
+  if (requestSeq !== state.searchRequestSeq) {
+    return null;
+  }
+
+  const grouped = new Map();
+  let totalHits = 0;
+  const queryNeedsTextLegal = Boolean(parsedQuery?.textOperands?.length);
+
+  for (const [pid, entry] of state.paragraphIndex.entries()) {
+    const caseItem = state.cases[entry.caseIndex];
+    if (!casePassesFilters(caseItem, filters)) continue;
+    if (filters.sections.length && !filters.sections.includes(entry.sectionKey)) continue;
+    if (!evaluateLemmaQueryForPid(entry, parsedQuery, pid, operandPidMap)) continue;
+
+    const entryTextLegal = queryNeedsTextLegal ? getEntryTextLegal(entry) : "";
+    const scoring = computeScore(entry, parsedQuery, entryTextLegal);
+    const snippetTerms = (parsedQuery?.textOperands || [])
+      .map((operand) => operand.legal || operand.norm)
+      .filter(Boolean);
+    const hit = {
+      paragraph_id: entry.paragraph.paragraph_id,
+      paragraph_index: entry.paragraph.paragraph_index,
+      paragraph_number: entry.paragraph.paragraph_number,
+      section_key: entry.sectionKey,
+      section_label: entry.sectionLabel,
+      section_confidence: entry.paragraph.section_confidence,
+      text: entry.paragraph.text,
+      snippet: buildSnippet(entry.paragraph.text, snippetTerms, 420),
+      score: scoring.score,
+      score_explain: scoring.explain
+    };
+
+    if (!grouped.has(entry.caseIndex)) {
+      grouped.set(entry.caseIndex, {
+        caseItem,
+        caseIndex: entry.caseIndex,
+        hits: [],
+        hitCount: 0,
+        topScore: 0
+      });
+    }
+
+    const bucket = grouped.get(entry.caseIndex);
+    bucket.hits.push(hit);
+    bucket.hitCount += 1;
+    bucket.topScore = Math.max(bucket.topScore, scoring.score);
+    totalHits += 1;
+  }
+
+  return {
+    results: finalizeGroupedResults(grouped),
+    totalHits
+  };
+}
+
+async function runSearch(options = {}) {
   if (!state.loaded) return;
+  const requestSeq = state.searchRequestSeq + 1;
+  state.searchRequestSeq = requestSeq;
 
   const forceBrowse = Boolean(options.forceBrowse);
   const query = normalizeSpace(el.searchInput.value);
@@ -2339,6 +2869,7 @@ function runSearch(options = {}) {
     renderActiveFilters(filters);
     renderSidebar({ hasQuery: false, textOperands: [], allTerms: [], highlightTerms: [] });
     updateUrlState(filters);
+    renderLemmaStatus();
     return;
   }
 
@@ -2354,80 +2885,25 @@ function runSearch(options = {}) {
   }
 
   if (state.currentMode === "browse") {
-    const groups = [];
-    for (const [caseIndex, caseItem] of state.cases.entries()) {
-      if (!casePassesFilters(caseItem, filters)) continue;
-      groups.push({ caseItem, caseIndex, hits: [], hitCount: 0, topScore: 0 });
-    }
-    state.currentResults = groups;
+    state.currentResults = collectBrowseGroups(filters);
     state.currentHits = 0;
   } else {
-    const grouped = new Map();
-    let totalHits = 0;
-    const queryNeedsTextLegal = Boolean(parsedQuery?.textOperands?.length);
+    const shouldUseLemmaSearch = Boolean(el.lemmatizationToggle && state.uiPrefs.useLemmatization && state.lemmaShardsMeta.available);
+    const searchOutcome = shouldUseLemmaSearch
+      ? await runLemmaSearchMode(parsedQuery, filters, requestSeq)
+      : runClassicSearchMode(parsedQuery, filters);
 
-    for (const entry of state.paragraphIndex) {
-      const caseItem = state.cases[entry.caseIndex];
-      if (!casePassesFilters(caseItem, filters)) continue;
-      if (filters.sections.length && !filters.sections.includes(entry.sectionKey)) continue;
-      const entryTextLegal = queryNeedsTextLegal ? getEntryTextLegal(entry) : "";
-      if (!evaluateQuery(entry, parsedQuery, entryTextLegal)) continue;
-
-      const scoring = computeScore(entry, parsedQuery, entryTextLegal);
-      const snippetTerms = (parsedQuery?.textOperands || [])
-        .map((operand) => operand.legal || operand.norm)
-        .filter(Boolean);
-      const hit = {
-        paragraph_id: entry.paragraph.paragraph_id,
-        paragraph_index: entry.paragraph.paragraph_index,
-        paragraph_number: entry.paragraph.paragraph_number,
-        section_key: entry.sectionKey,
-        section_label: entry.sectionLabel,
-        section_confidence: entry.paragraph.section_confidence,
-        text: entry.paragraph.text,
-        snippet: buildSnippet(entry.paragraph.text, snippetTerms, 420),
-        score: scoring.score,
-        score_explain: scoring.explain
-      };
-
-      if (!grouped.has(entry.caseIndex)) {
-        grouped.set(entry.caseIndex, {
-          caseItem,
-          caseIndex: entry.caseIndex,
-          hits: [],
-          hitCount: 0,
-          topScore: 0
-        });
-      }
-
-      const bucket = grouped.get(entry.caseIndex);
-      bucket.hits.push(hit);
-      bucket.hitCount += 1;
-      bucket.topScore = Math.max(bucket.topScore, scoring.score);
-      totalHits += 1;
-    }
-
-    const results = [...grouped.values()]
-      .map((group) => {
-        group.hits.sort((a, b) => b.score - a.score || a.paragraph_index - b.paragraph_index || String(a.paragraph_id).localeCompare(String(b.paragraph_id)));
-        return group;
-      })
-      .sort((a, b) => {
-        if (b.topScore !== a.topScore) return b.topScore - a.topScore;
-        const da = parseDateIso(a.caseItem.decision_date_iso)?.getTime() || 0;
-        const db = parseDateIso(b.caseItem.decision_date_iso)?.getTime() || 0;
-        if (db !== da) return db - da;
-        return String(a.caseItem.case_signature).localeCompare(String(b.caseItem.case_signature), "pl");
-      });
-
-    state.currentResults = results;
-    state.currentHits = totalHits;
+    if (requestSeq !== state.searchRequestSeq || !searchOutcome) return;
+    state.currentResults = searchOutcome.results;
+    state.currentHits = searchOutcome.totalHits;
   }
 
+  if (requestSeq !== state.searchRequestSeq) return;
   renderResults(parsedQuery || { hasQuery: false, textOperands: [], allTerms: [], highlightTerms: [] });
   renderActiveFilters(filters);
   renderSidebar(parsedQuery || { hasQuery: false, textOperands: [], allTerms: [], highlightTerms: [] });
   renderCaseFolder();
+  renderLemmaStatus();
   updateUrlState(filters);
   saveQueryHistory(query);
 }
@@ -3987,7 +4463,8 @@ function readUrlStateFromLocation() {
     year_from: params.get("year_from") || "",
     year_to: params.get("year_to") || "",
     judge: params.get("judge") || "",
-    signature: params.get("signature") || ""
+    signature: params.get("signature") || "",
+    lemma: params.get("lemma")
   };
 }
 
@@ -4000,6 +4477,14 @@ function applyUrlState(urlState) {
   el.yearTo.value = urlState.year_to || "";
   el.judgeFilter.value = urlState.judge || "";
   el.signatureFilter.value = urlState.signature || "";
+  if (el.lemmatizationToggle) {
+    const nextUseLemmatization = urlState.lemma === "1"
+      ? true
+      : (urlState.lemma === "0" ? false : Boolean(state.uiPrefs.useLemmatization));
+    state.uiPrefs.useLemmatization = nextUseLemmatization;
+    el.lemmatizationToggle.checked = nextUseLemmatization;
+    saveUiPrefs();
+  }
 
   const sectionSet = new Set(urlState.sections || []);
   const typeSet = new Set(urlState.types || []);
@@ -4038,6 +4523,7 @@ function updateUrlState(filters) {
   if (filters.yearTo) params.set("year_to", String(filters.yearTo));
   if (filters.judge) params.set("judge", filters.judge);
   if (filters.signature) params.set("signature", filters.signature);
+  if (el.lemmatizationToggle && state.uiPrefs.useLemmatization) params.set("lemma", "1");
 
   const query = params.toString();
   const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
@@ -4060,7 +4546,7 @@ function clearAllFiltersAndQuery() {
   state.uiPrefs.activePreset = null;
   saveUiPrefs();
   renderPresetSelection();
-  runSearch({ forceBrowse: true });
+  void runSearch({ forceBrowse: true });
 }
 
 function renderPresetSelection() {
@@ -4580,6 +5066,7 @@ async function hydrateDataset(rows, options = {}) {
   state.expandedCases.clear();
   state.expandedSimilarCases.clear();
   resetSimilarityState();
+  resetLemmaShardsState();
   state.viewerKeywordQuery = "";
   state.viewerKeywordError = "";
   state.viewerKeywordParsed = {
@@ -4636,8 +5123,9 @@ async function hydrateDataset(rows, options = {}) {
     state.urlStateApplied = true;
   }
 
-  runSearch({ forceBrowse: true });
+  void runSearch({ forceBrowse: true });
   void loadSimilarityForCurrentDataset();
+  void loadLemmaShardsForCurrentDataset();
 
   if (validationErrors > 0) {
     setDatasetStatus(`Załadowano ${fmtNumber(cases.length)} spraw. Walidacja wykryła ${fmtNumber(validationErrors)} ostrzeżeń.`, "warn");
@@ -4834,7 +5322,7 @@ function initInteractions() {
 
   el.searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    runSearch();
+    void runSearch();
   });
 
   const bindParagraphModeButtons = (collapsedBtn, expandedBtn) => {
@@ -4873,6 +5361,21 @@ function initInteractions() {
     state.uiPrefs.filtersOpen = isHidden;
     saveUiPrefs();
   });
+
+  if (el.lemmatizationToggle) {
+    el.lemmatizationToggle.addEventListener("change", () => {
+      state.uiPrefs.useLemmatization = Boolean(el.lemmatizationToggle.checked);
+      saveUiPrefs();
+      renderLemmaStatus();
+      if (state.uiPrefs.useLemmatization) {
+        void loadLemmaShardsForCurrentDataset();
+      }
+      const filters = state.currentFilters || collectFilters();
+      state.currentFilters = filters;
+      updateUrlState(filters);
+      void runSearch();
+    });
+  }
 
   [el.yearFrom, el.yearTo, el.judgeFilter, el.signatureFilter].forEach((input) => {
     input.addEventListener("change", () => {
@@ -4977,7 +5480,8 @@ function loadPersistedState() {
     filtersOpen: hasFiltersPref ? Boolean(prefs.filtersOpen) : defaultFiltersOpen,
     activePreset: prefs.activePreset || null,
     viewMode: pageMode,
-    paragraphDisplayMode
+    paragraphDisplayMode,
+    useLemmatization: pageMode === "expert" ? Boolean(prefs.useLemmatization) : false
   };
   saveUiPrefs();
 }
@@ -4985,8 +5489,12 @@ function loadPersistedState() {
 function initUiPrefs() {
   el.filtersPanel.hidden = !state.uiPrefs.filtersOpen;
   el.filtersToggle.setAttribute("aria-expanded", String(state.uiPrefs.filtersOpen));
+  if (el.lemmatizationToggle) {
+    el.lemmatizationToggle.checked = Boolean(state.uiPrefs.useLemmatization);
+  }
   renderPresetSelection();
   renderParagraphDisplayControl();
+  renderLemmaStatus();
   el.folderNotes.value = state.caseFolder.notes || "";
   syncModeToggleUi();
 }

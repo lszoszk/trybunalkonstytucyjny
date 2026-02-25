@@ -130,6 +130,36 @@
   border-radius: 3px;
 }
 
+.lemma-toggle-row {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(241, 245, 249, 0.92);
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.lemma-toggle-row input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+}
+
+.lemma-status {
+  margin: 6px 0 0;
+  font-size: 0.77rem;
+  color: rgba(191, 219, 254, 0.95);
+}
+
+.lemma-status.warn {
+  color: #fde68a;
+}
+
+.lemma-status.ok {
+  color: #bbf7d0;
+}
+
 .query-error {
   margin: 8px 0 0;
   color: #fecaca;

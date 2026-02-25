@@ -20,6 +20,7 @@ Repo URL: `https://github.com/lszoszk/trybunalkonstytucyjny`
 - URL state persistence (`?q=&sections=&types=&year_from=&year_to=&judge=&signature=`)
 - Worker-based indexing, load guardrails (size limit, progress, cancel), schema checks, friendly upload errors
 - Large local upload support up to 320 MB with streaming parsing for files over 80 MB (JSONL and JSON arrays)
+- Optional Expert-mode lemmatization via precomputed shards (`docs/data/lemma_shards/*`) with automatic fallback to classic search
 - Keyboard shortcuts (`/`, `f`, `e`) and print stylesheet
 
 ## 1) Install
@@ -57,6 +58,35 @@ Generated files:
 - `docs/data/tk_cases.jsonl`
 - `docs/data/tk_cases_sample50.jsonl`
 - `docs/data/stats.json`
+
+## 3a) Build lemma shards (optional, Expert dashboard)
+
+Install Morfeusz2 first:
+
+```bash
+pip install morfeusz2
+```
+
+Build shards:
+
+```bash
+npm run build:lemma-shards:full-bench
+npm run build:lemma-shards:sample200
+# optional:
+npm run build:lemma-shards:all
+```
+
+Generated structure:
+
+- `docs/data/lemma_shards/full_bench/manifest.json`
+- `docs/data/lemma_shards/full_bench/forms-*.json`
+- `docs/data/lemma_shards/full_bench/lemmas-*.json`
+- `docs/data/lemma_shards/sample200/...`
+
+Runtime behavior:
+
+- Expert dashboard has an optional `Lematyzacja` checkbox.
+- When shards are unavailable (including local uploads without shards, hash mismatch, or shard fetch errors), search automatically falls back to classic mode without blocking the UI.
 
 ## 4) Run the dashboard locally
 
