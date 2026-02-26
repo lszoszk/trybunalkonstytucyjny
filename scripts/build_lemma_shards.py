@@ -52,6 +52,15 @@ def normalize_legal_citation_text(value: object) -> str:
     return text.strip()
 
 
+def normalize_for_morfeusz(value: object) -> str:
+    """Lower-case + legal-citation-normalize, preserving diacritics for Morfeusz2."""
+    text = normalize_space(value).lower()
+    text = ART_RE.sub(r"art\1", text)
+    text = re.sub(r"\s*§\s*", " § ", text)
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
+
+
 def parse_date_iso(value: object) -> float:
     text = normalize_space(value)
     if not DATE_ISO_RE.match(text):
@@ -112,6 +121,22 @@ def tokenize_text_for_lemma(text: str) -> List[str]:
     return [token for token in TOKEN_SPLIT_RE.split(normalized) if token]
 
 
+def tokenize_text_for_morfeusz(text: str) -> List[Tuple[str, str]]:
+    """Tokenize text returning (morfeusz_token, normalized_token) pairs.
+
+    morfeusz_token preserves diacritics (for Morfeusz2 input).
+    normalized_token is diacritics-stripped (for shard-key storage).
+    """
+    morfeusz_text = normalize_for_morfeusz(text)
+    if not morfeusz_text:
+        return []
+    return [
+        (tok, normalize_legal_citation_text(tok))
+        for tok in TOKEN_SPLIT_RE.split(morfeusz_text)
+        if tok and normalize_legal_citation_text(tok)
+    ]
+
+
 class MorfeuszLemmatizer:
     def __init__(self) -> None:
         try:
@@ -125,14 +150,15 @@ class MorfeuszLemmatizer:
         self._engine = morfeusz2.Morfeusz()
         self.version = str(getattr(morfeusz2, "__version__", "unknown"))
 
-    def lemmatize_token(self, token: str) -> List[str]:
-        normalized_token = normalize_legal_citation_text(token)
+    def lemmatize_token(self, morfeusz_token: str, normalized_token: str = "") -> List[str]:
+        if not normalized_token:
+            normalized_token = normalize_legal_citation_text(morfeusz_token)
         if not normalized_token:
             return []
 
         lemmas: Set[str] = set()
         try:
-            analyses = self._engine.analyse(token)
+            analyses = self._engine.analyse(morfeusz_token)
         except Exception:
             analyses = []
 
@@ -218,11 +244,11 @@ def build_lemma_shards(
 
     for pid, text in iter_paragraph_texts(sorted_cases):
         paragraph_count += 1
-        for position, token in enumerate(tokenize_text_for_lemma(text)):
-            lemmas = sorted(set(lemmatizer.lemmatize_token(token)))
+        for position, (morfeusz_token, norm_token) in enumerate(tokenize_text_for_morfeusz(text)):
+            lemmas = sorted(set(lemmatizer.lemmatize_token(morfeusz_token, norm_token)))
             if not lemmas:
                 continue
-            forms_to_lemmas[token].update(lemmas)
+            forms_to_lemmas[norm_token].update(lemmas)
             for lemma in lemmas:
                 lemma_to_postings[lemma].add(pid)
                 lemma_to_positions[lemma][pid].append(position)
