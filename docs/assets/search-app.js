@@ -13,6 +13,7 @@ const LEMMA_MANIFEST_FULL_BENCH_URL = `${LEMMA_SHARDS_BASE_DIR}/full_bench/manif
 const LEMMA_MANIFEST_SAMPLE200_URL = `${LEMMA_SHARDS_BASE_DIR}/sample200/manifest.json`;
 const LEMMA_MANIFEST_SAMPLE50_URL = `${LEMMA_SHARDS_BASE_DIR}/sample50/manifest.json`;
 const PAGE_SIZE = 10;
+const PARAGRAPH_PAGE_SIZE = 20;
 const TOOL_VERSION = "tk-dashboard-v2";
 const NORMALIZATION_VERSION = "tk-norm-v2";
 const MAX_FILE_BYTES = 320 * 1024 * 1024;
@@ -278,6 +279,7 @@ const state = {
   applyingUrlState: false,
   activeViewerCaseKey: null,
   activeViewerFocusParagraphId: null,
+  viewerReturnFocus: null,
   citationMissSignature: null,
   activeViewerTocTarget: null,
   activeViewerToc: [],
@@ -833,6 +835,38 @@ function getParagraphDisplayMode() {
 
 function isParagraphExpandedByDefault() {
   return getParagraphDisplayMode() === "expanded";
+}
+
+function getResultsView() {
+  return state.uiPrefs.resultsView === "paragraphs" ? "paragraphs" : "cases";
+}
+
+function renderResultsViewControl() {
+  const isParagraphs = getResultsView() === "paragraphs";
+  if (el.resultsViewCasesBtn) {
+    el.resultsViewCasesBtn.classList.toggle("active", !isParagraphs);
+    el.resultsViewCasesBtn.setAttribute("aria-pressed", String(!isParagraphs));
+  }
+  if (el.resultsViewParagraphsBtn) {
+    el.resultsViewParagraphsBtn.classList.toggle("active", isParagraphs);
+    el.resultsViewParagraphsBtn.setAttribute("aria-pressed", String(isParagraphs));
+  }
+}
+
+function setResultsView(view) {
+  const nextView = view === "paragraphs" ? "paragraphs" : "cases";
+  if (state.uiPrefs.resultsView === nextView) {
+    renderResultsViewControl();
+    return;
+  }
+  state.uiPrefs.resultsView = nextView;
+  saveUiPrefs();
+  renderResultsViewControl();
+  state.currentPage = 1;
+  if (state.loaded) {
+    renderResults(state.currentParsedQuery || { hasQuery: false, textOperands: [], allTerms: [], highlightTerms: [] });
+    updateUrlState(state.currentFilters || collectFilters());
+  }
 }
 
 function renderParagraphDisplayControl() {
@@ -1575,6 +1609,9 @@ function cacheElements() {
   el.lemmaStatus = byId("lemmaStatus");
   el.quickPresets = byId("quickPresets");
   el.paragraphDisplayControl = byId("paragraphDisplayControl");
+  el.resultsViewCasesBtn = byId("resultsViewCasesBtn");
+  el.resultsViewParagraphsBtn = byId("resultsViewParagraphsBtn");
+  el.analyticsWzorce = byId("analyticsWzorce");
   el.paragraphModeCollapsedBtn = byId("paragraphModeCollapsedBtn");
   el.paragraphModeExpandedBtn = byId("paragraphModeExpandedBtn");
   el.viewerParagraphModeCollapsedBtn = byId("viewerParagraphModeCollapsedBtn");
@@ -1680,6 +1717,8 @@ function setSearchEnabled(enabled) {
   if (el.lemmatizationToggle) el.lemmatizationToggle.disabled = !enabled;
   setDisabled(el.paragraphModeCollapsedBtn);
   setDisabled(el.paragraphModeExpandedBtn);
+  setDisabled(el.resultsViewCasesBtn);
+  setDisabled(el.resultsViewParagraphsBtn);
   setDisabled(el.viewerParagraphModeCollapsedBtn);
   setDisabled(el.viewerParagraphModeExpandedBtn);
   el.filtersToggle.disabled = !enabled;
@@ -2458,20 +2497,29 @@ function casePassesFilters(caseItem, filters) {
     }
   }
   if (filters.wzorzec) {
-    const cm = caseItem.case_metric;
-    const meta = caseItem.metadata || {};
-    let wzorzecText = "";
-    if (cm?.wzorce?.present) {
-      wzorzecText = [
-        cm.wzorce.text || "",
-        ...(cm.wzorce.items || []),
-        ...(cm.wzorce.acts || []).flatMap((a) => [a.act || "", ...a.items])
-      ].join(" ");
-    } else if (meta["Wzorce"]) {
-      wzorzecText = meta["Wzorce"];
-    }
-    if (!normalizeSearchText(wzorzecText).includes(filters.wzorzec)) {
-      return false;
+    // Filtr "art. N" dopasowuje wyekstrahowane wzorce konstytucyjne
+    // (granice numerów: "art. 3" nie łapie "art. 31"); inne wartości — substring.
+    const artFilter = /^art\.\s*(\d+)$/.exec(filters.wzorzec);
+    if (artFilter) {
+      if (!konstytucjaWzorceForCase(caseItem).includes(`art. ${artFilter[1]}`)) {
+        return false;
+      }
+    } else {
+      const cm = caseItem.case_metric;
+      const meta = caseItem.metadata || {};
+      let wzorzecText = "";
+      if (cm?.wzorce?.present) {
+        wzorzecText = [
+          cm.wzorce.text || "",
+          ...(cm.wzorce.items || []),
+          ...(cm.wzorce.acts || []).flatMap((a) => [a.act || "", ...a.items])
+        ].join(" ");
+      } else if (meta["Wzorce"]) {
+        wzorzecText = meta["Wzorce"];
+      }
+      if (!normalizeSearchText(wzorzecText).includes(filters.wzorzec)) {
+        return false;
+      }
     }
   }
   return true;
@@ -3668,6 +3716,89 @@ function renderSimilarCasesList(caseItem, similarEntries, options = {}) {
   `;
 }
 
+// Zredukowany zestaw akcji akapitu: dwie podstawowe + menu „⋯" (S-4).
+function buildHitActionsHtml(caseIndex, hit, hitId, options = {}) {
+  const selected = Boolean(options.selected);
+  const pinned = Boolean(options.pinned);
+  const mergedHeading = options.mergedHeading || "";
+  const hasLongText = Boolean(options.hasLongText);
+  const isTextExpanded = Boolean(options.isTextExpanded);
+  return `
+    <div class="hit-actions">
+      <button type="button" class="mini-btn" data-action="copy-citation" data-case-index="${caseIndex}" data-hit-id="${escapeHtml(hitId)}">Cytuj</button>
+      <button type="button" class="mini-btn" data-action="open-case-view" data-case-index="${caseIndex}" data-hit-id="${escapeHtml(hitId)}">Pełny wyrok</button>
+      ${hasLongText ? `<button type="button" class="mini-btn" data-action="toggle-hit-text" data-case-index="${caseIndex}" data-hit-id="${escapeHtml(hitId)}">${isTextExpanded ? "Zwiń" : "Rozwiń"}</button>` : ""}
+      <details class="hit-more">
+        <summary class="mini-btn hit-more-summary" aria-label="Więcej akcji">⋯</summary>
+        <div class="hit-more-menu">
+          <button type="button" class="mini-btn" data-action="toggle-hit-select" data-case-index="${caseIndex}" data-hit-id="${escapeHtml(hitId)}">${selected ? "Odznacz cytat" : "Wybierz cytat"}</button>
+          <button type="button" class="mini-btn" data-action="copy-paragraph" data-case-index="${caseIndex}" data-hit-id="${escapeHtml(hitId)}" data-merged-heading="${escapeHtml(mergedHeading)}">Kopiuj akapit</button>
+          <button type="button" class="mini-btn" data-action="copy-url" data-case-index="${caseIndex}" data-hit-id="${escapeHtml(hitId)}">Kopiuj link</button>
+          <button type="button" class="mini-btn" data-action="pin-paragraph" data-case-index="${caseIndex}" data-hit-id="${escapeHtml(hitId)}">${pinned ? "Odepnij akapit" : "Przypnij akapit"}</button>
+        </div>
+      </details>
+    </div>
+  `;
+}
+
+// Widok akapitowy (S-1): płaski strumień trafień rankowany globalnie,
+// każdy akapit z pełnym cytowaniem — sprawa to nagłówek, nie kontener.
+function renderParagraphResults(view, parsedQuery) {
+  const flatHits = [];
+  for (const group of view.groups) {
+    for (const hit of mergeHeadingHitsForResults(group.hits)) {
+      flatHits.push({ group, hit });
+    }
+  }
+  flatHits.sort((a, b) => (b.hit.score || 0) - (a.hit.score || 0));
+
+  const totalPages = Math.max(1, Math.ceil(flatHits.length / PARAGRAPH_PAGE_SIZE));
+  state.currentPage = Math.min(state.currentPage, totalPages);
+  const start = (state.currentPage - 1) * PARAGRAPH_PAGE_SIZE;
+  const pageItems = flatHits.slice(start, start + PARAGRAPH_PAGE_SIZE);
+
+  el.resultsSummary.textContent = `${fmtNumber(flatHits.length)} ${plural(flatHits.length, "akapit", "akapity", "akapitów")} z ${fmtNumber(view.caseCount)} ${plural(view.caseCount, "sprawy", "spraw", "spraw")} — ranking globalny`;
+
+  for (const { group, hit } of pageItems) {
+    const caseItem = group.caseItem;
+    const color = SECTION_META[hit.section_key]?.color || SECTION_META.inne.color;
+    const numberLabel = hit.paragraph_number || `§ ${hit.paragraph_index}`;
+    const hitId = makeHitId(caseItem, hit);
+    const selected = state.selectedHits.has(hitId);
+    const pinned = isParagraphPinned(caseItem, hit);
+    const displaySnippet = hit.merged_snippet || hit.snippet;
+    const displayText = hit.merged_text || hit.text;
+    const hasLongText = normalizeSpace(displayText).length > normalizeSpace(displaySnippet).length + 8;
+    const isTextExpanded = isHitTextExpanded(hitId);
+
+    const card = document.createElement("article");
+    card.className = `case-card paragraph-card${selected ? " selected" : ""}`;
+    card.innerHTML = `
+      <header class="paragraph-card-head">
+        <button type="button" class="paragraph-card-case" data-action="open-case-view" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">${escapeHtml(caseItem.case_signature)}</button>
+        <span class="case-date">${escapeHtml(formatDate(caseItem.decision_date_iso || caseItem.decision_date_raw))}</span>
+        <span class="section-chip" style="background:${escapeHtml(color)}">${escapeHtml(hit.section_label)}</span>
+        <span class="hit-number" title="Ranking: ${escapeHtml(hit.score_explain || "-")}">${escapeHtml(numberLabel)}</span>
+      </header>
+      <p class="hit-text hit-text-preview" ${(isTextExpanded && hasLongText) ? "hidden" : ""}>${highlight(displaySnippet, parsedQuery)}</p>
+      ${hasLongText ? `<p class="hit-text hit-text-full" ${isTextExpanded ? "" : "hidden"}>${highlight(displayText, parsedQuery)}</p>` : ""}
+      <p class="paragraph-card-citation">${escapeHtml(buildParagraphCitation(caseItem, hit))}</p>
+      ${buildHitActionsHtml(group.caseIndex, hit, hitId, {
+        selected,
+        pinned,
+        mergedHeading: hit.merged_heading || "",
+        hasLongText,
+        isTextExpanded
+      })}
+    `;
+    el.resultsList.appendChild(card);
+  }
+
+  renderPagination(totalPages);
+  updateActionButtons();
+  renderSelectedCitationsPanel();
+}
+
 function renderResults(parsedQuery) {
   const view = getResultsLayerView();
   const caseCount = view.caseCount;
@@ -3692,6 +3823,11 @@ function renderResults(parsedQuery) {
     renderPagination(totalPages);
     updateActionButtons();
     renderSelectedCitationsPanel();
+    return;
+  }
+
+  if (state.currentMode === "search" && getResultsView() === "paragraphs") {
+    renderParagraphResults(view, parsedQuery);
     return;
   }
 
@@ -3735,15 +3871,13 @@ function renderResults(parsedQuery) {
             </div>
             <p class="hit-text hit-text-preview" ${(isTextExpanded && hasLongText) ? "hidden" : ""}>${highlight(displaySnippet, parsedQuery)}</p>
             ${hasLongText ? `<p class="hit-text hit-text-full" ${isTextExpanded ? "" : "hidden"}>${highlight(displayText, parsedQuery)}</p>` : ""}
-            <div class="hit-actions">
-              <button type="button" class="mini-btn" data-action="toggle-hit-select" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">${selected ? "Odznacz cytat" : "Wybierz cytat"}</button>
-              <button type="button" class="mini-btn" data-action="open-case-view" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">Pełny wyrok</button>
-              <button type="button" class="mini-btn" data-action="copy-citation" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">Cytuj</button>
-              <button type="button" class="mini-btn" data-action="copy-paragraph" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}" data-merged-heading="${escapeHtml(mergedHeading)}">Kopiuj akapit</button>
-              <button type="button" class="mini-btn" data-action="copy-url" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">Kopiuj link</button>
-              <button type="button" class="mini-btn" data-action="pin-paragraph" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">${pinned ? "Odepnij akapit" : "Przypnij akapit"}</button>
-              ${hasLongText ? `<button type="button" class="mini-btn" data-action="toggle-hit-text" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">${isTextExpanded ? "Zwiń akapit" : "Rozwiń akapit"}</button>` : ""}
-            </div>
+            ${buildHitActionsHtml(group.caseIndex, hit, hitId, {
+              selected,
+              pinned,
+              mergedHeading,
+              hasLongText,
+              isTextExpanded
+            })}
           </li>
         `;
       })
@@ -3907,6 +4041,37 @@ function collectTermsFromText(text, excludedTermsSet = null) {
   return tokens.filter((token) => !excludedTermsSet.has(token));
 }
 
+// Wzorce kontroli z Konstytucji (case_metric.wzorce): pozycje bez nazwy aktu
+// (zaczynające się od "art."/"preambuła") dziedziczą akt z poprzedniej pozycji;
+// numery artykułów wycinamy z posklejanych ciągów IPO ("art. 2art. 21 ust. 1").
+const wzorceKonstCache = new WeakMap();
+
+function konstytucjaWzorceForCase(caseItem) {
+  if (!caseItem || typeof caseItem !== "object") return [];
+  if (wzorceKonstCache.has(caseItem)) return wzorceKonstCache.get(caseItem);
+
+  const items = caseItem.case_metric?.wzorce?.items || [];
+  const articles = new Set();
+  let inKonstytucja = false;
+  for (const rawItem of items) {
+    const item = normalizeSpace(rawItem);
+    const lower = item.toLowerCase();
+    if (lower.includes("konstytucja")) {
+      inKonstytucja = true;
+    } else if (!(lower.startsWith("art.") || lower.startsWith("preambuł"))) {
+      inKonstytucja = false;
+    }
+    if (!inKonstytucja) continue;
+    for (const match of item.matchAll(/art\.\s*(\d+)(?=\D|$)/g)) {
+      articles.add(`art. ${match[1]}`);
+    }
+  }
+
+  const sorted = [...articles].sort((a, b) => Number(a.slice(5)) - Number(b.slice(5)));
+  wzorceKonstCache.set(caseItem, sorted);
+  return sorted;
+}
+
 function buildResultsSidebarStats(parsedQuery) {
   const groups = state.currentResults;
   if (!groups.length) {
@@ -3942,6 +4107,7 @@ function buildResultsSidebarStats(parsedQuery) {
       sections,
       types,
       years,
+      wzorce: countBy(groups.flatMap((group) => konstytucjaWzorceForCase(group.caseItem)), (article) => article),
       terms: sortedEntriesFromMap(termFreq).slice(0, 24),
       empty: false
     };
@@ -3962,6 +4128,7 @@ function buildResultsSidebarStats(parsedQuery) {
     sections,
     types,
     years,
+    wzorce: countBy(groups.flatMap((group) => konstytucjaWzorceForCase(group.caseItem)), (article) => article),
     terms: [],
     empty: false,
     browseMode: true
@@ -4006,6 +4173,14 @@ function renderSidebar(parsedQuery) {
   });
   renderBarList(el.analyticsTypes, stats.types, () => "#bf0d2e");
   renderBarList(el.analyticsYears, stats.years, () => "#334155");
+  if (el.analyticsWzorce) {
+    renderBarList(el.analyticsWzorce, stats.wzorce || [], () => "#6d28d9");
+    const activeWzorzec = el.wzorzecFilter ? normalizeSpace(el.wzorzecFilter.value) : "";
+    el.analyticsWzorce.querySelectorAll(".bar-item").forEach((item) => {
+      const label = normalizeSpace(item.querySelector(".bar-label")?.textContent || "");
+      item.classList.toggle("bar-item-active", Boolean(activeWzorzec) && label === activeWzorzec);
+    });
+  }
   renderSidebarTerms(stats);
 
   if (stats.empty) {
@@ -4681,11 +4856,16 @@ function renderCaseViewer(caseItem, options = {}) {
     state.activeViewerTocTarget = tocWithIdentity[0]?.targetId || null;
   }
 
+  const wasHidden = el.judgmentViewer.hidden;
   el.judgmentViewer.hidden = false;
   if (el.judgmentViewerBackdrop) {
     el.judgmentViewerBackdrop.hidden = false;
   }
   document.body.classList.add("viewer-open");
+  if (wasHidden) {
+    state.viewerReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    if (el.judgmentViewerCloseBtn) el.judgmentViewerCloseBtn.focus();
+  }
 
   el.judgmentViewerTitle.textContent = `${caseItem.case_signature} — pełna treść`;
   el.judgmentViewerMeta.textContent = `${caseItem.decision_type} • ${formatDate(caseItem.decision_date_iso || caseItem.decision_date_raw)} • ${fmtNumber(visibleParagraphs)} / ${fmtNumber(totalParagraphs)} akapitów`;
@@ -4797,6 +4977,10 @@ function closeCaseViewer() {
   state.activeViewerToc = [];
   state.viewerParagraphOverrides.clear();
   setViewerUrlParams(null, null);
+  if (state.viewerReturnFocus && document.contains(state.viewerReturnFocus)) {
+    state.viewerReturnFocus.focus();
+  }
+  state.viewerReturnFocus = null;
 }
 
 function scrollViewerToElement(target, block = "start") {
@@ -5353,6 +5537,7 @@ function readUrlStateFromLocation() {
     signature: params.get("signature") || "",
     wzorzec: params.get("wzorzec") || "",
     lemma: params.get("lemma"),
+    view: params.get("view") || "",
     case: params.get("case") || "",
     par: params.get("par") || ""
   };
@@ -5362,6 +5547,11 @@ function applyUrlState(urlState) {
   if (!urlState) return;
 
   state.applyingUrlState = true;
+  if (urlState.view === "akapity") {
+    state.uiPrefs.resultsView = "paragraphs";
+    saveUiPrefs();
+    renderResultsViewControl();
+  }
   el.searchInput.value = urlState.q || "";
   el.yearFrom.value = urlState.year_from || "";
   el.yearTo.value = urlState.year_to || "";
@@ -5416,6 +5606,7 @@ function updateUrlState(filters) {
   if (filters.signature) params.set("signature", filters.signature);
   if (filters.wzorzec) params.set("wzorzec", filters.wzorzec);
   if (el.lemmatizationToggle && state.uiPrefs.useLemmatization) params.set("lemma", "1");
+  if (getResultsView() === "paragraphs") params.set("view", "akapity");
 
   // Zachowaj permalink otwartego wyroku/akapitu (case/par) między wyszukiwaniami.
   const currentParams = new URLSearchParams(window.location.search || "");
@@ -6320,6 +6511,22 @@ function initInteractions() {
   };
 
   bindParagraphModeButtons(el.paragraphModeCollapsedBtn, el.paragraphModeExpandedBtn);
+  if (el.resultsViewCasesBtn) {
+    el.resultsViewCasesBtn.addEventListener("click", () => setResultsView("cases"));
+  }
+  if (el.resultsViewParagraphsBtn) {
+    el.resultsViewParagraphsBtn.addEventListener("click", () => setResultsView("paragraphs"));
+  }
+  if (el.analyticsWzorce) {
+    el.analyticsWzorce.addEventListener("click", (event) => {
+      const item = event.target.closest(".bar-item");
+      if (!item || !el.wzorzecFilter) return;
+      const label = normalizeSpace(item.querySelector(".bar-label")?.textContent || "");
+      if (!label) return;
+      el.wzorzecFilter.value = el.wzorzecFilter.value === label ? "" : label;
+      void runSearch();
+    });
+  }
   bindParagraphModeButtons(el.viewerParagraphModeCollapsedBtn, el.viewerParagraphModeExpandedBtn);
 
   [el.modeSwitchStudent, el.modeSwitchExpert].forEach((link) => {
@@ -6415,6 +6622,23 @@ function initInteractions() {
   });
 
   el.judgmentViewerCloseBtn.addEventListener("click", closeCaseViewer);
+  // Pułapka fokusa w dialogu podglądu wyroku (aria-modal).
+  el.judgmentViewer.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab") return;
+    const focusables = [...el.judgmentViewer.querySelectorAll(
+      "button:not([disabled]), a[href], input:not([disabled]), summary, [tabindex]:not([tabindex='-1'])"
+    )].filter((element) => element.offsetParent !== null);
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
   el.judgmentViewerContent.addEventListener("click", handleViewerContentAction);
   el.judgmentViewerToc.addEventListener("click", handleViewerTocAction);
   if (el.viewerKeywordForm) {
@@ -6482,6 +6706,7 @@ function loadPersistedState() {
     activePreset: prefs.activePreset || null,
     viewMode: pageMode,
     paragraphDisplayMode,
+    resultsView: prefs.resultsView === "paragraphs" ? "paragraphs" : "cases",
     useLemmatization: pageMode === "expert" ? Boolean(prefs.useLemmatization) : false
   };
   saveUiPrefs();
@@ -6495,6 +6720,7 @@ function initUiPrefs() {
   }
   renderPresetSelection();
   renderParagraphDisplayControl();
+  renderResultsViewControl();
   renderLemmaStatus();
   el.folderNotes.value = state.caseFolder.notes || "";
   syncModeToggleUi();

@@ -162,8 +162,13 @@
               <button id="clearBtn" type="button" class="btn btn-soft" disabled>Wyczyść</button>
             </div>
           </div>
-          <section id="paragraphDisplayControl" class="paragraph-display-control paragraph-display-control-results" aria-label="Tryb wyświetlania akapitów">
-            <p class="paragraph-display-label">Akapity</p>
+          <section id="paragraphDisplayControl" class="paragraph-display-control paragraph-display-control-results" aria-label="Tryb wyświetlania wyników">
+            <p class="paragraph-display-label">Widok</p>
+            <div class="paragraph-display-toggle" role="group" aria-label="Widok listy wyników">
+              <button id="resultsViewCasesBtn" type="button" class="paragraph-mode-btn active" aria-pressed="true" disabled>Sprawy</button>
+              <button id="resultsViewParagraphsBtn" type="button" class="paragraph-mode-btn" aria-pressed="false" disabled>Akapity</button>
+            </div>
+            <p class="paragraph-display-label">Treść</p>
             <div class="paragraph-display-toggle" role="group" aria-label="Tryb wyświetlania akapitów">
               <button id="paragraphModeCollapsedBtn" type="button" class="paragraph-mode-btn active" data-paragraph-mode="collapsed" aria-pressed="true" disabled>Zwięźle</button>
               <button id="paragraphModeExpandedBtn" type="button" class="paragraph-mode-btn" data-paragraph-mode="expanded" aria-pressed="false" disabled>Pełne</button>
@@ -222,6 +227,12 @@
           <div id="analyticsYears" class="bar-list"></div>
         </details>
 
+        <details class="sidebar-block" open>
+          <summary class="sidebar-block-toggle"><h3>Wzorzec kontroli (Konstytucja)</h3></summary>
+          <p class="sidebar-block-note">Kliknij artykuł, aby filtrować wyniki.</p>
+          <div id="analyticsWzorce" class="bar-list bar-list-clickable"></div>
+        </details>
+
         <details class="sidebar-block">
           <summary class="sidebar-block-toggle"><h3>Najczęstsze terminy</h3></summary>
           <div id="analyticsTerms" class="term-cloud"></div>
@@ -252,7 +263,7 @@
       <div id="compareSlots" class="compare-slots"></div>
     </section>
 
-    <section id="judgmentViewer" class="panel judgment-viewer" hidden>
+    <section id="judgmentViewer" class="panel judgment-viewer" role="dialog" aria-modal="true" aria-labelledby="judgmentViewerTitle" hidden>
       <header class="judgment-viewer-head">
         <div>
           <h2 id="judgmentViewerTitle">Podgląd pełnego wyroku</h2>

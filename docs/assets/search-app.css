@@ -1986,3 +1986,104 @@ body[data-dashboard-mode="expert"] .preset-chip {
     break-inside: avoid;
   }
 }
+
+/* === Widok akapitowy (paragraph-first) === */
+.paragraph-card {
+  padding: 14px 16px;
+}
+
+.paragraph-card-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.paragraph-card-case {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.02rem;
+  font-weight: 760;
+  color: var(--pl-red-deep, #8c2332);
+  text-decoration: none;
+}
+
+.paragraph-card-case:hover {
+  text-decoration: underline;
+}
+
+.paragraph-card-citation {
+  margin: 8px 0 2px;
+  font-size: 0.78rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* === Menu "więcej akcji" przy akapicie === */
+.hit-more {
+  position: relative;
+  display: inline-block;
+}
+
+.hit-more-summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.hit-more-summary::-webkit-details-marker {
+  display: none;
+}
+
+.hit-more-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 168px;
+  padding: 6px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 10px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.16);
+}
+
+.hit-more-menu .mini-btn {
+  width: 100%;
+  text-align: left;
+}
+
+/* === Faseta wzorca kontroli === */
+.sidebar-block-note {
+  margin: 0 0 8px;
+  font-size: 0.76rem;
+  color: #64748b;
+}
+
+.bar-list-clickable .bar-item {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 4px 6px;
+  margin: 0 -6px;
+  transition: background 0.12s ease;
+}
+
+.bar-list-clickable .bar-item:hover {
+  background: rgba(109, 40, 217, 0.08);
+}
+
+.bar-list-clickable .bar-item-active {
+  background: rgba(109, 40, 217, 0.14);
+  outline: 1px solid rgba(109, 40, 217, 0.35);
+}

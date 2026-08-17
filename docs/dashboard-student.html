@@ -110,6 +110,9 @@
               <h3 class="filter-title space-top">Sygnatura (fragment)</h3>
               <input id="signatureFilter" class="input-wide" type="text" placeholder="np. SK 48/24" disabled>
 
+              <h3 class="filter-title space-top">Wzorzec kontroli</h3>
+              <input id="wzorzecFilter" class="input-wide" type="text" placeholder="np. art. 32" disabled>
+
               <h3 class="filter-title space-top">Liczebność składu orzekającego</h3>
               <div id="benchSizeFilters" class="checkbox-list"></div>
             </div>
@@ -154,8 +157,13 @@
               <button id="clearBtn" type="button" class="btn btn-soft" disabled>Wyczyść</button>
             </div>
           </div>
-          <section id="paragraphDisplayControl" class="paragraph-display-control paragraph-display-control-results" aria-label="Tryb wyświetlania akapitów">
-            <p class="paragraph-display-label">Akapity</p>
+          <section id="paragraphDisplayControl" class="paragraph-display-control paragraph-display-control-results" aria-label="Tryb wyświetlania wyników">
+            <p class="paragraph-display-label">Widok</p>
+            <div class="paragraph-display-toggle" role="group" aria-label="Widok listy wyników">
+              <button id="resultsViewCasesBtn" type="button" class="paragraph-mode-btn active" aria-pressed="true" disabled>Sprawy</button>
+              <button id="resultsViewParagraphsBtn" type="button" class="paragraph-mode-btn" aria-pressed="false" disabled>Akapity</button>
+            </div>
+            <p class="paragraph-display-label">Treść</p>
             <div class="paragraph-display-toggle" role="group" aria-label="Tryb wyświetlania akapitów">
               <button id="paragraphModeCollapsedBtn" type="button" class="paragraph-mode-btn active" data-paragraph-mode="collapsed" aria-pressed="true" disabled>Zwięźle</button>
               <button id="paragraphModeExpandedBtn" type="button" class="paragraph-mode-btn" data-paragraph-mode="expanded" aria-pressed="false" disabled>Pełne</button>
@@ -215,6 +223,12 @@
         </div>
 
         <div class="sidebar-block">
+          <h3>Wzorzec kontroli (Konstytucja)</h3>
+          <p class="sidebar-block-note">Kliknij artykuł, aby filtrować wyniki.</p>
+          <div id="analyticsWzorce" class="bar-list bar-list-clickable"></div>
+        </div>
+
+        <div class="sidebar-block">
           <h3>Najczęstsze terminy</h3>
           <div id="analyticsTerms" class="term-cloud"></div>
         </div>
@@ -244,7 +258,7 @@
       <div id="compareSlots" class="compare-slots"></div>
     </section>
 
-    <section id="judgmentViewer" class="panel judgment-viewer" hidden>
+    <section id="judgmentViewer" class="panel judgment-viewer" role="dialog" aria-modal="true" aria-labelledby="judgmentViewerTitle" hidden>
       <header class="judgment-viewer-head">
         <div>
           <h2 id="judgmentViewerTitle">Podgląd pełnego wyroku</h2>
