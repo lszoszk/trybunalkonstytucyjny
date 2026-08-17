@@ -277,6 +277,8 @@ const state = {
   urlStateApplied: false,
   applyingUrlState: false,
   activeViewerCaseKey: null,
+  activeViewerFocusParagraphId: null,
+  citationMissSignature: null,
   activeViewerTocTarget: null,
   activeViewerToc: [],
   viewerKeywordQuery: "",
@@ -3297,7 +3299,17 @@ async function runSearch(options = {}) {
 
   const forceBrowse = Boolean(options.forceBrowse);
   const query = normalizeSpace(el.searchInput.value);
-  const parsedQuery = parseQueryWithHandling(query);
+
+  // Zapytanie w formie cytowania ("K 9/95", "K 9/95, §76") → wyszukaj sygnaturę
+  // i otwórz wyrok na wskazanym akapicie.
+  const citation = detectCitationQuery(query);
+  const citationCase = citation ? findCaseBySignature(citation.signature) : null;
+  state.citationMissSignature = citation && !citationCase ? citation.signature : null;
+  const effectiveQuery = citation
+    ? `sygn:"${citationCase ? normalizeCitationSignature(citationCase.case_signature || "") : citation.signature}"`
+    : query;
+
+  const parsedQuery = parseQueryWithHandling(effectiveQuery);
   const filters = collectFilters();
 
   state.currentFilters = filters;
@@ -3308,6 +3320,13 @@ async function runSearch(options = {}) {
   state.currentParsedQuery = parsedQuery;
   state.hitTextOverrides.clear();
   state.lemmaHighlightPlan = null;
+
+  if (citationCase && options.openCitationViewer) {
+    const focusId = citation.paragraphNumber
+      ? resolveParagraphIdParam(citationCase, citation.paragraphNumber)
+      : null;
+    renderCaseViewer(citationCase, focusId ? { focusParagraphId: focusId } : {});
+  }
 
   if (!parsedQuery && query) {
     state.currentMode = "search";
@@ -3374,6 +3393,20 @@ function renderActiveFilters(filters) {
   if (state.query) chips.push(`Zapytanie: ${state.query}`);
 
   el.activeFilters.innerHTML = chips.map((chip) => `<span class="filter-chip">${escapeHtml(chip)}</span>`).join("");
+}
+
+function renderNoResultsEmptyState() {
+  if (!state.loaded || !el.emptyState) return;
+  const missSignature = state.citationMissSignature;
+  const missLine = missSignature
+    ? `<p><strong>Sygnatury ${escapeHtml(missSignature)} nie ma w załadowanym korpusie.</strong></p>`
+    : "";
+  el.emptyState.innerHTML = `
+    <h2>Brak wyników</h2>
+    ${missLine}
+    <p>Załadowany korpus: ${fmtNumber(state.cases.length)} ${plural(state.cases.length, "sprawa", "sprawy", "spraw")}. Jeśli szukasz orzeczenia spoza niego, sprawdź pełny zbiór (ok. 3,7 tys. orzeczeń TK):</p>
+    <p><a href="https://huggingface.co/datasets/lszoszk/constcourt-full" target="_blank" rel="noopener noreferrer">dataset na Hugging Face</a> · <a href="https://ipo.trybunal.gov.pl/ipo/" target="_blank" rel="noopener noreferrer">wyszukiwarka IPO TK</a></p>
+  `;
 }
 
 function formatResultSummary(caseCount, hitCount, mode) {
@@ -3652,6 +3685,7 @@ function renderResults(parsedQuery) {
   el.resultsList.innerHTML = "";
 
   if (!caseCount) {
+    if (!view.filtered) renderNoResultsEmptyState();
     el.resultsSummary.textContent = view.filtered
       ? "Brak pozycji po dodatkowym filtrowaniu listy."
       : "Brak wyników dla podanych kryteriów.";
@@ -3706,7 +3740,7 @@ function renderResults(parsedQuery) {
               <button type="button" class="mini-btn" data-action="open-case-view" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">Pełny wyrok</button>
               <button type="button" class="mini-btn" data-action="copy-citation" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">Cytuj</button>
               <button type="button" class="mini-btn" data-action="copy-paragraph" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}" data-merged-heading="${escapeHtml(mergedHeading)}">Kopiuj akapit</button>
-              <button type="button" class="mini-btn" data-action="copy-url" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">Kopiuj URL</button>
+              <button type="button" class="mini-btn" data-action="copy-url" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">Kopiuj link</button>
               <button type="button" class="mini-btn" data-action="pin-paragraph" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">${pinned ? "Odepnij akapit" : "Przypnij akapit"}</button>
               ${hasLongText ? `<button type="button" class="mini-btn" data-action="toggle-hit-text" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">${isTextExpanded ? "Zwiń akapit" : "Rozwiń akapit"}</button>` : ""}
             </div>
@@ -4165,6 +4199,77 @@ function findCaseByKey(key) {
   return state.cases.find((caseItem) => caseKey(caseItem) === key) || null;
 }
 
+function normalizeSignatureForLookup(signature) {
+  return normalizeCitationSignature(signature)
+    .toUpperCase()
+    .replace(/^([A-Z]+)\s*(\d)/, "$1 $2");
+}
+
+function findCaseBySignature(signature) {
+  const target = normalizeSignatureForLookup(signature);
+  if (!target) return null;
+  return state.cases.find(
+    (caseItem) => normalizeSignatureForLookup(caseItem.case_signature || "") === target
+  ) || null;
+}
+
+function resolveParagraphIdParam(caseItem, parValue) {
+  const value = normalizeSpace(parValue);
+  if (!value || !caseItem) return null;
+  const paragraphs = caseItem.paragraphs || [];
+  const byId = paragraphs.find((paragraph) => String(paragraph.paragraph_id) === value);
+  if (byId) return byId.paragraph_id;
+  const byNumber = paragraphs.find(
+    (paragraph) => String(paragraph.paragraph_number || "") === value
+      || paragraph.paragraph_index === Number(value)
+  );
+  return byNumber ? byNumber.paragraph_id : null;
+}
+
+function viewerUrlCaseValue(caseItem) {
+  return normalizeCitationSignature(caseItem?.case_signature || "") || caseKey(caseItem);
+}
+
+function setViewerUrlParams(caseItem, paragraphId) {
+  const params = new URLSearchParams(window.location.search || "");
+  if (caseItem) {
+    params.set("case", viewerUrlCaseValue(caseItem));
+    if (paragraphId) {
+      params.set("par", String(paragraphId));
+    } else {
+      params.delete("par");
+    }
+  } else {
+    params.delete("case");
+    params.delete("par");
+  }
+  const query = params.toString();
+  const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+  window.history.replaceState(null, "", nextUrl);
+}
+
+function buildParagraphPermalink(caseItem, paragraphId) {
+  const params = new URLSearchParams(window.location.search || "");
+  params.set("case", viewerUrlCaseValue(caseItem));
+  if (paragraphId) {
+    params.set("par", String(paragraphId));
+  } else {
+    params.delete("par");
+  }
+  return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+}
+
+const CITATION_QUERY_RE = /^\s*(?:sygn\.?(?:\s*akt)?\s*:?\s*)?"?([A-Za-z]{1,3}\s?\d{1,4}\/\d{2,4})"?\s*(?:[,;]?\s*(?:§|par(?:agraf)?\.?|akapit|ak\.?)\s*(\d{1,4}))?\s*$/i;
+
+function detectCitationQuery(query) {
+  const match = CITATION_QUERY_RE.exec(query || "");
+  if (!match) return null;
+  return {
+    signature: normalizeSignatureForLookup(match[1]),
+    paragraphNumber: match[2] || ""
+  };
+}
+
 function buildViewerSections(caseItem) {
   const sections = [];
   const sectionMap = new Map();
@@ -4521,6 +4626,10 @@ function renderCaseViewer(caseItem, options = {}) {
   if (!caseItem) return;
 
   const focusParagraphId = options.focusParagraphId || null;
+  const isSameCaseRerender = state.activeViewerCaseKey === caseKey(caseItem);
+  const previousScrollTop = isSameCaseRerender && el.judgmentViewerContent
+    ? el.judgmentViewerContent.scrollTop
+    : 0;
   const allSections = buildViewerSections(caseItem);
   const totalParagraphs = allSections.reduce((sum, section) => sum + (section.paragraphs?.length || 0), 0);
   const viewerFilterQuery = normalizeSpace(state.viewerKeywordQuery);
@@ -4634,6 +4743,7 @@ function renderCaseViewer(caseItem, options = {}) {
                 <div class="viewer-paragraph-actions">
                   <button type="button" class="mini-btn" data-action="viewer-copy-citation" data-case-key="${escapeHtml(caseKeyValue)}" data-paragraph-id="${escapeHtml(paragraph.paragraph_id)}">Cytuj</button>
                   <button type="button" class="mini-btn" data-action="viewer-copy-paragraph" data-case-key="${escapeHtml(caseKeyValue)}" data-paragraph-id="${escapeHtml(paragraph.paragraph_id)}">Kopiuj akapit</button>
+                  <button type="button" class="mini-btn" data-action="viewer-copy-link" data-case-key="${escapeHtml(caseKeyValue)}" data-paragraph-id="${escapeHtml(paragraph.paragraph_id)}">Kopiuj link</button>
                   <button type="button" class="mini-btn" data-action="viewer-pin-paragraph" data-case-key="${escapeHtml(caseKeyValue)}" data-paragraph-id="${escapeHtml(paragraph.paragraph_id)}">${pinned ? "Odepnij akapit" : "Przypnij akapit"}</button>
                   ${hasLongText ? `<button type="button" class="mini-btn" data-action="viewer-toggle-paragraph" data-case-key="${escapeHtml(caseKeyValue)}" data-paragraph-id="${escapeHtml(paragraph.paragraph_id)}">${isExpanded ? "Zwiń akapit" : "Rozwiń akapit"}</button>` : ""}
                 </div>
@@ -4660,6 +4770,10 @@ function renderCaseViewer(caseItem, options = {}) {
     .join("") + similarHtml;
 
   state.activeViewerCaseKey = caseKey(caseItem);
+  if (focusParagraphId) {
+    state.activeViewerFocusParagraphId = focusParagraphId;
+  }
+  setViewerUrlParams(caseItem, state.activeViewerFocusParagraphId || null);
 
   if (focusParagraphId) {
     const targetParagraph = document.getElementById(`viewer-paragraph-${toDomId(focusParagraphId)}`);
@@ -4667,7 +4781,7 @@ function renderCaseViewer(caseItem, options = {}) {
       scrollViewerToElement(targetParagraph, "center");
     }
   } else {
-    el.judgmentViewerContent.scrollTop = 0;
+    el.judgmentViewerContent.scrollTop = isSameCaseRerender ? previousScrollTop : 0;
   }
 }
 
@@ -4678,9 +4792,11 @@ function closeCaseViewer() {
   }
   document.body.classList.remove("viewer-open");
   state.activeViewerCaseKey = null;
+  state.activeViewerFocusParagraphId = null;
   state.activeViewerTocTarget = null;
   state.activeViewerToc = [];
   state.viewerParagraphOverrides.clear();
+  setViewerUrlParams(null, null);
 }
 
 function scrollViewerToElement(target, block = "start") {
@@ -4771,7 +4887,15 @@ async function handleViewerContentAction(event) {
   }
 
   if (action === "viewer-copy-citation") {
-    await copyToClipboard(buildCaseCitation(payload.caseItem), "Skopiowano cytowanie.");
+    await copyToClipboard(buildParagraphCitation(payload.caseItem, payload.hit), "Skopiowano cytowanie.");
+    return;
+  }
+
+  if (action === "viewer-copy-link") {
+    await copyToClipboard(
+      buildParagraphPermalink(payload.caseItem, payload.paragraph.paragraph_id),
+      "Skopiowano link do akapitu."
+    );
     return;
   }
 
@@ -5228,7 +5352,9 @@ function readUrlStateFromLocation() {
     judge: params.get("judge") || "",
     signature: params.get("signature") || "",
     wzorzec: params.get("wzorzec") || "",
-    lemma: params.get("lemma")
+    lemma: params.get("lemma"),
+    case: params.get("case") || "",
+    par: params.get("par") || ""
   };
 }
 
@@ -5290,6 +5416,11 @@ function updateUrlState(filters) {
   if (filters.signature) params.set("signature", filters.signature);
   if (filters.wzorzec) params.set("wzorzec", filters.wzorzec);
   if (el.lemmatizationToggle && state.uiPrefs.useLemmatization) params.set("lemma", "1");
+
+  // Zachowaj permalink otwartego wyroku/akapitu (case/par) między wyszukiwaniami.
+  const currentParams = new URLSearchParams(window.location.search || "");
+  if (currentParams.get("case")) params.set("case", currentParams.get("case"));
+  if (currentParams.get("par")) params.set("par", currentParams.get("par"));
 
   const query = params.toString();
   const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
@@ -5430,7 +5561,7 @@ async function handleResultAction(event) {
   }
 
   if (action === "copy-citation") {
-    await copyToClipboard(buildCaseCitation(payload.caseItem), "Skopiowano cytowanie.");
+    await copyToClipboard(buildParagraphCitation(payload.caseItem, payload.hit), "Skopiowano cytowanie.");
     return;
   }
 
@@ -5442,7 +5573,10 @@ async function handleResultAction(event) {
   }
 
   if (action === "copy-url") {
-    await copyToClipboard(canonicalCaseSourceUrl(payload.caseItem), "Skopiowano URL źródła.");
+    await copyToClipboard(
+      buildParagraphPermalink(payload.caseItem, payload.hit.paragraph_id),
+      "Skopiowano link do akapitu."
+    );
     return;
   }
 
@@ -5885,12 +6019,24 @@ async function hydrateDataset(rows, options = {}) {
   renderProvenanceBanner();
   setSearchEnabled(true);
 
+  let restoreViewerFromUrl = null;
   if (!state.urlStateApplied) {
     applyUrlState(state.pendingUrlState);
     state.urlStateApplied = true;
+    if (state.pendingUrlState?.case) {
+      restoreViewerFromUrl = state.pendingUrlState;
+    }
   }
 
   void runSearch({ forceBrowse: true });
+
+  if (restoreViewerFromUrl) {
+    const caseItem = findCaseBySignature(restoreViewerFromUrl.case) || findCaseByKey(restoreViewerFromUrl.case);
+    if (caseItem) {
+      const focusId = resolveParagraphIdParam(caseItem, restoreViewerFromUrl.par);
+      renderCaseViewer(caseItem, focusId ? { focusParagraphId: focusId } : {});
+    }
+  }
   void loadSimilarityForCurrentDataset();
   void loadLemmaShardsForCurrentDataset();
 
@@ -6089,7 +6235,7 @@ function initInteractions() {
 
   el.searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    void runSearch();
+    void runSearch({ openCitationViewer: true });
   });
 
   let resultsLayerInputTimer = null;
