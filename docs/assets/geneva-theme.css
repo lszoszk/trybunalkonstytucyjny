@@ -1,0 +1,918 @@
+/* =========================================================
+   Orzecznictwo TK — warstwa edytorska
+   Język wizualny przeniesiony z UN Human Rights Database
+   (lszoszk.github.io/generalcomments): papier/tusz/granat,
+   szeryfy Spectral + Source Serif 4, mono-folio, ostre rogi,
+   linijki zamiast cieni. Ładowana PO dashboard.css/search-app.css —
+   działa przez nadpisanie zmiennych i chrome'u.
+   ========================================================= */
+
+:root {
+  /* Papier */
+  --paper:   oklch(98% 0.008 75);
+  --paper-2: oklch(96% 0.010 75);
+  --paper-3: oklch(93% 0.012 75);
+  --rule:    oklch(86% 0.013 75);
+  --rule-soft: oklch(91% 0.011 75);
+
+  /* Tusz */
+  --g-ink:   oklch(18% 0.012 270);
+  --g-ink-2: oklch(32% 0.014 270);
+  --g-ink-3: oklch(48% 0.013 270);
+  --g-ink-4: oklch(62% 0.012 270);
+
+  /* Granat (garnet) — akcent hierarchii */
+  --garnet:      oklch(45% 0.13 25);
+  --garnet-2:    oklch(38% 0.12 25);
+  --garnet-soft: oklch(94% 0.04 25);
+  --garnet-edge: oklch(80% 0.06 25);
+
+  /* Podświetlenie trafień — welinowa żółć */
+  --hl:      oklch(92% 0.10 95);
+  --hl-edge: oklch(80% 0.12 95);
+
+  /* Kroje */
+  --display: 'Spectral', 'Iowan Old Style', Georgia, serif;
+  --g-body:  'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+  --g-mono:  'JetBrains Mono', ui-monospace, monospace;
+
+  /* Mapowanie na istniejący system zmiennych */
+  --pl-red: var(--garnet);
+  --pl-red-deep: var(--garnet-2);
+  --pl-gold: var(--hl-edge);
+  --pl-navy: var(--g-ink);
+  --pl-blue: var(--g-ink-2);
+  --pl-white: var(--paper);
+  --ink-950: var(--g-ink);
+  --ink-900: var(--g-ink);
+  --ink-700: var(--g-ink-2);
+  --ink-600: var(--g-ink-3);
+  --ink-500: var(--g-ink-3);
+  --ink-300: var(--g-ink-4);
+  --surface-0: var(--paper);
+  --surface-1: var(--paper-2);
+  --surface-2: var(--paper-3);
+  --surface-3: var(--paper-3);
+  --border: var(--rule);
+  --border-strong: var(--g-ink-4);
+  --shadow-sm: none;
+  --shadow-md: 0 10px 26px oklch(18% 0.012 270 / 0.14);
+  --shadow-lg: 0 18px 44px oklch(18% 0.012 270 / 0.18);
+  --radius: 0px;
+  --radius-lg: 0px;
+  --font-ui: var(--g-body);
+  --font-text: var(--g-body);
+}
+
+/* ── Podstawa ── */
+body {
+  background: var(--paper);
+  font-family: var(--g-body);
+  color: var(--g-ink);
+  font-feature-settings: "kern", "liga", "onum", "pnum";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--garnet); }
+::selection { background: var(--hl); color: var(--g-ink); }
+
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 600; }
+
+* { scrollbar-width: thin; scrollbar-color: var(--g-ink-4) transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--g-ink-4); border-radius: 0; }
+
+/* Etykieta folio — mono, kapitaliki */
+.folio-label {
+  font-family: var(--g-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--g-ink-3);
+}
+
+/* ── Masthead (navbar) ── */
+.navbar {
+  background: var(--paper);
+  backdrop-filter: none;
+  border-bottom: 3px double var(--rule);
+}
+
+.brand-icon {
+  background: none;
+  box-shadow: none;
+  color: var(--garnet);
+  font-family: var(--display);
+  font-size: 22px;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+}
+
+.brand-text {
+  font-family: var(--display);
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--g-ink);
+}
+
+.brand-beta {
+  font-family: var(--g-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--garnet);
+  border-radius: 1px;
+  background: var(--garnet);
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.nav-link {
+  font-family: var(--g-body);
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--g-ink-3);
+  border-radius: 0;
+  padding: 8px 10px;
+}
+
+.nav-link:hover {
+  background: none;
+  color: var(--g-ink);
+}
+
+.nav-link.active,
+.nav-link.active:hover {
+  background: none;
+  color: var(--garnet);
+  box-shadow: inset 0 -2px 0 var(--garnet);
+}
+
+.mode-switch {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  padding: 2px;
+}
+
+.mode-switch-link {
+  font-family: var(--g-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 0;
+  color: var(--g-ink-3);
+}
+
+.mode-switch-link.active {
+  background: var(--g-ink);
+  color: var(--paper);
+  box-shadow: none;
+}
+
+/* ── Hero → sekcja edytorska na papierze ── */
+.hero {
+  background: var(--paper);
+  color: var(--g-ink);
+  padding: 34px 20px 26px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero::before, .hero::after { display: none; }
+
+.hero-title {
+  font-family: var(--display);
+  color: var(--g-ink);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-shadow: none;
+}
+
+.hero-subtitle {
+  color: var(--g-ink-3);
+  font-style: italic;
+  font-family: var(--g-body);
+  text-shadow: none;
+}
+
+.landing-kicker,
+.analytics-kicker {
+  font-family: var(--g-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--garnet);
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Panele w hero i poza nim */
+.panel,
+.data-source.panel {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.hero .panel { background: var(--paper-2); }
+
+.source-heading {
+  font-family: var(--g-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--g-ink-3);
+}
+
+.source-note,
+.hero .source-note,
+.dataset-download-hint,
+.hero .dataset-download-hint {
+  color: var(--g-ink-2);
+  text-shadow: none;
+}
+
+.search-tips,
+.hero .search-tips,
+.lemma-toggle-row,
+.hero .lemma-toggle-row span {
+  color: var(--g-ink-3);
+}
+
+.search-tips code,
+.source-note code {
+  font-family: var(--g-mono);
+  background: var(--paper-3);
+  color: var(--g-ink-2);
+  border-radius: 1px;
+}
+
+.drop-zone {
+  border: 1px dashed var(--g-ink-4);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--g-ink-3);
+}
+
+.dataset-status { color: var(--g-ink-2); }
+
+/* ── Przyciski ── */
+.btn {
+  font-family: var(--g-body);
+  font-size: 13px;
+  border-radius: 0;
+  border: 1px solid var(--g-ink);
+  background: var(--paper);
+  color: var(--g-ink);
+  box-shadow: none;
+  letter-spacing: 0.01em;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--g-ink);
+  color: var(--paper);
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-primary {
+  background: var(--garnet);
+  border-color: var(--garnet);
+  color: var(--paper);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--garnet-2);
+  border-color: var(--garnet-2);
+  color: var(--paper);
+}
+
+.btn-soft {
+  background: transparent;
+  border-color: var(--rule);
+  color: var(--g-ink-2);
+}
+
+.btn-soft:hover:not(:disabled) {
+  background: var(--paper-3);
+  border-color: var(--g-ink-3);
+  color: var(--g-ink);
+}
+
+.btn-filter {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--g-ink-2);
+  border-radius: 0;
+}
+
+.mini-btn {
+  font-family: var(--g-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  background: var(--paper-2);
+  color: var(--g-ink-2);
+  box-shadow: none;
+}
+
+.mini-btn:hover:not(:disabled) {
+  background: var(--g-ink);
+  border-color: var(--g-ink);
+  color: var(--paper);
+  transform: none;
+  box-shadow: none;
+}
+
+.preset-chip {
+  font-family: var(--g-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  background: var(--paper-2);
+  color: var(--g-ink-2);
+}
+
+.preset-chip:hover { border-color: var(--g-ink-3); background: var(--paper-3); }
+
+.preset-chip.active {
+  background: var(--g-ink);
+  color: var(--paper);
+  border-color: var(--g-ink);
+}
+
+/* ── Wyszukiwarka ── */
+.search-input,
+.results-layer-input,
+.viewer-keyword-input,
+.input-wide,
+.input-small {
+  font-family: var(--g-body);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  color: var(--g-ink);
+  box-shadow: none;
+}
+
+.search-input { font-size: 16px; }
+
+.search-input:focus,
+.results-layer-input:focus,
+.viewer-keyword-input:focus,
+.input-wide:focus,
+.input-small:focus {
+  outline: none;
+  border-color: var(--garnet);
+  box-shadow: inset 0 -2px 0 var(--garnet);
+}
+
+.search-input::placeholder { color: var(--g-ink-4); font-style: italic; }
+
+/* ── Statystyki ── */
+.stat-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.stat-card::before { display: none; }
+.stat-card:hover { transform: none; box-shadow: none; border-color: var(--g-ink-4); }
+
+.stat-value {
+  font-family: var(--g-mono);
+  font-feature-settings: "tnum";
+  font-weight: 500;
+  color: var(--garnet);
+}
+
+.stat-label {
+  font-family: var(--g-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--g-ink-3);
+}
+
+.stat-subline { color: var(--g-ink-4); }
+
+/* ── Wyniki: karty → wpisy z linijkami ── */
+.case-card {
+  border: 0;
+  border-bottom: 1px solid var(--rule-soft);
+  border-radius: 0;
+  background: var(--paper);
+  box-shadow: none;
+}
+
+.case-card-full-bench {
+  border-color: var(--rule-soft);
+  box-shadow: inset 3px 0 0 var(--garnet);
+}
+
+.case-head { border-bottom: 1px dotted var(--rule-soft); }
+
+.case-title {
+  font-family: var(--display);
+  font-size: 1.12rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--g-ink);
+}
+
+.case-date {
+  font-family: var(--g-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--g-ink-3);
+}
+
+.meta-pill {
+  font-family: var(--g-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 1px;
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+  color: var(--g-ink-2);
+}
+
+.full-bench-pill {
+  background: var(--garnet);
+  border-color: var(--garnet);
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.case-topic { color: var(--g-ink-2); }
+.case-topic strong { color: var(--g-ink); font-weight: 600; }
+
+/* Trafienia */
+.hit-item {
+  border-radius: 0;
+  border: 0;
+  border-top: 1px dotted var(--rule-soft);
+  background: transparent;
+}
+
+.hit-item.selected {
+  background: color-mix(in oklch, var(--garnet-soft) 55%, transparent);
+  border-left: 2px solid var(--garnet);
+}
+
+.section-chip {
+  font-family: var(--g-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 1px;
+  font-weight: 500;
+}
+
+.hit-number {
+  font-family: var(--g-mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--garnet);
+  background: none;
+  border: none;
+}
+
+.hit-number::before { content: "¶ "; }
+
+.hit-text {
+  font-family: var(--display);
+  font-size: 0.92rem;
+  line-height: 1.62;
+  color: var(--g-ink);
+}
+
+.hit-text mark,
+mark {
+  background: var(--hl);
+  color: var(--g-ink);
+  padding: 0 0.12em;
+  border-radius: 1px;
+  box-shadow: inset 0 -1px 0 var(--hl-edge);
+}
+
+.toggle-hits {
+  font-family: var(--g-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--garnet);
+  background: none;
+  border: none;
+}
+
+/* Widok akapitowy */
+.paragraph-card { background: var(--paper); }
+
+.paragraph-card-case {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--garnet);
+}
+
+.paragraph-card-citation {
+  font-family: var(--g-body);
+  color: var(--g-ink-3);
+  border-top: 1px dotted var(--rule-soft);
+  padding-top: 6px;
+}
+
+/* Menu „⋯" */
+.hit-more-menu {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: 0 10px 26px oklch(18% 0.012 270 / 0.14);
+}
+
+/* ── Pasek wyników / podsumowanie ── */
+#resultsSummary {
+  font-family: var(--display);
+  font-weight: 600;
+}
+
+.results-layer-info, .results-layer-coverage, .similarity-status { color: var(--g-ink-3); }
+
+.filter-chip {
+  font-family: var(--g-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--garnet-soft);
+  border: 1px solid var(--garnet-edge);
+  color: var(--garnet);
+  border-radius: 1px;
+}
+
+/* Paginacja */
+.pagination button {
+  font-family: var(--g-mono);
+  border-radius: 0;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--g-ink-2);
+}
+
+.pagination button.active,
+.pagination button:hover:not(:disabled) {
+  background: var(--g-ink);
+  border-color: var(--g-ink);
+  color: var(--paper);
+}
+
+/* ── Sidebar ── */
+.sidebar-block {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.sidebar-block h3,
+.sidebar-block-toggle h3,
+.filter-title {
+  font-family: var(--g-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--g-ink-3);
+}
+
+.bar-label { color: var(--g-ink-2); }
+.bar-value { font-family: var(--g-mono); font-feature-settings: "tnum"; color: var(--g-ink); }
+.bar-track { background: var(--paper-3); border-radius: 0; }
+.bar-fill { border-radius: 0; }
+.bar-share { font-family: var(--g-mono); color: var(--g-ink-4); }
+
+.bar-list-clickable .bar-item { border-radius: 0; }
+.bar-list-clickable .bar-item:hover { background: var(--paper-2); }
+.bar-list-clickable .bar-item-active {
+  background: color-mix(in oklch, var(--garnet-soft) 60%, transparent);
+  outline: 1px solid var(--garnet-edge);
+}
+
+.term-pill {
+  font-family: var(--g-mono);
+  font-size: 10px;
+  border-radius: 1px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  color: var(--g-ink-2);
+}
+
+/* ── Podgląd wyroku (dialog) ── */
+.judgment-viewer {
+  background: var(--paper);
+  border: 1px solid var(--g-ink-4);
+  border-radius: 0;
+  box-shadow: 0 24px 60px oklch(18% 0.012 270 / 0.28);
+}
+
+.judgment-viewer-head {
+  background: var(--paper);
+  border-bottom: 3px double var(--rule);
+}
+
+.judgment-viewer-meta {
+  font-family: var(--g-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--g-ink-3);
+}
+
+.viewer-section-head h4 {
+  font-family: var(--display);
+  font-style: italic;
+}
+
+.viewer-paragraph-text { font-family: var(--display); line-height: 1.62; }
+
+.viewer-toc-btn, .viewer-toc button { border-radius: 0; }
+
+/* ── Case folder / notatki ── */
+.folder-item {
+  border: 0;
+  border-top: 1px dotted var(--rule-soft);
+  border-radius: 0;
+  background: transparent;
+}
+
+/* ── Landing ── */
+.landing-hero { border-bottom: 1px solid var(--rule); }
+
+.mode-card, .feature-card, .step-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.mode-card:hover, .feature-card:hover { transform: none; box-shadow: none; border-color: var(--g-ink-4); }
+
+/* ── Analityka ── */
+.kpi-card, .analysis-block, .chart-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.kpi-value { font-family: var(--g-mono); font-feature-settings: "tnum"; color: var(--garnet); }
+
+.meta-line { font-family: var(--g-mono); font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--g-ink-3); }
+
+/* ── Stopka ── */
+.footer {
+  background: var(--paper);
+  border-top: 3px double var(--rule);
+}
+
+.footer-note, .footer-link { font-family: var(--g-mono); font-size: 11px; color: var(--g-ink-3); }
+
+/* ── Poprawki: elementy stylowane pod dawne ciemne hero ── */
+.checkbox-row,
+.checkbox-list label,
+.range-row,
+.range-row span {
+  color: var(--g-ink-2);
+}
+
+.checkbox-row input[type="checkbox"],
+.lemma-toggle-row input[type="checkbox"] {
+  accent-color: var(--garnet);
+}
+
+.filters-panel {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.paragraph-display-control {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+}
+
+.paragraph-display-label {
+  font-family: var(--g-mono);
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--g-ink-3);
+}
+
+.paragraph-display-toggle {
+  background: var(--paper-3);
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+}
+
+.paragraph-mode-btn {
+  font-family: var(--g-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 0;
+  color: var(--g-ink-2);
+}
+
+.paragraph-mode-btn:hover:not(:disabled) { background: var(--paper-2); }
+
+.paragraph-mode-btn.active,
+.paragraph-display-control-results .paragraph-mode-btn.active {
+  background: var(--g-ink);
+  color: var(--paper);
+  box-shadow: none;
+}
+
+.paragraph-display-control-results {
+  background: var(--paper-2);
+  border-color: var(--rule);
+}
+
+.paragraph-display-control-results .paragraph-display-toggle {
+  background: var(--paper-3);
+  border-color: var(--rule);
+}
+
+.query-error { color: var(--garnet); }
+.lemma-status { color: var(--g-ink-3); }
+
+/* Landing: metryki i karty na papierze */
+.landing-metric {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.landing-metric-value {
+  font-family: var(--g-mono);
+  font-feature-settings: "tnum";
+  color: var(--garnet);
+}
+
+.landing-metric-label {
+  font-family: var(--g-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--g-ink-3);
+}
+
+.landing-dataset-hint { color: var(--g-ink-3); }
+
+.mode-chip,
+.section-kicker,
+.step-index {
+  font-family: var(--g-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--garnet);
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.mode-list li { color: var(--g-ink-2); }
+
+/* Selektory trybu i chipy nagłówka na papierze */
+.mode-switch-link:hover { color: var(--g-ink); background: var(--paper-3); }
+
+/* Wykresy / heatmapa */
+.chart-subline, .chart-note { color: var(--g-ink-3); }
+.judge-heatmap { font-family: var(--g-mono); }
+
+/* ── Statusy semantyczne (edytorskie) ── */
+:root {
+  --status-info: var(--g-ink-3);
+  --status-ok: oklch(45% 0.09 155);
+  --status-warn: oklch(52% 0.11 80);
+  --status-error: var(--garnet);
+}
+
+.dataset-download-hint a {
+  color: var(--garnet);
+  text-decoration-color: var(--garnet-edge);
+  font-weight: 600;
+}
+
+.dataset-download-hint a:hover { text-decoration-color: var(--garnet); }
+
+.lemma-status { color: var(--g-ink-3); }
+.lemma-status.warn { color: var(--status-warn); }
+.lemma-status.ok { color: var(--status-ok); }
+.similarity-status.warn { color: var(--status-warn); }
+
+.provenance-banner {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  color: var(--g-ink-2);
+  font-family: var(--g-mono);
+  font-size: 10.5px;
+}
+
+.search-input::placeholder,
+.input-wide::placeholder,
+.results-layer-input::placeholder,
+.viewer-keyword-input::placeholder {
+  color: var(--g-ink-4);
+}
+
+.page-btn {
+  font-family: var(--g-mono);
+  border-radius: 0;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--g-ink-2);
+}
+
+.page-btn.active,
+.page-btn:hover:not(:disabled) {
+  background: var(--g-ink);
+  border-color: var(--g-ink);
+  color: var(--paper);
+  box-shadow: none;
+}
+
+.viewer-display-control .paragraph-display-toggle {
+  background: var(--paper-3);
+  border-color: var(--rule);
+}
+
+.viewer-display-control .paragraph-mode-btn.active {
+  background: var(--g-ink);
+  color: var(--paper);
+  box-shadow: none;
+}
+
+.viewer-toc-link,
+.viewer-toc-link.active {
+  border-radius: 0;
+}
+
+.viewer-toc-link.active {
+  background: color-mix(in oklch, var(--garnet-soft) 60%, transparent);
+  color: var(--garnet);
+  border-left: 2px solid var(--garnet);
+}
+
+/* Aktywny przełącznik nie może tracić tuszu na hoverze */
+.paragraph-mode-btn.active:hover:not(:disabled),
+.paragraph-display-control-results .paragraph-mode-btn.active:hover:not(:disabled),
+.viewer-display-control .paragraph-mode-btn.active:hover:not(:disabled) {
+  background: var(--g-ink);
+  color: var(--paper);
+}
+
+/* ── Landing: dopracowanie ── */
+.landing-dataset-hint {
+  border: none;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.landing-dataset-hint a {
+  color: var(--garnet);
+  font-weight: 600;
+  text-decoration-color: var(--garnet-edge);
+}
+
+.landing-dataset-hint a:hover { text-decoration-color: var(--garnet); }
+
+.mode-card-student,
+.mode-card-expert {
+  background: var(--paper);
+}
+
+.mode-card-student::before { background: var(--g-ink-3); }
+.mode-card-expert::before { background: var(--garnet); }
+
+.kpi-card::before { background: var(--garnet); }

@@ -1693,10 +1693,10 @@ function cacheElements() {
 function setDatasetStatus(message, kind = "info") {
   el.datasetStatus.textContent = message;
   const palette = {
-    info: "#dbeafe",
-    success: "#bbf7d0",
-    warn: "#fde68a",
-    error: "#fecdd3"
+    info: "var(--status-info, #475569)",
+    success: "var(--status-ok, #2f6b45)",
+    warn: "var(--status-warn, #8a6116)",
+    error: "var(--status-error, #8e0f28)"
   };
   el.datasetStatus.style.color = palette[kind] || palette.info;
 }
