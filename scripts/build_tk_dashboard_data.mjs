@@ -1470,7 +1470,7 @@ function buildStats(cases, sourceFile, diagnostics = {}) {
 
   return {
     generated_at: new Date().toISOString(),
-    source_file: sourceFile,
+    source_file: path.basename(sourceFile || ""),
     schema_version: SCHEMA_VERSION,
     summary: {
       total_cases: cases.length,

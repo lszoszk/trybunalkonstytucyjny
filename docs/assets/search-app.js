@@ -3697,11 +3697,10 @@ function renderResults(parsedQuery) {
           <li class="hit-item ${selected ? "selected" : ""}">
             <div class="hit-head">
               <span class="section-chip" style="background:${escapeHtml(color)}">${escapeHtml(hit.section_label)}</span>
-              <span class="hit-number">${escapeHtml(numberLabel)}</span>
+              <span class="hit-number" title="Ranking: ${escapeHtml(hit.score_explain || "-")}">${escapeHtml(numberLabel)}</span>
             </div>
             <p class="hit-text hit-text-preview" ${(isTextExpanded && hasLongText) ? "hidden" : ""}>${highlight(displaySnippet, parsedQuery)}</p>
             ${hasLongText ? `<p class="hit-text hit-text-full" ${isTextExpanded ? "" : "hidden"}>${highlight(displayText, parsedQuery)}</p>` : ""}
-            <p class="rank-explain">Ranking: ${escapeHtml(hit.score_explain || "-")}</p>
             <div class="hit-actions">
               <button type="button" class="mini-btn" data-action="toggle-hit-select" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">${selected ? "Odznacz cytat" : "Wybierz cytat"}</button>
               <button type="button" class="mini-btn" data-action="open-case-view" data-case-index="${group.caseIndex}" data-hit-id="${escapeHtml(hitId)}">Pełny wyrok</button>
@@ -4665,7 +4664,7 @@ function renderCaseViewer(caseItem, options = {}) {
   if (focusParagraphId) {
     const targetParagraph = document.getElementById(`viewer-paragraph-${toDomId(focusParagraphId)}`);
     if (targetParagraph) {
-      targetParagraph.scrollIntoView({ block: "center", behavior: "smooth" });
+      scrollViewerToElement(targetParagraph, "center");
     }
   } else {
     el.judgmentViewerContent.scrollTop = 0;
@@ -4684,6 +4683,20 @@ function closeCaseViewer() {
   state.viewerParagraphOverrides.clear();
 }
 
+function scrollViewerToElement(target, block = "start") {
+  // Uwaga: scrollIntoView({behavior:"smooth"}) potrafi w Chromium cicho nie zadziałać
+  // wewnątrz tego kontenera — przewijamy kontener bezpośrednio.
+  const container = el.judgmentViewerContent;
+  if (!container || !target) return;
+  const containerRect = container.getBoundingClientRect();
+  const targetRect = target.getBoundingClientRect();
+  const delta = targetRect.top - containerRect.top;
+  const offset = block === "center"
+    ? Math.max(12, (container.clientHeight - targetRect.height) / 2)
+    : 12;
+  container.scrollTop += delta - offset;
+}
+
 function handleViewerTocAction(event) {
   const button = event.target.closest("button[data-action='viewer-goto-section']");
   if (!button) return;
@@ -4695,7 +4708,7 @@ function handleViewerTocAction(event) {
   if (!target) return;
   state.activeViewerTocTarget = targetId;
   renderViewerToc(state.activeViewerToc || []);
-  target.scrollIntoView({ block: "start", behavior: "smooth" });
+  scrollViewerToElement(target, "start");
 }
 
 function findViewerParagraph(caseKeyValue, paragraphId) {

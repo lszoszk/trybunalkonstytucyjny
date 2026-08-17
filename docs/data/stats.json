@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-02-25T14:07:56.395Z",
-  "source_file": "/Users/lszoszk/constcourt/output/playwright/tk-all.decisions.json",
+  "source_file": "tk-all.decisions.json",
   "schema_version": "tk-dashboard-v2",
   "summary": {
     "total_cases": 3672,
