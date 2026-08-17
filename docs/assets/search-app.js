@@ -511,7 +511,7 @@ async function fetchShardPayload(url, cacheMap) {
   if (cacheMap.has(url)) {
     return cacheMap.get(url);
   }
-  const response = await fetch(url, { cache: "no-store" });
+  const response = await fetchDatasetWithCache(url);
   if (!response.ok) {
     throw new Error(`Nie można pobrać shardu (${response.status}): ${url}`);
   }
@@ -682,7 +682,7 @@ async function loadLemmaShardsForCurrentDataset() {
 
   for (const url of candidates) {
     try {
-      const response = await fetch(url, { cache: "no-store" });
+      const response = await fetchDatasetWithCache(url);
       if (!response.ok) continue;
       const payload = await response.json();
       if (!isValidLemmaManifest(payload)) continue;
@@ -762,7 +762,7 @@ async function loadSimilarityForCurrentDataset() {
 
   for (const url of candidates) {
     try {
-      const response = await fetch(url, { cache: "no-store" });
+      const response = await fetchDatasetWithCache(url);
       if (!response.ok) continue;
       const payload = await response.json();
       if (!isValidSimilarityPayload(payload)) continue;
@@ -6047,9 +6047,50 @@ async function hydrateDataset(rows, options = {}) {
   }
 }
 
+const DATASET_CACHE_NAME = "tk-dataset-cache-v1";
+
+// Trwały cache danych (Cache API) z rewalidacją ETag/Last-Modified:
+// druga wizyta pobiera tylko nagłówki (304), treść czyta z dysku;
+// przy braku sieci używa ostatniej zapisanej kopii.
+async function fetchDatasetWithCache(url) {
+  let cache = null;
+  try {
+    cache = await caches.open(DATASET_CACHE_NAME);
+  } catch {
+    cache = null;
+  }
+  const cached = cache ? await cache.match(url) : null;
+
+  const headers = {};
+  if (cached) {
+    const etag = cached.headers.get("ETag");
+    const lastModified = cached.headers.get("Last-Modified");
+    if (etag) headers["If-None-Match"] = etag;
+    if (lastModified) headers["If-Modified-Since"] = lastModified;
+  }
+
+  try {
+    const response = await fetch(url, { headers });
+    if (response.status === 304 && cached) {
+      return cached;
+    }
+    if (response.ok && cache && (response.headers.get("ETag") || response.headers.get("Last-Modified"))) {
+      try {
+        await cache.put(url, response.clone());
+      } catch {
+        // np. brak miejsca (quota) — działamy dalej bez zapisu
+      }
+    }
+    return response;
+  } catch (error) {
+    if (cached) return cached;
+    throw error;
+  }
+}
+
 async function loadSample() {
   setDatasetStatus("Wczytywanie próbki...", "info");
-  const response = await fetch(SAMPLE_DATA_URL, { cache: "no-store" });
+  const response = await fetchDatasetWithCache(SAMPLE_DATA_URL);
   if (!response.ok) {
     throw new Error(`Nie można pobrać próbki (${response.status}).`);
   }
@@ -6064,7 +6105,7 @@ async function loadSample() {
 
 async function loadFullBenchDataset() {
   setDatasetStatus("Wczytywanie spraw w pełnym składzie...", "info");
-  const response = await fetch(FULL_BENCH_DATA_URL, { cache: "no-store" });
+  const response = await fetchDatasetWithCache(FULL_BENCH_DATA_URL);
   if (!response.ok) {
     throw new Error(`Nie można pobrać zbioru pełnego składu (${response.status}).`);
   }
@@ -6470,14 +6511,21 @@ function init() {
   renderCaseFolder();
 
   // Public default for GitHub Pages: load full-bench dataset on first render.
-  setLoadingControls(true);
-  loadFullBenchDataset()
-    .catch((error) => {
-      setDatasetStatus(mapLoadError(error), "error");
-    })
-    .finally(() => {
-      setLoadingControls(false);
-    });
+  // Przy włączonym oszczędzaniu danych nie pobieraj automatycznie ~17 MB.
+  const saveDataEnabled = Boolean(navigator.connection && navigator.connection.saveData);
+  if (saveDataEnabled) {
+    if (el.loadFullBenchDatasetBtn) el.loadFullBenchDatasetBtn.hidden = false;
+    setDatasetStatus("Wykryto tryb oszczędzania danych — korpus (ok. 17 MB) nie został pobrany automatycznie. Użyj przycisku wczytywania korpusu.", "warn");
+  } else {
+    setLoadingControls(true);
+    loadFullBenchDataset()
+      .catch((error) => {
+        setDatasetStatus(mapLoadError(error), "error");
+      })
+      .finally(() => {
+        setLoadingControls(false);
+      });
+  }
 }
 
 init();

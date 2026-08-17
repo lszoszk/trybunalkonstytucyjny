@@ -41,7 +41,7 @@
       <section class="data-source panel" aria-labelledby="sourceHeading">
         <h2 id="sourceHeading" class="source-heading">Korpus trybu studenta</h2>
         <p class="source-note">
-          Ten widok automatycznie ładuje <strong>korpus dostępny online ograniczony do pełnych składów (332 sprawy)</strong>.
+          Ten widok automatycznie ładuje <strong>korpus dostępny online ograniczony do pełnych składów (410 spraw)</strong>.
           To z założenia sprawy o najwyższej wadze ustrojowej i największym znaczeniu dla nauki prawa konstytucyjnego.
         </p>
         <p class="source-note">
@@ -49,6 +49,7 @@
           Jeśli potrzebujesz pracy na innym zbiorze, przełącz się do trybu <strong>Ekspert</strong>.
         </p>
         <div class="student-source-action">
+          <button id="loadFullBenchDatasetBtn" type="button" class="btn btn-primary" hidden>Wczytaj korpus (ok. 17 MB)</button>
           <a class="btn btn-soft student-expert-upload-link" href="dashboard-expert.html">Wczytaj własny korpus w trybie Ekspert</a>
         </div>
         <p id="datasetStatus" class="dataset-status">Brak załadowanego zbioru.</p>
@@ -176,7 +177,7 @@
 
         <section id="emptyState" class="panel empty-state">
           <h2>Automatyczne ładowanie korpusu pełnych składów</h2>
-          <p>Po załadowaniu 332 spraw możesz od razu rozpocząć wyszukiwanie. Domyślna jednostka wynikowa: akapit przypisany do sekcji orzeczenia.</p>
+          <p>Po załadowaniu 410 spraw możesz od razu rozpocząć wyszukiwanie. Domyślna jednostka wynikowa: akapit przypisany do sekcji orzeczenia.</p>
           <p>Pełny zbiór danych pobierzesz z <a href="https://huggingface.co/datasets/lszoszk/constcourt-full" target="_blank" rel="noopener noreferrer">Hugging Face</a>.</p>
         </section>
 

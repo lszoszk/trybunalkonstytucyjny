@@ -316,7 +316,7 @@ async function initAnalytics() {
   syncModeSwitchUi();
 
   try {
-    const response = await fetch("data/stats.json", { cache: "no-store" });
+    const response = await fetch("data/stats.json");
     if (!response.ok) {
       throw new Error(`Nie udało się załadować stats.json (${response.status})`);
     }
@@ -328,7 +328,7 @@ async function initAnalytics() {
     const generatedAt = payload.generated_at ? new Date(payload.generated_at).toLocaleString("pl-PL") : "-";
     const hashPreview = String(payload.dataset_hash || "-").slice(0, 16);
     const sourceName = String(payload.source_file || "-").split("/").pop();
-    metaLine.textContent = `Korpus online (pełne składy) • Źródło: ${sourceName} • Wygenerowano: ${generatedAt} • Hash: ${hashPreview}`;
+    metaLine.textContent = `Pełny korpus TK • Źródło: ${sourceName} • Wygenerowano: ${generatedAt} • Hash: ${hashPreview}`;
 
     kpiGrid.innerHTML = [
       kpi("Sprawy", fmtInt(summary.total_cases || 0)),
