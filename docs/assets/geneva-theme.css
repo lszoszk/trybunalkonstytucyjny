@@ -916,3 +916,220 @@ mark {
 .mode-card-expert::before { background: var(--garnet); }
 
 .kpi-card::before { background: var(--garnet); }
+
+/* ═══════════════ Tryb ciemny (tokeny z un-hrdb) ═══════════════ */
+html { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
+
+[data-theme="dark"] {
+  --paper:   oklch(16% 0.012 270);
+  --paper-2: oklch(19% 0.013 270);
+  --paper-3: oklch(23% 0.013 270);
+  --rule:    oklch(30% 0.013 270);
+  --rule-soft: oklch(25% 0.013 270);
+
+  --g-ink:   oklch(94% 0.008 75);
+  --g-ink-2: oklch(82% 0.010 75);
+  --g-ink-3: oklch(68% 0.011 75);
+  --g-ink-4: oklch(54% 0.012 75);
+
+  --garnet:      oklch(72% 0.11 25);
+  --garnet-2:    oklch(78% 0.10 25);
+  --garnet-soft: oklch(28% 0.05 25);
+  --garnet-edge: oklch(40% 0.08 25);
+
+  --hl:      oklch(40% 0.08 95);
+  --hl-edge: oklch(55% 0.10 95);
+
+  --status-ok: oklch(72% 0.10 155);
+  --status-warn: oklch(75% 0.11 80);
+
+  --shadow-md: 0 10px 26px oklch(0% 0 0 / 0.5);
+  --shadow-lg: 0 18px 44px oklch(0% 0 0 / 0.6);
+}
+
+/* Kolory pasków bocznych sterowalne per motyw */
+:root {
+  --bar-types: var(--garnet);
+  --bar-years: oklch(40% 0.03 270);
+  --bar-wzorce: oklch(48% 0.19 300);
+}
+
+[data-theme="dark"] {
+  --bar-years: oklch(65% 0.03 270);
+  --bar-wzorce: oklch(70% 0.13 300);
+}
+
+/* Przełącznik motywu */
+.theme-toggle {
+  font-family: var(--g-mono);
+  font-size: 15px;
+  line-height: 1;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  background: transparent;
+  color: var(--g-ink-3);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: var(--paper-3);
+  color: var(--g-ink);
+  border-color: var(--g-ink-3);
+}
+
+/* Ciemny motyw: cienie zamiast świateł na kartach landing */
+[data-theme="dark"] .mode-card-student,
+[data-theme="dark"] .mode-card-expert {
+  background: var(--paper-2);
+}
+
+/* ── Twarde biele ze starego arkusza → zmienne (dark-safe) ── */
+details.sidebar-block,
+.sidebar-block,
+div.sidebar-block {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 10px 0 4px;
+}
+
+.bar-item {
+  background: var(--paper-2);
+  border: 1px solid var(--rule-soft);
+  border-radius: 0;
+  color: var(--g-ink-2);
+}
+
+.results-header,
+.selected-citations-panel,
+.viewer-similar-block,
+.similar-case-item,
+.selected-citation-item,
+.compare-slot,
+.viewer-section,
+.folder-notes {
+  background: var(--paper);
+  border-color: var(--rule);
+  border-radius: 0;
+}
+
+.viewer-toc-link:hover { background: var(--paper-2); }
+
+.judgment-viewer { background: var(--paper); }
+
+textarea, select, input[type="number"] {
+  background: var(--paper);
+  color: var(--g-ink);
+  border-color: var(--rule);
+}
+
+/* ── Wnętrze podglądu wyroku: resztki jasnych teł ── */
+.viewer-display-control,
+.viewer-identity {
+  background: var(--paper-2);
+  border-color: var(--rule);
+  border-radius: 0;
+}
+
+details.viewer-metric-block,
+.viewer-metric-block {
+  background: var(--paper-2);
+  border-color: var(--rule);
+  border-radius: 0;
+}
+
+.viewer-section-head {
+  background: var(--paper-2);
+  border-color: var(--rule);
+}
+
+.viewer-paragraph {
+  background: var(--paper);
+  border-color: var(--rule-soft);
+  border-radius: 0;
+}
+
+.viewer-paragraph-num {
+  font-family: var(--g-mono);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  color: var(--garnet);
+}
+
+.similar-case-score {
+  font-family: var(--g-mono);
+  background: var(--paper-3);
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  color: var(--g-ink-2);
+}
+
+/* ── Analityka: detale w ciemnym motywie ── */
+.removed-bigrams-details,
+.removed-bigrams-box {
+  background: var(--paper-2);
+  border-color: var(--rule);
+  border-radius: 0;
+  color: var(--g-ink-2);
+}
+
+.judge-heatmap {
+  background: var(--paper-2);
+}
+
+.judge-heatmap th {
+  background: var(--paper-3);
+  color: var(--g-ink-2);
+}
+
+.heatmap-table th,
+.heatmap-table td {
+  border-color: var(--rule);
+}
+
+.heatmap-table thead th,
+.heatmap-table tbody th {
+  background: var(--paper-3);
+  color: var(--g-ink-2);
+  font-family: var(--g-mono);
+  font-weight: 500;
+}
+
+/* Gradientowe kremy w podglądzie wyroku → płaski papier */
+.viewer-keyword-form {
+  background: var(--paper-2);
+  border-color: var(--rule);
+  border-radius: 0;
+}
+
+.judgment-viewer-toc {
+  background: var(--paper-2);
+  border-color: var(--rule);
+}
+
+.judgment-viewer-content {
+  background: var(--paper);
+}
+
+.landing-steps,
+.landing-features {
+  background: var(--paper-2);
+  border-color: var(--rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.removed-bigrams-details summary {
+  background: var(--paper-3);
+  color: var(--g-ink-2);
+  font-family: var(--g-mono);
+  font-weight: 500;
+}

@@ -4171,10 +4171,10 @@ function renderSidebar(parsedQuery) {
     const key = Object.keys(SECTION_META).find((k) => SECTION_META[k].label === label);
     return SECTION_META[key]?.color || "#94a3b8";
   });
-  renderBarList(el.analyticsTypes, stats.types, () => "#bf0d2e");
-  renderBarList(el.analyticsYears, stats.years, () => "#334155");
+  renderBarList(el.analyticsTypes, stats.types, () => "var(--bar-types, #bf0d2e)");
+  renderBarList(el.analyticsYears, stats.years, () => "var(--bar-years, #334155)");
   if (el.analyticsWzorce) {
-    renderBarList(el.analyticsWzorce, stats.wzorce || [], () => "#6d28d9");
+    renderBarList(el.analyticsWzorce, stats.wzorce || [], () => "var(--bar-wzorce, #6d28d9)");
     const activeWzorzec = el.wzorzecFilter ? normalizeSpace(el.wzorzecFilter.value) : "";
     el.analyticsWzorce.querySelectorAll(".bar-item").forEach((item) => {
       const label = normalizeSpace(item.querySelector(".bar-label")?.textContent || "");
