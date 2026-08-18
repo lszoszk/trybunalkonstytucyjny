@@ -3,9 +3,9 @@
 // Ruch z automatyzacji (webdriver/headless), localhost, ?notrack=1 i Do-Not-Track
 // nigdy nie ładuje GA i nie widzi bannera.
 (function () {
-  // Wstaw identyfikator pomiaru GA4 (Administracja → Strumienie danych → G-XXXXXXXXXX).
+  // Identyfikator pomiaru GA4: usługa „TK database" (512243968), strumień „TK Database".
   // Pusty = cała analityka wyłączona (bez bannera, bez requestów).
-  var GA_ID = "";
+  var GA_ID = "G-3FS8GT7N01";
   var CONSENT_KEY = "tk_ga_consent_v1";
   var gaLoaded = false;
 
