@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="assets/search-app.css">
   <link rel="stylesheet" href="assets/geneva-theme.css">
   <script src="assets/theme-toggle.js"></script>
+  <script src="assets/analytics.js" defer></script>
 </head>
 <body data-dashboard-mode="student">
   <nav class="navbar">
@@ -310,5 +311,15 @@
   </footer>
 
   <script src="assets/search-app.js"></script>
+
+  <!-- Zgoda na analitykę (opt-in). GA4 ładuje się dopiero po „Akceptuję";
+       wybór zapisany w localStorage (tk_ga_consent_v1) — patrz assets/analytics.js. -->
+  <div class="consent-banner" id="consentBanner" role="region" aria-label="Zgoda na analitykę" hidden>
+    <p class="consent-text">Ta strona używa <strong>Google&nbsp;Analytics</strong>, żeby zrozumieć, jak jest używana. Skrypt ładuje się <strong>wyłącznie za Twoją zgodą</strong> — bez akceptacji nic nie jest wysyłane.</p>
+    <div class="consent-actions">
+      <button type="button" class="btn btn-primary" id="consentAccept">Akceptuję analitykę</button>
+      <button type="button" class="btn btn-soft" id="consentDecline">Odrzucam</button>
+    </div>
+  </div>
 </body>
 </html>
